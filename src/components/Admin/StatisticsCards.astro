@@ -1,0 +1,34 @@
+---
+import StatisticCard from '@components/ui/StatisticCard.astro'
+
+const data = [
+  {
+    icon: 'mdi:account-group-outline',
+    title: 'Visitors',
+    value: '1,257',
+  },
+  {
+    icon: 'mdi:file-check-outline',
+    title: 'Orders',
+    value: '557',
+  },
+  {
+    icon: 'mdi:briefcase-check-outline',
+    title: 'Sales',
+    value: '$11,257',
+  },
+  {
+    icon: 'mdi:cash-usd-outline',
+    title: 'Balances',
+    value: '$75,257',
+  },
+]
+---
+
+<div class='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-4 gap-4'>
+  {
+    data.map((data) => (
+      <StatisticCard {...data} />
+    ))
+  }
+</div>

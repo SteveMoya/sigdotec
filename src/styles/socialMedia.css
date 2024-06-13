@@ -1,0 +1,55 @@
+.social-buttons {
+  @apply flex justify-center items-center mr-[30px] mt-5 px-2.5 py-[15px] rounded-[5em];
+}
+.social-button {
+  @apply flex justify-center items-center w-[50px] h-[50px] bg-white shadow-[0px_0px_4px_#00000027] transition-[0.3s] mx-2.5 my-0 rounded-[50%] hover:bg-[#f2f2f2] hover:shadow-[0px_0px_6px_3px_#00000027];
+}
+.social-buttons svg {
+  @apply transition-[0.3s] h-5;
+}
+.facebook {
+  @apply bg-[#3b5998];
+}
+.facebook svg {
+  @apply fill-[#f2f2f2];
+}
+.facebook:hover svg {
+  @apply fill-[#3b5998];
+}
+.github {
+  @apply bg-[#333];
+}
+.github svg {
+  @apply w-[25px] h-[25px] fill-[#f2f2f2];
+}
+.github:hover svg {
+  @apply fill-[#333];
+}
+.linkedin {
+  @apply bg-[#0077b5];
+}
+.linkedin svg {
+  @apply fill-[#f2f2f2];
+}
+.linkedin:hover svg {
+  @apply fill-[#0077b5];
+}
+.instagram {
+  @apply bg-[#c13584];
+}
+.instagram svg {
+  @apply fill-[#f2f2f2];
+}
+.instagram:hover svg {
+  @apply fill-[#c13584];
+}
+.google {
+  @apply bg-[#dd4b39];
+}
+.google svg {
+  @apply fill-[#f2f2f2];
+}
+.google:hover svg {
+  @apply fill-[#dd4b39];
+}
+

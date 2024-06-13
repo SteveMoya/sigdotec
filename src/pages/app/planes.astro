@@ -1,0 +1,14 @@
+---
+export const prerender = false
+import AppLayout from '@layouts/App/AppLayout.astro'
+import DashboardCash from '@components/Dashboard/DashboardCash.astro'
+import PayTable from '@components/Dashboard/PayTable.astro'
+// import Pay from '@components/Payment/Pay.astro'
+---
+
+<AppLayout title='Planes' description='Tus Planes de Clase'>
+  <h2>Aqui estas todos los planes realizados anteriormente</h2>
+  <div class="w-full">
+    <!-- <PayTable /> -->
+  </div>
+</AppLayout>

@@ -1,0 +1,23 @@
+{
+    "name": "James Lin",
+    "description": "James is a results-driven marketing manager known for impactful strategies. With a strong business acumen, he excels in driving brand awareness and engagement through digital marketing, social media campaigns, and data-driven optimization.",
+    "image": "./images/james-lin.jpg",
+    "role": "Marketing",
+    "socials": [
+        {
+            "name": "Linkedin",
+            "url": "https://www.linkedin.com/in/carlos-manuel-villavizar-rosa-505868224/",
+            "icon": "mdi:linkedin"
+        },
+        {
+            "name": "GitHub",
+            "url": "https://github.com/chicibelito70",
+            "icon": "mdi:github"
+        },
+        {
+            "name": "Instagram",
+            "url": "https://www.instagram.com/villavizar__/",
+            "icon": "mdi:instagram"
+        }
+    ]
+}

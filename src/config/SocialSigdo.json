@@ -1,0 +1,12 @@
+[
+    {
+        "name": "Instagram",
+        "url": "https://www.instagram.com/sigdotec",
+        "icon": "mdi:instagram"
+    },
+    {
+        "name": "YouTube",
+        "url": "https://youtube.com/@SIGDOTEC",
+        "icon": "mdi:youtube"
+    }
+]

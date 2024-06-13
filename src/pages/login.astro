@@ -1,0 +1,59 @@
+---
+import { LoginB } from '@components/App/LoginB'
+import Layout from '@layouts/Layout.astro'
+import { Icon } from 'astro-icon/components'
+import { Auth, SignIn } from 'auth-astro/components'
+---
+
+<Layout
+  title='Inicia Seccion'
+  description='Inicia Seccion para poder tener tu plan de clases'
+>
+  <section class='body'>
+    <div class='CT'>
+      <div class='brand-logo'></div>
+      <div class='brand-title'>SIGDOTEC</div>
+      <LoginB client:load />
+      <Auth>
+          <div class='flex flex-row items-center justify-center my-4 '>
+          <SignIn
+            options={{ callbackUrl: '/api/roles', redirect: true }}
+            class='social-button github hover:text-[#333]'
+            provider='github'
+          >
+            <Icon name='mdi:github' class='h-6 w-auto' />
+            <SignIn
+              options={{ callbackUrl: '/app/', redirect: true }}
+              class='social-button google hover:text-[#db4437]'
+              provider='google'
+            >
+              <Icon name='mdi:google' class='h-6 w-auto' />
+              <SignIn
+                options={{ callbackUrl: '/app/', redirect: true }}
+                provider='facebook'
+                class='social-button facebook hover:text-[#3b5998]'
+              >
+                <Icon name='mdi:facebook' class='h-6 w-auto' />
+              </SignIn>
+            </SignIn>
+          </SignIn>
+        </div>
+      </Auth>
+      <div class='w-full flex flex-row justify-center text-primary-600'>
+        <a href='/MissPassword' class='text-custom-font'>
+          Olvide mi contraseña
+        </a>
+      </div>
+      <p class='textC'>
+        ¿No estás registrado todavía?{' '}
+        <a
+          href='/register'
+          class='text-custom-font text-primary-700 inline-flex space-x-2 items-center'
+        >
+          <span>Regístrate aquí</span>
+          <span class='icon-[mdi--external-link]'></span>
+        </a>
+      </p>
+    </div>
+  </section>
+</Layout>

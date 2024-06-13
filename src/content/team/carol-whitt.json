@@ -1,0 +1,23 @@
+{
+    "name": "Carol Whitt",
+    "description": "Carol Whitt es una experimentada y visionaria diseñadora, con una fuerte afinidad en lo estetico y lo funcional. Con expertise en experiencia de usuario, diseño visual y desarrollo de marca, ella es consistente en sus diseños y innovadora en sus soluciones.",
+    "image": "./images/carol-whitt.jpg",
+    "role": "Desing",
+    "socials": [
+        {
+            "name": "Linkedin",
+            "url": "https://www.linkedin.com/in/angel-francisco-garcia-cabrera-861a07273/",
+            "icon": "mdi:linkedin"
+        },
+        {
+            "name": "GitHub",
+            "url": "https://github.com/AngelGarciaCabrera",
+            "icon": "mdi:github"
+        },
+        {
+            "name": "Instagram",
+            "url": "https://www.instagram.com/angel_fgc/",
+            "icon": "mdi:instagram"
+        }
+    ]
+}

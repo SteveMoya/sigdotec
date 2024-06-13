@@ -1,0 +1,59 @@
+---
+import Layout from './Layout.astro'
+
+import Container from '@components/ui/Container.astro'
+import { formatDate, slugify } from '@utils/helpers'
+import { Picture } from 'astro:assets'
+
+const { frontmatter } = Astro.props
+
+const seo = {
+  title: frontmatter.title,
+  description: frontmatter.description,
+  image: frontmatter.image
+}
+---
+
+
+<Layout title={seo.title} description={seo.description} image={seo.title}>
+  <Container>
+    <article class='px-10'>
+      <div class='flex items-center text-center flex-col'>
+        {
+          frontmatter.category && (
+            <p class='dark:bg-slate-800 bg-slate-200 px-2 py-4 rounded-3xl text-slate-800 dark:text-slate-200'>
+              <a
+                class='hover:opacity-80'
+                href={`/blog/category/${slugify(frontmatter.category)}`}
+              >
+                {frontmatter.category}
+              </a>
+            </p>
+          )
+        }
+        <h1 class='my-4 mx-auto'>{frontmatter.title}</h1>
+        <p class='text-slate-300 dark:text-slate-600 mx-auto font-sans'>
+          <time>{formatDate(frontmatter.publishedAt)}</time>
+        </p>
+       
+        {
+          frontmatter.image && (
+              <Picture
+                width='1200'
+                height='630'
+                class='h-auto max-w-full rounded-3xl mt-12 mb-8'
+                loading='eager'
+                formats={['avif','webp','jpeg']}
+                fallbackFormat='jpeg'
+                src={`${frontmatter.image}`}
+                alt={frontmatter.alt}
+              />
+          )
+        }
+      </div>
+      <div>
+        <slot />
+      </div>
+    </article>
+  </Container>
+</Layout>

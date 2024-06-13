@@ -1,0 +1,83 @@
+---
+import { formatDate } from '@utils/utils'
+import type { CollectionEntry } from 'astro:content'
+import Tags from './Tags.astro'
+import { Image, Picture } from 'astro:assets'
+
+const { article, authorData } = Astro.props
+
+interface Props {
+  article: CollectionEntry<'blog'>
+  authorData: CollectionEntry<'team'>
+}
+---
+
+<article transition:name={article.data.title}
+  class='flex flex-col overflow-hidden rounded-xl shadow-xl dark:bg-gray-700'
+>
+  <div class='flex-shrink-0'>
+    <a
+      href={'/blog/' + article.slug}
+      class='group rounded-xl hover:scale-105 hover:contrast-[110%] transition-all relative w-full h-48 overflow-hidden aspect-video'
+    >
+      <img
+        class='rounded-lg object-cover w-full h-48 group-hover:contrast-100 transition-all duration-300 ease-in-out aspect-video'
+        loading='lazy'
+        src={'/images/' + article.data.image}
+        alt={`Imagen de ${article.data.title}`}
+      />
+      <img
+        class='blur-lg opacity-45 w-full h-48 group-hover:opacity-100 absolute inset-0 transition-all duration-300 ease-in-out contrast-150 -z-10 object-cover rounded-lg aspect-video'
+        loading='lazy'
+        src={'/images/' + article.data.image}
+        alt={`Imagen de ${article.data.title}`}
+      />
+    </a>
+    <div class='flex flex-1 flex-col justify-between p-6'>
+      <div class='flex-1'>
+        <p class='text-sm font-semibold text-primary-700'>
+          <a
+            href={`/blog/category/${article.data.category}`}
+            class='hover:underline capitalize'
+          >
+            {article.data.category}</a
+          >
+        </p>
+        <a href={'/blog/' + article.slug} class='mt-2 block'>
+          <p class='text-xl font-semibold'>
+            {article.data.title}
+          </p>
+          <div class='flex space-x-1 text-sm text-gray-500'>
+            <time
+              datetime={`${article.data.pubDate}`}
+              class='dark:text-slate-200 text-slate-800'
+              >{formatDate(article.data.pubDate)}</time
+            >
+          </div>
+          <p class='mt-3 text-base'>
+            {article.data.description}
+          </p>
+        </a>
+      </div>
+      <div class='ml-1 my-2'>
+        <p class='text-sm font-medium text-gray-900 dark:text-slate-300'>
+          <a href={`/team/${article.data.author.id}`} class='hover:underline'
+            >Escrito por 
+            <!-- Aqui colocamos la imagen -->
+            <Picture
+              class='inline-block w-8 h-8 rounded-full'
+              src={authorData.data.image}
+              alt={`Imagen de ${authorData.data.name}`}
+
+            />
+            <span
+              class='font-bold bg-gradient-text-secondary capitalize'
+              >{authorData.data.name}</span
+            ></a
+          >
+        </p>
+      </div>
+      <Tags tags={article.data.tags} />
+    </div>
+  </div>
+</article>

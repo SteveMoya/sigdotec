@@ -1,0 +1,26 @@
+---
+import Container from '@components/ui/Container.astro'
+import Items from '@config/ByNumber.json'
+
+interface Item {
+  number: number
+  name: string
+}
+---
+
+<section class='relative mt-12 md:mt-16'>
+  <Container>
+    <ul
+      class='mx-auto lg:mx-0 p-5 sm:p-6 py-6 sm:py-8 max-w-5xl rounded-3xl bg-white dark:bg-[#111227] border border-shank-100 shadow-lg shadow-box-shadow md:divide-x divide-shank-100 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-8 md:gap-6 lg:gap-12'
+    >
+      {
+        Items.map((item: Item) => (
+          <li class='flex flex-col justify-center items-center'>
+            <h2 class='font-semibold text-xl sm:text-2xl md:text-4xl'>{item.number}</h2>
+            <p class='mt-2'>{item.name}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </Container>
+</section>

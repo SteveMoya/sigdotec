@@ -1,0 +1,28 @@
+---
+
+import Layout from '@layouts/Layout.astro'
+import Features from '@components/sections/Features.astro'
+
+import Pricing2 from '@components/pricing/Pricing2.astro'
+import Pricing3 from '@components/pricing/Pricing3.astro'
+
+import Slide from '@components/App/Slide'
+import Site from '@components/App/sites'
+---
+
+<Layout
+  title='Servicios de SIGDO.'
+  description='Estos son los Servicios del proyecto'
+  image='/og-sigdo.jpg'
+  canonicalURL='https://sigdo.online'
+>
+ 
+  <Slide client:load/>
+  <Pricing3  />
+  <Site/>
+  <Pricing2 /> 
+  
+ 
+
+  
+</Layout>

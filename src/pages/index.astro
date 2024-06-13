@@ -1,0 +1,37 @@
+---
+
+import Layout from '@layouts/Layout.astro'
+import Hero from '@components/sections/Hero.astro'
+import AboutUs from '@components/sections/AboutUs.astro'
+
+import { settings } from '@data/settings'
+
+
+import Brands from '@components/sections/Brands.astro'
+import Services from '@components/sections/Services.astro'
+
+import Features from '@components/sections/Features.astro'
+import CTA from '@components/sections/CTA.astro'
+---
+
+<Layout
+  title='Bienvenido a SIGDO.'
+  description='Esta es el home page del proyecto'
+  image='/og-sigdo.jpg'
+  canonicalURL='https://sigdo.online'
+>
+
+    <Hero />
+    <Brands />
+    <Services />
+    <AboutUs />
+    <Features />
+    <CTA />
+</Layout>
+<script>
+
+    import { settings } from '@data/settings'
+
+  //Colocar una const para la confirmacion de que el host esta funcionando
+  const host = settings.site
+</script>

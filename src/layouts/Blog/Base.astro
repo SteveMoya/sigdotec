@@ -1,0 +1,30 @@
+---
+import BaseHead from './BaseHead.astro'
+import type { Props as BaseHeadProps } from './BaseHead.astro'
+
+import { ViewTransitions } from 'astro:transitions'
+
+export interface Props {
+  seo?: BaseHeadProps
+}
+
+const { seo } = Astro.props
+---
+
+<html lang='es' class='scroll-smooth dark'>
+  <head>
+    <BaseHead {...seo} />
+    <!-- This is and experimental global fade in animation that is being worked on, enable at your own risk of some jank -->
+    <ViewTransitions />
+  </head>
+  <body
+    class='overflow-hidden overflow-y-auto dark:text-white text-black bg-gray-100 dark:bg-gray-900 bg-body'
+  >
+    <slot />
+    <style>
+      body {
+        text-rendering: optimizeSpeed;
+      }
+    </style>
+  </body>
+</html>

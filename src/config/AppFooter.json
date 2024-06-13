@@ -1,0 +1,32 @@
+[
+    {
+    "name": "Terminos y condiciones",
+    "href": "#",
+    "icon": "mdi:file-document-outline"
+    },
+    {
+    "name": "Politica de privacidad",
+    "href": "#",
+    "icon": "mdi:shield-account-outline"
+    },
+    {
+    "name": "Licencia",
+    "href": "#",
+    "icon": "mdi:license"
+    },
+    {
+    "name": "Politica de cookies",
+    "href": "#",
+    "icon": "mdi:cookie"
+    },
+    {
+    "name": "Contacto",
+    "href": "#",
+    "icon": "mdi:email"
+    },
+    {
+    "name": "Soporte",
+    "href": "#",
+    "icon": "mdi:head-question-outline"
+    }
+]

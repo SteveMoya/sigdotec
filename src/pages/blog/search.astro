@@ -1,0 +1,62 @@
+---
+import ArticleCard from '@components/Blog/ArticleCard.astro'
+import SearchForm from '@components/Blog/SearchForm.astro'
+import { getCollection, getEntry } from 'astro:content'
+import type { CollectionEntry } from 'astro:content'
+import Layout from '@layouts/Layout.astro'
+import Container from '@components/ui/Container.astro'
+import { z } from 'astro/zod'
+import { getEntries } from 'astro:content'
+
+const querySchema = z.string().min(3).max(100)
+
+const query: string = querySchema.parse(Astro.url.searchParams.get('query'))
+
+const allBlogArticles: CollectionEntry<'blog'>[] = await getCollection('blog')
+
+const author = await getEntry(allBlogArticles[0].data.author)
+
+const AuthorData = await getEntries([author])
+
+// Filter articles based on query
+const searchResults = allBlogArticles.filter((article) => {
+  const titleMatch: boolean = article.data.title
+    .toLowerCase()
+    .includes(query!.toLowerCase())
+
+  const bodyMatch: boolean = article.body
+    .toLowerCase()
+    .includes(query!.toLowerCase())
+
+  const slugMatch: boolean = article.slug
+    .toLowerCase()
+    .includes(query!.toLowerCase())
+
+  return titleMatch || bodyMatch || slugMatch
+})
+---
+
+<Layout
+  title=`Busqueda de ${query}`
+  description=`Estas buscando el siguiente articulo de nuestro blog - ${query}`
+>
+  <Container>
+    <a
+      href='/blog/articulos'
+      class='inline-block p-2 mb-5 hover:bg-primary-800 rounded-md text-white bg-primary-700'
+      >Ver Todos los Articulos</a
+    >
+
+    <SearchForm />
+
+    <h1 class='text-2xl pb-3 mt-6'>Resultado de <strong>{query}</strong></h1>
+
+    <div class='grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3'>
+      {
+        searchResults.map((article) => (
+          <ArticleCard article={article} authorData={AuthorData[0]} />
+        ))
+      }
+    </div>
+  </Container>
+</Layout>

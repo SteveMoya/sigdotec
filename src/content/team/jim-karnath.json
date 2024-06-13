@@ -1,0 +1,23 @@
+{
+  "name": "Jim Karnath",
+  "description": "Jim Karnath is an innovative software engineer with 15+ years of experience. His expertise encompasses web development, data analysis, and AI. Jim is a creative problem-solver who consistently delivers exceptional results.",
+  "image": "./images/jim-karnath.jpg",
+  "role": "Software",
+  "socials": [
+    {
+      "name": "Linkedin",
+      "url": "https://www.linkedin.com/in/carlos-manuel-villavizar-rosa-505868224/",
+      "icon": "mdi:linkedin"
+    },
+    {
+      "name": "GitHub",
+      "url": "https://github.com/chicibelito70",
+      "icon": "mdi:github"
+    },
+    {
+      "name": "Instagram",
+      "url": "https://www.instagram.com/villavizar__/",
+      "icon": "mdi:instagram"
+    }
+  ]
+}

@@ -1,0 +1,80 @@
+
+{
+    "FooterNav": [
+        {
+            "itemText": "Servicios",
+            "itemLink": "servicios"
+        },
+        {
+            "itemText": "Plan de Clases",
+            "itemLink": "#"
+        },
+        {
+            "itemText": "Plan de Unidad",
+            "itemLink": "#"
+        },
+        {
+            "itemText": "Plan Anual",
+            "itemLink": "#"
+        }
+    ],
+    "FooterSupport": [
+        {
+            "itemText": "Precios",
+            "itemLink": "#"
+        },
+        {
+            "itemText": "Guia",
+            "itemLink": "#"
+        },
+        {
+            "itemText": "Preguntas Frecuentes",
+            "itemLink": "preguntas-frecuentes"
+        },
+        {
+            "itemText": "Contacto",
+            "itemLink": "contacto"
+        }
+    ],
+    "FooterCompany": [
+        {
+            "itemText": "Acerca",
+            "itemLink": "nosotros"
+        },
+        {
+            "itemText": "Blog",
+            "itemLink": "blog"
+        },
+        {
+            "itemText": "Testimonios",
+            "itemLink": "testimonios"
+        },
+        {
+            "itemText": "Equipo",
+            "itemLink": "team"
+        }
+    ],
+    "FooterLegal": [
+        {
+            "itemText": "Politica de Privacidad",
+            "itemLink": "privacidad"
+        },
+        {
+            "itemText": "Terminos y Condiciones",
+            "itemLink": "terminos"
+        },
+        {
+            "itemText": "Politica de Cookies",
+            "itemLink": "#"
+        },
+        {
+            "itemText": "Aviso Legal",
+            "itemLink": "#"
+        },
+        {
+            "itemText": "Licencia de Uso",
+            "itemLink": "#"
+        }
+    ]
+}
+

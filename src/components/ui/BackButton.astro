@@ -1,0 +1,13 @@
+---
+interface Props{
+    title?: string;
+    className?: string;
+}
+const { title = "Atras", className } = Astro.props;
+---
+
+<a
+  href='javascript:history.back()'
+  class=`inline-block bg-gray-100 dark:bg-gray-700 p-2 mb-6 hover:bg-primary-700 dark:hover:bg-primary-700 rounded-md hover:text-white dark:hover:text-white ${className}`
+  >{title}</a
+>

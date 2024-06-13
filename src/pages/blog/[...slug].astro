@@ -1,0 +1,82 @@
+---
+import Layout from '@layouts/Layout.astro'
+import Tags from '@components/Blog/Tags.astro'
+import { formatDate } from '@utils/utils'
+import Container from '@components/ui/Container.astro'
+import { getEntry, getEntries } from 'astro:content'
+import BackButton from '@components/ui/BackButton.astro'
+import Prose from '@components/Blog/Prose.astro'
+import { Image } from 'astro:assets'
+const { slug } = Astro.params
+
+if (slug === undefined) {
+  throw new Error('Se requiere un slug para mostrar la entrada.')
+}
+
+const entry = await getEntry('blog', slug)
+if (entry === undefined) {
+  return Astro.redirect('/404')
+}
+
+const { Content } = await entry.render()
+const { data: authorData } = await getEntry('team', entry.data.author.id)
+---
+
+<Layout
+  title={entry.data.title}
+  description={entry.data.description}
+  image={`/images/${entry.data.image}`}
+>
+  <Container>
+    <BackButton />
+    <section
+      class='max-w-screen-xl mx-auto relative'
+      transition:name={entry.data.title}
+    >
+      <div
+        class='bg-cover bg-center text-center overflow-hidden w-full h-auto rounded-xl'
+        style=`min-height: 500px; background-image: url(${'/images/' + entry.data.image})`
+        title=`${entry.data.title} Image`
+      >
+      </div>
+      <div class='max-w-4xl mx-auto'>
+        <div class='mt-3 flex flex-col justify-between leading-normal'>
+          <div
+            class='dark:bg-gray-800 bg-white relative top-0 -mt-32 p-5 sm:p-10 rounded gap-y-4 shadow-2xl'
+          >
+            <h4 class='text-primary-700 font-semibold capitalize'>
+              {entry.data.category}
+            </h4>
+            <h1 class='font-bold text-3xl mb-2'>
+              {entry.data.title}
+            </h1>
+            <h3 class='text-lg mb-2'>
+              Escrito por
+              <a
+                href={`/team/${entry.data.author.id}`}
+                class='text-primary-700 font-bold'
+              >
+                <Image
+                  src={authorData.image}
+                  alt={authorData.name}
+                  class='w-10 h-10 rounded-full inline-block ml-2 shadow-sm'
+                />
+                {authorData.name}
+              </a>
+              - {formatDate(entry.data.pubDate)}
+            </h3>
+            <Tags tags={entry.data.tags} />
+
+            <h3 class='my-4'>Introduccion: <hr /></h3>
+            <p class='mb-4'>{entry.data.description}</p><hr />
+
+            <Prose>
+              <Content />
+            </Prose>
+          </div>
+          <!--Aqui colocar los posts relacionados -->
+        </div>
+      </div>
+    </section>
+  </Container>
+</Layout>

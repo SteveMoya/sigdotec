@@ -1,0 +1,27 @@
+[
+    {
+    "name": "Dashboard",
+    "href": "/admin",
+    "icon": "mdi:home"
+    },
+    {
+    "name": "Usuarios",
+    "href": "/admin/usuarios",
+    "icon": "mdi:account-group"
+    },
+    {
+    "name": "Planes",
+    "href": "/admin/planes",
+    "icon": "mdi:archive"
+    },
+    {
+    "name": "Cartera",
+    "href": "/admin/cartera",
+    "icon": "mdi:wallet"
+    },
+    {
+    "name": "Perfil",
+    "href": "/admin/perfil",
+    "icon": "mdi:account"
+    }
+]

@@ -1,0 +1,38 @@
+
+.iNP {
+  @apply caret-[#1DA1F2];
+}
+.body {
+  @apply w-screen h-screen flex items-center text-center justify-center place-items-center overflow-hidden m-0;
+  background: #ecf0f3;
+}
+.form {
+  @apply items-center w-[390px] h-[500px] flex flex-col bg-[white] shadow-[0_4px_30px_rgba(0,0,0,0.1)] transition-[0.4s] duration-[ease-in-out] overflow-hidden object-cover rounded-[15px] hover:shadow-[1px_1px_1px_rgba(0,0,0,0.1)];
+}
+.form:hover {
+  scale: 0.99;
+}
+.heading {
+  @apply relative text-center text-[black] font-[bold] top-[3em];
+}
+.check {
+  @apply relative self-center top-[4em];
+}
+.input {
+  @apply relative w-[2.5em] h-[2.5em] bg-[rgb(235,235,235)] shadow-[inset_3px_3px_6px_#d1d1d1,inset_-3px_-3px_6px_#ffffff] transition-[0.4s] duration-[ease-in-out] -ml-5 m-[1em] pl-[15px] rounded-[5px] border-[none] top-[6.5em] hover:shadow-[inset_0px_0px_0px_#d1d1d1,inset_0px_0px_0px_#ffffff] hover:bg-[lightgrey] focus:shadow-[inset_0px_0px_0px_#d1d1d1,inset_0px_0px_0px_#ffffff] focus:bg-[lightgrey];
+  outline: none;
+}
+.INP-error {
+  @apply relative w-[2.5em] h-[2.5em] bg-white shadow-[inset_3px_3px_6px_hsl(0,84%,66%),inset_-3px_-3px_6px_#ffffff] transition-[0.4s] duration-[ease-in-out] -ml-5 m-[1em] pl-[15px] rounded-[5px] border-[none] top-[6.5em];
+  outline: none;
+}
+.btn1 {
+  @apply relative w-[17em] h-[3em] transition-[0.4s] duration-[ease-in-out] shadow-[1px_1px_3px_#b5b5b5,-1px_-1px_3px_#ffffff] mt-10 rounded-[15px] border-[none] top-[8.5em] active:shadow-[inset_3px_3px_6px_#b5b5b5,inset_-3px_-3px_6px_#ffffff];
+  background: #1da1f2;
+  outline: none;
+}
+.btn2 {
+  @apply relative w-[17em] h-[3em] transition-[0.4s] duration-[ease-in-out] shadow-[1px_1px_3px_#b5b5b5,-1px_-1px_3px_#ffffff] rounded-[15px] border-[none] top-[9.5em] active:shadow-[inset_3px_3px_6px_#b5b5b5,inset_-3px_-3px_6px_#ffffff];
+  background: #6b6b6b;
+  outline: none;
+}

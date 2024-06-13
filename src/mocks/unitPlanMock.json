@@ -1,0 +1,44 @@
+{
+    "Asignatura": "Matemática",
+    "Grado": "Primero",
+    "Tema": "Probabilidades",
+    "Subtema": [
+        "Experimentos deterministas y aleatorios",
+        "Cálculo de probabilidades",
+        "Formas decimal y porcentual de las probabilidades",
+        "Experimentos aleatorios simples",
+        "Experimentos aleatorios compuestos",
+        "Operaciones con eventos aleatorios"
+    ],
+    "Contenidos_Conceptuales": [
+        "Recolecta, organiza y agrupa datos agrupados",
+        "Estadística",
+        "Medidas de dispersión, diagramas de árbol y de probabilidades",
+        "Evento de un experimento aleatorio simple",
+        "Probabilidad de ocurrencia para eventos simples",
+        "Estadística y probabilidad para datos agrupados, eventos compuestos, Medidas de posición, gráficos estadísticos tales como diagramas de árbol, polígonos de frecuencias y gráficos circulares Experimentos aleatorios",
+        "Gráficos estadísticos para datos agrupados (Histograma, polígono de frecuencia)"
+    ],
+    "Contenidos_Procedimentales": [
+        "Cálculo de probabilidades para eventos simples",
+        "Construcción de espacios muestrales para eventos simples"
+    ],
+    "Contenidos_Actitudinales": [
+        "Rigor, flexibilidad y originalidad en los procesos seguidos en el cálculo de medidas estadísticas de tendencia central",
+        "Interés por crear y utilizar representaciones gráficas sobre datos estadísticos a través del uso de dispositivos electrónicos"
+    ],
+    "Indicadores_de_logro": [
+        "Evalúa argumentos que estén basados en el análisis de datos y gráficos estadísticos",
+        "Formula y resuelve variedad de problemas con números enteros y con racionales, a partir de situaciones dentro y fuera de la matemática",
+        "Integra las tecnologías (aplicaciones matemáticas, simulaciones, Internet, calculadoras), como apoyo para la comprensión de las ideas matemáticas y en la resolución de problemas",
+        "Utiliza el lenguaje matemático de forma oral, escrita y gráfica en la descripción de situaciones del entorno aplicando números enteros, racionales y sus operaciones",
+        "Trabaja colaborativamente respetando los diferentes puntos de vista de los demás en la interpretación de situaciones del quehacer matemático",
+        "Expresa a través de algún tipo de razonamiento inductivo, resultados asociados al cálculo de probabilidades de ocurrencia de eventos, en un experimento aleatorio simple"
+    ],
+    "Preguntas_esenciales": [
+        "ESTA FUNCIÓN ES DE PAGO"
+    ],
+    "Motivacion_inicial": [
+        "ESTA FUNCIÓN ES DE PAGO"
+    ]
+}

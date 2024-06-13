@@ -1,0 +1,514 @@
+{
+  "Primero": {
+    "Los números enteros": [
+      "Los números enteros",
+      "Adición de números enteros",
+      "Sustracción de números enteros",
+      "Multiplicación de números enteros",
+      "Potenciación de números enteros",
+      "Radicación de números enteros"
+    ],
+    "Los números racionales": [
+      "Los números racionales. Orden",
+      "Fracción generatriz de un número decimal",
+      "Adición y sustracción de números racionales",
+      "Multiplicación y división de números racionales",
+      "Potenciación de números racionales",
+      "Notación científica",
+      "Radicación de números racionales"
+    ],
+    "Variación proporcional": [
+      "Proporciones",
+      "Proporcionalidad directa",
+      "Proporcionalidad inversa",
+      "Problemas de proporcionalidad",
+      "Porcentajes.",
+      "Interés simple"
+    ],
+    "Elementos de Geometría.": [
+      "Rectas paralelas y perpendiculares",
+      "Construcciones con regla y compás",
+      "Complemento y suplemento de un ángulo",
+      "Ángulos entre rectas paralelas y una secante, bisectriz",
+      "Plano cartesiano: coordenadas de un punto",
+      "Distancia entre dos puntos del plano"
+    ],
+    "Medidas": [
+      "Medidas angulares",
+      "Transformaciones de medidas angulares",
+      "Medidas de peso, masa y capacidad",
+      "Medidas del tiempo.",
+      "Medidas de temperatura"
+    ],
+    "Polígonos y construcciones geométricas": [
+      "Concepto de polígono: clasificación",
+      "Construcción de polígonos: rectángulo y rombo",
+      "Construcción de polígonos: triángulo, cuadrado y hexágono",
+      "Perímetro y área de polígonos"
+    ],
+    "Cuerpos geométricos (Área)": [
+      "Poliedros.",
+      "Prismas y pirámides",
+      "Área de poliedros.",
+      "Áreas de cuerpos redondos",
+      "Proyecciones ortogonales"
+    ],
+    "Cuerpos geométricos (Volumen)": [
+      "El cubo, el paralelepípedo y la pirámide",
+      "Prismas y pirámides regulares",
+      "Cuerpos redondos",
+      "Simetría de los cuerpos geométricos"
+    ],
+    "Recolección y análisis de datos": [
+      "Población y muestra",
+      "Gráfica de barras y poligonales",
+      "Agrupación de datos",
+      "Gráfica circular",
+      "Medidas de tendencia central y valores medios de datos agrupados",
+      "Medidas de dispersión"
+    ],
+    "Probabilidades": [
+      "Experimentos deterministas y aleatorios",
+      "Cálculo de probabilidades",
+      "Formas decimal y porcentual de las probabilidades",
+      "Experimentos aleatorios simples",
+      "Experimentos aleatorios compuestos",
+      "Operaciones con eventos aleatorios"
+    ]
+  },
+  "Segundo": {
+    "Los números reales": [
+      "Los números reales.",
+      "Intervalos.",
+      "Adición y sustracción de números reales",
+      "Multiplicación y división de números reales",
+      "Potenciación de números reales",
+      "Radicación de números reales",
+      "Exponentes fraccionarios",
+      "Operaciones con expresiones radicales",
+      "Racionalización de denominadores",
+      "Operaciones combinadas con números reales",
+      "Aproximaciones racionales"
+    ],
+    "Álgebra": [
+      "Lenguaje algebraico",
+      "Monomios y polinomios",
+      "Operaciones aritméticas con monomios",
+      "Operaciones con monomios: multiplicación y división",
+      "Operaciones con monomios: potenciación y radicación",
+      "Operaciones aritméticas con polinomios",
+      "Extracción de un factor común",
+      "Expresiones equivalentes",
+      "Signos de agrupación"
+    ],
+    "Funciones": [
+      "Concepto de función",
+      "Gráfica de una función polinómica",
+      "Función lineal.",
+      "Rectas paralelas y perpendiculares en el plano",
+      "Concepto de función",
+      "Clasificación de las funciones",
+      "Gráfica de funciones algebráicas con coeficientes enteros",
+      "Gráfica de funciones algebráicas con coeficientes racionales e irracionales",
+      "Ecuación de la recta",
+      "Ecuación de la recta conociendo dos de sus puntos",
+      "Resolución de problemas con funciones"
+    ],
+    "Ecuaciones": [
+      "Concepto de ecuación",
+      "Ecuaciones de primer grado",
+      "Ecuaciones de primer grado con términos fraccionarios",
+      "Ecuaciones literales",
+      "Despeje de una variable desde una fórmula",
+      "Problemas resolubles mediante ecuaciones de primer grado",
+      "Distancia entre dos puntos del plano"
+    ],
+    "Inecuaciones": [
+      "Desigualdades",
+      "Inecuaciones de primer grado",
+      "Resolución de inecuaciones de primer grado",
+      "Problemas con inecuaciones",
+      "Inecuaciones lineales",
+      "Resolución de inecuaciones lineales",
+      "Inecuaciones con valores absolutos",
+      "Resolución de problemas con inecuaciones"
+    ],
+    "Distancia en el plano cartesiano": [
+      "El plano",
+      "Segmentos en el plano",
+      "Distancia entre dos puntos del plano",
+      "Polígonos en el plano"
+    ],
+    "Transformaciones geométricas": [
+      "Transformaciones geométricas",
+      "Traslación y rotación",
+      "Reflexión",
+      "Homotecia"
+    ],
+    "Cuerpos geométricos: área y volumen": [
+      "El espacio",
+      "El paralelepípedo",
+      "El prisma",
+      "La pirámide",
+      "El cilindro",
+      "El cono",
+      "La esfera",
+      "Troncos de pirámide y cono"
+    ],
+    "Matemáticas financieras": [
+      "Interés simple e interés compuesto",
+      "Monto a interés simple",
+      "Monto a interés compuesto"
+    ],
+    "Estadística y probabilidades": [
+      "Cuantiles",
+      "Medidas de dispersión",
+      "Espacio muestral",
+      "Probabilidades"
+    ]
+  },
+  "Tercero": {
+    "Polinomios (Introducción al Álgebra)": [
+      "Polinomios. Clases de polinomios",
+      "Operaciones con polinomios: adición y sustracción",
+      "Multiplicación de polinomios",
+      "División de polinomios",
+      "Teorema del residuo y del factor",
+      "Regla de Ruffini",
+      "Productos y cocientes notables",
+      "Construcción de modelos polinómicos"
+    ],
+    "Factorización de Polinomios": [
+      "Factor común",
+      "Factorización de un trinomio cuadrado perfecto",
+      "Factorización de trinomios de segundo grado",
+      "Suma y diferencia de cubos",
+      "Casos combinados de factorización",
+      "Ceros de un polinomio P(x)",
+      "Factorización de un polinomio P(x)"
+    ],
+    "Ecuaciones de primer grado": [
+      "Ecuaciones de primer grado",
+      "Resolución de ecuaciones de primer grado con coeficientes enteros",
+      "Resolución de ecuaciones de primer grado con coeficientes racionales e irracionales",
+      "Problemas resolubles empleando ecuaciones"
+    ],
+    "Funciones": [
+      "Concepto de función",
+      "Gráfica de una función polinómica",
+      "Función lineal.",
+      "Rectas paralelas y perpendiculares en el plano",
+      "Concepto de función",
+      "Clasificación de las funciones",
+      "Gráfica de funciones algebráicas con coeficientes enteros",
+      "Gráfica de funciones algebráicas con coeficientes racionales e irracionales",
+      "Ecuación de la recta",
+      "Ecuación de la recta conociendo dos de sus puntos",
+      "Resolución de problemas con funciones"
+    ],
+    "Inecuaciones": [
+      "Desigualdades",
+      "Inecuaciones de primer grado",
+      "Resolución de inecuaciones de primer grado",
+      "Problemas con inecuaciones",
+      "Inecuaciones lineales",
+      "Resolución de inecuaciones lineales",
+      "Inecuaciones con valores absolutos",
+      "Resolución de problemas con inecuaciones"
+    ],
+    "Polígonos": [
+      "Polígono",
+      "Diagonales de un polígono",
+      "Ángulos internos y externos de un polígono",
+      "Área de un polígono",
+      "Polígonos",
+      "Diagonales de un polígono",
+      "Ángulos de un polígono",
+      "Perímetro y área de un polígono simple",
+      "Construcciones geométricas: pentágono y heptágono",
+      "Transformaciones geométricas",
+      "Reflexión de una figura en el plano",
+      "Homotecia"
+    ],
+    "Números complejos": [
+      "Números complejos: concepto, representación gráfica y propiedades",
+      "Operaciones con números complejos en forma binómica: adición y sustracción",
+      "Operaciones con números complejos en forma binómica: multiplicación y división",
+      "Números complejos.",
+      "Forma polar de los números complejos",
+      "Forma trigonométrica de los números complejos"
+    ],
+    "Ecuaciones cuadráticas": [
+      "Ecuaciones cuadráticas",
+      "Resolución de ecuaciones cuadráticas",
+      "Construcción de una ecuación cuadrática a partir de sus soluciones",
+      "Ecuaciones polinómicas de grado superior al segundo"
+    ],
+    "Sistemas de ecuaciones lineales": [
+      "Sistemas de ecuaciones lineales con dos incógnitas",
+      "Métodos de resolución de sistemas de ecuaciones lineales: reducción e igualación",
+      "Métodos de resolución de sistemas de ecuaciones lineales: sustitución y gráfico",
+      "Resolución de problemas mediante sistemas de ecuaciones lineales",
+      "Sistema de inecuaciones lineales"
+    ],
+    "Lógica y teoría de conjuntos": [
+      "Enunciados y proposiciones",
+      "Conectores",
+      "Tabla de verdad y proposiciones compuestas",
+      "Clasificación de proposiciones",
+      "Enunciados abiertos y cuantificadores",
+      "Conjuntos y subconjuntos",
+      "Operaciones con conjuntos: unión e intersección",
+      "Operaciones con conjuntos: diferencia y diferencia simétrica",
+      "Complemento de un conjunto"
+    ]
+  },
+  "Cuarto": {
+    "Fundamentos de Geometría": [
+      "Historia de la geometría",
+      "Conceptos primitivos y derivados de la geometría",
+      "Axiomas y teoremas de la geometría",
+      "El razonamiento deductivo en geometría",
+      "Segmentos y proporcionalidad",
+      "Semejanza y congruencia de figuras"
+    ],
+    "Ángulos": [
+      "Ángulos: concepto y notación",
+      "Postulados de la medida y de la construcción",
+      "Ángulos congruentes",
+      "Operaciones con ángulos",
+      "Sistema circular de medida angular"
+    ],
+    "Rectas paralelas y perpendiculares": [
+      "Rectas paralelas y perpendiculares",
+      "Construcciones con regla y compás: paralelas y perpendiculares",
+      "Construcciones con regla y compás: paralelas a una distancia dada y rectas perpendiculares a un punto",
+      "Rectas paralelas y una recta transversal"
+    ],
+    "Triángulos": [
+      "Triángulo: concepto y clasificación",
+      "Segmentos y puntos notables de un triángulo",
+      "Semejanza y congruencia de triángulos",
+      "Construcciones de triángulos semejantes y congruentes",
+      "Teorema de Thales",
+      "Propiedades de un triángulo rectángulo",
+      "Construcciones de triángulos"
+    ],
+    "La circunferencia": [
+      "Circunferencia",
+      "Lineas y segmentos en una circunferencia",
+      "Ángulos en una circunferencia",
+      "Posiciones relativas de dos circunferencias",
+      "Teoremas relativos a la circunferencia",
+      "Polígonos inscritos y circunscritos",
+      "Construcciones geométricas: rectas tangentes a un punto interior y exterior de la circunferencia"
+    ],
+    "Áreas del círculo y de secciones circulares": [
+      "Áreas de un sector y un segmento circular",
+      "Áreas de una corona y un trapecio circular",
+      "Circunferencia y círculo en el plano cartesiano"
+    ],
+    "Polígonos": [
+      "Polígono",
+      "Diagonales de un polígono",
+      "Ángulos internos y externos de un polígono",
+      "Área de un polígono",
+      "Polígonos",
+      "Diagonales de un polígono",
+      "Ángulos de un polígono",
+      "Perímetro y área de un polígono simple",
+      "Construcciones geométricas: pentágono y heptágono",
+      "Transformaciones geométricas",
+      "Reflexión de una figura en el plano",
+      "Homotecia"
+    ],
+    "Geometría del espacio": [
+      "El espacio",
+      "Ángulos en el espacio",
+      "Cuerpos poliedros",
+      "Proyecciones sobre el plano",
+      "Simetrías en el espacio",
+      "Distancia en el espacio"
+    ],
+    "Poliedros: área y volumen": [
+      "El prisma",
+      "La pirámide",
+      "Sección transversal de una pirámide"
+    ],
+    "Cuerpos redondos: área y volumen": [
+      "El cilindro",
+      "El cono",
+      "La esfera",
+      "Secciones de la esfera",
+      "Posiciones relativas de dos esferas",
+      "Cuerpos compuestos"
+    ]
+  },
+  "Quinto": {
+    "Ecuación de la recta": [
+      "La recta en el plano",
+      "Ecuación de la recta conocidos dos de sus conocidos",
+      "Ecuación de la recta conocidos su pendiente y uno de sus puntos",
+      "Ecuaciones de la recta segmentaria y general",
+      "Rectas coincidentes y secantes",
+      "Rectas paralelas y perpendiculares",
+      "Familia de rectas",
+      "Distancia de un punto a una recta y entre dos rectas",
+      "Área de un triángulo conocidos sus vértices"
+    ],
+    "Las secciones cónicas": [
+      "Concepto de sección cónica.",
+      "La circunferencia con centro en el origen",
+      "La circunferencia con centro en un punto",
+      "Ecuación general de la circunferencia",
+      "Rectas tangente y normal a una circunferencia conocida su ecuación",
+      "Potencia de un punto",
+      "La elipse.",
+      "Ecuación general de la elipse",
+      "La parábola",
+      "Análisis de la ecuación de la parábola",
+      "La hipérbola",
+      "Ecuación general de la hipérbola"
+    ],
+    "Trigonometría": [
+      "Historia de la Trigonometría",
+      "Razones trigonométricas",
+      "Razones trigonométricas de ángulos notables",
+      "Razones trigonométricas en el plano cartesiano",
+      "Razones trigonométricas de ángulos cuadrantales",
+      "Identidades trigonométricas"
+    ],
+    "Inversas de las razones trigonométricas": [
+      "Inversas de las razones trigonométricas",
+      "Razones de los ángulos suma y diferencia",
+      "Razones trigonométricas de los ángulos doble y mitad",
+      "Ecuaciones trigonométricas"
+    ],
+    "Resolución de triángulos": [
+      "Resolución de triángulos rectángulos",
+      "Ley de los senos",
+      "Teorema del coseno",
+      "Resolución de triángulos oblicuángulos",
+      "Cálculo trigonométrico del área del triángulo"
+    ],
+    "Funciones trigonométricas": [
+      "Funciones trigonométricas",
+      "Funciones seno, coseno y tangente",
+      "Funciones cosecante, secante y cotangente",
+      "Relaciones trigonométricas inversas"
+    ],
+    "Vectores": [
+      "Vectores",
+      "Representación de vectores de dos dimensiones",
+      "Vectores en términos de sus componentes cartesianas",
+      "Vectores en el espacio"
+    ],
+    "Operaciones con vectores": [
+      "Adición y sustracción de vectores: método gráfico",
+      "Adición y sustracción de vectores: método analítico",
+      "Dilatación y contracción de vectores",
+      "Producto escalar de dos vectores"
+    ],
+    "Matrices": [
+      "Concepto de matriz",
+      "Clases de matrices",
+      "Determinante de una matriz cuadrada",
+      "Menor complementario",
+      "Aplicaciones de las matrices",
+      "Regla de Cramer"
+    ],
+    "Operaciones con matrices": [
+      "Producto por un número",
+      "Adición y sustracción de matrices",
+      "Multiplicación de matrices",
+      "Método matricial para resolver sistemas de ecuaciones lineales"
+    ]
+  },
+  "Sexto": {
+    "Números complejos": [
+      "Números complejos: concepto, representación gráfica y propiedades",
+      "Operaciones con números complejos en forma binómica: adición y sustracción",
+      "Operaciones con números complejos en forma binómica: multiplicación y división",
+      "Números complejos.",
+      "Forma polar de los números complejos",
+      "Forma trigonométrica de los números complejos"
+    ],
+    "Resolución de ecuaciones algebraicas": [
+      "Ecuación algebraica",
+      "Resolución de ecuaciones algebraicas mónicas",
+      "Resolución de ecuaciones algebraicas no mónicas",
+      "Ecuación bicuadrada (resolución gráfica)"
+    ],
+    "Sistema de ecuaciones e inecuaciones cuadráticas": [
+      "Sistemas de ecuaciones no lineales",
+      "Resolución analítica de sistemas",
+      "Resolución gráfica de sistemas",
+      "Inecuaciones cuadráticas",
+      "Resolución analítica de inecuaciones cuadráticas",
+      "Resolución gráfica de inecuaciones cuadráticas",
+      "Sistemas de inecuaciones cuadráticas en una variable",
+      "Sistema de inecuaciones cuadráticas en dos variables",
+      "Programación lineal"
+    ],
+    "Funciones exponencial y logarítmica": [
+      "Función exponencial",
+      "Funciones exponenciales y=10^x  e y=e^y",
+      "Otras funciones exponenciales (aproximaciones)",
+      "Logaritmo de un número (propiedades)",
+      "Logaritmo de una expresión aritmética",
+      "Función logarítmica",
+      "Funciones y= log(x) e y = ln(x)",
+      "Ecuaciones exponenciales",
+      "Ecuaciones logarítmicas"
+    ],
+    "Sucesiones de números reales": [
+      "Suceciones de números reales",
+      "Progresiones",
+      "Límite de una sucesión. ",
+      "Convergencia y divergencia de sucesiones",
+      "Cálculo de límites de funciones",
+      "Indeterminaciones",
+      "Series ",
+      "Binomio de Newton"
+    ],
+    "Matemática financiera": [
+      "Interés simple",
+      "Valor actual a interés simple",
+      "Interés compuesto",
+      "Valor actual a interés compuesto"
+    ],
+    "Límite de una función": [
+      "Límite de una función",
+      "Propiedades de los límites",
+      "Tendencias a menos y más infinito",
+      "Límites en el infinito",
+      "Indeterminaciones"
+    ],
+    "Continuidad y discontinuidad": [
+      "Continuidad de una función",
+      "Función continua en un intervalo",
+      "Discontinuidad de una función"
+    ],
+    "Derivada de una función. Aplicaciones": [
+      "Variación de una función",
+      "Valor de  una derivada en un punto",
+      "Derivada de funciones polinómicas",
+      "Derivada de la suma y del producto",
+      "Derivada del cociente",
+      "Derivada de funciones trigonométricas",
+      "Derivada de funciones logarítmicas",
+      "Derivada de funciones exponenciales",
+      "Derivada de funciones compuestas e implícitas",
+      "Tangente y normal a una curva",
+      "Puntos críticos y de inflexión",
+      "Teoremas del Valor Medio y de Rolle",
+      "Diferencial"
+    ],
+    "Introducción al cálculo integral": [
+      "Función primitiva",
+      "Integración de funciones",
+      "Área de regiones planas definidas por rectas",
+      "Área de regiones planas definidas por curvas"
+    ]
+  }
+}

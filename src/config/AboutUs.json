@@ -1,0 +1,12 @@
+[
+    {
+        "title": "Mission",
+        "description": "Lorem ipsum dolor sit amet consectetur",
+        "icon": "mdi:lightning-bolt-outline"
+    },
+    {
+        "title": "Vision",
+        "description": "Lorem ipsum dolor sit amet consectetur",
+        "icon": "mdi:eye-outline"
+    }
+]

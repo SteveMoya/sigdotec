@@ -1,0 +1,62 @@
+---
+import Layout from '../Layout.astro'
+
+import Container from '@components/ui/Container.astro'
+import { formatDate, slugify } from '@src/utils/helpers'
+
+
+const { frontmatter } = Astro.props
+
+const seo = {
+  title: frontmatter.title,
+  description: frontmatter.description,
+  image: frontmatter.image
+}
+---
+
+<Layout seo={seo}>
+  <Container>
+    <article class='px-5'>
+      <div class='flex flex-col items-center text-center'>
+        {
+          frontmatter.category && (
+            <p class=' border bg-slate-200 dark:bg-slate-800  py-2 px-4 rounded-3xl hover:opacity-80'>
+              <a href={`category/${slugify(frontmatter.category)}`}>
+                {frontmatter.category}
+              </a>
+            </p>
+          )
+        }
+        <h1 class='font-bold text-6xl my-4 mx-auto'>{frontmatter.title}</h1>
+        <p class='opacity-80 mx-auto font-serif'>
+          <time>{formatDate(frontmatter.publishedAt)}</time>
+        </p>
+        <!-- Hopefully we'll be able to use Astro's image integration for this soon -->
+        {
+          frontmatter.image && (
+            <picture class='max-w-full block'>
+              <source srcset={`${frontmatter.image}.webp`} type='image/webp' />
+              <img
+                width='1200'
+                height='630'
+                class='post-content__img max-w-full h-auto block rounded-3xl my-8'
+                loading='eager'
+                src={`${frontmatter.image}.png`}
+                alt={frontmatter.alt}
+              />
+            </picture>
+          )
+        }
+      </div>
+      <div class='text-center max-w-full'>
+        <slot />
+      </div>
+    </article>
+  </Container>
+</Layout>
+
+<style>
+  :global(img) {
+    margin: 2rem auto;
+  }
+</style>

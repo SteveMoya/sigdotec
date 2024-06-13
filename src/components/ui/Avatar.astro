@@ -1,0 +1,21 @@
+---
+import { Picture } from 'astro:assets';
+
+interface Props {
+    src: string;
+    alt: string;
+    className?: string;
+    sizes?: string;
+}
+
+const { src, alt, className } = Astro.props;
+const sizes = Astro.props.sizes || 'w-9';
+---
+<Picture
+    class=`rounded-full border-2 border-blue-500 object-cover aspect-square ${sizes} ${className}`
+     src={`${src}`}
+     alt={`${alt} Avatar`}
+     inferSize
+     formats={['avif','webp', 'jpg', 'png']}
+     fallbackFormat='jpg'
+/>

@@ -1,0 +1,69 @@
+---
+import Br from '@components/ui/Br.astro'
+const faq = [
+  {
+    question: 'What could possibly be your first question?',
+    answer:
+      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet consectetur adipisicing elit.'
+  },
+  {
+    question: 'What could possibly be your second question?',
+    answer:
+      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet consectetur adipisicing elit.'
+  },
+  {
+    question: 'What could possibly be your third question?',
+    answer:
+      'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Maiores impedit perferendis suscipit eaque, iste dolor cupiditate blanditiis ratione. Lorem ipsum, dolor sit amet consectetur adipisicing elit.'
+  }
+]
+---
+
+<section
+  class='max-w-screen-md mx-auto px-4 sm:px-6 lg:px-8 flex flex-col justify-between py-4'
+>
+  <div class='text-center'>
+    <p class='mt-4 text-sm leading-7 text-white font-bold'>F.A.Q</p>
+    <h3
+      class='text-3xl sm:text-4xl leading-normal font-extrabold tracking-tight text-white'
+    >
+      Frequently Asked <span class='bg-gradient-text'>Questions</span>
+    </h3>
+    <Br />
+  </div>
+
+  <div class='mt-4'>
+    <ul>
+      {faq.map((item) => (
+        <li class='text-left mb-10'>
+          <div class='flex flex-row items-start mb-5'>
+            <div
+              class='hidden sm:flex items-center justify-center p-3 mr-3 rounded-full bg-primary-700 text-white border-4 border-white text-xl font-semibold'
+            >
+              <span
+                style='transform: rotateY(3.142rad);'
+                class='icon-[mdi--head-question-outline] w-[30px] h-[30px]'
+              ></span>
+            </div>
+            <div class='bg-gray-100 p-5 px-10 w-full flex items-center'>
+              <h4 class='text-md leading-6 font-medium text-gray-900'>
+                {item.question}
+              </h4>
+            </div>
+          </div>
+
+          <div class='flex flex-row items-start'>
+            <div class='bg-primary-100 p-5 px-10 w-full flex items-center'>
+              <p class='text-gray-700 text-sm'>{item.answer}</p>
+            </div>
+            <div
+              class='hidden sm:flex items-center justify-center p-3 ml-3 rounded-full bg-white text-primary-700 border-4 border-primary-700 text-xl font-semibold'
+            >
+              <span class='icon-[mdi--headset] w-[30px] h-[30px]'></span>
+            </div>
+          </div>
+        </li>
+      )) }
+    </ul>
+  </div>
+</section>

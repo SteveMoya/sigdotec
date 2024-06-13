@@ -1,0 +1,25 @@
+---
+
+import About from '@components/About/About.astro'
+import Layout from '@layouts/Layout.astro'
+import SobreNosotros from '@components/App/sobreNosotros'
+
+import CTA from '@components/sections/CTA.astro'
+
+import AboutA from '@components/sections/AboutA.astro';
+
+---
+
+<Layout
+  title='Sobre Sigdo'
+  description='Este es el Sobre el proyecto'
+  image='/og-sigdo.jpg'
+  canonicalURL='https://sigdo.online'
+>
+
+ <AboutA />
+  <SobreNosotros client:load />
+  <About />
+
+  <CTA />
+</Layout>

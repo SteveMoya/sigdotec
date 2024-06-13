@@ -1,0 +1,19 @@
+---
+import AppLayout from "@src/layouts/App/AppLayout.astro"
+import { UnitPlan } from "@components/App/UnitPlan"
+import { ClassPlan } from "@components/App/ClassPlan"
+import { AllTopic } from "@components/App/AllTopic"
+import MultiSteps from "@components/App/MultiSteps"
+
+
+---
+<AppLayout title="Dashboard" description="Estamos felices de tenerte SIGDCOPATA"> 
+        <h2>La unidad de estudio que se presenta a continuación</h>
+        <UnitPlan client:load />
+        <h2>La clase que se presenta a continuación</h2>
+        <ClassPlan client:load />
+        <h2>La clase que se presenta a continuación</h2>
+        <!-- <AllTopic client:load> -->
+        <h3> Aqui esta el multipasos </h3>
+        <MultiSteps client:only />
+</AppLayout>
