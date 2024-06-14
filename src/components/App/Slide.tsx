@@ -11,7 +11,7 @@ const Slide = () => {
     const mainCanvas = document.getElementById("myCanvas");
     const mainContext = mainCanvas.getContext('2d');
 
-    const circles = [];
+    const circles: any[] = [];
 
     const requestAnimationFrame = window.requestAnimationFrame || 
                             window.mozRequestAnimationFrame ||
@@ -113,7 +113,7 @@ const Slide = () => {
       </Swiper>
     </div>
     <div className='photo'>
-    <img src="../src/assets/images/SIGDO-Logo/SIGDO-32.svg" alt="Hero image" class="lg:w-full lg:h-full rounded-3xl object-contain max-h-96" data-astro-cid-d7gmtskn="" data-astro-source-file="C:/Users/MSI/Documents/SIGDO/src/components/sections/AboutA.astro" data-astro-source-loc="51:8"/>
+    <img src="../src/assets/images/SIGDO-Logo/SIGDO-32.svg" alt="Hero image" className="lg:w-full lg:h-full rounded-3xl object-contain max-h-96" data-astro-cid-d7gmtskn="" data-astro-source-file="C:/Users/MSI/Documents/SIGDO/src/components/sections/AboutA.astro" data-astro-source-loc="51:8"/>
   </div>
   </>
   );

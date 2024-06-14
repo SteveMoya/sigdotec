@@ -9,10 +9,10 @@ function Site (){
    
    
       <span
-        class='absolute -left-6 md:left-4 top-24 lg:top-28 w-24 h-24 rotate-90 skew-x-12 rounded-3xl dark:bg-[#007FFF] bg-[#23357e] blur-xl opacity-60 lg:opacity-95 lg:block'
+        className='absolute -left-6 md:left-4 top-24 lg:top-28 w-24 h-24 rotate-90 skew-x-12 rounded-3xl dark:bg-[#007FFF] bg-[#23357e] blur-xl opacity-60 lg:opacity-95 lg:block'
       ></span>
       <span
-        class='absolute right-4 bottom-12 w-24 h-24 rounded-3xl bg-[#007FFF] blur-xl opacity-80'
+        className='absolute right-4 bottom-12 w-24 h-24 rounded-3xl bg-[#007FFF] blur-xl opacity-80'
       ></span>
 
 

@@ -18,16 +18,11 @@ import { SwichMood } from './swichMood'
 
 export function RegisterB() {
   const [showPassword, setShowPassword] = useState(false)
-  //modo oscuro
-
-  const [isDarkMode, setIsDarkMode] = useState(false)
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword)
   }
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode)
-  }
+  
 
   const {
     register,

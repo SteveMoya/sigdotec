@@ -11,7 +11,7 @@ import type { Session } from '@auth/core/types'
 
 import { getSession } from 'auth-astro/server'
 
-const session: Session = await getSession(Astro.request)
+const session: Session | null = await getSession(Astro.request)
 
 import Avatar from '@components/ui/Avatar.astro'
 
@@ -47,7 +47,7 @@ interface NavItem {
         class='flex h-0 overflow-hidden lg:h-auto lg:scale-y-100 duration-300 ease-linear flex-col gap-y-6 gap-x-4 lg:flex-row w-full lg:justify-between lg:items-center absolute lg:relative top-full lg:top-0 max-lg:bg-slate-200 max-lg:dark:bg-slate-700 lg:bg-transparent border-x border-x-primary-50 lg:border-x-0 rounded-2xl'
       >
         <ul
-          class='border-t border-primary-50 lg:border-t-0 px-6 lg:px-0 pt-6 lg:pt-0 flex flex-col lg:flex-row gap-y-4 gap-x-3 text-lg w-full lg:justify-center lg:items-center'
+          class='border-t border-primary-50 lg:border-t-0 px-6 lg:px-0 pt-6 lg:pt-0 flex flex-col lg:flex-row gap-y-4 gap-x-3 text-lg w-full lg:justify-center lg:items-center '
         >
           {
             NavItems.map((item: NavItem) => {
@@ -76,8 +76,8 @@ interface NavItem {
           </div>
           <div class="flex items-center gap-2">
               <Avatar
-                src={session.user?.image}
-                alt={session.user?.name}
+                src={session.user?.image ?? ''}
+                alt={session.user?.name ?? "User"}
               />
               <span class='text-sm font-semibold hidden md:flex'>
                 {session.user?.name}
@@ -139,7 +139,7 @@ interface NavItem {
   }
 </style>
 
-<script lang='ts'>
+<script lang='ts' >
   //Toggle Menu
   const toggleMenu = document.querySelector('[data-toggle-nav]')
   const navbar = document.querySelector('[data-navbar]')

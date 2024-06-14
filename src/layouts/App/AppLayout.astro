@@ -20,7 +20,7 @@ function getNavItems() {
   }
 }
 
-const NavItems = getNavItems()
+const NavItems = getNavItems() as { name: string; icon: string; href: string; }[]
 const { title, description } = Astro.props
 ---
 

@@ -20,7 +20,6 @@ import auth from "auth-astro";
 import metaTags from "astro-meta-tags";
 import devtoolbarTailwind from "astro-devtoolbar-tailwind";
 import lighthouse from "astro-lighthouse";
-import node from "@astrojs/node";
 
 import db from "@astrojs/db";
 
@@ -54,7 +53,4 @@ export default defineConfig({
         sitemap(), mdx(), react(), robotsTxt(), tailwind(), icon(), auth(), metaTags(), devtoolbarTailwind(), lighthouse(), db()],
     output: 'server',
     adapter: vercel()
-    // node({
-    //   mode: "standalone"
-    // })
 });

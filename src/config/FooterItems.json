@@ -2,7 +2,7 @@
 {
     "FooterNav": [
         {
-            "itemText": "Servicios",
+            "itemText": "Planes",
             "itemLink": "servicios"
         },
         {
@@ -12,17 +12,9 @@
         {
             "itemText": "Plan de Unidad",
             "itemLink": "#"
-        },
-        {
-            "itemText": "Plan Anual",
-            "itemLink": "#"
         }
     ],
     "FooterSupport": [
-        {
-            "itemText": "Precios",
-            "itemLink": "#"
-        },
         {
             "itemText": "Guia",
             "itemLink": "#"
@@ -42,37 +34,17 @@
             "itemLink": "nosotros"
         },
         {
-            "itemText": "Blog",
-            "itemLink": "blog"
-        },
-        {
-            "itemText": "Testimonios",
-            "itemLink": "testimonios"
-        },
-        {
             "itemText": "Equipo",
             "itemLink": "team"
         }
     ],
     "FooterLegal": [
         {
-            "itemText": "Politica de Privacidad",
-            "itemLink": "privacidad"
-        },
-        {
             "itemText": "Terminos y Condiciones",
             "itemLink": "terminos"
         },
         {
             "itemText": "Politica de Cookies",
-            "itemLink": "#"
-        },
-        {
-            "itemText": "Aviso Legal",
-            "itemLink": "#"
-        },
-        {
-            "itemText": "Licencia de Uso",
             "itemLink": "#"
         }
     ]
