@@ -1,0 +1,20 @@
+import { facebook } from "@src/lib/auth/lucia";
+import { generateState } from "arctic";
+
+
+import type { APIContext } from "astro";
+
+export async function GET(context: APIContext): Promise<Response> {
+    const state = generateState();
+    const url = await facebook.createAuthorizationURL(state);
+
+    context.cookies.set("facebook_oauth_state", state, {
+        path: "/",
+        secure: import.meta.env.PROD,
+        httpOnly: true,
+        maxAge: 60 * 10,
+        sameSite: "lax",
+    });
+
+    return context.redirect(url.toString());
+}

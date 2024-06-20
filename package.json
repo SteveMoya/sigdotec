@@ -5,10 +5,13 @@
   "scripts": {
     "dev": "astro dev",
     "dev:host": "astro dev --host",
+    "dev:remote": "astro dev --remote",
     "start": "astro dev",
     "check": "astro-check",
     "build": "astro build",
     "preview": "astro preview",
+    "db:push": "astro db push --remote",
+    "db:force-reset": "astro db push --remote --force-reset",
     "astro": "astro"
   },
   "dependencies": {
@@ -26,6 +29,7 @@
     "@fontsource/roboto": "^5.0.13",
     "@iconify-json/carbon": "^1.1.32",
     "@iconify-json/mdi": "^1.1.66",
+    "@lucia-auth/adapter-drizzle": "^1.0.7",
     "@midudev/tailwind-animations": "^0.0.7",
     "@paypal/checkout-server-sdk": "^1.0.3",
     "@paypal/react-paypal-js": "^8.3.0",
@@ -34,6 +38,7 @@
     "@types/paypal__checkout-server-sdk": "^1.0.8",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
+    "arctic": "^1.9.1",
     "astro": "^4.10.2",
     "astro-devtoolbar-tailwind": "^0.0.8",
     "astro-icon": "^1.1.0",
@@ -45,6 +50,7 @@
     "date-fns": "^2.30.0",
     "flowbite": "^2.3.0",
     "lucia": "^3.2.0",
+    "oslo": "^1.2.0",
     "primereact": "^10.6.3",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",

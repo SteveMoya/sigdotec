@@ -1,27 +1,8 @@
 /// <reference path="../.astro/db-types.d.ts" />
 /// <reference path="../.astro/types.d.ts" />
 /// <reference types="astro/client" />
-// interface ImportMetaEnv {
-//   readonly API_AI_URL: string
-//   readonly API_USER_URL: string
-
-//   readonly FIREBASE_PRIVATE_KEY_ID: string
-//   readonly FIREBASE_PRIVATE_KEY: string
-//   readonly FIREBASE_PROJECT_ID: string
-//   readonly FIREBASE_CLIENT_EMAIL: string
-//   readonly FIREBASE_CLIENT_ID: string
-//   readonly FIREBASE_AUTH_URI: string
-//   readonly FIREBASE_TOKEN_URI: string
-//   readonly FIREBASE_AUTH_CERT_URL: string
-//   readonly FIREBASE_CLIENT_CERT_URL: string
-
-//   // más variables de entorno...
-// }
 
 interface ImportMetaEnv {
-  readonly SUPABASE_URL: string
-  readonly SUPABASE_ANON_KEY: string
-
    GITHUB_CLIENT_ID: string
    GITHUB_CLIENT_SECRET: string
 
@@ -39,8 +20,8 @@ interface ImportMeta {
 }
 declare namespace App {
   interface Locals {
-    email: string;
-    username: string;
-    userimage: string;
+    session: import("lucia").Session | null;
+    user: import("lucia").User | null;
+
   }
 }
