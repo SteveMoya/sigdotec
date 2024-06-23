@@ -1,9 +1,10 @@
-import { github, lucia } from "@lib/auth/lucia";
+import { lucia } from "@lib/auth/lucia";
 import { OAuth2RequestError } from "arctic";
 import { generateId } from "lucia";
 import { db, eq, User } from "astro:db";
 
 import type { APIContext } from "astro";
+import { github } from "@/lib/auth/providers";
 
 export async function GET(context: APIContext): Promise<Response> {
     const code = context.url.searchParams.get("code");

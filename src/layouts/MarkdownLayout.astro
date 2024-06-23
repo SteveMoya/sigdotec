@@ -1,8 +1,9 @@
 ---
+import { formatDate } from '@/utils'
 import Layout from './Layout.astro'
 
 import Container from '@components/ui/Container.astro'
-import { formatDate, slugify } from '@utils/helpers'
+import { slugify } from '@utils/helpers'
 import { Picture } from 'astro:assets'
 
 const { frontmatter } = Astro.props

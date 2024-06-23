@@ -32,7 +32,7 @@
 
 @media (max-width: 768px) {
   .Historia {
-    @apply flex-col flex-col h-full;
+    @apply flex-col h-full;
   }
 }
 
@@ -88,7 +88,7 @@
 }
 
 .card_content {
-  @apply absolute w-full translate-y-[150px] transition-transform duration-[0.25s] p-5 rounded-tl-[30px] left-0 bottom-0 before:content-[''] before:absolute before:top-[-47px] before:right-[-45px] before:w-[100px] before:h-[100px] before:rotate-[-175deg] before:rounded-[50%];
+  @apply absolute w-full translate-y-[150px] transition-transform duration-300 p-5 rounded-tl-[30px] left-0 bottom-0 before:content-[''] before:absolute before:top-[-47px] before:right-[-45px] before:w-[100px] before:h-[100px] before:rotate-[-175deg] before:rounded-[50%];
 
   /* edit the width to fit card */
   background: linear-gradient(-45deg, #069bf2 0%, #015281 100%);
@@ -105,7 +105,7 @@
 }
 
 .card_description {
-  @apply max-h-[130px] overflow-auto text-sm invisible transition-[visibility] duration-[0.5s] font-roboto;
+  @apply max-h-[130px] overflow-auto text-sm invisible transition-[visibility] duration-500 font-roboto;
 }
 
 .card:hover .card_content {
