@@ -1,4 +1,5 @@
-import { facebook } from "@src/lib/auth/lucia";
+
+import { facebook } from "@/lib/auth/providers";
 import { generateState } from "arctic";
 
 

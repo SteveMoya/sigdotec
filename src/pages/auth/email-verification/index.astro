@@ -41,6 +41,7 @@ if (user.emailVerified) {
   <h1>Email verification</h1>
   <p>Please check your inbox ({user.email}) for a verification email</p>
   <h2>Resend verification email</h2>
+  <small>{token}</small>
   <form method="post">
     <input type="submit" value="Resend email" />
   </form>

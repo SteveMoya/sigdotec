@@ -1,9 +1,13 @@
+import { Argon2id } from "oslo/password"
 
 
 
 ///Posts Helpers
-
-export function slugify(string) {
+export async function hasherPassword(password: string) {
+  const hashedPassword = await new Argon2id().hash(password)
+  return hashedPassword
+}
+export async function slugify(string: string) {
   return string
     .toString()
     .trim()
@@ -14,7 +18,7 @@ export function slugify(string) {
     .replace(/^-+/, '')
     .replace(/-+$/, '')
 }
-export function generateCategoryData(categories) {
+export async function generateCategoryData(categories: any) {
   let categoryData = []
   categories.forEach((category) => {
     categoryData.push({

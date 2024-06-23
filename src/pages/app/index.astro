@@ -5,7 +5,10 @@ import { ClassPlan } from "@components/App/ClassPlan"
 import { AllTopic } from "@components/App/AllTopic"
 import MultiSteps from "@components/App/MultiSteps"
 
-
+const user = Astro.locals.user;
+if (!user) {
+  return Astro.redirect("/login");
+}
 ---
 <AppLayout title="Dashboard" description="Estamos felices de tenerte SIGDCOPATA"> 
         <h2>La unidad de estudio que se presenta a continuación</h>

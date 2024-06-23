@@ -2,16 +2,23 @@ import defaultTheme from 'tailwindcss/defaultTheme'
 import animations from "@midudev/tailwind-animations";
 import { addDynamicIconSelectors } from '@iconify/tailwind';
 import scrollDrivenAnimations from "@adam.plesnik/tailwindcss-scroll-driven-animations"
-
-
+import animate from 'tailwindcss-animate'
 /** @type {import('tailwindcss').Config} */
 export default {
+  darkMode: ["class"],
   content: [
-    "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}", 
-    "./node_modules/primereact/**/*.{js,ts,jsx,tsx}",
+    "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
+    "./node_modules/primereact/**/*.{js,ts,jsx,tsx}"
   ],
-  darkMode: 'class',
+  prefix: "",
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
       fontFamily: {
         poppins: ['robotolight_italic', 'sans-serif'],
@@ -113,51 +120,65 @@ export default {
           950: '#222222',
         }
       },
-
+      keyframes: {
+        "accordion-down": {
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
+        },
+        "accordion-up": {
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
+        },
+      },
+      animation: {
+        "accordion-down": "accordion-down 0.2s ease-out",
+        "accordion-up": "accordion-up 0.2s ease-out",
+      },
     },
   },
   plugins: [
     animations,
+    animate,
     scrollDrivenAnimations,
-    addDynamicIconSelectors(),
-    ({ addComponents }) => {
-      addComponents({
-        ".bg-gradient-text": {
-          background: "linear-gradient(90deg, #4f46e5, #007fff, #17e9e1)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-        },
-        ".bg-gradient-text-secondary": {
-          background: "linear-gradient(90deg, #407ef1, #17e9e1)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-        },
-        ".bg-gradient-text-accent": {
-          background: "linear-gradient(90deg, #17e9e1, #00a5a4)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-        },
-        ".bg-gradient-text-danger": {
-          background: "linear-gradient(90deg, #ff2f2f, #ffbb0f)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-        },
-        ".bg-gradient-text-warning": {
-          background: "linear-gradient(90deg, #ffbb0f, #ff2f2f)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-        },
-        ".bg-gradient-text-success": {
-          background: "linear-gradient(90deg, #1dd95e, #00cdc8)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-        },
-        ".bg-gradient-text-shank": {
-          background: "linear-gradient(90deg, #6d6d6d, #00cdc8)",
-          WebkitBackgroundClip: "text",
-          WebkitTextFillColor: "transparent",
-        },
-      });
-    },
+  addDynamicIconSelectors(),
+  ({ addComponents }) => {
+    addComponents({
+      ".bg-gradient-text": {
+        background: "linear-gradient(90deg, #4f46e5, #007fff, #17e9e1)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+      },
+      ".bg-gradient-text-secondary": {
+        background: "linear-gradient(90deg, #407ef1, #17e9e1)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+      },
+      ".bg-gradient-text-accent": {
+        background: "linear-gradient(90deg, #17e9e1, #00a5a4)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+      },
+      ".bg-gradient-text-danger": {
+        background: "linear-gradient(90deg, #ff2f2f, #ffbb0f)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+      },
+      ".bg-gradient-text-warning": {
+        background: "linear-gradient(90deg, #ffbb0f, #ff2f2f)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+      },
+      ".bg-gradient-text-success": {
+        background: "linear-gradient(90deg, #1dd95e, #00cdc8)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+      },
+      ".bg-gradient-text-shank": {
+        background: "linear-gradient(90deg, #6d6d6d, #00cdc8)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+      },
+    });
+  }
   ],
-};
+}

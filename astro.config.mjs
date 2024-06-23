@@ -16,7 +16,7 @@ import icon from 'astro-icon';
 import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
 import vercel from '@astrojs/vercel/serverless';
-import auth from "auth-astro";
+// import auth from "auth-astro";
 import metaTags from "astro-meta-tags";
 import devtoolbarTailwind from "astro-devtoolbar-tailwind";
 import lighthouse from "astro-lighthouse";
@@ -50,7 +50,11 @@ export default defineConfig({
         //     navigateFallbackAllowlist: [/^\//],
         //   },
         // }),
-        sitemap(), mdx(), react(), robotsTxt(), tailwind(), icon(), auth(), metaTags(), devtoolbarTailwind(), lighthouse(), db()],
+        sitemap(), mdx(), react(), robotsTxt(), tailwind({
+            applyBaseStyles: false,
+        }), icon(), 
+        // auth(), 
+        metaTags(), devtoolbarTailwind(), lighthouse(), db()],
     output: 'server',
     adapter: vercel()
 });

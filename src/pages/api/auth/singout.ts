@@ -1,8 +1,8 @@
 
-import { lucia } from "@src/lib/auth/lucia";
+import { lucia } from "@/lib/auth/lucia";
 import type { APIContext } from "astro";
 
-export async function POST(context: APIContext): Promise<Response> {
+export async function GET(context: APIContext): Promise<Response> {
     if (!context.locals.session) {
         return new Response(null, {
             status: 401,

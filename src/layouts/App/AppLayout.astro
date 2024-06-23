@@ -1,31 +1,35 @@
 ---
-import BaseHead from '../BaseHead.astro'
-
-import AppHeader from './NavBar/AppHeader.astro'
-import AppNavBar from './NavBar/AppNavBar.astro'
-import AppFooter from './Footer/AppFooter.astro'
-import AppNavItems from '@config/AppNavItems.json'
-import AdminNavItems from '@config/AdminNavItems.json'
-import { Toaster } from 'sonner'
+import BaseHead from "../BaseHead.astro";
+import "@styles/globals.css";
+import AppHeader from "./NavBar/AppHeader.astro";
+import AppNavBar from "./NavBar/AppNavBar.astro";
+import AppFooter from "./Footer/AppFooter.astro";
+import AppNavItems from "@config/AppNavItems.json";
+import AdminNavItems from "@config/AdminNavItems.json";
+import { Toaster } from "@/components/ui/sonner";
 interface Props {
-  title: string
-  description: string
+  title: string;
+  description: string;
 }
-const url = Astro.url
+const url = Astro.url;
 function getNavItems() {
-  if (url.pathname.startsWith('/app')) {
-    return AppNavItems
-  } else if (url.pathname.startsWith('/admin')) {
-    return AdminNavItems
+  if (url.pathname.startsWith("/app")) {
+    return AppNavItems;
+  } else if (url.pathname.startsWith("/admin")) {
+    return AdminNavItems;
   }
 }
 
-const NavItems = getNavItems() as { name: string; icon: string; href: string; }[]
-const { title, description } = Astro.props
+const NavItems = getNavItems() as {
+  name: string;
+  icon: string;
+  href: string;
+}[];
+const { title, description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang='es' class='dark:text-black text-white font-sans'>
+<html lang="es" class="dark:text-black text-white font-sans">
   <head>
     <BaseHead title={title} description={description} />
     <!-- Importacion de PWA
@@ -35,38 +39,43 @@ const { title, description } = Astro.props
   </head>
 
   <body
-    class='overflow-hidden overflow-y-auto dark:text-white text-black bg-gray-100 dark:bg-gray-900'
+    class="overflow-hidden overflow-y-auto dark:text-white text-black bg-gray-100 dark:bg-gray-900"
   >
     <div>
       <script
         data-astro-rerun
-        src='https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js'
+        src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js"
         defer></script>
       <div
-        x-data='{ sidebarOpen: false, darkMode: false }'
+        x-data="{ sidebarOpen: false, darkMode: false }"
         :class="{ 'dark': darkMode }"
       >
-        <div class='flex bg-gradient-to-b from-primary-950'>
+        <div class="flex bg-gradient-to-b from-primary-950">
           <AppNavBar NavItems={NavItems} />
-          <div class='flex-1 flex flex-col overflow-hidden'>
+          <div class="flex-1 flex flex-col overflow-hidden">
             <AppHeader title={title} description={description} />
 
             <main
-              class='flex-1 overflow-x-hidden overflow-y-auto container mx-auto px-6 h-screen'
+              class="flex-1 overflow-x-hidden overflow-y-auto container mx-auto px-6 h-screen"
             >
               <div
-                class='grid place-items-center text-gray-500 dark:text-gray-300 text-xl p-2'
+                class="grid place-items-center text-gray-500 dark:text-gray-300 text-xl p-2"
               >
                 <slot />
               </div>
             </main>
-              <Toaster richColors closeButton toastOptions={{
+            <Toaster
+              richColors
+              closeButton
+              toastOptions={{
                 classNames: {
-                    'success': 'bg-success-600',
-                    'error': 'bg-danger-600',
-                    'loading': 'bg-secondary-200',
-                }
-            }} client:only />
+                  success: "bg-success-600",
+                  error: "bg-danger-600",
+                  loading: "bg-secondary-200",
+                },
+              }}
+              client:only
+            />
             <AppFooter />
           </div>
         </div>

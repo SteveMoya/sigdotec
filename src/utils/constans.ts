@@ -20,6 +20,8 @@ export const PAYPAL_CLIENT_ID = import.meta.env.PAYPAL_CLIENT_ID;
 export const PAYPAL_CLIENT_SECRET = import.meta.env.PAYPAL_CLIENT_SECRET;
 export const SANBOX_PAYPAL_API = import.meta.env.SANBOX_PAYPAL_API;
 
+export const APP_URL= import.meta.env.APP_URL
+
 export const isProd = import.meta.env.PROD;
 export const isDev = import.meta.env.DEV;
 

@@ -1,10 +1,11 @@
-import { githubAuth } from "@/auth/lucia";
+
+import { github } from "@/lib/auth/providers";
 import type { APIRoute } from "astro";
 
-export const get: APIRoute = async ({ url, cookies }) => {
+export const GET: APIRoute = async ({ url, cookies }) => {
   const provider = url.searchParams.get("provider");
   if (provider === "github") {
-    const [url, state] = await githubAuth.getAuthorizationUrl();
+    const [url, state] = await github.getAuthorizationUrl();
     cookies.set("oauth_state", state, {
       path: "/",
       maxAge: 60 * 60,

@@ -2,11 +2,16 @@
 import { Icon } from 'astro-icon/components'
 import PayTable from './PayTable.astro'
 
+const user = Astro.locals.user
+const balance = user?.balance
 // Junto con 2 decimales
-const amount = Number(Astro.cookies.get('authjs.amount')?.value).toFixed(2)
 
 // Aqui hacemos que cada $49 sea 1 plan y se redondee
-const plansCuantity = Number(parseFloat(amount) / 49).toFixed(0)
+const plans = Math.floor(balance / 49)
+
+
+
+
 ---
 
 <div class='lg:w-full'>
@@ -19,8 +24,8 @@ const plansCuantity = Number(parseFloat(amount) / 49).toFixed(0)
       <div class='flex justify-center items-center space-x-5 h-full font-bold'>
         <div>
           <p>Saldo actual</p>
-          <h2 class='text-3xl'>Planes: {plansCuantity}</h2>
-          <p>${amount}</p>
+          <h2 class='text-3xl'>Planes: {plans}</h2>
+          <p>${balance}</p>
         </div>
         <Icon name='mdi:wallet' class='text-9xl h-24 md:h-20 w-38' />
       </div>

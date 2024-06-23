@@ -1,4 +1,5 @@
 
+import { SignInSchema } from "@/schemas/authentification";
 import { lucia } from "@src/lib/auth/lucia";
 import type { APIContext } from "astro";
 import { db, eq, User } from "astro:db";
@@ -8,29 +9,16 @@ export async function POST(context: APIContext): Promise<Response> {
     const formData = await context.request.formData();
     const username = formData.get("username");
     const password = formData.get("password");
-    //validate the data
-    if (!username || !password) {
-        return new Response("Username and Password are required", { status: 400 });
-    }
-    if (
-        typeof username !== "string" ||
-        username.length < 3 ||
-        username.length > 31 ||
-        !/^[a-z0-9_-]+$/.test(username)
-    ) {
-        return new Response("Invalid username", {
-            status: 400,
-        });
-    }
-    if (typeof password !== "string" || password.length < 6 || password.length > 255) {
-        return new Response("Invalid password", {
-            status: 400,
-        });
+    //validate the data with z
+    try {
+        SignInSchema.parse({ username, password });
+    } catch (error: any) {
+        return new Response(error.message, { status: 400 });
     }
 
     //search the user
     const foundUser = (
-        await db.select().from(User).where(eq(User.username, username))
+        await db.select().from(User).where(eq(User.username, username as string))
     ).at(0);
 
     //if user not found
@@ -47,7 +35,7 @@ export async function POST(context: APIContext): Promise<Response> {
 
     const validPassword = await new Argon2id().verify(
         foundUser.hashedPassword,
-        password
+        password as string
     );
 
     //If password is not valid
@@ -57,12 +45,12 @@ export async function POST(context: APIContext): Promise<Response> {
 
     //Password is valid, user can log in
 
-    const session = await lucia.createSession(foundUser.id, {});
+    const session = await lucia.createSession(foundUser.id, {expiresIn: 60 * 60 * 24 * 30,});
     const sessionCookie = lucia.createSessionCookie(session.id);
     context.cookies.set(
         sessionCookie.name,
         sessionCookie.value,
         sessionCookie.attributes
     );
-    return context.redirect("/");
+    return context.redirect("/app/");
 }

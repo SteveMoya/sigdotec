@@ -1,13 +1,10 @@
 ---
 import AppLayout from '@layouts/App/AppLayout.astro'
 
-import type { Session } from '@auth/core/types'
-
-import { getSession } from 'auth-astro/server'
-
-const session: Session = await getSession(Astro.request)
-const username = session.user?.name
-const userimage = session.user?.image
+const user = Astro.locals.user;
+if (!user) {
+  return Astro.redirect("/login");
+}
 ---
 
 <AppLayout title='Configuracion' description='Cambia tu configuracion aqui'>
@@ -27,11 +24,16 @@ const userimage = session.user?.image
         <div
           class='items-center sm:flex xl:block 2xl:flex sm:space-x-4 xl:space-x-0 2xl:space-x-4'
         >
-          <img
+        {
+          user.userimage && (
+            <img
             class='mb-4 rounded-lg w-28 h-28 sm:mb-0 xl:mb-4 2xl:mb-0'
-            src={userimage}
-            alt={username}
+            src={user.userimage}
+            alt={user.username}
           />
+          )
+        }
+          
           <div>
             <h3 class='mb-1 text-xl font-bold text-gray-900 dark:text-white'>
               Profile picture

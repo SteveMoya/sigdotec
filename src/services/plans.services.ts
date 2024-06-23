@@ -1,4 +1,3 @@
-import { AiModel } from "@models/ai.model";
 import type { PlanBaseSchema, PlanClassSchema, } from "@src/schemas";
 import { AI_URL } from "@src/utils";
 

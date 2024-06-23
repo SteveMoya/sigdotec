@@ -1,4 +1,5 @@
-import { google } from "@src/lib/auth/lucia";
+
+import { google } from "@/lib/auth/providers";
 import { generateState } from "arctic";
 
 

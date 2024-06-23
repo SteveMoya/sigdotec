@@ -7,21 +7,18 @@ import Button from '@components/ui/Button.astro'
 // ! TODO: Colocar animacion Scroll con CSS Nativo
 const position = 'left'
 
-import type { Session } from '@auth/core/types'
+// const session: Session | null = await getSession(Astro.request)
 
-import { getSession } from 'auth-astro/server'
-
-const session: Session | null = await getSession(Astro.request)
-
-import Avatar from '@components/ui/Avatar.astro'
+// import Avatar from '@components/ui/Avatar.astro'
 
 import NavItems from '@config/NavItems.json'
+import Avatar from '@/components/ui/Avatar.astro'
 
 interface NavItem {
   href: string
   text: string
 }
-
+const user = Astro.locals.user
 ---
 
 <header
@@ -67,7 +64,7 @@ interface NavItem {
         ]}
       >
         {
-          session ? (
+          user ? (
         <div class='flex items-center w-[300px] gap-2'>
           <div class="flex items-center">
             <Button variant='primary' href='/app/' className='h-11'>
@@ -75,12 +72,11 @@ interface NavItem {
             </Button>
           </div>
           <div class="flex items-center gap-2">
-              <Avatar
-                src={session.user?.image ?? ''}
-                alt={session.user?.name ?? "User"}
-              />
+              { user?.userimage && (
+          <Avatar src={user.userimage} alt={user.username} />
+        )}
               <span class='text-sm font-semibold hidden md:flex'>
-                {session.user?.name}
+                {user?.username}
               </span>
           </div>
         </div>

@@ -1,4 +1,4 @@
-import { github } from "@src/lib/auth/lucia";
+import { github } from "@/lib/auth/providers";
 import { generateState } from "arctic";
 
 
