@@ -7,7 +7,7 @@ interface Props {
   title: string;
   description: string;
 }
-
+// import {Avatar,  AvatarFallback, AvatarImage} from "@/components/ui/avatar.tsx";
 const { title, description } = Astro.props;
 const user = Astro.locals.user;
 ---
@@ -44,9 +44,12 @@ const user = Astro.locals.user;
             user?.username
           }
         </h2>
-        <!-- { user?.userimage && (
+        { user?.userimage ? (
           <Avatar src={user?.userimage} alt={user?.username} />
-        )} -->
+        ) : (
+          <Avatar alt={user?.username} />
+        )
+      }
       </button>
 
       <div

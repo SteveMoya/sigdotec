@@ -1,7 +1,5 @@
 import { useState } from 'react'
 import '@styles/RegistroB.css'
-import SocialMedia from './socialMedias'
-import { ToastContainer } from 'react-toastify'
 import { NotShow, Show } from './Icons'
 import { useForm } from 'react-hook-form'
 import { SuccessNotifications, ErrorNotifications } from '@hooks/notification'
@@ -33,7 +31,6 @@ export function LoginB() {
   })
   return (
     <>
-      <ToastContainer />
           <form className='Inputs' onSubmit={onSubmit}>
             <label className='lb'>Correo</label>
             <input
