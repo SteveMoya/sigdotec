@@ -1,12 +1,12 @@
-import { Argon2id } from "oslo/password"
 
 
+import argon2 from 'argon2'
 
-///Posts Helpers
 export async function hasherPassword(password: string) {
-  const hashedPassword = await new Argon2id().hash(password)
+  const hashedPassword = await argon2.hash(password)
   return hashedPassword
 }
+///Posts Helpers
 export async function slugify(string: string) {
   return string
     .toString()

@@ -146,7 +146,7 @@
 }
 .data-tooltip::before,
   .data-tooltip::after {
-    @apply absolute invisible opacity-0 translate-y-[5px] transition-all duration-[0.2s] ease-[ease];
+    @apply absolute invisible opacity-0 translate-y-[5px] transition-all duration-200 ease-in-out;
 }
 .data-tooltip::before {
     @apply content-[attr(data-tooltip-content)] w-fit text-[small] font-semibold bg-inherit rounded px-2.5 py-[3px] bottom-[calc(100%_+_5px)];
@@ -162,7 +162,7 @@
     @apply w-full h-full flex justify-center items-center;
 }
 .span-tooltip > span {
-    @apply absolute w-fit text-[small] font-semibold bg-inherit rounded invisible opacity-0 transition-all duration-[0.2s] ease-[ease] px-2.5 py-[3px] bottom-full before:absolute before:content-[""] before:w-2.5 before:h-2.5 before:bg-inherit before:rotate-45 before:top-[calc(100%_-_6px)] before:rounded-[3px] before:left-[40%];
+    @apply absolute w-fit text-[small] font-semibold bg-inherit rounded invisible opacity-0 transition-all duration-200 ease-in-out px-2.5 py-[3px] bottom-full before:absolute before:content-[""] before:w-2.5 before:h-2.5 before:bg-inherit before:rotate-45 before:top-[calc(100%_-_6px)] before:rounded-[3px] before:left-[40%];
 }
 .span-tooltip > i:hover + span {
     @apply visible opacity-100 bottom-[calc(100%_+_6px)];

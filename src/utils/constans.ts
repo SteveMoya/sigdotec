@@ -13,6 +13,8 @@ export const FACEBOOK_CLIENT_SECRET = import.meta.env.FACEBOOK_CLIENT_SECRET;
 export const GOOGLE_CLIENT_ID = import.meta.env.GOOGLE_CLIENT_ID;
 export const GOOGLE_CLIENT_SECRET = import.meta.env.GOOGLE_CLIENT_SECRET;
 
+export const AUTH_SECRET = import.meta.env.AUTH_SECRET
+
 export const AI_URL = import.meta.env.AI_URL
 
 export const PUBLIC_PAYPAL_CLIENT_ID = import.meta.env.PUBLIC_PAYPAL_CLIENT_ID;
