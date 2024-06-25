@@ -52,5 +52,5 @@ export async function POST(context: APIContext): Promise<Response> {
     sessionCookie.attributes
   );
   console.log(context.locals.user)
-  return context.redirect("/app/");
+  return context.redirect("/auth/email-verification");
 }

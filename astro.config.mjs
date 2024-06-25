@@ -37,7 +37,6 @@ export default defineConfig({
         checkOrigin: true
     },
     prefetch: true,
-    compressHTML: true,
     site: settings.site,
     integrations: [
         // AstroPWA({

@@ -2,13 +2,8 @@ import { useState } from 'react'
 import '@styles/RegistroB.css'
 import { NotShow, Show } from './Icons'
 import { useForm } from 'react-hook-form'
-import { SuccessNotifications, ErrorNotifications } from '@hooks/notification'
 export function LoginB() {
   const [showPassword, setShowPassword] = useState(false)
-  const [isDarkMode, setIsDarkMode] = useState(false)
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode)
-  }
 
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword)
@@ -25,9 +20,7 @@ export function LoginB() {
     }
   })
   const onSubmit = handleSubmit((data) => {
-    const notify = SuccessNotifications('!Bienvenido!')
-    notify()
-    console.log(data)
+    
   })
   return (
     <>

@@ -1,49 +1,50 @@
-<!-- ---
-import { sendEmailVerificationEmail } from "@/auth/email";
-import { auth, emailVerificationToken } from "@/auth/lucia";
-import { isValidFormSubmission } from "@/auth/utils/forms/submission";
+---
+import { sendEmailVerificationEmail } from "@/lib/email/sendEmail";
+import { createVerificationToken } from "@/lib/auth/lucia";
+
 import Layout from "@layouts/Layout.astro";
 
-const authRequest = auth.handleRequest(Astro);
-
-let errorMessage = "";
-
-const handleFormSubmission = async (): Promise<Response | null> => {
-  const validSubmission = isValidFormSubmission(Astro.request);
-  if (!validSubmission) return null;
-  const { user } = await authRequest.validateUser();
-  if (!user || user.emailVerified) return null;
-  try {
-    const token = await emailVerificationToken.issue(user.userId);
-    await sendEmailVerificationEmail(user.email, token.toString());
-    return null;
-  } catch (e) {
-    console.log(e);
-    errorMessage = "An unknown error occurred";
-    return null;
-  }
-};
-
-const response = await handleFormSubmission();
-if (response) return response;
-
-const { user } = await authRequest.validateUser();
+const user = Astro.locals.user;
 
 if (!user) {
   return Astro.redirect("/login", 302);
 }
-if (user.emailVerified) {
-  return Astro.redirect("/", 302);
+if (user.emailVerificated) {
+  return Astro.redirect("/app/", 302);
+}
+
+try {
+  const token = await createVerificationToken(user.email);
+  console.log(token);
+
+  if (Astro.request.method === "POST") {
+    try {
+      console.log("AQUI DEBERIA DE Comenzar")
+      await sendEmailVerificationEmail(user.email, token.toString());
+      return Astro.redirect("/auth/email-verification", 302); // Redirige después de enviar el correo
+    } catch (error) {
+      console.log(error);
+      return new Response("Error al enviar tu email de Verificación", {
+        status: 400,
+      });
+    }
+  }
+
+  // Renderiza la página de verificación de correo electrónico aquí
+} catch (error) {
+  console.error(error);
+  return new Response("Error interno del servidor", { status: 500 });
 }
 ---
 
 <Layout>
   <h1>Email verification</h1>
-  <p>Please check your inbox ({user.email}) for a verification email</p>
-  <h2>Resend verification email</h2>
-  <small>{token}</small>
+  <p>
+    Por favor, revisa la bandeja del correo de:({user.email}) para verificar tu
+    correo electronico
+  </p>
+  <h2>Reenviar el email de confirmacion</h2>
   <form method="post">
-    <input type="submit" value="Resend email" />
+    <button type="submit"> Reenviar Correo</button>
   </form>
-  {errorMessage && <p class="error">{errorMessage}</p>}
-</Layout> -->
+</Layout>
