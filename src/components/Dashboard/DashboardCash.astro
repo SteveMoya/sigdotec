@@ -1,9 +1,9 @@
 ---
 import { Icon } from 'astro-icon/components'
-import PayTable from './PayTable.astro'
+// import PayTable from './PayTable.astro'
 
 const user = Astro.locals.user
-const balance = user?.balance
+const balance = user?.balance ?? 0
 // Junto con 2 decimales
 
 // Aqui hacemos que cada $49 sea 1 plan y se redondee

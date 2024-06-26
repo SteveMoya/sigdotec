@@ -2,7 +2,6 @@
 import AppLayout from "@src/layouts/App/AppLayout.astro"
 import { UnitPlan } from "@components/App/UnitPlan"
 import { ClassPlan } from "@components/App/ClassPlan"
-import { AllTopic } from "@components/App/AllTopic"
 import MultiSteps from "@components/App/MultiSteps"
 
 const user = Astro.locals.user;
@@ -16,7 +15,6 @@ if (!user) {
         <h2>La clase que se presenta a continuación</h2>
         <ClassPlan client:load />
         <h2>La clase que se presenta a continuación</h2>
-        <!-- <AllTopic client:load> -->
         <h3> Aqui esta el multipasos </h3>
         <MultiSteps client:only />
 </AppLayout>

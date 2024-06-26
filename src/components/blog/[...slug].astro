@@ -1,12 +1,12 @@
 ---
 import Layout from '@layouts/Layout.astro'
-import Tags from '@components/Blog/Tags.astro'
 import { formatDate } from '@utils/utils'
 import Container from '@components/ui/Container.astro'
-import { getEntry, getEntries } from 'astro:content'
+import { getEntry, } from 'astro:content'
 import BackButton from '@components/ui/BackButton.astro'
-import Prose from '@components/Blog/Prose.astro'
 import { Image } from 'astro:assets'
+import Prose from './Blog/Prose.astro'
+import Tags from './Blog/Tags.astro'
 const { slug } = Astro.params
 
 if (slug === undefined) {

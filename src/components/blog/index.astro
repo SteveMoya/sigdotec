@@ -1,9 +1,7 @@
 ---
 import Layout from '@layouts/Layout.astro'
 import Container from '@components/ui/Container.astro'
-import SearchForm from '@components/Blog/SearchForm.astro'
-import ArticleCard from '@components/Blog/ArticleCard.astro'
-import Categories from '@components/Blog/Categories.astro'
+
 
 const seo = {
   title: 'SIGDO Blog | Blog de Sigdo',
@@ -13,8 +11,12 @@ const seo = {
 import { getCollection, getEntry } from 'astro:content'
 import type { CollectionEntry } from 'astro:content'
 import { ARTICLES_PER_PAGE } from '@utils/constans'
-import MostRecentArticle from '@components/Blog/MostRecentArticle.astro'
+
 import { getEntries } from 'astro:content'
+import SearchForm from './Blog/SearchForm.astro'
+import Categories from './Blog/Categories.astro'
+import MostRecentArticle from './Blog/MostRecentArticle.astro'
+import ArticleCard from './Blog/ArticleCard.astro'
 
 const allBlogArticles: CollectionEntry<'blog'>[] = (
   await getCollection('blog')

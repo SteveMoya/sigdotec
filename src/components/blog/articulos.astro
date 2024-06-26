@@ -1,13 +1,14 @@
 ---
 import Layout from '@layouts/Layout.astro'
-import ArticleCard from '@components/Blog/ArticleCard.astro'
-import SearchForm from '@components/Blog/SearchForm.astro'
-import Pagination from '@components/Blog/Pagination.astro'
+
 import { getCollection, getEntries } from 'astro:content'
 import type { CollectionEntry } from 'astro:content'
 import { ARTICLES_PER_PAGE } from '@utils/constans'
 import Container from '@components/ui/Container.astro'
 import { getEntry } from 'astro:content'
+import ArticleCard from './Blog/ArticleCard.astro'
+import SearchForm from './Blog/SearchForm.astro'
+import Pagination from './Blog/Pagination.astro'
 
 const currentPage: number | null = +Astro.url.searchParams.get('page')! || 1
 

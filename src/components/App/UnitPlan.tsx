@@ -6,10 +6,10 @@ import DataDisplay from './DataDisplay';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { useEffect } from 'react';
 import { DownloadDOC, DownloadPDF } from './DownloadButtons';
-import { Toaster, toast } from 'sonner';
+import { toast } from 'sonner';
 export const UnitPlan = () => {
     const { data, isLoading, error, fetchData } = useFetch();
-    const { data: data2, isLoading: isLoading2, error: error2, fetchData: fetchData2 } = useFetch();
+    const { data: data2, error: error2, fetchData: fetchData2 } = useFetch();
     
     const {
         register,
@@ -43,11 +43,6 @@ export const UnitPlan = () => {
     }, [data, error, isLoading])
     return (
         <section>
-            <Toaster richColors closeButton toastOptions={{classNames: {
-                        'success': 'bg-success-600',
-                        'error': 'bg-danger-600',
-                        'loading': 'bg-secondary-200',
-                    }}} />
             <div className='text-center mx-0 '>
                 <h2 className='my-4 text-2xl font-bold'> Plan de Unidad</h2>
                 {error2 && <p className='text-danger-700'>Error: {error2.message}</p>}

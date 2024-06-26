@@ -1,12 +1,12 @@
 ---
-import ArticleCard from '@components/Blog/ArticleCard.astro'
-import SearchForm from '@components/Blog/SearchForm.astro'
 import { getCollection, getEntry } from 'astro:content'
 import type { CollectionEntry } from 'astro:content'
 import Layout from '@layouts/Layout.astro'
 import Container from '@components/ui/Container.astro'
 import { z } from 'astro/zod'
 import { getEntries } from 'astro:content'
+import ArticleCard from './Blog/ArticleCard.astro'
+import SearchForm from './Blog/SearchForm.astro'
 
 const querySchema = z.string().min(3).max(100)
 

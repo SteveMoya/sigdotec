@@ -1,5 +1,3 @@
-
-import { lucia } from "@/lib/auth/lucia";
 import { AUTH_SECRET } from "@/utils";
 import type { APIContext } from "astro";
 import { db, eq, User } from "astro:db";
