@@ -4,8 +4,10 @@
     "text": "Inicio"
     },
     {
-    "href": "/servicios",
-    "text": "Servicios"
+    "href": "/planes",
+    "text": "Planes"
+    },
+    {
     },
     {
     "href": "/nosotros",

@@ -5,9 +5,7 @@ import Layout from "@layouts/Layout.astro";
 
 const user = Astro.locals.user
 console.log(user)
-if (user !== null) {
-  return Astro.redirect('/app/')
-}
+
 ---
 
 <Layout

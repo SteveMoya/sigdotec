@@ -3,7 +3,7 @@
     "FooterNav": [
         {
             "itemText": "Planes",
-            "itemLink": "servicios"
+            "itemLink": "planes"
         },
         {
             "itemText": "Plan de Clases",
@@ -45,7 +45,7 @@
         },
         {
             "itemText": "Politica de Cookies",
-            "itemLink": "#"
+            "itemLink": "privacidad"
         }
     ]
 }

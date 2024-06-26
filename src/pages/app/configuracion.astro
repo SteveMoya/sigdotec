@@ -2,9 +2,7 @@
 import AppLayout from '@layouts/App/AppLayout.astro'
 
 const user = Astro.locals.user;
-if (!user) {
-  return Astro.redirect("/login");
-}
+
 ---
 
 <AppLayout title='Configuracion' description='Cambia tu configuracion aqui'>

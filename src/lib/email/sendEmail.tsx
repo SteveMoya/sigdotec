@@ -22,13 +22,20 @@ function getTEXT(react:any) {
 }
 
 export const sendEmailVerificationEmail = async (email:string, token:string) => {
-    const send = await resend.emails.send({
+    if(process.env.NODE_ENV === 'development') {
+         await resend.emails.send({
+            from: 'onboarding@resend.dev',
+            to: ['stevemc201666@gmail.com'],
+            subject: 'Email de Verificacion',
+            html: getHTML(<VerifyIdentityEmail validationCode={token} />),        
+        });
+    }
+    await resend.emails.send({
         from: 'onboarding@resend.dev',
-        to: ['stevemc201666@gmail.com'],
+        to: [email],
         subject: 'Email de Verificacion',
         html: getHTML(<VerifyIdentityEmail validationCode={token} />),
-        
-    });
+    }); 
     return
 }
 

@@ -4,10 +4,7 @@ import AppLayout from '@layouts/App/AppLayout.astro'
 import DashboardCash from '@components/Dashboard/DashboardCash.astro'
 // import PayTable from '@components/Dashboard/PayTable.astro'
 // import Pay from '@components/Payment/Pay.astro'
-const user = Astro.locals.user;
-if (!user) {
-  return Astro.redirect("/login");
-}
+
 ---
 
 <AppLayout title='Planes' description='Tus Planes de Clase'>

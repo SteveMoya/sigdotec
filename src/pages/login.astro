@@ -5,13 +5,11 @@ import { LoginB } from "@components/App/LoginB";
 import Layout from "@layouts/Layout.astro";
 import { Icon } from "astro-icon/components";
 
-import { Auth, SignIn } from "auth-astro/components";
+
 
 const user = Astro.locals.user;
 console.log(user);
-if (user) {
-  return Astro.redirect("/app/");
-}
+
 ---
 
 <Layout

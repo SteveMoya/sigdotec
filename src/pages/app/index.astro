@@ -1,20 +1,21 @@
 ---
-import AppLayout from "@src/layouts/App/AppLayout.astro"
-import { UnitPlan } from "@components/App/UnitPlan"
-import { ClassPlan } from "@components/App/ClassPlan"
-import MultiSteps from "@components/App/MultiSteps"
+import AppLayout from "@src/layouts/App/AppLayout.astro";
+import { UnitPlan } from "@components/App/UnitPlan";
+import { ClassPlan } from "@components/App/ClassPlan";
+import MultiSteps from "@components/App/MultiSteps";
 
-const user = Astro.locals.user;
-if (!user) {
-  return Astro.redirect("/login");
-}
+
 ---
-<AppLayout title="Dashboard" description="Estamos felices de tenerte SIGDCOPATA"> 
-        <h2>La unidad de estudio que se presenta a continuación</h>
+
+<AppLayout
+        title="Dashboard"
+        description="Estamos felices de tenerte SIGDCOPATA"
+>
+        <h2>La unidad de estudio que se presenta a continuación</h2>
         <UnitPlan client:load />
         <h2>La clase que se presenta a continuación</h2>
         <ClassPlan client:load />
         <h2>La clase que se presenta a continuación</h2>
-        <h3> Aqui esta el multipasos </h3>
+        <h3>Aqui esta el multipasos</h3>
         <MultiSteps client:only />
 </AppLayout>
