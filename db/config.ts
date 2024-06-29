@@ -7,7 +7,7 @@ const User = defineTable({
     id: column.text({ primaryKey: true, optional: false, unique: true }),
     username: column.text({ unique: true, optional: false }),
     userimage: column.text({
-      unique: true, optional: true
+      optional: true
     }),
     email: column.text({ optional: true, unique: false }),
     emailVerificated: column.boolean({ optional: true, default: false }),
