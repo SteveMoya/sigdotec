@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 import allTopicMock from "@mocks/allDataMock.json"
-import { PlanService } from "@services/plans.services";
+// import { PlanService } from "@services/plans.services";
 
 export const GET: APIRoute = async ({ cookies }) => {
     const data = allTopicMock

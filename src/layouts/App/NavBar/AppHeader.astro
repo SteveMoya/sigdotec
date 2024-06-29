@@ -1,5 +1,4 @@
 ---
-
 import Avatar from "@components/ui/Avatar.astro";
 import { Icon } from "astro-icon/components";
 
@@ -40,16 +39,15 @@ const user = Astro.locals.user;
         class="flex items-center space-x-2 relative focus:outline-none"
       >
         <h2 class="text-gray-700 dark:text-gray-300 text-sm hidden sm:block">
-          {
-            user?.username
-          }
+          {user?.username}
         </h2>
-        { user?.userimage ? (
-          <Avatar src={user?.userimage} alt={user?.username} />
-        ) : (
-          <Avatar alt={user?.username} />
-        )
-      }
+        {
+          user?.userimage ? (
+            <Avatar src={user?.userimage} alt={user?.username ?? ""} />
+          ) : (
+            <Avatar alt={user?.username ?? ""} />
+          )
+        }
       </button>
 
       <div
@@ -70,10 +68,9 @@ const user = Astro.locals.user;
         > -->
         <a
           class="block px-4 py-2 text-sm hover:bg-primary-700 hover:text-white"
-          href='/api/auth/singout'
+          href="/api/auth/singout"
         >
           Cerrar Session
-          
         </a>
       </div>
     </div>

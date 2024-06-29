@@ -1,9 +1,8 @@
 import { Lucia } from "lucia";
 import { DrizzleSQLiteAdapter } from "@lucia-auth/adapter-drizzle";
 import { db, Session, User } from "astro:db";
-import { argon2id } from "argon2";
 import jwt from "jsonwebtoken"
-import { AUTH_SECRET, BASE_URL } from "@/utils";
+import { AUTH_SECRET } from "@/utils";
 
 const adapter = new DrizzleSQLiteAdapter(db as any, Session, User);
 
