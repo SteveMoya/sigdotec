@@ -140,45 +140,45 @@ export default {
     animations,
     animate,
     scrollDrivenAnimations,
-  addDynamicIconSelectors(),
-  ({ addComponents }) => {
-    addComponents({
-      ".bg-gradient-text": {
-        background: "linear-gradient(90deg, #4f46e5, #007fff, #17e9e1)",
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
-      },
-      ".bg-gradient-text-secondary": {
-        background: "linear-gradient(90deg, #407ef1, #17e9e1)",
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
-      },
-      ".bg-gradient-text-accent": {
-        background: "linear-gradient(90deg, #17e9e1, #00a5a4)",
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
-      },
-      ".bg-gradient-text-danger": {
-        background: "linear-gradient(90deg, #ff2f2f, #ffbb0f)",
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
-      },
-      ".bg-gradient-text-warning": {
-        background: "linear-gradient(90deg, #ffbb0f, #ff2f2f)",
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
-      },
-      ".bg-gradient-text-success": {
-        background: "linear-gradient(90deg, #1dd95e, #00cdc8)",
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
-      },
-      ".bg-gradient-text-shank": {
-        background: "linear-gradient(90deg, #6d6d6d, #00cdc8)",
-        WebkitBackgroundClip: "text",
-        WebkitTextFillColor: "transparent",
-      },
-    });
-  }
+    addDynamicIconSelectors(),
+    ({ addComponents }) => {
+      addComponents({
+        ".bg-gradient-text": {
+          background: "linear-gradient(90deg, #4f46e5, #007fff, #17e9e1)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        },
+        ".bg-gradient-text-secondary": {
+          background: "linear-gradient(90deg, #407ef1, #17e9e1)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        },
+        ".bg-gradient-text-accent": {
+          background: "linear-gradient(90deg, #17e9e1, #00a5a4)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        },
+        ".bg-gradient-text-danger": {
+          background: "linear-gradient(90deg, #ff2f2f, #ffbb0f)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        },
+        ".bg-gradient-text-warning": {
+          background: "linear-gradient(90deg, #ffbb0f, #ff2f2f)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        },
+        ".bg-gradient-text-success": {
+          background: "linear-gradient(90deg, #1dd95e, #00cdc8)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        },
+        ".bg-gradient-text-shank": {
+          background: "linear-gradient(90deg, #6d6d6d, #00cdc8)",
+          WebkitBackgroundClip: "text",
+          WebkitTextFillColor: "transparent",
+        },
+      });
+    }
   ],
 }

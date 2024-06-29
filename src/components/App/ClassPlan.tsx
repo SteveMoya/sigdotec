@@ -8,7 +8,7 @@ import classplanmock from '@mocks/classplan.json';
 
 import DataDisplay from './DataDisplay';
 import { useForm, type SubmitHandler } from 'react-hook-form';
-import { DownloadDOC, DownloadPDF } from './DownloadButtons';
+import { DownloadDOC } from './DownloadButtons';
 import { useEffect } from 'react';
 export const ClassPlan = () => {
     const { data, isLoading, error, fetchData } = useFetch();
@@ -66,7 +66,7 @@ export const ClassPlan = () => {
                     </article>
                     <div className="flex justify-center items-center">
                     <DownloadDOC href='@mock/Plan de clase.docx' />
-                    <DownloadPDF href='@mock/Plan de clase.pdf' />
+                    
                     </div>
                 </>
             }

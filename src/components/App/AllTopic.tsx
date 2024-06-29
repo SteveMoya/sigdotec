@@ -3,7 +3,7 @@ import { useFetch } from '@hooks/useFetch';
 import { Loading } from './Loading';
 // import DataDisplay from './DataDisplay';
 import allTopicMock from "@mocks/allDataMock.json"
-import { DownloadDOC, DownloadPDF } from './DownloadButtons';
+import { DownloadDOC } from './DownloadButtons';
 
 export const AllTopic = () => {
     const { data, isLoading, error, fetchData } = useFetch();
@@ -49,7 +49,7 @@ export const AllTopic = () => {
                     </article>
                     <div className="flex justify-center items-center">
                     <DownloadDOC href='@mock/Plan de unidad.docx' />
-                    <DownloadPDF href='@mock/Plan de unidad.pdf' />
+                    
                     </div>
                 </>
             }

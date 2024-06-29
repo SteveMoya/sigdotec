@@ -13,6 +13,17 @@ interface ImportMetaEnv {
    GOOGLE_CLIENT_SECRET: string
 
    AUTH_SECRET: string
+
+   AI_URL:string
+
+  PAYPAL_CLIENT_ID:string
+  PAYPAL_CLIENT_SECRET: string
+
+  PUBLIC_PAYPAL_CLIENT_ID: string
+
+  ASTRO_STUDIO_APP_TOKEN:string
+
+  RESEND_API_KEY:string
 }
 
 interface ImportMeta {

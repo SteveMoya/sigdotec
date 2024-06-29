@@ -5,7 +5,7 @@ import { Loading } from './Loading';
 import DataDisplay from './DataDisplay';
 import { useForm, type SubmitHandler } from 'react-hook-form';
 import { useEffect } from 'react';
-import { DownloadDOC, DownloadPDF } from './DownloadButtons';
+import { DownloadDOC } from './DownloadButtons';
 import { toast } from 'sonner';
 export const UnitPlan = () => {
     const { data, isLoading, error, fetchData } = useFetch();
@@ -73,7 +73,7 @@ export const UnitPlan = () => {
                 </article>
                     <div className="flex justify-center items-center">
                     <DownloadDOC href='/src/mocks/Plan de unidad.docx' />
-                    <DownloadPDF href='/src/mocks/Plan de unidad.pdf' />
+                    
                     </div>
                 </>
             }
