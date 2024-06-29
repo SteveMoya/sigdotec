@@ -1,6 +1,11 @@
 ---
 import Layout from '@layouts/Layout.astro'
 //Crear imagen Open Graph para esta pagina
+
+interface Props {
+  error: unknown
+}
+const { error } = Astro.props
 ---
 
 <Layout
@@ -253,7 +258,7 @@ import Layout from '@layouts/Layout.astro'
         Error del servidor
       </p>
       <p class='md:text-lg xl:text-xl text-gray-500 mt-4 dark:text-white'>
-        Opps hubo un problema con el servidor
+        {error instanceof Error ? error.message : 'Unknown error'}
       </p>
     </div>
   </div>
