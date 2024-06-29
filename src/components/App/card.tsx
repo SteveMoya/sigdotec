@@ -1,7 +1,14 @@
 import '@styles/sobreNosotros.css'
 
+interface Props {
+  text: string
+  img: string
+  title: string
+  subtitle: string
+  type: string
+}
 
-export function Card({ text, img, title, subtitle, type }) {
+export function Card({ text, img, title, subtitle, type }: Props) {
   return (
     <>
       <article className='card'>

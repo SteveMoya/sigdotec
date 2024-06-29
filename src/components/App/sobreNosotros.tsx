@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
-
+import { useForm } from 'react-hook-form'
 import '@styles/sobreNosotros.css'
-
+import Typed from 'typed.js'
 import { Card } from './card'
 import { Cartas } from './cartas.tsx'
 import { Link as ScrollLink, animateScroll as scroll } from 'react-scroll'
@@ -19,49 +19,50 @@ function SobreNosotros() {
   const [isAnimated, setIsAnimated] = useState(false)
   const [isAnimatedvalue, setisAnimatedvalue] = useState(false)
   const [isAnimatedhistoria, setIsAnimatedHistoria] = useState(false)
-  const valoresTitleRef = useRef<React.RefObject<HTMLElement> | null>(null)
-  const HistoriaValoresRef = useRef<React.RefObject<HTMLElement> | null>(null)
-  const HistoriaRef = useRef<React.RefObject<HTMLElement> | null>(null)
+  const valoresTitleRef = useRef(null)
+  const HistoriaValoresRef = useRef(null)
+  const HistoriaRef = useRef(null)
 
-  // useEffect(() => {
-  //   valoresTitleRef.current = document.getElementById('valoresTitle')
-  //   HistoriaValoresRef.current = document.getElementById('Historia_valores')
-  //   HistoriaRef.current = document.getElementById('Historia')
+  useEffect(() => {
+    valoresTitleRef.current = document.getElementById('valoresTitle')
+    HistoriaValoresRef.current = document.getElementById('Historia_valores')
+    HistoriaRef.current = document.getElementById('Historia')
 
-  // }, [])
-  // const handleScroll = () => {
-  //   const valoresTitlePosition =
-  //     valoresTitleRef.current.getBoundingClientRect().top
-  //   const Historia_valore =
-  //     HistoriaValoresRef.current.getBoundingClientRect().top
-  //   const Historia = HistoriaRef.current.getBoundingClientRect().top
-  //   if (valoresTitlePosition <= window.innerHeight * 0.5 && !isAnimated) {
-  //     setIsAnimated(true)
-  //   }
-  //   if (Historia_valore <= window.innerHeight * 0.5 && !isAnimatedvalue) {
-  //     setisAnimatedvalue(true)
-  //   }
-  //   if (Historia <= window.innerHeight * 0.5 && !isAnimatedvalue) {
-  //     setIsAnimatedHistoria(true)
-  //   }
-  // }
-  // useEffect(() => {
-  //   window.addEventListener('scroll', handleScroll)
 
-  //   return () => {
-  //     window.removeEventListener('scroll', handleScroll)
-  //   }
-  // }, [isAnimated])
+  }, [])
+  const handleScroll = () => {
+    const valoresTitlePosition =
+      valoresTitleRef.current.getBoundingClientRect().top
+    const Historia_valore =
+      HistoriaValoresRef.current.getBoundingClientRect().top
+    const Historia = HistoriaRef.current.getBoundingClientRect().top
+    if (valoresTitlePosition <= window.innerHeight * 0.5 && !isAnimated) {
+      setIsAnimated(true)
+    }
+    if (Historia_valore <= window.innerHeight * 0.5 && !isAnimatedvalue) {
+      setisAnimatedvalue(true)
+    }
+    if (Historia <= window.innerHeight * 0.5 && !isAnimatedvalue) {
+      setIsAnimatedHistoria(true)
+    }
+  }
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll)
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [isAnimated])
 
   return (
     <>
- 
-   
-        <form className='body' id='root'>
-          
-        </form>
-   
-    
+
+
+      <form className='body' id='root'>
+
+      </form>
+
+
       <ScrollLink to='Historia' smooth={true} duration={9000}>
         {/*Colocar el web component de youtube para video de presentacicon de sigdotec*/}
         <form
@@ -111,7 +112,7 @@ function SobreNosotros() {
             className='video max-md:h-72 object-cover '
             src='/Aboutvideo.webm'
             autoPlay={true}
-            
+
           ></video>
         </section>
       </ScrollLink>

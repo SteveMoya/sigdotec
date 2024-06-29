@@ -1,15 +1,16 @@
 ---
-
-import AppLayout from '@layouts/App/AppLayout.astro'
-import DashboardCash from '@components/Dashboard/DashboardCash.astro'
+import AppLayout from "@layouts/App/AppLayout.astro";
+import DashboardCash from "@components/Dashboard/DashboardCash.astro";
+import {PlanTable} from "@/components/App/PlanTable";
 // import PayTable from '@components/Dashboard/PayTable.astro'
 // import Pay from '@components/Payment/Pay.astro'
-
+import "@styles/globals.css";
 ---
 
-<AppLayout title='Planes' description='Tus Planes de Clase'>
-  <h2>Aqui estas todos los planes realizados anteriormente</h2>
+<AppLayout title="Planes" description="Tus Planes de Clase">
+  <PlanTable client:only />
+  <!-- <h2>Aqui estas todos los planes realizados anteriormente</h2>
   <div class="w-full">
-    <!-- <PayTable /> -->
-  </div>
+    <PayTable />
+  </div> -->
 </AppLayout>

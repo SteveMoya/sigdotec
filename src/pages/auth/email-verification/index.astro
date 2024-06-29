@@ -3,6 +3,7 @@ import { sendEmailVerificationEmail } from "@/lib/email/sendEmail";
 import { createVerificationToken } from "@/lib/auth/lucia";
 
 import Layout from "@layouts/Layout.astro";
+import VerifyEmail from "@/components/VerifyEmail";
 
 const user = Astro.locals.user;
 
@@ -19,7 +20,7 @@ try {
 
   if (Astro.request.method === "POST") {
     try {
-      console.log("AQUI DEBERIA DE Comenzar")
+      console.log("AQUI DEBERIA DE Comenzar");
       await sendEmailVerificationEmail(user.email, token.toString());
       return Astro.redirect("/auth/email-verification", 302); // Redirige después de enviar el correo
     } catch (error) {
@@ -38,13 +39,7 @@ try {
 ---
 
 <Layout>
-  <h1>Email verification</h1>
-  <p>
-    Por favor, revisa la bandeja del correo de:({user.email}) para verificar tu
-    correo electronico
-  </p>
-  <h2>Reenviar el email de confirmacion</h2>
-  <form method="post">
-    <button type="submit"> Reenviar Correo</button>
-  </form>
+  <div class="flex justify-center content-center my-[6dvh]">
+    <VerifyEmail email={user.email} client:load transition:persist />
+  </div>
 </Layout>

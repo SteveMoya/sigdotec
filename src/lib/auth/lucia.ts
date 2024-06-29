@@ -56,12 +56,7 @@ export async function createVerificationToken(email:string) {
         expiresIn: "5m"
     })
     return token
-} 
-
-
-const url = `${BASE_URL}/auth/email-verification?token=${createVerificationToken("email")}`
-
-
+}
 
 export const passwordResetToken = lucia.createSession("email_reset", {
     expiresIn: 60 * 60,

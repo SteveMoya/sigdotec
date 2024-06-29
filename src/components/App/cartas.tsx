@@ -1,25 +1,12 @@
 import '@styles/sobreNosotros.css'
+interface Props {
+  title: string
+  text: string
+}
 
-export function Cartas({ title, text }) {
+export function Cartas({ title, text }: Props) {
   return (
     <>
-      {/*  <div className="carta_container">
-        <div className="carta">
-            <div className="face back">
-                <div className="content">
-                    <span className="stars"></span>
-                    <b className="desc">{title}</b>
-                    <p className="desc">
-                        {text}
-                    </p>
-                </div>
-            </div>
-            <div className="face front">
-                <b></b>
-            </div>
-        </div>
-    </div>
-*/}
       <div className='carta group hover:text-white'>
         <div className='carta_content'>
           <p className='heading text-blue-600 dark:text-white group-hover:text-white'>
