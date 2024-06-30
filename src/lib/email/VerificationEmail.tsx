@@ -18,7 +18,7 @@ interface VerifyIdentityEmailProps {
 
 const baseUrl = BASE_URL
     ? `https://${BASE_URL}`
-    : "";
+    : "http://localhost:4321";
 
 export const VerifyIdentityEmail = ({
     validationCode,
@@ -36,8 +36,8 @@ export const VerifyIdentityEmail = ({
                 />
                 <Text style={tertiary}>Verifica tu identidad</Text>
                 <Heading style={secondary}>
-                    Haz click en el siguiente Boton para confirmar tu identidad
-                    <Link href={`http:localhost:4321/auth/email-verification/${validationCode}`} style={link}>
+                    Haz click en el siguiente Boton para confirmar tu identidad:{" "}
+                    <Link href={`${baseUrl}/auth/email-verification/${validationCode}`} style={link}>
                         Confirmar tu identidad
                     </Link>
                 </Heading>
