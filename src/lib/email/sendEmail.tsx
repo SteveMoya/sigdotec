@@ -1,4 +1,4 @@
-import { BASE_URL, RESEND_API_KEY } from '@/utils';
+import { BASE_URL, RESEND_API_KEY, isDev } from '@/utils';
 import { Resend } from 'resend';
 import { VerifyIdentityEmail } from './VerificationEmail';
 import ResetPasswordEmail from './ResetPasswordEmail';
@@ -22,7 +22,7 @@ function getTEXT(react:any) {
 }
 
 export const sendEmailVerificationEmail = async (email:string, token:string) => {
-    if(process.env.NODE_ENV === 'development') {
+    if (isDev) {
          await resend.emails.send({
             from: 'onboarding@resend.dev',
             to: ['stevemc201666@gmail.com'],
