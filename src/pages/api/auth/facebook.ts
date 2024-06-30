@@ -7,7 +7,9 @@ import type { APIContext } from "astro";
 
 export async function GET(context: APIContext): Promise<Response> {
     const state = generateState();
-    const url = await facebook.createAuthorizationURL(state);
+    const url = await facebook.createAuthorizationURL(state, {
+        scopes: ["email", "public_profile"],
+    });
 
     context.cookies.set("facebook_oauth_state", state, {
         path: "/",

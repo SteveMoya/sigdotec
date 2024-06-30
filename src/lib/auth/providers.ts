@@ -27,5 +27,5 @@ export const facebook = new Facebook(
     FACEBOOK_CLIENT_ID,
     FACEBOOK_CLIENT_SECRET,
     // Aqui colocamos que si esta en desarrollo utilice el local host y si no utilice el dominio
-    `${BASE_URL}/api/auth/callback/facebook/`
+    APP_URL + 'api/auth/callback/facebook'
 )

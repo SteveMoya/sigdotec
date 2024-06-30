@@ -8,9 +8,9 @@ import { facebook } from "@/lib/auth/providers";
 
 export async function GET(context: APIContext): Promise<Response> {
     const code = context.url.searchParams.get("code");
-    const state = context.url.searchParams.get("state");
+    
     const storedState = context.cookies.get("facebook_oauth_state")?.value ?? null;
-    if (!code || !state || !storedState || state !== storedState) {
+    if (!code ||  !storedState ) {
         return new Response(null, {
             status: 400,
         });
@@ -18,14 +18,12 @@ export async function GET(context: APIContext): Promise<Response> {
 
     try {
         const tokens = await facebook.validateAuthorizationCode(code);
-        const facebookUserResponse = await fetch("https://api.facebook.com/user", {
-            headers: {
-                Authorization: `Bearer ${tokens.accessToken}`,
-            },
+        const facebookUserResponse = await fetch(`https://graph.facebook.com/me?access_token=${tokens.accessToken}&fields=id,name,email,picture`, {
         });
         const facebookUser: FacebookUser = await facebookUserResponse.json();
         // Replace this with your own DB client.
         //const existingUser = await db.table("user").where("facebook_id", "=", facebookUser.id).get();
+        console.log(facebookUser)
         const existingUser = (
             await db.select().from(User).where(eq(User.providerID, facebookUser.id))
         ).at(0);
