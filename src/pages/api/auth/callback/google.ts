@@ -7,24 +7,24 @@ import type { APIContext } from "astro";
 import { google } from "@/lib/auth/providers";
 
 export async function GET(context: APIContext): Promise<Response> {
+    console.log(context.url.searchParams)
     const code = context.url.searchParams.get("code");
     const state = context.url.searchParams.get("state");
     if (!code || !state ) {
-        return new Response(null, {
-            status: 400,
-        });
+        return new Response("code or state not found", {status: 400,}
+        );
     }
     
     const codeVerifier = context.cookies.get("codeVerifier")?.value;
     const savedState = context.cookies.get("state")?.value;
 
     if (!codeVerifier || !savedState) {
-        return new Response(null, {
+        return new Response("codeVerifier or savedState not found", {
             status: 400,
         });
     }
     if(savedState !== state){
-        return new Response(null, {
+        return new Response("savedState and state are not the same", {
             status: 400,
         });
     }
@@ -36,11 +36,11 @@ export async function GET(context: APIContext): Promise<Response> {
             },
         });
         const googleUser: GoogleUser = await googleUserResponse.json();
-        console.log(googleUser)
+        console.log("Este es el usuario",googleUser)
         // Replace this with your own DB client.
         //const existingUser = await db.table("user").where("google_id", "=", googleUser.id).get();
         const existingUser = (
-            await db.select().from(User).where(eq(User.providerID, googleUser.sub))
+            await db.select().from(User).where(eq(User.providerID, googleUser.id))
         ).at(0);
         if (existingUser) {
             const session = await lucia.createSession(existingUser.id, {
@@ -61,7 +61,7 @@ export async function GET(context: APIContext): Promise<Response> {
         await db.insert(User).values([
             {
                 id: userId,
-                providerID: googleUser.sub,
+                providerID: googleUser.id,
                 username: googleUser.name,
                 provider,
                 email: googleUser.email,
@@ -84,18 +84,18 @@ export async function GET(context: APIContext): Promise<Response> {
         // the specific error message depends on the provider
         if (e instanceof OAuth2RequestError) {
             // invalid code
-            return new Response(null, {
+            return new Response("Codigo invalido", {
                 status: 400,
             });
         }
-        return new Response(null, {
+        return new Response("No se pudo procesar el callback", {
             status: 500,
         });
     }
 }
 
 interface GoogleUser {
-    sub: string;
+    id: string;
     name: string;
     given_name: string;
     family_name: string;
@@ -105,3 +105,4 @@ interface GoogleUser {
     email_verified?: boolean;
     hd?: string;
 }
+
