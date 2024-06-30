@@ -33,7 +33,7 @@ export function SignUpForm() {
         },
     })
 
-    async function onSubmit(values: z.infer<typeof SignInSchema>) {
+    async function onSubmit(values: z.infer<typeof SignUpSchema>) {
         const res = await fetch("/api/auth/register", {
             method: "POST",
             headers: {

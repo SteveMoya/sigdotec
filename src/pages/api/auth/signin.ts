@@ -50,7 +50,9 @@ export async function POST(context: APIContext): Promise<Response> {
 
   //Password is valid, user can log in
 
-  const session = await lucia.createSession(foundUser.id, {});
+  const session = await lucia.createSession(foundUser.id, {
+    expiresIn: 60 * 60 * 24 * 30,
+  });
   const sessionCookie = lucia.createSessionCookie(session.id);
   context.cookies.set(
     sessionCookie.name,

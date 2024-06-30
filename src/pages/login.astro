@@ -3,7 +3,8 @@
 // import { LoginB } from "@components/App/LoginB";
 import Logo from "@/components/ui/Logo.astro";
 import Layout from "@layouts/Layout.astro";
-// import { Icon } from "astro-icon/components";
+
+import { Icon } from "astro-icon/components";
 
 const user = Astro.locals.user;
 console.log(user);
@@ -83,28 +84,26 @@ console.log(user);
           </form>
 
           <div class="flex flex-row items-center justify-center my-4">
-            <!-- <SignIn
-            options={{ callbackUrl: '/api/roles', redirect: true }}
-            class='social-button github hover:text-[#333]'
-            provider='github'
-          >
+            <a
+            href="/api/auth/github"
+            class='social-button github hover:text-[#333]' >
             <Icon name='mdi:github' class='h-6 w-auto' />
-            <SignIn
-              options={{ callbackUrl: '/app/', redirect: true }}
+          </a>
+            <a
+              href="/api/auth/google"
               class='social-button google hover:text-[#db4437]'
-              provider='google'
             >
               <Icon name='mdi:google' class='h-6 w-auto' />
-              <SignIn
-                options={{ callbackUrl: '/app/', redirect: true }}
-                provider='facebook'
-                class='social-button facebook hover:text-[#3b5998]'
-              >
-                <Icon name='mdi:facebook' class='h-6 w-auto' />
-              </SignIn>
-            </SignIn>
-          </SignIn>
-        </div> -->
+             </a>
+                <a
+                  href="/api/auth/facebook"
+                  class='social-button facebook hover:text-[#3b5998]'
+                >
+                  <Icon name='mdi:facebook' class='h-6 w-auto' />
+                </a>
+            </div>
+          </di>
+        </div>
           </div>
         </div>
       </div>

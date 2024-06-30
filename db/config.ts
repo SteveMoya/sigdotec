@@ -15,7 +15,6 @@ const User = defineTable({
     role: column.text({ optional: false, default: "user" }),
     provider: column.text({ optional: false, default: "email" }),
     providerID: column.text({ optional: true, unique: true }),
-    github_id: column.text({ optional: true, unique: true }),
     balance: column.number({ optional: false, default: 0 }),
   },
 });

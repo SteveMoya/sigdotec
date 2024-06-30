@@ -27,7 +27,7 @@ export async function GET(context: APIContext): Promise<Response> {
         // Replace this with your own DB client.
         //const existingUser = await db.table("user").where("github_id", "=", githubUser.id).get();
         const existingUser = (
-            await db.select().from(User).where(eq(User.github_id, githubUser.id))
+            await db.select().from(User).where(eq(User.providerID, githubUser.id))
         ).at(0);
 
         if (existingUser) {
@@ -38,28 +38,34 @@ export async function GET(context: APIContext): Promise<Response> {
                 sessionCookie.value,
                 sessionCookie.attributes
             );
-            return context.redirect("/");
+            return context.redirect("/app/");
         }
 
         const userId = generateId(15);
-
+        const provider = "github"
         // Replace this with your own DB client.
         await db.insert(User).values([
             {
                 id: userId,
-                github_id: githubUser.id,
+                providerID: githubUser.id,
                 username: githubUser.login,
+                provider, 
+                email: githubUser.email,
+                userimage: githubUser.avatar_url,
+                emailVerificated: true,
             },
         ]);
 
-        const session = await lucia.createSession(userId, {});
+        const session = await lucia.createSession(userId, {
+            expiresIn: 60 * 60 * 24 * 30,
+        });
         const sessionCookie = lucia.createSessionCookie(session.id);
         context.cookies.set(
             sessionCookie.name,
             sessionCookie.value,
             sessionCookie.attributes
         );
-        return context.redirect("/");
+        return context.redirect("/app/");
     } catch (e) {
         // the specific error message depends on the provider
         if (e instanceof OAuth2RequestError) {
@@ -77,4 +83,6 @@ export async function GET(context: APIContext): Promise<Response> {
 interface GitHubUser {
     id: string;
     login: string;
+    avatar_url: string;
+    email: string;
 }
