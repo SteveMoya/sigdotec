@@ -1,21 +1,29 @@
 
-// import { google } from "@/lib/auth/providers";
-// import { generateState } from "arctic";
+import { createGoogleAuthorizationURL, google } from "@/lib/auth/providers";
 
 
-// import type { APIContext } from "astro";
 
-// export async function GET(context: APIContext): Promise<Response> {
-//   const state = generateState();
-//   const url = await google.createAuthorizationURL(state);
+import type { APIContext } from "astro";
 
-//   context.cookies.set("google_oauth_state", state, {
-//     path: "/",
-//     secure: import.meta.env.PROD,
-//     httpOnly: true,
-//     maxAge: 60 * 10,
-//     sameSite: "lax",
-//   });
-
-//   return context.redirect(url.toString());
-// }
+export async function GET(context: APIContext): Promise<Response> {
+  try {
+    const { state, codeVerifier, authorizationURL } = await createGoogleAuthorizationURL()
+    context.cookies.set("state", state, {
+      secure: import.meta.env.PROD,
+      httpOnly: true,
+      sameSite: "strict",
+    })
+  
+    context.cookies.set("codeVerifier", codeVerifier, {
+      secure: import.meta.env.PROD,
+      httpOnly: true,
+      sameSite: "strict",
+    });
+  
+    return context.redirect(authorizationURL.toString());
+  } catch (error) {
+    return new Response(null, {
+      status: 500,
+    });
+  }
+}
