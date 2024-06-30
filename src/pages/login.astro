@@ -1,15 +1,12 @@
 ---
-
 // import { SignInSchema } from "@/schemas/authentification";
 // import { LoginB } from "@components/App/LoginB";
+import Logo from "@/components/ui/Logo.astro";
 import Layout from "@layouts/Layout.astro";
 // import { Icon } from "astro-icon/components";
 
-
-
 const user = Astro.locals.user;
 console.log(user);
-
 ---
 
 <Layout
@@ -22,14 +19,9 @@ console.log(user);
     >
       <a
         href="#"
-        class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
+        class="flex items-center mb-6 text-2xl w- font-semibold text-gray-900 dark:text-white"
       >
-        <img
-          class="w-8 h-8 mr-2"
-          src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
-          alt="logo"
-        />
-        Flowbite
+        <Logo variant="primary" size="w-32" />
       </a>
       <div
         class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700"
@@ -89,12 +81,36 @@ console.log(user);
               >
             </p>
           </form>
+
+          <div class="flex flex-row items-center justify-center my-4">
+            <!-- <SignIn
+            options={{ callbackUrl: '/api/roles', redirect: true }}
+            class='social-button github hover:text-[#333]'
+            provider='github'
+          >
+            <Icon name='mdi:github' class='h-6 w-auto' />
+            <SignIn
+              options={{ callbackUrl: '/app/', redirect: true }}
+              class='social-button google hover:text-[#db4437]'
+              provider='google'
+            >
+              <Icon name='mdi:google' class='h-6 w-auto' />
+              <SignIn
+                options={{ callbackUrl: '/app/', redirect: true }}
+                provider='facebook'
+                class='social-button facebook hover:text-[#3b5998]'
+              >
+                <Icon name='mdi:facebook' class='h-6 w-auto' />
+              </SignIn>
+            </SignIn>
+          </SignIn>
+        </div> -->
+          </div>
         </div>
       </div>
     </div>
-  </section>
-  
-  <!-- <section class='body'>
+
+    <!-- <section class='body'>
     <div class='CT'>
       <div class='brand-logo'></div>
       <div class='brand-title'>SIGDOTEC</div>
@@ -141,5 +157,5 @@ console.log(user);
       </p>
     </div>
   </section> -->
-  
+  </section>
 </Layout>

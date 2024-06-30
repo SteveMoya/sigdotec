@@ -1,11 +1,11 @@
 ---
+import Logo from "@/components/ui/Logo.astro";
 import Layout from "@layouts/Layout.astro";
 // import { RegisterB } from "@components/App/RegisterB";
 // import { SignUpForm } from "@components/Register.tsx";
 
-const user = Astro.locals.user
-console.log(user)
-
+const user = Astro.locals.user;
+console.log(user);
 ---
 
 <Layout
@@ -21,12 +21,7 @@ console.log(user)
         href="#"
         class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
       >
-        <img
-          class="w-8 h-8 mr-2"
-          src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg"
-          alt="logo"
-        />
-        Flowbite
+        <Logo variant="primary" size="w-32" />
       </a>
       <div
         class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700"
@@ -103,7 +98,6 @@ console.log(user)
       </div>
     </div>
   </section>
-  
+
   <!-- <RegisterB />  -->
 </Layout>
-
