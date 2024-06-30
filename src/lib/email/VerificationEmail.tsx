@@ -1,4 +1,4 @@
-import { BASE_URL } from "@/utils";
+import { APP_URL, BASE_URL } from "@/utils";
 import {
     Body,
     Container,
@@ -28,7 +28,7 @@ export const VerifyIdentityEmail = ({
         <Body style={main}>
             <Container style={container}>
                 <Img
-                    src={`${baseUrl}/SIGDO-32.svg`}
+                    src={`${APP_URL}/SIGDO-32.svg`}
                     width="212"
                     height="88"
                     alt="SIGDOTEC-logo"
@@ -37,7 +37,7 @@ export const VerifyIdentityEmail = ({
                 <Text style={tertiary}>Verifica tu identidad</Text>
                 <Heading style={secondary}>
                     Haz click en el siguiente Boton para confirmar tu identidad:{" "}
-                    <Link href={`${baseUrl}/auth/email-verification/${validationCode}`} style={link}>
+                    <Link href={`${APP_URL}/auth/email-verification/${validationCode}`} style={link}>
                         Confirmar tu identidad
                     </Link>
                 </Heading>
