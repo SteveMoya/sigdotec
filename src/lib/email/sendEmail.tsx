@@ -27,7 +27,13 @@ export const sendEmailVerificationEmail = async (email:string, token:string) => 
             from: 'onboarding@resend.dev',
             to: ['stevemc201666@gmail.com'],
             subject: 'Email de Verificacion',
-            html: getHTML(<VerifyIdentityEmail validationCode={token} />),        
+            html: getHTML(<VerifyIdentityEmail validationCode={token} />),
+             tags: [
+                 {
+                     name: 'category',
+                     value: 'confirm_email',
+                 },
+             ],        
         });
     }
     await resend.emails.send({
@@ -35,6 +41,12 @@ export const sendEmailVerificationEmail = async (email:string, token:string) => 
         to: [email],
         subject: 'Email de Verificacion',
         html: getHTML(<VerifyIdentityEmail validationCode={token} />),
+        tags: [
+            {
+                name: 'category',
+                value: 'confirm_email',
+            },
+        ],
     }); 
     return
 }
