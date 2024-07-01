@@ -56,40 +56,13 @@ function SobreNosotros() {
 
   return (
     <>
-
-
-      <form className='body' id='root'>
-
-      </form>
-
-
       <ScrollLink to='Historia' smooth={true} duration={9000}>
         {/*Colocar el web component de youtube para video de presentacicon de sigdotec*/}
         <form
           className={`Historia ${isAnimatedhistoria ? 'active' : ''}`}
           id='Historia'
         >
-          <Card
-            text={text1}
-            img='/Historia-SIGDOTEC-Imagen.webp'
-            title='Historia'
-            subtitle='Republica Dominicana'
-            type='card_content '
-          />
-          <Card
-            text={Text_Mision}
-            img='/Mision-SIGDOTEC-Imagen.webp'
-            title='Misión'
-            subtitle='Objectivo'
-            type='card_content bg-gradient-to-tr from-[#007FFF] to-[#17E9E1]'
-          />
-          <Card
-            text={Text_Vision}
-            img='/Vision-SIGDOTEC-Imagen.webp'
-            title='Visión'
-            subtitle='Nuestra Metas'
-            type='card_content bg-gradient-to-tr from-[#007FFF] to-[#17E9E1]'
-          />
+          
         </form>
       </ScrollLink>
 

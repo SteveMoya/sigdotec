@@ -8,67 +8,67 @@ export default function Servicios() {
                 <div className="container grid gap-6 md:gap-8 px-4 md:px-6 max-w-6xl mx-auto">
                     <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8">
                         <div className="grid gap-1">
-                            <h1 className="text-2xl font-bold tracking-tight">Pricing</h1>
-                            <p className="text-muted-foreground">Choose the plan that's right for your business.</p>
+                            <h1 className="text-2xl font-bold tracking-tight">Precios de los Planes</h1>
+                            <p className="text-muted-foreground">¡Así de fácil puedes planificar!.</p>
                         </div>
                     </div>
                     <div className="grid md:grid-cols-2 gap-8">
                         <Card>
                             <CardHeader>
-                                <CardTitle>Starter</CardTitle>
-                                <div className="text-4xl font-bold">$9</div>
-                                <p className="text-muted-foreground">per month</p>
+                                <CardTitle>Planes de Clase y de Unidad</CardTitle>
+                                <div className="text-4xl font-bold">$50</div>
+                                <p className="text-muted-foreground">Pesos Dominicanos (DOP) </p>
                             </CardHeader>
                             <CardContent className="grid gap-4">
                                 <div>
-                                    <h3 className="font-semibold">What's included</h3>
+                                    <h3 className="font-semibold mb-2">¿Qué incluye?</h3>
                                     <ul className="space-y-2 text-sm">
                                         <li className="flex items-center gap-2">
                                             <CheckIcon className="w-4 h-4 fill-primary" />
-                                            5 projects
+                                            Secuencia didáctica	única y completa
                                         </li>
                                         <li className="flex items-center gap-2">
                                             <CheckIcon className="w-4 h-4 fill-primary" />
-                                            1 GB storage
+                                            Contenidos de la malla curricular dominicana
                                         </li>
                                         <li className="flex items-center gap-2">
                                             <CheckIcon className="w-4 h-4 fill-primary" />
-                                            Basic support
+                                            Lista de recursos y actividades para la evaluación
                                         </li>
                                     </ul>
                                 </div>
                             </CardContent>
                             <CardFooter>
-                                <Button className="w-full">Get started</Button>
+                                <Button className="w-full bg-primary-800">Planificar</Button>
                             </CardFooter>
                         </Card>
                         <Card>
                             <CardHeader>
-                                <CardTitle>Pro</CardTitle>
-                                <div className="text-4xl font-bold">$49</div>
-                                <p className="text-muted-foreground">per month</p>
+                                <CardTitle>Plan Anual</CardTitle>
+                                <div className="text-4xl font-bold">$800</div>
+                                <p className="text-muted-foreground">Pesos Dominicanos (DOP)</p>
                             </CardHeader>
                             <CardContent className="grid gap-4">
                                 <div>
-                                    <h3 className="font-semibold">What's included</h3>
+                                    <h3 className="font-semibold mb-2">¿Qué incluye?</h3>
                                     <ul className="space-y-2 text-sm">
                                         <li className="flex items-center gap-2">
                                             <CheckIcon className="w-4 h-4 fill-primary" />
-                                            Unlimited projects
+                                            +100 planes de clase por grado y asignatura
                                         </li>
                                         <li className="flex items-center gap-2">
                                             <CheckIcon className="w-4 h-4 fill-primary" />
-                                            50 GB storage
+                                            Secuencias didácticas
                                         </li>
                                         <li className="flex items-center gap-2">
                                             <CheckIcon className="w-4 h-4 fill-primary" />
-                                            Priority support
+                                            Contenidos curriculares
                                         </li>
                                     </ul>
                                 </div>
                             </CardContent>
                             <CardFooter>
-                                <Button className="w-full">Get started</Button>
+                                <Button className="w-full">Planificar</Button>
                             </CardFooter>
                         </Card>
                     </div>
@@ -78,39 +78,39 @@ export default function Servicios() {
                 <div className="container grid gap-6 md:gap-8 px-4 md:px-6 max-w-6xl mx-auto">
                     <div className="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8">
                         <div className="grid gap-1">
-                            <h1 className="text-2xl font-bold tracking-tight">Comparison</h1>
-                            <p className="text-muted-foreground">See how our plans compare to find the best fit.</p>
+                            <h1 className="text-3xl font-bold tracking-tight">Comparativa</h1>
+                            <p className="text-muted-foregroundfont-semibold">Conoce la diferencia entre todos estos planes</p>
                         </div>
                     </div>
                     <div className="overflow-x-auto">
                         <table className="w-full text-left">
                             <thead>
                                 <tr className="border-b">
-                                    <th className="py-4 pr-4 font-medium">Features</th>
-                                    <th className="py-4 pr-4 font-medium">Starter</th>
-                                    <th className="py-4 pr-4 font-medium">Pro</th>
+                                    <th className="py-4 pr-4 font-medium">Contenidos</th>
+                                    <th className="py-4 pr-4 font-medium">Planes de Clase y de Unidad</th>
+                                    <th className="py-4 pr-4 font-medium">Plan Anual</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr className="border-b">
-                                    <td className="py-4 pr-4">Projects</td>
-                                    <td className="py-4 pr-4">5</td>
-                                    <td className="py-4 pr-4">Unlimited</td>
+                                    <td className="py-4 pr-4">Secuencia didáctica</td>
+                                    <td className="py-4 pr-4">Única para cada plan de clase</td>
+                                    <td className="py-4 pr-4">Estandar para los contenidos</td>
                                 </tr>
                                 <tr className="border-b">
-                                    <td className="py-4 pr-4">Storage</td>
-                                    <td className="py-4 pr-4">1 GB</td>
-                                    <td className="py-4 pr-4">50 GB</td>
+                                    <td className="py-4 pr-4">Contenidos</td>
+                                    <td className="py-4 pr-4">Currículo enriquecido</td>
+                                    <td className="py-4 pr-4">Currículo dominicano</td>
                                 </tr>
                                 <tr className="border-b">
-                                    <td className="py-4 pr-4">Support</td>
-                                    <td className="py-4 pr-4">Basic</td>
-                                    <td className="py-4 pr-4">Priority</td>
+                                    <td className="py-4 pr-4">Componentes adicionales</td>
+                                    <td className="py-4 pr-4">Recursos, actividades de evaluacion y preguntas esenciales</td>
+                                    <td className="py-4 pr-4">No incluidos</td>
                                 </tr>
                                 <tr>
-                                    <td className="py-4 pr-4">Price</td>
-                                    <td className="py-4 pr-4">$9/month</td>
-                                    <td className="py-4 pr-4">$49/month</td>
+                                    <td className="py-4 pr-4">Precio</td>
+                                    <td className="py-4 pr-4">$50DOP /por plan</td>
+                                    <td className="py-4 pr-4">$800DOP /por grado</td>
                                 </tr>
                             </tbody>
                         </table>

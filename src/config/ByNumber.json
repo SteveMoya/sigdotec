@@ -1,18 +1,18 @@
 [
     {
-    "name": "Created projects",
-    "number": 12
+    "name": "Tipos de planes",
+    "number": 3
     },
     {
-    "name": "Projects",
-    "number": 200
+    "name": "Ahorraras a la semana",
+    "number": "+8h"
     },
     {
-    "name": "Happy Client",
-    "number": 120
+    "name": "Por cada plan",
+    "number": "$50"
     },
     {
-    "name": "Years",
-    "number": 5
+    "name": "Asignaturas",
+    "number": 6
     }
 ]

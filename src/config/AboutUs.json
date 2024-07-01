@@ -1,12 +1,12 @@
 [
     {
         "title": "Mission",
-        "description": "Lorem ipsum dolor sit amet consectetur",
+        "description": "Aproximar la Inteligencia Artifical (IA) y las últimas tecnologias al quehacer docente para facilitar la labor pedagógica de los educadores.",
         "icon": "mdi:lightning-bolt-outline"
     },
     {
         "title": "Vision",
-        "description": "Lorem ipsum dolor sit amet consectetur",
+        "description": "Construir entornos de aprendizaje enriquecedores impulsados por la tecnología para apoyar a los educadores y el desarrollo de los alumnos",
         "icon": "mdi:eye-outline"
     }
 ]
