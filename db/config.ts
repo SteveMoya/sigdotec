@@ -18,20 +18,21 @@ const User = defineTable({
     balance: column.number({ optional: false, default: 0 }),
   },
 });
-// const Demographic = defineTable({
-//   columns: {
-//     id: column.text({ optional: false, unique: true, primaryKey: true}),
-//     userId: column.text({ optional: false, references: () => User.columns.id }),
-//     age: column.number({ optional: false }),
-//     gender: column.text({
-//       optional: false,
-//     }),
-//     province: column.text({ optional: false}),
-//     country: column.text({ optional: false}),
-//     workingPlace: column.text({optional: false}),
-//     subject: column.text({optional: false}),
-//   }
-// })
+
+const Demographic = defineTable({
+  columns: {
+    id: column.text({ optional: false, unique: true, primaryKey: true}),
+    userId: column.text({ optional: false, references: () => User.columns.id }),
+    age: column.number({ optional: false }),
+    gender: column.text({
+      optional: false,
+    }),
+    province: column.text({ optional: false}),
+    country: column.text({ optional: false}),
+    workingPlace: column.text({optional: false}),
+    subject: column.text({optional: false}),
+  }
+})
 
 const Session = defineTable({
   columns: {
@@ -46,5 +47,6 @@ export default defineDb({
   tables: {
     User,
     Session,
+    Demographic,
   },
 });

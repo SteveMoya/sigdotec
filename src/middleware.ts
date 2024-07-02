@@ -67,7 +67,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
         }
       }
     
-    if (context.url.pathname.startsWith(protectedRoutesPrefix) || context.url.pathname.startsWith(adminRoutes)){
+  if (context.url.pathname.startsWith(protectedRoutesPrefix) || context.url.pathname.startsWith(adminRoutes) || context.url.pathname.startsWith(redirectRoutes[0]) || context.url.pathname.startsWith(redirectRoutes[1])){
       if (!user?.emailVerificated) {
         return context.redirect(verificationRoute);
       }

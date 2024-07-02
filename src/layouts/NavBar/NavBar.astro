@@ -7,9 +7,7 @@ import Button from '@components/ui/Button.astro'
 // ! TODO: Colocar animacion Scroll con CSS Nativo
 const position = 'left'
 
-// const session: Session | null = await getSession(Astro.request)
 
-// import Avatar from '@components/ui/Avatar.astro'
 
 import NavItems from '@config/NavItems.json'
 import Avatar from '@/components/ui/Avatar.astro'
@@ -86,7 +84,7 @@ const user = Astro.locals.user
           ) : (
             <>
               <span class='rtl:ml-0 rtl:mr-4 py-2.5 px-5.5 font-semibold shadow-none text-sm w-auto'>
-                  <Button variant='primary' href='/login'>Login</Button>
+                  <Button variant='primary' href='/login'>Iniciar Sesión</Button>
               </span>
               <span class='rtl:ml-0 rtl:mr-4 py-2.5 px-5.5 font-semibold shadow-none text-sm w-auto'>
                   <Button variant='secondary' href='/register'>Registrarse</Button>

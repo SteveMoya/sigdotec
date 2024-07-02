@@ -5,11 +5,15 @@ import { db, eq, User } from "astro:db";
 // import { Argon2id } from "oslo/password";
 import argon2id from 'argon2'
 export async function POST(context: APIContext): Promise<Response> {
-  //read the form data
-  const formData = await context.request.formData();
-  const username = formData.get("username");
-  const password = formData.get("password");
-  //validate the data
+  const body = await context.request.json();
+  if (body === null) {
+    return new Response("Invalid request body", {
+      status: 400,
+    });
+  }
+  console.log(body);
+  const { username, password } = body;
+
   if (typeof username !== "string") {
     return new Response("Invalid username", {
       status: 400,

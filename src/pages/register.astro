@@ -1,6 +1,11 @@
 ---
+import { SignUpForm } from "@/components/Register";
+
 import Logo from "@/components/ui/Logo.astro";
+import { Button } from "@/components/ui/button";
 import Layout from "@layouts/Layout.astro";
+import { Icon } from "astro-icon/components";
+import { Toaster } from "sonner";
 // import { RegisterB } from "@components/App/RegisterB";
 // import { SignUpForm } from "@components/Register.tsx";
 
@@ -12,92 +17,83 @@ console.log(user);
   title="Registrate"
   description="Aqui te puedes registrar en para que puedas acceder tus planes de clase"
 >
-  <!-- <SignUpForm client:load /> -->
-  <section class="bg-gray-50 dark:bg-gray-900">
-    <div
-      class="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0"
-    >
-      <a
-        href="#"
-        class="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white"
-      >
-        <Logo variant="primary" size="w-32" />
-      </a>
-      <div
-        class="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700"
-      >
-        <div class="p-6 space-y-4 md:space-y-6 sm:p-8">
-          <h1
-            class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white"
-          >
-            Sign Up in to your account
-          </h1>
-          <form
-            class="space-y-4 md:space-y-6"
-            method="POST"
-            action="/api/auth/signup"
-          >
-            <div>
-              <label
-                for="username"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >Your username</label
-              >
-              <input
-                type="text"
-                name="username"
-                id="username"
-                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                required=""
-              />
-            </div>
-            <div>
-              <label
-                for="email"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >Your email</label
-              >
-              <input
-                type="text"
-                name="email"
-                id="email"
-                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                required=""
-              />
-            </div>
-            <div>
-              <label
-                for="password"
-                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                >Password</label
-              >
-              <input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="••••••••"
-                class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                required=""
-              />
-            </div>
 
-            <button
-              type="submit"
-              class="w-full text-white bg-pink-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
-              >Sign Up</button
+  <section>
+    <div
+      class="mx-auto max-w-lg space-y-6 border rounded-2xl p-6 dark:bg-gray-800 bg-gray-200 shadow-2xl dark:border-gray-700 border-gray-300"
+    >
+      <div class="space-y-2 text-center">
+        <div class="flex justify-center mb-4">
+          <Logo variant="primary" size="w-32" />
+        </div>
+        <h1 class="text-3xl font-bold bg-gradient-text">Registrarte</h1>
+        <p class="text-muted-foreground">
+          Crear una cuenta para crear tus planes de clase
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <SignUpForm client:load />
+
+        <div class="grid grid-cols-3 gap-4">
+          <a href="/api/auth/facebook">
+          
+            <Button
+              client:load
+              variant="outline"
+              className="w-full dark:hover:bg-[#3b5998] hover:bg-[#3b5998] hover:text-white"
             >
-            <p class="text-sm font-light text-gray-500 dark:text-gray-400">
-              already have an account? <a
-                href="/signin"
-                class="font-medium text-primary-600 hover:underline dark:text-primary-500"
-                >Sign In</a
-              >
-            </p>
-          </form>
+              <Icon name="mdi:facebook" class="mr-2 h-6 w-6" />
+  
+              Facebook
+            </Button>
+          </a>
+          <a href="/api/auth/github">
+            <Button
+              client:load
+              variant="outline"
+              className="w-full hover:text-white dark:hover:bg-[#333] hover:bg-[#333]"
+            >
+              <Icon name="mdi:github" class="mr-2 h-6 w-6 text-xl" />
+              GitHub
+            </Button>
+          </a>
+          <a href="/api/auth/google">
+            <Button
+              client:load
+              variant="outline"
+              className="w-full hover:text-white dark:hover:bg-[#ea4335] hover:bg-[#ea4335]"
+            >
+              <Icon name="mdi:google" class="mr-2 h-6 w-6" />
+              Google
+            </Button>
+          </a>
+        </div>
+        <div class="flex justify-between">
+          <p>
+            ¿Ya tienes una cuenta?
+            <a
+              href="/login"
+              class="inline-block text-sm underline hover:text-primary-800"
+            >
+              Iniciar Sesión
+            </a>
+          </p>
         </div>
       </div>
     </div>
   </section>
-
+  <Toaster
+    richColors
+    closeButton
+    toastOptions={{
+      classNames: {
+        success: "bg-success-600",
+        error: "bg-danger-600",
+        loading: "bg-secondary-200",
+      },
+    }}
+    client:only
+  />
   <!-- <RegisterB />  -->
 </Layout>

@@ -5,12 +5,13 @@ import { lucia } from "@/lib/auth/lucia";
 import argon2id from 'argon2'
 // import { SignUpSchema } from "@/schemas/authentification";
 export async function POST(context: APIContext): Promise<Response> {
-  //Parse the form data
-  const formData = await context.request.formData();
-  const username = formData.get("username");
-  const email = formData.get("email")
-  const password = formData.get("password");
-  //Validate the form data
+  const body = await context.request.json();
+  if (body === null) {
+    return new Response("Invalid request body", {
+      status: 400,
+    });
+  }
+  const { username, email, password } = body;
 
   if (!username || !password || !email) {
     return new Response("Invalid request", { status: 400 });
