@@ -1,5 +1,0 @@
-export const provincias: string[] = [ 'Azúa', 'Baoruco', 'Barahona', 'Dajabón',
-'Distrito Nacional', 'Duarte', 'Elías Pina', 'El Seibo', 'Espaillat', 'Hato Mayor', 'Independencia', 'La Altagracia', 'La Romana', 'La Vega', 'Maria Trinidad Sanchez', 'Monseñor Nouel', 'Monte Cristi', 'Monte Plata',
-'Pedernales', 'Peravia', 'Puerto Plata', 'Salcedo', 'Samana', 'Sánchez Ramírez',
-'San Cristobal', 'San Jose de Ocoa', 'San Juan', 'San Pedro de Macorís',
-'Santiago', 'Santiago Rodríguez', 'Santo Domingo', 'Valverde' ]

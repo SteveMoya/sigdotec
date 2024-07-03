@@ -6,6 +6,7 @@ const User = defineTable({
   columns: {
     id: column.text({ primaryKey: true, optional: false, unique: true }),
     username: column.text({ unique: true, optional: false }),
+    createdAt: column.date({ optional: false, default: new Date() }),
     userimage: column.text({
       optional: true
     }),
@@ -38,6 +39,7 @@ const Session = defineTable({
   columns: {
     id: column.text({ optional: false, unique: true }),
     userId: column.text({ optional: false, references: () => User.columns.id }),
+    createdAt: column.date({ optional: false, default: new Date() }),
     expiresAt: column.number({ optional: false }),
     //     device: column.text({ optional: false,})
   },
