@@ -49,7 +49,7 @@ export function SignUpForm() {
             } else {
                 toast.error("Credenciales Invitalidas.")
             }
-            window.location.reload()
+            window.location.href = 'auth/datos-demograficos'
 
         } catch (error) {
             console.log(error)

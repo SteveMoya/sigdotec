@@ -16,11 +16,9 @@ if (user.emailVerificated) {
 
 try {
   const token = await createVerificationToken(user.email);
-  console.log(token);
 
   if (Astro.request.method === "POST") {
     try {
-      console.log("AQUI DEBERIA DE Comenzar");
       await sendEmailVerificationEmail(user.email, token.toString());
       return Astro.redirect("/auth/email-verification", 302); // Redirige después de enviar el correo
     } catch (error) {

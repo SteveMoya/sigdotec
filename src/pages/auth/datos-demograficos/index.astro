@@ -1,0 +1,81 @@
+---
+import { createVerificationToken } from "@/lib/auth/lucia";
+
+import Layout from "@layouts/Layout.astro";
+import DemografyForm from "@/components/DemografyForm";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { db } from "astro:db";
+import { Demographic } from "astro:db";
+import { generateId } from "lucia";
+import { User } from "astro:db";
+import { eq } from "astro:db";
+
+const user = Astro.locals.user;
+
+if (!user) {
+  return Astro.redirect("/login", 302);
+}
+
+try {
+  if (Astro.request.method === "POST") {
+    const body = await Astro.request.json();
+    const { age, province, workingPlace, subject, gender } = body;
+    if (!age || !province || !workingPlace || !subject || !gender) {
+      return new Response("Faltan campos por completar", { status: 400 });
+    }
+    const existingDemographic = (
+      await db.select().from(Demographic).where(eq(Demographic.id, user.id))
+    ).at(0);
+    if (existingDemographic) {
+      return new Response("Ya has completado tu información demográfica", {
+        status: 400,
+      });
+    }
+    try {
+      await db.insert(Demographic).values([
+        {
+          id: user.id,
+          userId: user.id,
+          age: Number(age),
+          province: String(province),
+          workingPlace: String(workingPlace),
+          subject: String(subject),
+          gender: String(gender),
+        },
+      ]);
+
+      return Astro.redirect("/app/", 302);
+    } catch (error) {
+      console.log(error);
+      return new Response("Error al enviar tu email de Verificación", {
+        status: 400,
+      });
+    }
+  }
+
+  // Renderiza la página de verificación de correo electrónico aquí
+} catch (error) {
+  console.error(error);
+  return new Response("Error interno del servidor", { status: 500 });
+}
+---
+
+<Layout>
+  <div class="flex justify-center content-center my-[6dvh]">
+    <Card className="w-full max-w-2xl">
+      <CardHeader>
+        <CardTitle>Datos Demográficos</CardTitle>
+        <CardDescription>
+          Completa la información sobre tu perfil docente.
+        </CardDescription>
+      </CardHeader>
+      <DemografyForm client:load />
+    </Card>
+  </div>
+</Layout>

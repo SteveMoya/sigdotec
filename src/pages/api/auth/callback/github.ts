@@ -66,7 +66,7 @@ export async function GET(context: APIContext): Promise<Response> {
             sessionCookie.value,
             sessionCookie.attributes
         );
-        return context.redirect("/app/");
+        return context.redirect("/auth/datos-demograficos");
     } catch (e) {
         // the specific error message depends on the provider
         if (e instanceof OAuth2RequestError) {

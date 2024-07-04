@@ -39,19 +39,31 @@ export const SignInSchema = z.object({
 
 // !TODO: Terminar Schema
 
+export const provinces = [
+    'Azua', 'Baoruco', 'Barahona', 'Dajabón', 'Distrito Nacional', 'Duarte', 'Elías Pina', 'El Seibo', 'Espaillat', 'Hato Mayor', 'Independencia', 'La Altagracia', 'La Romana', 'La Vega', 'Maria Trinidad Sanchez', 'Monseñor Nouel', 'Monte Cristi', 'Monte Plata', 'Pedernales', 'Peravia', 'Puerto Plata', 'Salcedo', 'Samana', 'Sánchez Ramírez', 'San Cristobal', 'San Jose de Ocoa', 'San Juan', 'San Pedro de Macorís','Santiago', 'Santiago Rodríguez', 'Santo Domingo', 'Valverde'
+] as const
+
+export const subjects = [
+    'Matemática Primaria', 'Matemática Secundaria', 'Lengua Española Primaria', 'Lengua Española Secundaria', 'Ciencias Naturales Primaria', 'Ciencias Naturales Secundaria', 'Ciencias Sociales Primaria', 'Ciencias Sociales Secundaria', 'Formación Humana', 'Ingles Primaria', 'Ingles Secundaria', 'Frances Primaria', 'Frances Secundaria', 'Educación Informatica Primaria', 'Educación Informatica Secundaria', 'Educación Artística Primaria', 'Educación Artística Secundaria', 'Educación Física Primaria', 'Educación Física Secundaria'
+] as const
+
+export const gender = [
+    'Masculino', 'Femenino', 'Otro'
+] as const
+
 export const DemographicSchema = z.object({
-    age: z.number().int().min(18, { message: "Tienes que ser mayor de 18 años" }).max(120, { message: "Tienes que ser menor de 120 años" })
-        .refine((data) => data % 1 === 0, {
-            message: "La edad tiene que ser un numero entero",
-        })
-        .refine((data) => new Date().getFullYear() - data >= 18, {
-            message: "Tienes que ser mayor de 18 años",
-        })
-        .refine((data) => new Date().getFullYear() - data < 120, {
-            message: "Tienes que ser menor de 120 años",
+    age: z.number({
+        message: "La edad tiene que ser un numero",
+    }).int({message:
+        "La edad tiene que ser un numero entero"
+    }).min(18, { message: "Tienes que ser mayor de 18 años" }).max(120, { message: "Tienes que ser menor de 120 años" })
+        .refine((data) => data >= 0, {
+            message: "La edad no puede ser un numero negativo",
         }),
-    province: z.enum(['Azua', 'Baoruco', 'Barahona', 'Dajabón', 'Distrito Nacional', 'Duarte', 'Elías Pina', 'El Seibo', 'Espaillat', 'Hato Mayor', 'Independencia', 'La Altagracia', 'La Romana', 'La Vega', 'Maria Trinidad Sanchez', 'Monseñor Nouel', 'Monte Cristi', 'Monte Plata', 'Pedernales', 'Peravia', 'Puerto Plata', 'Salcedo', 'Samana', 'Sánchez Ramírez', 'San Cristobal', 'San Jose de Ocoa', 'San Juan', 'San Pedro de Macorís','Santiago', 'Santiago Rodríguez', 'Santo Domingo', 'Valverde']),
-    gender: z.enum(["hombre", "mujer"]),
+    province: z.enum(provinces, { message: "La provincia tiene que ser una de las provincias de la lista" }),
+    gender: z.enum(["Masculino", "Femenino","Otro"],{
+        message: "El genero tiene que ser uno de los generos de la lista"
+    }),
     workingPlace: z.string().min(2, { message: "El lugar de trabajo tiene que tener un minimo de 2 caracteres" }).max(50, { message: "El lugar de trabajo tiene que tener un maximo de 50 caracteres" }),
-    subject: z.enum(["Matemática Primaria", "Matemática Secundaria", "Lengua Española Primaria", "Lengua Española Secundaria", "Ciencias Naturales Primaria", "Ciencias Naturales Secundaria", "Ciencias Sociales Primaria", "Ciencias Sociales Secundaria", "Formación Humana", "Ingles", "Frances", "Informatica", "Educación Artística", "Educación Física"], { message: "La materia tiene que ser una de las materias de la lista" }),
+    subject: z.enum(subjects, { message: "La materia tiene que ser una de las materias de la lista" }),
 })

@@ -29,7 +29,6 @@ const Demographic = defineTable({
       optional: false,
     }),
     province: column.text({ optional: false}),
-    country: column.text({ optional: false}),
     workingPlace: column.text({optional: false}),
     subject: column.text({optional: false}),
   }
