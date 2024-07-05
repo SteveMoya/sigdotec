@@ -14,12 +14,14 @@ export const SignUpSchema = z
             .min(8, { message: "La contraseña tiene que ser de un minimo de 8 caracteres" }),
         confirmPassword: z
             .string()
-            .min(8, { message: "La contraseña tiene que ser de un minimo de 8 caracteres" }),
-    })
-    .refine((data) => data.password === data.confirmPassword, {
-        message: "Las contraseñas no son iguales",
-        path: ["confirmPassword"],
-    })
+            .min(8, { message: "La contraseña tiene que ser de un minimo de 8 caracteres" })
+            
+    }).refine(
+        (data) => data.password === data.confirmPassword,
+        {
+            message: "Las contraseñas no son iguales",
+        }
+    )
 
 export const SignInSchema = z.object({
     username: z.string({ message: "el nombre del usuario tiene que tener letras" }).min(2, {
@@ -36,8 +38,32 @@ export const SignInSchema = z.object({
         }),
 })
 
+export const ResetPasswordSchema = z.object({
+    email: z.string().email({ message: "El email tiene que ser valido" }),
+})
 
-// !TODO: Terminar Schema
+export const ChangePasswordSchema = z.object({
+    lastPassword: z.string().min(8, { message: "La contraseña tiene que ser de un minimo de 8 caracteres" }),
+    newPassword: z
+        .string()
+        .min(8, { message: "La contraseña tiene que ser de un minimo de 8 caracteres" })
+        .refine((data) => !/^\d+$/.test(data), {
+            message: "La contraseña no puede ser una sucesion de numeros",
+        }),
+    confirmPassword: z
+        .string()
+        .min(8, { message: "La contraseña tiene que ser de un minimo de 8 caracteres" }),
+       
+        logoutFromOtherDevices: z.boolean(),
+}).refine(
+    (data) => data.newPassword === data.confirmPassword,
+    {
+        message: "Las contraseñas no son iguales",
+    }
+).refine((data) => data.lastPassword !== data.newPassword, {
+    message: "La nueva contraseña no puede ser igual a la anterior",
+})
+
 
 export const provinces = [
     'Azua', 'Baoruco', 'Barahona', 'Dajabón', 'Distrito Nacional', 'Duarte', 'Elías Pina', 'El Seibo', 'Espaillat', 'Hato Mayor', 'Independencia', 'La Altagracia', 'La Romana', 'La Vega', 'Maria Trinidad Sanchez', 'Monseñor Nouel', 'Monte Cristi', 'Monte Plata', 'Pedernales', 'Peravia', 'Puerto Plata', 'Salcedo', 'Samana', 'Sánchez Ramírez', 'San Cristobal', 'San Jose de Ocoa', 'San Juan', 'San Pedro de Macorís','Santiago', 'Santiago Rodríguez', 'Santo Domingo', 'Valverde'

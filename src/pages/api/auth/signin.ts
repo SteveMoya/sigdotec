@@ -4,6 +4,7 @@ import type { APIContext } from "astro";
 import { db, eq, User } from "astro:db";
 // import { Argon2id } from "oslo/password";
 import argon2id from 'argon2'
+
 export async function POST(context: APIContext): Promise<Response> {
   const body = await context.request.json();
   if (body === null) {
@@ -11,7 +12,6 @@ export async function POST(context: APIContext): Promise<Response> {
       status: 400,
     });
   }
-  console.log(body);
   const { username, password } = body;
 
   if (typeof username !== "string") {
@@ -63,5 +63,6 @@ export async function POST(context: APIContext): Promise<Response> {
     sessionCookie.value,
     sessionCookie.attributes
   );
+
   return context.redirect("/app/");
 }
