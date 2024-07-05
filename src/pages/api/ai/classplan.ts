@@ -1,16 +1,21 @@
-import type { APIRoute } from "astro";
+import type { APIContext, APIRoute } from "astro";
 
 import classplanmock from '@mocks/classplan.json';
 // import { PlanService } from "@services/plans.services";
 import { CLASS_PRICE } from "@src/utils";
+import { db, eq, User } from "astro:db";
 
-export const POST: APIRoute = async ({ request, cookies }) => {
+export async function POST(context: APIContext): Promise<Response> {
     const data = classplanmock;
-    
-    const body = await request.json(); 
-    const amount = Number(cookies.get("authjs.amount")?.value).toFixed(2)
+    const user = context.locals.user;
+    if (!user) {
+        return new Response("Unauthorized", { status: 401 });
+    }
+
+    const body = await context.request.json(); 
+    const amount = user.balance;
     if (!amount) {
-        return new Response(JSON.stringify({ error: "Amount es requerido" }), {
+        return new Response(JSON.stringify({ error: "Balance requerido" }), {
             headers: { "content-type": "application/json" },
             status: 400,
         });
@@ -23,14 +28,10 @@ export const POST: APIRoute = async ({ request, cookies }) => {
     }
     try {
         // const data = await PlanService.getPlanClass(body);
-        const newAmount = Number(amount) - CLASS_PRICE;
-        cookies.set("authjs.amount", newAmount.toFixed(2), {
-            sameSite: "strict",
-            path: "/",
-            secure: true,
-            httpOnly: true,
-            expires: new Date(Date.now() + 1000 * 60 * 60 * 24 * 365),
-        });
+        
+        // Aqui actualizamos el balance del usuario
+        await db.update(User).set({ balance: (Number(amount) - CLASS_PRICE) }).where(eq(User.id, user.id));
+        
         return new Response(JSON.stringify(data), {
             headers: { "content-type": "application/json" },
             status: 200,

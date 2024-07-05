@@ -1,660 +1,252 @@
 ---
-import AppLayout from '@layouts/App/AppLayout.astro'
+import AppLayout from "@layouts/App/AppLayout.astro";
+import Avatar from "@components/ui/Avatar.astro";
 
-const user = Astro.locals.user
+import DemografyItem from "@components/ui/DemografyItem.astro";
 
+const user = Astro.locals.user;
+if (!user) {
+  return Astro.redirect("/login", 302);
+}
 
+// Aqui buscamos los datos del usuario en la base de datos
+import { db, eq, Demographic } from "astro:db";
+const userDemografy = (
+  await db.select().from(Demographic).where(eq(Demographic.id, user.id))
+).at(0);
+
+const demografydata = [
+  {
+    title: "Nombre del usuario",
+    value: user?.username || "No username",
+  },
+  {
+    title: "Fecha de Creacion",
+    value: user?.createdAt || "No creation date",
+  },
+  {
+    title: "Correo Electronico",
+    value: user?.email || "No email",
+  },
+  {
+    title: "Edad",
+    value: userDemografy?.age || "No age",
+  },
+  {
+    title: "Genero",
+    value: userDemografy?.gender || "No gender",
+  },
+  {
+    title: "Provincia",
+    value: userDemografy?.province || "No province",
+  },
+  {
+    title: "Lugar de Trabajo",
+    value: userDemografy?.workingPlace || "No working place",
+  },
+  {
+    title: "Asignatura Impartida",
+    value: userDemografy?.subject || "No subject",
+  },
+  {
+    title: "Rol",
+    value: user?.role || "No role",
+  },
+];
 ---
 
-<AppLayout title='Perfil' description='Cambia tu configuracion de Perfil'>
-  <div class='grid grid-cols-1 px-4 xl:grid-cols-3 xl:gap-4'>
-    <div class='mb-4 col-span-full xl:mb-2'>
+<AppLayout title="Perfil" description="Cambia tu configuracion de Perfil">
+  <div class="grid grid-cols-1 px-4 xl:grid-cols-3 xl:gap-4">
+    <div class="mb-4 col-span-full xl:mb-2">
       <h1
-        class='text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white'
+        class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white"
       >
         Configuracion del Usuario
       </h1>
     </div>
     <!-- Right Content -->
-    <div class='col-span-full xl:col-auto'>
+    <div class="col-span-full xl:col-auto">
       <div
-        class='p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800'
+        class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800"
       >
         <div
-          class='items-center sm:flex xl:block 2xl:flex sm:space-x-4 xl:space-x-0 2xl:space-x-4'
+          class="items-center sm:flex xl:block 2xl:flex sm:space-x-4 xl:space-x-0 2xl:space-x-4"
         >
-        {
-          user?.userimage && (
-            <img
-            class='mb-4 rounded-lg w-28 h-28 sm:mb-0 xl:mb-4 2xl:mb-0'
-            src={user?.userimage}
-            alt={user?.username}
-          />
-          )
-        }
           <div>
-            <h3 class='mb-1 text-xl font-bold text-gray-900 dark:text-white'>
-              Profile picture
+            <h3 class="mb-1 text-xl font-bold text-gray-900 dark:text-white">
+              Foto de Perfil
             </h3>
-            <div class='mb-4 text-sm text-gray-500 dark:text-gray-400'>
-              JPG, GIF or PNG. Max size of 800K
-            </div>
-            <div class='flex items-center space-x-4'>
-              <button
-                type='button'
-                class='inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800'
-              >
-                <svg
-                  class='w-4 h-4 mr-2 -ml-1'
-                  fill='currentColor'
-                  viewBox='0 0 20 20'
-                  xmlns='http://www.w3.org/2000/svg'
-                  ><path
-                    d='M5.5 13a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 13H11V9.413l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13H5.5z'
-                  ></path><path d='M9 13h2v5a1 1 0 11-2 0v-5z'></path></svg
-                >
-                Upload picture
-              </button>
-              <button
-                type='button'
-                class='py-2 px-3 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700'
-              >
-                Delete
-              </button>
-            </div>
           </div>
+          {
+            user?.userimage ? (
+              <Avatar
+                src={user?.userimage}
+                alt={user?.username ?? ""}
+                className="mb-4 rounded-lg w-28 h-28 sm:mb-0 xl:mb-4 2xl:mb-0"
+              />
+            ) : (
+              <Avatar
+                alt={user?.username ?? ""}
+                className="mb-4 rounded-lg w-28 h-28 sm:mb-0 xl:mb-4 2xl:mb-0"
+              />
+            )
+          }
         </div>
       </div>
       <div
-        class='p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800'
+        class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800"
       >
-        <h3 class='mb-4 text-xl font-semibold dark:text-white'>
-          Language &amp; Time
+        <h3 class="mb-4 text-xl font-semibold dark:text-white">
+          Cambiar Contraseña
         </h3>
-        <div class='mb-4'>
-          <label
-            for='settings-language'
-            class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-            >Select language</label
-          >
-          <select
-            id='settings-language'
-            name='countries'
-            class='bg-gray-50 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
-          >
-            <option>English (US)</option>
-            <option>Italiano</option>
-            <option>Français (France)</option>
-            <option>正體字</option>
-            <option>Español (España)</option>
-            <option>Deutsch</option>
-            <option>Português (Brasil)</option>
-          </select>
-        </div>
-        <div class='mb-6'>
-          <label
-            for='settings-timezone'
-            class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-            >Time Zone</label
-          >
-          <select
-            id='settings-timezone'
-            name='countries'
-            class='bg-gray-50 border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
-          >
-            <option>GMT+0 Greenwich Mean Time (GMT)</option>
-            <option>GMT+1 Central European Time (CET)</option>
-            <option>GMT+2 Eastern European Time (EET)</option>
-            <option>GMT+3 Moscow Time (MSK)</option>
-            <option>GMT+5 Pakistan Standard Time (PKT)</option>
-            <option>GMT+8 China Standard Time (CST)</option>
-            <option>GMT+10 Eastern Australia Standard Time (AEST)</option>
-          </select>
-        </div>
-        <div>
-          <button
-            class='text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800'
-            >Save all</button
-          >
-        </div>
-      </div>
-    </div>
-    <div class='col-span-2'>
-      <div
-        class='p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800'
-      >
-        <h3 class='mb-4 text-xl font-semibold dark:text-white'>
-          General information
-        </h3>
-        <form action='#'>
-          <div class='grid grid-cols-6 gap-6'>
-            <div class='col-span-6 sm:col-span-3'>
+        <form action="#">
+          <div class="flex flex-col gap-6">
+            <div class="col-span-6 sm:col-span-3">
               <label
-                for='first-name'
-                class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-                >First Name</label
+                for="current-password"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Contraseña Anterior</label
               >
               <input
-                type='text'
-                name='first-name'
-                id='first-name'
-                class='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
-                placeholder='Bonnie'
-                required=''
+                type="text"
+                name="current-password"
+                id="current-password"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                placeholder="••••••••"
+                required=""
               />
             </div>
-            <div class='col-span-6 sm:col-span-3'>
+            <div class="col-span-6 sm:col-span-3">
               <label
-                for='last-name'
-                class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-                >Last Name</label
+                for="password"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Nueva Contraseña</label
               >
               <input
-                type='text'
-                name='last-name'
-                id='last-name'
-                class='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
-                placeholder='Green'
-                required=''
-              />
-            </div>
-            <div class='col-span-6 sm:col-span-3'>
-              <label
-                for='country'
-                class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-                >Country</label
-              >
-              <input
-                type='text'
-                name='country'
-                id='country'
-                class='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
-                placeholder='United States'
-                required=''
-              />
-            </div>
-            <div class='col-span-6 sm:col-span-3'>
-              <label
-                for='city'
-                class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-                >City</label
-              >
-              <input
-                type='text'
-                name='city'
-                id='city'
-                class='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
-                placeholder='e.g. San Francisco'
-                required=''
-              />
-            </div>
-            <div class='col-span-6 sm:col-span-3'>
-              <label
-                for='address'
-                class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-                >Address</label
-              >
-              <input
-                type='text'
-                name='address'
-                id='address'
-                class='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
-                placeholder='e.g. California'
-                required=''
-              />
-            </div>
-            <div class='col-span-6 sm:col-span-3'>
-              <label
-                for='email'
-                class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-                >Email</label
-              >
-              <input
-                type='email'
-                name='email'
-                id='email'
-                class='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
-                placeholder='example@company.com'
-                required=''
-              />
-            </div>
-            <div class='col-span-6 sm:col-span-3'>
-              <label
-                for='phone-number'
-                class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-                >Phone Number</label
-              >
-              <input
-                type='number'
-                name='phone-number'
-                id='phone-number'
-                class='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
-                placeholder='e.g. +(12)3456 789'
-                required=''
-              />
-            </div>
-            <div class='col-span-6 sm:col-span-3'>
-              <label
-                for='birthday'
-                class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-                >Birthday</label
-              >
-              <input
-                type='number'
-                name='birthday'
-                id='birthday'
-                class='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
-                placeholder='15/08/1990'
-                required=''
-              />
-            </div>
-            <div class='col-span-6 sm:col-span-3'>
-              <label
-                for='organization'
-                class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-                >Organization</label
-              >
-              <input
-                type='text'
-                name='organization'
-                id='organization'
-                class='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
-                placeholder='Company Name'
-                required=''
-              />
-            </div>
-            <div class='col-span-6 sm:col-span-3'>
-              <label
-                for='role'
-                class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-                >Role</label
-              >
-              <input
-                type='text'
-                name='role'
-                id='role'
-                class='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
-                placeholder='React Developer'
-                required=''
-              />
-            </div>
-            <div class='col-span-6 sm:col-span-3'>
-              <label
-                for='department'
-                class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-                >Department</label
-              >
-              <input
-                type='text'
-                name='department'
-                id='department'
-                class='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
-                placeholder='Development'
-                required=''
-              />
-            </div>
-            <div class='col-span-6 sm:col-span-3'>
-              <label
-                for='zip-code'
-                class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-                >Zip/postal code</label
-              >
-              <input
-                type='number'
-                name='zip-code'
-                id='zip-code'
-                class='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
-                placeholder='123456'
-                required=''
-              />
-            </div>
-            <div class='col-span-6 sm:col-full'>
-              <button
-                class='text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800'
-                type='submit'>Save all</button
-              >
-            </div>
-          </div>
-        </form>
-      </div>
-      <div
-        class='p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800'
-      >
-        <h3 class='mb-4 text-xl font-semibold dark:text-white'>
-          Password information
-        </h3>
-        <form action='#'>
-          <div class='grid grid-cols-6 gap-6'>
-            <div class='col-span-6 sm:col-span-3'>
-              <label
-                for='current-password'
-                class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-                >Current password</label
-              >
-              <input
-                type='text'
-                name='current-password'
-                id='current-password'
-                class='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
-                placeholder='••••••••'
-                required=''
-              />
-            </div>
-            <div class='col-span-6 sm:col-span-3'>
-              <label
-                for='password'
-                class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-                >New password</label
-              >
-              <input
-                data-popover-target='popover-password'
-                data-popover-placement='bottom'
-                type='password'
-                id='password'
-                class='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500'
-                placeholder='••••••••'
-                required=''
+                data-popover-target="popover-password"
+                data-popover-placement="bottom"
+                type="password"
+                id="password"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="••••••••"
+                required=""
               />
               <div
-                data-popover=''
-                id='popover-password'
-                role='tooltip'
-                class='absolute z-10 invisible inline-block text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400'
-                style='position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(477px, 2453px, 0px);'
-                data-popper-placement='bottom'
-                data-popper-reference-hidden=''
-                data-popper-escaped=''
+                data-popover=""
+                id="popover-password"
+                role="tooltip"
+                class="absolute z-10 invisible inline-block text-sm font-light text-gray-500 transition-opacity duration-300 bg-white border border-gray-200 rounded-lg shadow-sm opacity-0 w-72 dark:bg-gray-800 dark:border-gray-600 dark:text-gray-400"
+                style="position: absolute; inset: 0px auto auto 0px; margin: 0px; transform: translate3d(477px, 2453px, 0px);"
+                data-popper-placement="bottom"
+                data-popper-reference-hidden=""
+                data-popper-escaped=""
               >
-                <div class='p-3 space-y-2'>
-                  <h3 class='font-semibold text-gray-900 dark:text-white'>
+                <div class="p-3 space-y-2">
+                  <h3 class="font-semibold text-gray-900 dark:text-white">
                     Must have at least 6 characters
                   </h3>
-                  <div class='grid grid-cols-4 gap-2'>
-                    <div class='h-1 bg-orange-300 dark:bg-orange-400'></div>
-                    <div class='h-1 bg-orange-300 dark:bg-orange-400'></div>
-                    <div class='h-1 bg-gray-200 dark:bg-gray-600'></div>
-                    <div class='h-1 bg-gray-200 dark:bg-gray-600'></div>
+                  <div class="grid grid-cols-4 gap-2">
+                    <div class="h-1 bg-orange-300 dark:bg-orange-400"></div>
+                    <div class="h-1 bg-orange-300 dark:bg-orange-400"></div>
+                    <div class="h-1 bg-gray-200 dark:bg-gray-600"></div>
+                    <div class="h-1 bg-gray-200 dark:bg-gray-600"></div>
                   </div>
                   <p>It’s better to have:</p>
                   <ul>
-                    <li class='flex items-center mb-1'>
+                    <li class="flex items-center mb-1">
                       <svg
-                        class='w-4 h-4 mr-2 text-green-400 dark:text-green-500'
-                        aria-hidden='true'
-                        fill='currentColor'
-                        viewBox='0 0 20 20'
-                        xmlns='http://www.w3.org/2000/svg'
+                        class="w-4 h-4 mr-2 text-green-400 dark:text-green-500"
+                        aria-hidden="true"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
                         ><path
-                          fill-rule='evenodd'
-                          d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
-                          clip-rule='evenodd'></path></svg
+                          fill-rule="evenodd"
+                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                          clip-rule="evenodd"></path></svg
                       >
                       Upper &amp; lower case letters
                     </li>
-                    <li class='flex items-center mb-1'>
+                    <li class="flex items-center mb-1">
                       <svg
-                        class='w-4 h-4 mr-2 text-gray-300 dark:text-gray-400'
-                        aria-hidden='true'
-                        fill='currentColor'
-                        viewBox='0 0 20 20'
-                        xmlns='http://www.w3.org/2000/svg'
+                        class="w-4 h-4 mr-2 text-gray-300 dark:text-gray-400"
+                        aria-hidden="true"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
                         ><path
-                          fill-rule='evenodd'
-                          d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
-                          clip-rule='evenodd'></path></svg
+                          fill-rule="evenodd"
+                          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                          clip-rule="evenodd"></path></svg
                       >
                       A symbol (#$&amp;)
                     </li>
-                    <li class='flex items-center'>
+                    <li class="flex items-center">
                       <svg
-                        class='w-4 h-4 mr-2 text-gray-300 dark:text-gray-400'
-                        aria-hidden='true'
-                        fill='currentColor'
-                        viewBox='0 0 20 20'
-                        xmlns='http://www.w3.org/2000/svg'
+                        class="w-4 h-4 mr-2 text-gray-300 dark:text-gray-400"
+                        aria-hidden="true"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
                         ><path
-                          fill-rule='evenodd'
-                          d='M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z'
-                          clip-rule='evenodd'></path></svg
+                          fill-rule="evenodd"
+                          d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                          clip-rule="evenodd"></path></svg
                       >
                       A longer password (min. 12 chars.)
                     </li>
                   </ul>
                 </div>
                 <div
-                  data-popper-arrow=''
-                  style='position: absolute; left: 0px; transform: translate3d(139px, 0px, 0px);'
+                  data-popper-arrow=""
+                  style="position: absolute; left: 0px; transform: translate3d(139px, 0px, 0px);"
                 >
                 </div>
               </div>
             </div>
-            <div class='col-span-6 sm:col-span-3'>
+            <div class="col-span-6 sm:col-span-3">
               <label
-                for='confirm-password'
-                class='block mb-2 text-sm font-medium text-gray-900 dark:text-white'
-                >Confirm password</label
+                for="confirm-password"
+                class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                >Confimar Nueva Contraseña</label
               >
               <input
-                type='text'
-                name='confirm-password'
-                id='confirm-password'
-                class='shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500'
-                placeholder='••••••••'
-                required=''
+                type="text"
+                name="confirm-password"
+                id="confirm-password"
+                class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                placeholder="••••••••"
+                required=""
               />
             </div>
-            <div class='col-span-6 sm:col-full'>
+            <div class="col-span-6 sm:col-full">
               <button
-                class='text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800'
-                type='submit'>Save all</button
+                class="text-white bg-primary-700 w-full hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800"
+                type="submit">Guardar</button
               >
             </div>
           </div>
         </form>
       </div>
     </div>
-  </div>
-  <div class='grid grid-cols-1 px-4 xl:grid-cols-2 xl:gap-4'>
-    <div
-      class='p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800 xl:mb-0'
-    >
-      <div class='flow-root'>
-        <h3 class='text-xl font-semibold dark:text-white'>
-          Alerts &amp; Notifications
+    <!-- Left Content -->
+    <div class="col-span-2">
+      <div
+        class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800"
+      >
+        <h3 class="mb-4 text-xl font-semibold dark:text-white">
+          Informacion General del Usuario
         </h3>
-        <p class='text-sm font-normal text-gray-500 dark:text-gray-400'>
-          You can set up Themesberg to get notifications
-        </p>
-        <div class='divide-y divide-gray-200 dark:divide-gray-700'>
-          <!-- Item 1 -->
-          <div class='flex items-center justify-between py-4'>
-            <div class='flex flex-col flex-grow'>
-              <div class='text-lg font-semibold text-gray-900 dark:text-white'>
-                Company News
-              </div>
-              <div
-                class='text-base font-normal text-gray-500 dark:text-gray-400'
-              >
-                Get Themesberg news, announcements, and product updates
-              </div>
-            </div>
-            <label class='inline-flex items-center cursor-pointer'>
-              <input type='checkbox' value='' class='sr-only peer' />
-              <div
-                class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
-              >
-              </div>
-            </label>
-          </div>
-          <!-- Item 2 -->
-          <div class='flex items-center justify-between py-4'>
-            <div class='flex flex-col flex-grow'>
-              <div class='text-lg font-semibold text-gray-900 dark:text-white'>
-                Account Activity
-              </div>
-              <div
-                class='text-base font-normal text-gray-500 dark:text-gray-400'
-              >
-                Get important notifications about you or activity you've missed
-              </div>
-            </div>
-            <label class='inline-flex items-center cursor-pointer'>
-              <input type='checkbox' value='' class='sr-only peer' />
-              <div
-                class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
-              >
-              </div>
-            </label>
-          </div>
-          <!-- Item 3 -->
-          <div class='flex items-center justify-between py-4'>
-            <div class='flex flex-col flex-grow'>
-              <div class='text-lg font-semibold text-gray-900 dark:text-white'>
-                Meetups Near You
-              </div>
-              <div
-                class='text-base font-normal text-gray-500 dark:text-gray-400'
-              >
-                Get an email when a Dribbble Meetup is posted close to my
-                location
-              </div>
-            </div>
-            <label class='inline-flex items-center cursor-pointer'>
-              <input type='checkbox' value='' class='sr-only peer' />
-              <div
-                class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
-              >
-              </div>
-            </label>
-          </div>
-          <!-- Item 4 -->
-          <div class='flex items-center justify-between pt-4'>
-            <div class='flex flex-col flex-grow'>
-              <div class='text-lg font-semibold text-gray-900 dark:text-white'>
-                New Messages
-              </div>
-              <div
-                class='text-base font-normal text-gray-500 dark:text-gray-400'
-              >
-                Get Themsberg news, announcements, and product updates
-              </div>
-            </div>
-            <label class='inline-flex items-center cursor-pointer'>
-              <input type='checkbox' value='' class='sr-only peer' />
-              <div
-                class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
-              >
-              </div>
-            </label>
-          </div>
-        </div>
-        <div class='mt-6'>
-          <button
-            class='text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800'
-            >Save all</button
-          >
-        </div>
-      </div>
-    </div>
-    <div
-      class='p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm dark:border-gray-700 sm:p-6 dark:bg-gray-800 xl:mb-0'
-    >
-      <div class='flow-root'>
-        <h3 class='text-xl font-semibold dark:text-white'>
-          Email Notifications
-        </h3>
-        <p class='text-sm font-normal text-gray-500 dark:text-gray-400'>
-          You can set up Themesberg to get email notifications
-        </p>
-        <div class='divide-y divide-gray-200 dark:divide-gray-700'>
-          <!-- Item 1 -->
-          <div class='flex items-center justify-between py-4'>
-            <div class='flex flex-col flex-grow'>
-              <div class='text-lg font-semibold text-gray-900 dark:text-white'>
-                Rating reminders
-              </div>
-              <div
-                class='text-base font-normal text-gray-500 dark:text-gray-400'
-              >
-                Send an email reminding me to rate an item a week after purchase
-              </div>
-            </div>
-            <label class='inline-flex items-center cursor-pointer'>
-              <input type='checkbox' value='' class='sr-only peer' />
-              <div
-                class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
-              >
-              </div>
-            </label>
-          </div>
-          <!-- Item 2 -->
-          <div class='flex items-center justify-between py-4'>
-            <div class='flex flex-col flex-grow'>
-              <div class='text-lg font-semibold text-gray-900 dark:text-white'>
-                Item update notifications
-              </div>
-              <div
-                class='text-base font-normal text-gray-500 dark:text-gray-400'
-              >
-                Send user and product notifications for you
-              </div>
-            </div>
-            <label class='inline-flex items-center cursor-pointer'>
-              <input type='checkbox' value='' class='sr-only peer' />
-              <div
-                class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
-              >
-              </div>
-            </label>
-          </div>
-          <!-- Item 3 -->
-          <div class='flex items-center justify-between py-4'>
-            <div class='flex flex-col flex-grow'>
-              <div class='text-lg font-semibold text-gray-900 dark:text-white'>
-                Item comment notifications
-              </div>
-              <div
-                class='text-base font-normal text-gray-500 dark:text-gray-400'
-              >
-                Send me an email when someone comments on one of my items
-              </div>
-            </div>
-            <label class='inline-flex items-center cursor-pointer'>
-              <input type='checkbox' value='' class='sr-only peer' />
-              <div
-                class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
-              >
-              </div>
-            </label>
-          </div>
-          <!-- Item 4 -->
-          <div class='flex items-center justify-between pt-4'>
-            <div class='flex flex-col flex-grow'>
-              <div class='text-lg font-semibold text-gray-900 dark:text-white'>
-                Buyer review notifications
-              </div>
-              <div
-                class='text-base font-normal text-gray-500 dark:text-gray-400'
-              >
-                Send me an email when someone leaves a review with their rating
-              </div>
-            </div>
-            <label class='inline-flex items-center cursor-pointer'>
-              <input type='checkbox' value='' class='sr-only peer' />
-              <div
-                class="relative w-11 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 dark:peer-focus:ring-blue-800 rounded-full peer dark:bg-gray-700 peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-blue-600"
-              >
-              </div>
-            </label>
-          </div>
-        </div>
-        <div class='mt-6'>
-          <button
-            class='text-white bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800'
-            >Save all</button
-          >
+        <div class="grid grid-cols-6 gap-6">
+          {
+            demografydata.map((item) => (
+              <DemografyItem title={item.title} value={item.value} />
+            ))
+          }
         </div>
       </div>
     </div>
   </div>
+  <!-- End of grid -->
+
 </AppLayout>

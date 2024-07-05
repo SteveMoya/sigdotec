@@ -1,18 +1,15 @@
-import type { APIRoute } from "astro";
+import type { APIContext, APIRoute } from "astro";
 import allTopicMock from "@mocks/allDataMock.json"
 // import { PlanService } from "@services/plans.services";
 
-export const GET: APIRoute = async ({ cookies }) => {
+export async function GET(context: APIContext): Promise<Response> {
     const data = allTopicMock
-
-    const amount = Number(cookies.get("authjs.amount")?.value).toFixed(2)
-    if (!amount) {
-        return new Response(JSON.stringify({ error: "Amount es requerido" }), {
-            headers: { "content-type": "application/json" },
-            status: 400,
-        });
+    const user = context.locals.user;
+    if (!user) {
+        return new Response("Unauthorized", { status: 401 });
     }
     try {
+        // const data = await PlanService.getAllTopics()
         return new Response(JSON.stringify(data), {
             headers: { "content-type": "application/json" },
             status: 200,

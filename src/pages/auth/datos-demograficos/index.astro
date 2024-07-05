@@ -10,11 +10,8 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { db } from "astro:db";
-import { Demographic } from "astro:db";
-import { generateId } from "lucia";
-import { User } from "astro:db";
-import { eq } from "astro:db";
+import { db, eq, Demographic } from "astro:db";
+
 
 const user = Astro.locals.user;
 

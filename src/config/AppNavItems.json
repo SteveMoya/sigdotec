@@ -18,10 +18,5 @@
     "name": "Perfil",
     "href": "/app/perfil",
     "icon": "mdi:account"
-    },
-    {
-    "name": "Configuracion",
-    "href": "/app/configuracion",
-    "icon": "mdi:cog"
     }
 ]

@@ -24,6 +24,7 @@ export const lucia = new Lucia(adapter, {
             provider: attributes.provider,
             role: attributes.role,
             balance: attributes.balance,
+            createdAt: attributes.createdAt,
         };
     },
 });
@@ -45,6 +46,7 @@ interface DatabaseUserAttributes {
     provider: string;
     role: string;
     balance: number;
+    createdAt: Date;
 }
 
 export async function createVerificationToken(email:string) {

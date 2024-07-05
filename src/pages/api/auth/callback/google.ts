@@ -7,7 +7,7 @@ import type { APIContext } from "astro";
 import { google } from "@/lib/auth/providers";
 
 export async function GET(context: APIContext): Promise<Response> {
-    console.log(context.url.searchParams)
+    
     const code = context.url.searchParams.get("code");
     const state = context.url.searchParams.get("state");
     if (!code || !state ) {
