@@ -1,27 +1,4 @@
-# Astro Starter Kit: Minimal
-
-```sh
-npm create astro@latest -- --template minimal
-```
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
-
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+# SIGDOTEC
 
 Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
@@ -42,6 +19,26 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
 | `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
+### 📚 Resources
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- [Website](https://astro.build)
+- [Documentation](https://docs.astro.build)
+
+### 🎓Paypal Emails Testing
+Estos son los correos que se pueden usar para hacer pruebas en paypal:
+
+- #### Bussiness: 
+- Email: sb-euws431541277@business.example.com
+- password: GxnpKa+7
+
+- #### Personal:
+
+## Steve:
+- #### Bussiness:
+- Email: sb-h1x5h30218759@business.example.com
+- password: w&8#&zqR
+
+- #### Personal:
+- Email: sb-da43ff30186365@personal.example.com
+- password: CzYv6+G%
+

@@ -1,5 +1,5 @@
 import { hasherPassword } from '@/utils';
-import { User, db } from 'astro:db';
+import { User, db, Demographic } from 'astro:db';
 import { generateId } from 'lucia';
 
 // https://astro.build/db/seed
@@ -40,10 +40,26 @@ export default async function seed() {
 			balance: 1000,
 		},
 	]
-
+	// const DemographicUsers = [
+	// 	{
+	// 		id: generateId(15),
+	// 		userId: seedsUsers[0].id,
+	// 		age: 25,
+	// 		gender: "Masculino",
+	// 		province: "Santo Domingo",
+	// 		workingPlace: "Universidad Autonoma de Santo Domingo",
+	// 		subject: "Matemática Secundaria",
+	// 	},
+	// 	{
+	// 		id: generateId(15),
+	// 		userId: seedsUsers[1].id,
+	// 		age: 30,
+	// 		gender: "Masculino",
+	// 		province: "Azua",
+	// 		workingPlace: "Universidad Autonoma de Santo Domingo",
+	// 		subject: "Matemática Primaria",
+	// 	},
+	// ]
 	await db.insert(User).values(seedsUsers)
-	// await db.insert(Comment).values([
-	// 	{ authorId: 1, body: 'Hope you like Astro DB!' },
-	// 	{ authorId: 2, body: 'Enjoy!' },
-	// ])
+	// await db.insert(Demographic).values(DemographicUsers)
 }

@@ -1,7 +1,7 @@
 
 import { lucia } from "@/lib/auth/lucia";
 import type { APIContext } from "astro";
-import { db, eq, User } from "astro:db";
+import { db, Demographic, eq, User } from "astro:db";
 // import { Argon2id } from "oslo/password";
 import argon2id from 'argon2'
 
@@ -63,6 +63,11 @@ export async function POST(context: APIContext): Promise<Response> {
     sessionCookie.value,
     sessionCookie.attributes
   );
-
+  const DemographicUser = (
+    await db.select().from(Demographic).where(eq(Demographic.userId, foundUser.id))
+  ).at(0);
+  if (DemographicUser) {
+    return context.redirect("/auth/datos-demograficos");
+  }
   return context.redirect("/app/");
 }

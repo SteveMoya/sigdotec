@@ -1,4 +1,4 @@
-import type { APIContext, APIRoute } from "astro";
+import type { APIContext } from "astro";
 import paypal from "@paypal/checkout-server-sdk";
 import { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET } from "@src/utils";
 import { db, eq, User } from "astro:db";
@@ -8,56 +8,52 @@ export async function POST(context: APIContext): Promise<Response> {
     if (!user) {
         return new Response("Unauthorized", { status: 401 })
     }
-    // const amount = user.balance;
-    // await db.update(User).set({ balance: (Number(amount) + 2000) }).where(eq(User.id, user.id));
-
+    const balance = user.balance;
+    const body = await context.request.json();
+    const { orderId } = body;
+    console.log("Esta es la peticion del CLiente", orderId)
+    if (!orderId) {
+        return new Response("Pedido no encontrado.", { status: 404 });
+    }
+    
     const environment = new paypal.core.SandboxEnvironment(PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET)
     const client = new paypal.core.PayPalHttpClient(environment)
 
-    const { amount } = await context.request.json()
-    const createRequest = new paypal.orders.OrdersCreateRequest()
-    createRequest.prefer("return=representation")
-    createRequest.requestBody({
-        intent: "CAPTURE",
-        purchase_units: [{
-            amount: {
-                currency_code: "USD",
-                value: "100.00",
-            },
-            items: [
-                {
-                    name: "item",
-                    quantity: "1",
-                    description: "Plan de Clases",
-                    unit_amount: {
-                        currency_code: "USD",
-                        value: "50.00"
-                        // value: amount
-                    },
-                    category: "DIGITAL_GOODS"
-                },
-                {
-                    name: "item",
-                    quantity: "1",
-                    description: "Plan de Unidad",
-                    unit_amount: {
-                        currency_code: "USD",
-                        value: "50.00"
-                        // value: amount
-                    },
-                    category: "DIGITAL_GOODS"
-                }
-            ],
-        },
-        ]
-    })
     try {
-        const response = await client.execute(createRequest)
-        console.log(response.result)
-        return new Response(JSON.stringify({ id: response.result.id }))
-    } catch (error) {
-        console.error(error)
-        return new Response("Error", { status: 500 })
-    }
+        const response = await client.execute(new paypal.orders.OrdersGetRequest(orderId));
+        if (response.statusCode !== 200) {
+            return new Response("Error al recuperar el pedido de PayPal", { status: 500 });
+        }
 
+        const orderDetails = response.result;
+        const amount = orderDetails.purchase_units[0].amount.value;
+        const request = new paypal.orders.OrdersCreateRequest();
+
+        request.requestBody({
+            intent: 'CAPTURE',
+            purchase_units: [
+                {
+                    amount: {
+                        currency_code: 'USD',
+                        value: amount,
+                    },
+                    description: 'Recarga de saldo',
+                }
+            ]
+        })
+        if (isNaN(amount) || amount <= 0) {
+            return new Response("Monto inválido.", { status: 400 });
+        }
+        const paypalresponse = await client.execute(request);
+        
+        const dbQuery = await db.update(User).set({ balance: (Number(balance) + Number(amount)) }).where(eq(User.id, user.id));
+        if (!dbQuery) {
+            console.log("Error al actualizar el saldo.");
+            return new Response("Error al actualizar el saldo.", { status: 500 });
+        }
+        return new Response(JSON.stringify({ id: paypalresponse.result.id }));
+    } catch (error) {
+        console.error(error);
+        return new Response("Error interno del servidor.", { status: 500 });
+    }
 }

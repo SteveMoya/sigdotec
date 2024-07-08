@@ -30,9 +30,7 @@ try {
       await db.select().from(Demographic).where(eq(Demographic.id, user.id))
     ).at(0);
     if (existingDemographic) {
-      return new Response("Ya has completado tu información demográfica", {
-        status: 400,
-      });
+      return Astro.redirect("/app/", 302);
     }
     try {
       await db.insert(Demographic).values([

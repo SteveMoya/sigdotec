@@ -10,7 +10,7 @@ export const PaypalButtom = () => {
     <div> 
       <PayPalScriptProvider options={{ clientId: "AUqP-bbHL5KTxlzYPp1w_4wnDF730loIlB-wFIR5QJQVqawzsgdOEY8XXRpQReB1sWj59WXj-L_vTqYu" }} >
         
-      <PayPalButtons style={{ color: "blue" }} className='w-[400px] bg-white p-10 rounded-md'
+      <PayPalButtons style={{ color: "blue" }} className='w-full'
         createOrder={async () => {
           const res = await fetch('/api/pay/paypal-checkout', {
             method: 'POST',
