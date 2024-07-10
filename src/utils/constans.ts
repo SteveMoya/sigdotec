@@ -34,7 +34,7 @@ export const CLASS_PRICE = 49.99;
 export const ANUAL_PRICE = 599.99;
 export const CURRENCY = 'USD';
 export const APP_URL = isProd
-  ? 'https://sigdotec.vercel.app/'
+  ? 'https://sigdotec.com/'
   : 'http://localhost:4321/';
 
 
