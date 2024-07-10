@@ -1,4 +1,4 @@
-import { BASE_URL } from "@/utils";
+import { APP_URL, BASE_URL } from "@/utils";
 import {
     Body,
     Container,
@@ -17,6 +17,7 @@ import {
 interface ResetPasswordEmailProps {
     username?: string;
     updatedDate?: Date;
+    validationCode: string;
 }
 
 const baseUrl = BASE_URL
@@ -26,6 +27,7 @@ const baseUrl = BASE_URL
 export const ResetPasswordEmail = ({
     username,
     updatedDate,
+    validationCode
 }: ResetPasswordEmailProps) => {
     const formattedDate = new Intl.DateTimeFormat("es", {
         dateStyle: "medium",
@@ -35,11 +37,14 @@ export const ResetPasswordEmail = ({
     return (
         <Html>
             <Head />
-            <Preview>You updated the password for your Twitch account</Preview>
+            <Preview>Haz perdido la contraseña</Preview>
             <Body style={main}>
                 <Container style={container}>
                     <Section style={logo}>
-                        <Img width={114} src={`${baseUrl}/static/twitch-logo.png`} />
+                        <Img width={114} src={`${APP_URL}/SIGDO-32.svg`}
+                            height="88"
+                            alt="SIGDOTEC-logo"
+                            style={logo} />
                     </Section>
                     <Section style={sectionsBorders}>
                         <Row>
@@ -49,37 +54,36 @@ export const ResetPasswordEmail = ({
                         </Row>
                     </Section>
                     <Section style={content}>
-                        <Text style={paragraph}>Hi {username},</Text>
+                        <Text style={paragraph}>Hola {username},</Text>
                         <Text style={paragraph}>
-                            You updated the password for your Twitch account on{" "}
-                            {formattedDate}. If this was you, then no further action is
-                            required.
+                            Recientemente haz perdido tu contraseña
+                            {" "}
+                            el
+                            {formattedDate}. 
+
                         </Text>
                         <Text style={paragraph}>
-                            However if you did NOT perform this password change, please{" "}
-                            <Link href="#" style={link}>
-                                reset your account password
+                            Si no solicitaste este cambio, por favor, ignora este mensaje{" "} 
+                            si solicitaste este cambio, por favor{" "}
+                            <Link href={`${APP_URL}auth/password-reset/${validationCode}`} style={link}>
+                            Cambia tu contraseña
                             </Link>{" "}
-                            immediately.
+                            inmediatamente.
                         </Text>
                         <Text style={paragraph}>
-                            Remember to use a password that is both strong and unique to your
-                            Twitch account. To learn more about how to create a strong and
-                            unique password,{" "}
+                            Recuerda usar una contraseña que sea fuerte y única para tu
+                            cuenta de SIGDOTEC.
+                        </Text>
+                        <Text style={paragraph}>
+                            ¿Tienes alguna pregunta? Por favor contacta{" "}
                             <Link href="#" style={link}>
-                                click here.
+                                Soporte SIGDOTEC 
                             </Link>
                         </Text>
                         <Text style={paragraph}>
-                            Still have questions? Please contact{" "}
-                            <Link href="#" style={link}>
-                                Twitch Support
-                            </Link>
-                        </Text>
-                        <Text style={paragraph}>
-                            Thanks,
+                            Gracias,
                             <br />
-                            Twitch Support Team
+                            Equipo de Soporte de SIGDOTEC
                         </Text>
                     </Section>
                 </Container>
@@ -87,16 +91,16 @@ export const ResetPasswordEmail = ({
                 <Section style={footer}>
                     <Row>
                         <Column align="right" style={{ width: "50%", paddingRight: "8px" }}>
-                            <Img src={`${baseUrl}/static/twitch-icon-twitter.png`} />
+                            <Img src={`${APP_URL}/SIGDO-32.svg`} />
                         </Column>
                         <Column align="left" style={{ width: "50%", paddingLeft: "8px" }}>
-                            <Img src={`${baseUrl}/static/twitch-icon-facebook.png`} />
+                            <Img src={`${APP_URL}/SIGDO-32.svg`} />
                         </Column>
                     </Row>
                     <Row>
                         <Text style={{ textAlign: "center", color: "#706a7b" }}>
-                            © 2022 Twitch, All Rights Reserved <br />
-                            350 Bush Street, 2nd Floor, San Francisco, CA, 94104 - USA
+                            © {new Date().getFullYear()} SIIGDOTEC, Todos Los Derechos Reservados <br />
+                            Santo Domingo, Distrito Nacional, Republica Dominicana
                         </Text>
                     </Row>
                 </Section>
@@ -157,7 +161,7 @@ const sectionBorder = {
 };
 
 const sectionCenter = {
-    borderBottom: "1px solid rgb(145,71,255)",
+    borderBottom: "1px solid #0861c5",
     width: "102px",
 };
 

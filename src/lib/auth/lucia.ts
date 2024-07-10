@@ -58,6 +58,14 @@ export async function createVerificationToken(email:string) {
     })
     return token
 }
+export async function verifyToken(token:string) {
+    try {
+        const decoded = jwt.verify(token, AUTH_SECRET)
+        return decoded
+    } catch (error) {
+        return null
+    }
+}
 
 // export const passwordResetToken = lucia.createSession("email_reset", {
 //     expiresIn: 60 * 60,

@@ -4,6 +4,7 @@ import { createVerificationToken } from "@/lib/auth/lucia";
 
 import Layout from "@layouts/Layout.astro";
 import VerifyEmail from "@/components/VerifyEmail";
+import { Toaster } from "sonner";
 
 const user = Astro.locals.user;
 
@@ -40,4 +41,16 @@ try {
   <div class="flex justify-center content-center my-[6dvh]">
     <VerifyEmail email={user.email} client:load transition:persist />
   </div>
+  <Toaster
+    richColors
+    closeButton
+    toastOptions={{
+      classNames: {
+        success: "bg-success-600",
+        error: "bg-danger-600",
+        loading: "bg-secondary-200",
+      },
+    }}
+    client:only
+  />
 </Layout>

@@ -41,6 +41,24 @@ export const SignInSchema = z.object({
 export const ResetPasswordSchema = z.object({
     email: z.string().email({ message: "El email tiene que ser valido" }),
 })
+export const ForgotPasswordSchema = z.object({
+    newPassword: z
+        .string()
+        .min(8, { message: "La contraseña tiene que ser de un minimo de 8 caracteres" })
+        .refine((data) => !/^\d+$/.test(data), {
+            message: "La contraseña no puede ser una sucesion de numeros",
+        }),
+    confirmPassword: z
+        .string()
+        .min(8, { message: "La contraseña tiene que ser de un minimo de 8 caracteres" }),
+
+    logoutFromOtherDevices: z.boolean(),
+}).refine(
+    (data) => data.newPassword === data.confirmPassword,
+    {
+        message: "Las contraseñas no son iguales",
+    }
+)
 
 export const ChangePasswordSchema = z.object({
     lastPassword: z.string().min(8, { message: "La contraseña tiene que ser de un minimo de 8 caracteres" }),

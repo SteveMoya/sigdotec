@@ -51,17 +51,34 @@ export const sendEmailVerificationEmail = async (email:string, token:string) => 
     return
 }
 
-// export const sendResetPasswordEmail = async (email:string, token: string) => {
-//     const { data, error } = await resend.emails.send({
-//         from: 'onboarding@resend.dev',
-//         to: [email || 'stevemc201666@gmail.com'],
-//         subject: 'Email de Verificacion',
-//         react: ResetPasswordEmail({ url: `${BASE_URL}/auth/password-reset?email=${email}`, token })
-//     })
-//     if (data) {
-//         return true
-//     }
-//     if (error) {
-//         return false
-//     }
-// }
+export const sendResetPasswordEmail = async (username: string, token: string, email:string) => {
+    if (isDev) {
+        await resend.emails.send({
+            from: 'onboarding@resend.dev',
+            to: ['stevemc201666@gmail.com'],
+            subject: 'Reset Password',
+            html: getHTML(<ResetPasswordEmail username={username} updatedDate={
+                new Date()} validationCode={token} />),
+            tags: [
+                {
+                    name: 'category',
+                    value: 'reset_password',
+                },
+            ],
+        });
+    }
+    await resend.emails.send({
+        from: 'onboarding@resend.dev',
+        to: [email],
+        subject: 'Reset Password',
+        html: getHTML(<ResetPasswordEmail username={username} updatedDate={
+            new Date()} validationCode={token} />),
+        tags: [
+            {
+                name: 'category',
+                value: 'reset_password',
+            },
+        ],
+    });
+    return
+}

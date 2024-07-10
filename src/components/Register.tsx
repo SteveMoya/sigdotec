@@ -41,6 +41,7 @@ export function SignUpForm() {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(values),
+                redirect: 'follow'
             })
 
             console.log(res)
