@@ -37,7 +37,7 @@ export const sendEmailVerificationEmail = async (email:string, token:string) => 
         });
     }
     await resend.emails.send({
-        from: 'onboarding@resend.dev',
+        from: 'soporteg@sigdotec.com',
         to: [email],
         subject: 'Email de Verificacion',
         html: getHTML(<VerifyIdentityEmail validationCode={token} />),
@@ -68,7 +68,7 @@ export const sendResetPasswordEmail = async (username: string, token: string, em
         });
     }
     await resend.emails.send({
-        from: 'onboarding@resend.dev',
+        from: 'soporteg@sigdotec.com',
         to: [email],
         subject: 'Reset Password',
         html: getHTML(<ResetPasswordEmail username={username} updatedDate={
