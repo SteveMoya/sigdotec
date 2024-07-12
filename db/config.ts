@@ -24,7 +24,7 @@ const Demographic = defineTable({
   columns: {
     id: column.text({ optional: false, unique: true, primaryKey: true}),
     userId: column.text({ optional: false, references: () => User.columns.id }),
-    age: column.number({ optional: false }),
+    birthdate: column.date({ optional: false }),
     gender: column.text({
       optional: false,
     }),

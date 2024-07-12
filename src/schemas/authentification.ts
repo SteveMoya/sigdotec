@@ -96,14 +96,20 @@ export const gender = [
 ] as const
 
 export const DemographicSchema = z.object({
-    age: z.number({
-        message: "La edad tiene que ser un numero",
-    }).int({message:
-        "La edad tiene que ser un numero entero"
-    }).min(18, { message: "Tienes que ser mayor de 18 años" }).max(120, { message: "Tienes que ser menor de 120 años" })
-        .refine((data) => data >= 0, {
-            message: "La edad no puede ser un numero negativo",
-        }),
+    birthdate: z.date().refine((data) => data < new Date(), {
+        message: "La fecha de nacimiento tiene que ser menor a la fecha actual",
+    }).refine((data) => {
+        const age = new Date().getFullYear() - data.getFullYear()
+        return age >= 18
+    }, {
+        message: "El usuario tiene que ser mayor de 18 años",
+    }).refine((data) => {
+        const age = new Date().getFullYear() - data.getFullYear()
+        return age <= 120
+    }, {
+        message: "El usuario tiene que ser menor de 120 años",
+    }),
+
     province: z.enum(provinces, { message: "La provincia tiene que ser una de las provincias de la lista" }),
     gender: z.enum(["Masculino", "Femenino","Otro"],{
         message: "El genero tiene que ser uno de los generos de la lista"

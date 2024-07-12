@@ -22,8 +22,8 @@ if (!user) {
 try {
   if (Astro.request.method === "POST") {
     const body = await Astro.request.json();
-    const { age, province, workingPlace, subject, gender } = body;
-    if (!age || !province || !workingPlace || !subject || !gender) {
+    const { birthdate, province, workingPlace, subject, gender } = body;
+    if (!birthdate || !province || !workingPlace || !subject || !gender) {
       return new Response("Faltan campos por completar", { status: 400 });
     }
     const existingDemographic = (
@@ -37,7 +37,7 @@ try {
         {
           id: user.id,
           userId: user.id,
-          age: Number(age),
+          birthdate: birthdate,
           province: String(province),
           workingPlace: String(workingPlace),
           subject: String(subject),

@@ -17,7 +17,17 @@ import {
     FormLabel,
     FormMessage,
 } from "@/components/ui/form"
+import { format } from "date-fns"
+import { CalendarIcon } from "lucide-react"
 
+import { cn } from "@/lib/utils"
+import { Calendar } from "@/components/ui/calendar"
+
+import {
+    Popover,
+    PopoverContent,
+    PopoverTrigger,
+} from "@/components/ui/popover"
 
 import { DemographicSchema, gender, provinces, subjects } from "@/schemas/authentification"
 import { toast } from "sonner"
@@ -58,23 +68,47 @@ export default function DemografyForm() {
     return (
         <> 
             <CardContent className="space-y-6">
-
                 <Form {...form}>
                     <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
                     <div className="grid grid-cols-2 gap-4">
                             <FormField 
                             control={form.control}
-                            name="age"
+                            name="birthdate"
                             render={({ field }) => (
                                 <FormItem className="grid gap-2">
-                                    <FormLabel className="font-semibold text-lg">Edad</FormLabel>
-                                    <FormControl>
-                                        <Input placeholder="Tu edad aqui" type="number" min="1" pattern="^[0-9]+" {...field} 
-                                         // Aqui arreglamos el envio del string y lo convertimos a numero con parseInt
-                                        onChange={(e) => field.onChange(parseInt(e.target.value))
-                                        }
-                                         />
-                                    </FormControl>
+                                    <FormLabel className="font-semibold text-lg">Fecha de nacimiento</FormLabel>
+                                    <Popover>
+                                        <PopoverTrigger asChild>
+                                            <FormControl>
+                                                <Button
+                                                    variant={"outline"}
+                                                    className={cn(
+                                                        " pl-3 text-left font-normal w-full",
+                                                        !field.value && "text-muted-foreground"
+                                                    )}
+                                                >
+                                                    {field.value ? (
+                                                        //Aqui lo formateamos en un formato en espa;ol
+                                                        format(field.value, "dd/MM/yyyy")
+                                                    ) : (
+                                                        <span>Selecciona la fecha</span>
+                                                    )}
+                                                    <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+                                                </Button>
+                                            </FormControl>
+                                        </PopoverTrigger>
+                                        <PopoverContent className="w-auto p-0" align="start">
+                                            <Calendar
+                                                mode="single"
+                                                selected={field.value}
+                                                onSelect={field.onChange}
+                                                disabled={(date: string) =>
+                                                    new Date(date) > new Date() || new Date(date) < new Date("1900-01-01")
+                                                }
+                                                initialFocus
+                                            />
+                                        </PopoverContent>
+                                    </Popover>
                                     <FormMessage />
                                 </FormItem>
                             )}
