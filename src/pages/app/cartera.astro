@@ -20,6 +20,7 @@ import { Input } from "@components/ui/input";
 import { Label } from "@components/ui/label";
 
 import {PaymentForm} from "@components/Payment/PaymetForm";
+import { UNIT_PRICE } from "@/utils";
 
 const user = Astro.locals.user;
 if (!user) {
@@ -31,7 +32,9 @@ const balance: number = Number(user?.balance.toFixed(2) ?? 0);
 // Junto con 2 decimales
 
 // Aqui hacemos que cada $49 sea 1 plan y se redondee
-const plans = Math.floor(balance / 49);
+
+const plans = Math.floor(balance / UNIT_PRICE);
+
 
 ---
 
@@ -48,7 +51,7 @@ const plans = Math.floor(balance / 49);
         <div>
           <p>Saldo actual</p>
           <h2 class="text-3xl">Planes: {plans}</h2>
-          <p>${balance}</p>
+          <p>${balance} USD</p>
         </div>
         <Icon name="mdi:wallet" class="text-9xl h-24 md:h-20 w-38" />
       </div>

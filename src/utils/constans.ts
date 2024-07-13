@@ -31,7 +31,7 @@ export const isDev = import.meta.env.DEV;
 
 export const UNIT_PRICE = 49.99;
 export const CLASS_PRICE = 49.99;
-export const ANUAL_PRICE = 599.99;
+export const ANUAL_PRICE = 800.00;
 export const CURRENCY = 'USD';
 export const APP_URL = isProd
   ? 'https://sigdotec.com/'

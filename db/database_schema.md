@@ -18,7 +18,7 @@ erDiagram
         number balance "optional: false, default: 0"
     }
     
-    Demographic {
+    Demography {
         text id PK "optional: false, unique: true, primaryKey: true"
         text userId "optional: false, references: User.id"
         date birthdate "optional: false"
@@ -35,5 +35,5 @@ erDiagram
         number expiresAt "optional: false"
     }
     
-    User ||--o{ Demographic: "has"
+    User ||--o{ Demography: "has"
     User ||--o{ Session: "has"

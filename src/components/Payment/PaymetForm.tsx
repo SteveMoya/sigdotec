@@ -72,9 +72,9 @@ export function PaymentForm() {
                             name="amount"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel className="font-semibold text-lg">Monto a Recargar</FormLabel>
+                                    <FormLabel className="font-semibold text-lg">Monto a Recargar (USD)</FormLabel>
                                     <FormControl>
-                                        <Input placeholder="Ingresa el Monto aqui..." {...field} type="number" min="1" max="10000" />
+                                        <Input placeholder="Ingresa el Monto aqui..." {...field} type="number" min="1" max="500" />
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>

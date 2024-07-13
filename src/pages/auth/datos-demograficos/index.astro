@@ -2,7 +2,7 @@
 import { createVerificationToken } from "@/lib/auth/lucia";
 
 import Layout from "@layouts/Layout.astro";
-import DemografyForm from "@/components/DemografyForm";
+import DemographyForm from "@/components/DemographyForm";
 import {
   Card,
   CardContent,
@@ -10,15 +10,16 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { db, eq, Demographic } from "astro:db";
+import { db, eq, Demography } from "astro:db";
 import { Toaster } from "sonner";
 
 const user = Astro.locals.user;
-
 if (!user) {
   return Astro.redirect("/login", 302);
 }
-
+if (Astro.locals.demography) {
+  return Astro.redirect("/app/", 302);
+}
 try {
   if (Astro.request.method === "POST") {
     const body = await Astro.request.json();
@@ -26,25 +27,34 @@ try {
     if (!birthdate || !province || !workingPlace || !subject || !gender) {
       return new Response("Faltan campos por completar", { status: 400 });
     }
-    const existingDemographic = (
-      await db.select().from(Demographic).where(eq(Demographic.id, user.id))
+    const existingDemography = (
+      await db.select().from(Demography).where(eq(Demography.id, user.id))
     ).at(0);
-    if (existingDemographic) {
+    if (existingDemography) {
       return Astro.redirect("/app/", 302);
     }
+    
     try {
-      await db.insert(Demographic).values([
+      await db.insert(Demography).values([
         {
-          id: user.id,
-          userId: user.id,
-          birthdate: birthdate,
+          id: String(user.id),
+          userId: String(user.id),
+          birthdate: new Date(birthdate),
           province: String(province),
           workingPlace: String(workingPlace),
           subject: String(subject),
           gender: String(gender),
         },
       ]);
-
+      Astro.locals.demography = {
+        userId: user.id,
+        birthdate: new Date(birthdate),
+        province,
+        workingPlace,
+        subject,
+        gender,
+      };
+      console.log("Demografía guardada correctamente", Astro.locals.demography);
       return Astro.redirect("/app/", 302);
     } catch (error) {
       console.log(error);
@@ -70,7 +80,7 @@ try {
           Completa la información sobre tu perfil docente.
         </CardDescription>
       </CardHeader>
-      <DemografyForm client:load />
+      <DemographyForm client:load />
     </Card>
   </div>
   <Toaster

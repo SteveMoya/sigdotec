@@ -2,6 +2,7 @@
 /// <reference path="../.astro/types.d.ts" />
 /// <reference types="astro/client" />
 
+
 interface ImportMetaEnv {
    GITHUB_CLIENT_ID: string
    GITHUB_CLIENT_SECRET: string
@@ -33,6 +34,14 @@ declare namespace App {
   interface Locals {
     session: import("lucia").Session | null;
     user: import("lucia").User | null;
-
+    demography: import(".astro/db-types").Demography | null;
+    // {
+    //   userId: string | null;
+    //   birthdate: string | null;
+    //   province: string | null;
+    //   workingPlace: string | null;
+    //   subject: string | null;
+    //   gender: string | null;
+    // }
   }
 }

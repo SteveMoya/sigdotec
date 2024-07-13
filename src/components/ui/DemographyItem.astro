@@ -17,13 +17,17 @@ const { title, value } = Astro.props;
         class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
     >
         {
-            // Aqui hacemos que si el value es un tipo date lo formateamos
-            title === "Fecha de Creacion"
-                ? new Date(value).toLocaleDateString("es-ES", {
-                    year: "numeric",
-                    month: "long",
-                    day: "numeric",
-                })
+            // Aqui hacemos que si el value es un tipo date lo formateamos y si el value es tipo date lo formateamos
+            value instanceof Date ||
+            (typeof value === "string" && new Date(value).toString() !== "Invalid Date")
+                ? new Date(value).toLocaleDateString(
+                    "es-ES",
+                    {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                    }
+                )
                 : value || "No data"
         }
     </p>

@@ -20,7 +20,7 @@ const User = defineTable({
   },
 });
 
-const Demographic = defineTable({
+const Demography = defineTable({
   columns: {
     id: column.text({ optional: false, unique: true, primaryKey: true}),
     userId: column.text({ optional: false, references: () => User.columns.id }),
@@ -48,6 +48,6 @@ export default defineDb({
   tables: {
     User,
     Session,
-    Demographic,
+    Demography,
   },
 });

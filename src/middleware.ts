@@ -38,6 +38,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
   if (!sessionId) {
     context.locals.user = null;
     context.locals.session = null;
+    context.locals.demography = null;
     return next();
   }
 
@@ -60,6 +61,7 @@ export const onRequest = defineMiddleware(async (context, next) => {
   }
   context.locals.session = session;
   context.locals.user = user;
+
   const role = user?.role;
   if (context.url.pathname.startsWith(verificationRoute)) {
         if (user?.emailVerificated) {

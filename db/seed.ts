@@ -40,7 +40,7 @@ export default async function seed() {
 			balance: 1000,
 		},
 	]
-	// const DemographicUsers = [
+	// const DemographycUsers = [
 	// 	{
 	// 		id: generateId(15),
 	// 		userId: seedsUsers[0].id,
@@ -61,5 +61,5 @@ export default async function seed() {
 	// 	},
 	// ]
 	await db.insert(User).values(seedsUsers)
-	// await db.insert(Demographic).values(DemographicUsers)
+	// await db.insert(Demography).values(DemographyUsers)
 }
