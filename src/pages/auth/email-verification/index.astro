@@ -16,12 +16,16 @@ if (user.emailVerificated) {
 }
 
 try {
-  const token = await createVerificationToken(user.email);
+  const token = await createVerificationToken(user.email, "4h");
 
   if (Astro.request.method === "POST") {
     try {
-      await sendEmailVerificationEmail(user.email, token.toString());
-      return Astro.redirect("/auth/email-verification", 302); // Redirige después de enviar el correo
+      await sendEmailVerificationEmail(
+        user.email,
+        token.toString(),
+        user.username,
+      );
+      return new Response("Email de Verificación enviado, por favor revisa tu correo electronico", { status: 200 });
     } catch (error) {
       console.log(error);
       return new Response("Error al enviar tu email de Verificación", {

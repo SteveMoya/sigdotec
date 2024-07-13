@@ -29,8 +29,8 @@ export const ResetPasswordEmail = ({
     updatedDate,
     validationCode
 }: ResetPasswordEmailProps) => {
-    const formattedDate = new Intl.DateTimeFormat("es", {
-        dateStyle: "medium",
+    const formattedDate = new Intl.DateTimeFormat("es-ES", {
+        dateStyle: "long",
         timeStyle: "medium",
     }).format(updatedDate);
 
@@ -41,7 +41,7 @@ export const ResetPasswordEmail = ({
             <Body style={main}>
                 <Container style={container}>
                     <Section style={logo}>
-                        <Img width={114} src={`${APP_URL}/SIGDO-32.svg`}
+                        <Img width={114} src={`${APP_URL}SIGDO-32.svg`}
                             height="88"
                             alt="SIGDOTEC-logo"
                             style={logo} />
@@ -63,22 +63,21 @@ export const ResetPasswordEmail = ({
 
                         </Text>
                         <Text style={paragraph}>
-                            Si no solicitaste este cambio, por favor, ignora este mensaje{" "} 
+                            Si no solicitaste este cambio, por favor, ignora este mensaje,{" "} 
                             si solicitaste este cambio, por favor{" "}
                             <Link href={`${APP_URL}auth/password-reset/${validationCode}`} style={link}>
-                            Cambia tu contraseña
-                            </Link>{" "}
-                            inmediatamente.
+                            Recuperar contraseña
+                            </Link>. Este enlace expirará en 1 hora.
                         </Text>
                         <Text style={paragraph}>
-                            Recuerda usar una contraseña que sea fuerte y única para tu
+                            Recuerda usar una contraseña que sea fuerte, única y facil de recordar para tu
                             cuenta de SIGDOTEC.
                         </Text>
                         <Text style={paragraph}>
                             ¿Tienes alguna pregunta? Por favor contacta{" "}
-                            <Link href="#" style={link}>
+                            <Link href="mailto:soporte@sigdotec.com" style={link}>
                                 Soporte SIGDOTEC 
-                            </Link>
+                            </Link>.
                         </Text>
                         <Text style={paragraph}>
                             Gracias,
@@ -90,11 +89,8 @@ export const ResetPasswordEmail = ({
 
                 <Section style={footer}>
                     <Row>
-                        <Column align="right" style={{ width: "50%", paddingRight: "8px" }}>
-                            <Img src={`${APP_URL}/SIGDO-32.svg`} />
-                        </Column>
-                        <Column align="left" style={{ width: "50%", paddingLeft: "8px" }}>
-                            <Img src={`${APP_URL}/SIGDO-32.svg`} />
+                        <Column align="center" style={{ paddingRight: "8px", }}>
+                            <Img width="100px" src={`${APP_URL}SIGDO-32.svg`} />
                         </Column>
                     </Row>
                     <Row>
@@ -121,6 +117,8 @@ const fontFamily = "HelveticaNeue,Helvetica,Arial,sans-serif";
 const main = {
     backgroundColor: "#efeef1",
     fontFamily,
+    border: "1px solid #d8d8d8",
+    boxShadow: "0 0 10px rgba(0,0,0,0.1)",
 };
 
 const paragraph = {
@@ -148,6 +146,9 @@ const logo = {
     justifyContent: "center",
     alingItems: "center",
     padding: 30,
+    boxShadow: "0 0 10px rgba(0,0,0,0.1)",
+    backgroundColor: "#ffffff",
+    borderBottom: "1px solid rgb(238,238,238)",
 };
 
 const sectionsBorders = {

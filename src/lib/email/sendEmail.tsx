@@ -1,6 +1,6 @@
 import { BASE_URL, RESEND_API_KEY, isDev } from '@/utils';
 import { Resend } from 'resend';
-import { VerifyIdentityEmail } from './VerificationEmail';
+import { VerficationEmail } from './VerificationEmail';
 import ResetPasswordEmail from './ResetPasswordEmail';
 import { render } from '@react-email/components';
 
@@ -21,13 +21,13 @@ function getTEXT(react:any) {
     })
 }
 
-export const sendEmailVerificationEmail = async (email:string, token:string) => {
+export const sendEmailVerificationEmail = async (email:string, token:string, username:string) => {
     if (isDev) {
          await resend.emails.send({
             from: 'onboarding@resend.dev',
             to: ['stevemc201666@gmail.com'],
             subject: 'Email de Verificacion',
-            html: getHTML(<VerifyIdentityEmail validationCode={token} />),
+             html: getHTML(<VerficationEmail validationCode={token} username={username} />),
              tags: [
                  {
                      name: 'category',
@@ -40,7 +40,7 @@ export const sendEmailVerificationEmail = async (email:string, token:string) => 
         from: 'soporteg@sigdotec.com',
         to: [email],
         subject: 'Email de Verificacion',
-        html: getHTML(<VerifyIdentityEmail validationCode={token} />),
+        html: getHTML(<VerficationEmail validationCode={token} username={username} />),
         tags: [
             {
                 name: 'category',

@@ -1,15 +1,17 @@
+import { verifyToken } from "@/lib/auth/lucia";
 import { AUTH_SECRET } from "@/utils";
 import type { APIContext } from "astro";
 import { db, eq, User } from "astro:db";
-import jwt from "jsonwebtoken"
 
 export async function GET(context: APIContext): Promise<Response> {
   const tokenParams = context.params.token ?? "";
-  console.log("tenemos el token", tokenParams)
-    const validateToken = jwt.verify(tokenParams, AUTH_SECRET) as {
-      email: string
-      code: string
-    };
+  if (!tokenParams) {
+    return new Response("Token inválido o ya expirado", {status: 400})
+  }
+  const validateToken = await verifyToken(tokenParams) as {
+    email: string
+    code: string
+  } ;
     if (!validateToken) {
         return new Response("Token inválido o ya expirado", {status: 400})
     }

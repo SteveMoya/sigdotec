@@ -19,11 +19,16 @@ export default function VerifyEmail({ email }: Props) {
             setSend(false); // Asegúrate de que 'setSend' esté configurado correctamente aquí
             setLoading(true);
             try {
-                await fetch("", {
+                const res = await fetch("", {
                     method: "POST",
                 });
                 setSend(true); // Establece 'send' como verdadero después del éxito
-                toast("Email verification link sent!");
+                if (res.ok){
+                    toast.success(res.statusText);
+                }
+                if (!res.ok){
+                    toast.error(res.statusText);
+                }
             } catch (error) {
                 console.error("Error sending verification link. Please try again.", error);
                 toast("Error sending verification link. Please try again.");

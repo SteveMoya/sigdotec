@@ -1,164 +1,159 @@
 import { APP_URL, BASE_URL } from "@/utils";
 import {
     Body,
-    Button,
     Container,
+    Column,
     Head,
-    Heading,
-    Hr,
     Html,
     Img,
     Link,
+    Preview,
+    Row,
     Section,
     Text,
 } from "@react-email/components";
 
 
-interface VerifyIdentityEmailProps {
-    validationCode?: string;
+interface VerficationEmailProps {
+    username?: string;
+    validationCode: string;
 }
 
 const baseUrl = BASE_URL
     ? `https://${BASE_URL}`
-    : "http://localhost:4321";
+    : "";
 
-export const VerifyIdentityEmail = ({
-    validationCode,
-}: VerifyIdentityEmailProps) => (
-    <Html>
-        <Head />
-        <Body style={main}>
-            <Container style={container}>
-                <Img
-                    src={`${APP_URL}/SIGDO-32.svg`}
-                    width="212"
-                    height="88"
-                    alt="SIGDOTEC-logo"
-                    style={logo}
-                />
-                <Hr />
-                <Text style={tertiary}>Verifica tu identidad</Text>
-                <Heading style={secondary}>
-                    Haz click en el siguiente Boton para confirmar tu identidad:{" "}
-                    <Button href={`${APP_URL}/auth/email-verification/${validationCode}`} style={link}>
-                        Confirmar tu identidad
-                    </Button>
-                </Heading>
-                <Section style={codeContainer}>
-                    <Text style={code}>{validationCode}</Text>
+export const VerficationEmail = ({
+    username,
+    validationCode
+}: VerficationEmailProps) => {
+    return (
+        <Html>
+            <Head />
+            <Preview>Email de Verificacion</Preview>
+            <Body style={main}>
+                <Container style={container}>
+                    <Section style={logo}>
+                        <Img width={114} src={`${APP_URL}SIGDO-32.svg`}
+                            height="88"
+                            alt="SIGDOTEC-logo"
+                            style={logo} />
+                    </Section>
+                    <Section style={sectionsBorders}>
+                        <Row>
+                            <Column style={sectionBorder} />
+                            <Column style={sectionCenter} />
+                            <Column style={sectionBorder} />
+                        </Row>
+                    </Section>
+                    <Section style={content}>
+                        <Text style={paragraph}>Hola {username},</Text>
+                        <Text style={paragraph}>
+                            Recientemente te haz registrado en SIGDOTEC
+                            {" "}
+                        </Text>
+                        <Text style={paragraph}>
+                            Si no fuiste tu, por favor, ignora este correo,{" "}
+                            si realmente fuiste tu, por favor{" "}
+                            <Link href={`${APP_URL}auth/password-reset/${validationCode}`} style={link}>
+                                Confirma tu cuenta
+                            </Link>.
+                        </Text>
+                        <Text style={paragraph}>
+                            Este enlace expirará en 4 hora.
+                        </Text>
+                        <Text style={paragraph}>
+                            ¿Tienes alguna pregunta? Por favor contacta{" "}
+                            <Link href="mailto:soporte@sigdotec.com" style={link}>
+                                Soporte SIGDOTEC
+                            </Link>.
+                        </Text>
+                        <Text style={paragraph}>
+                            Gracias,
+                            <br />
+                            Equipo de Soporte de SIGDOTEC
+                        </Text>
+                    </Section>
+                </Container>
+
+                <Section style={footer}>
+                    <Row>
+                        <Column align="center" style={{ paddingRight: "8px", }}>
+                            <Img width="100px" src={`${APP_URL}SIGDO-32.svg`} />
+                        </Column>
+                    </Row>
+                    <Row>
+                        <Text style={{ textAlign: "center", color: "#706a7b" }}>
+                            © {new Date().getFullYear()} SIIGDOTEC, Todos Los Derechos Reservados <br />
+                            Santo Domingo, Distrito Nacional, Republica Dominicana
+                        </Text>
+                    </Row>
                 </Section>
-                <Text style={paragraph}>Not expecting this email?</Text>
-                <Text style={paragraph}>
-                    Contacta{" "}
-                    <Link href="mailto:login@sigdotec.com" style={link}>
-                        login@sigdotec.com
-                    </Link>
-                </Text>
-            </Container>
-            <Text style={footer}>Securely powered by Plaid.</Text>
-        </Body>
-    </Html>
-);
+            </Body>
+        </Html>
+    );
+};
 
-VerifyIdentityEmail.PreviewProps = {
-    validationCode: "144833",
-} as VerifyIdentityEmailProps;
+VerficationEmail.PreviewProps = {
+    username: "alanturing",
+} as VerficationEmailProps;
 
-export default VerifyIdentityEmail;
+export default VerficationEmail;
+
+const fontFamily = "HelveticaNeue,Helvetica,Arial,sans-serif";
 
 const main = {
-    backgroundColor: "#ffffff",
-    fontFamily: "HelveticaNeue,Helvetica,Arial,sans-serif",
-};
-
-const container = {
-    backgroundColor: "#ffffff",
-    border: "1px solid #eee",
-    borderRadius: "5px",
-    boxShadow: "0 5px 10px rgba(20,50,70,.2)",
-    marginTop: "20px",
-    maxWidth: "360px",
-    margin: "0 auto",
-    padding: "68px 0 130px",
-};
-
-const logo = {
-    margin: "0 auto",
-};
-
-const tertiary = {
-    color: "#0a85ea",
-    fontSize: "11px",
-    fontWeight: 700,
-    fontFamily: "HelveticaNeue,Helvetica,Arial,sans-serif",
-    height: "16px",
-    letterSpacing: "0",
-    lineHeight: "16px",
-    margin: "16px 8px 8px 8px",
-    textTransform: "uppercase" as const,
-    textAlign: "center" as const,
-};
-
-const secondary = {
-    color: "#000",
-    display: "inline-block",
-    fontFamily: "HelveticaNeue-Medium,Helvetica,Arial,sans-serif",
-    fontSize: "20px",
-    fontWeight: 500,
-    lineHeight: "24px",
-    marginBottom: "0",
-    marginTop: "0",
-    textAlign: "center" as const,
-};
-
-const codeContainer = {
-    background: "rgba(0,0,0,.05)",
-    borderRadius: "4px",
-    margin: "16px auto 14px",
-    verticalAlign: "middle",
-    width: "280px",
-};
-
-const code = {
-    color: "#000",
-    display: "inline-block",
-    fontFamily: "HelveticaNeue-Bold",
-    fontSize: "32px",
-    fontWeight: 700,
-    letterSpacing: "6px",
-    lineHeight: "40px",
-    paddingBottom: "8px",
-    paddingTop: "8px",
-    margin: "0 auto",
-    width: "100%",
-    textAlign: "center" as const,
+    backgroundColor: "#efeef1",
+    fontFamily,
+    border: "1px solid #d8d8d8",
+    boxShadow: "0 0 10px rgba(0,0,0,0.1)",
 };
 
 const paragraph = {
-    color: "#444",
-    fontSize: "15px",
-    fontFamily: "HelveticaNeue,Helvetica,Arial,sans-serif",
-    letterSpacing: "0",
-    lineHeight: "23px",
-    padding: "0 40px",
-    margin: "0",
-    textAlign: "center" as const,
+    lineHeight: 1.5,
+    fontSize: 14,
 };
 
-const link = {
-    color: "#444",
-    textDecoration: "underline",
+const container = {
+    maxWidth: "580px",
+    margin: "30px auto",
+    backgroundColor: "#ffffff",
 };
 
 const footer = {
-    color: "#000",
-    fontSize: "12px",
-    fontWeight: 800,
-    letterSpacing: "0",
-    lineHeight: "23px",
-    margin: "0",
-    marginTop: "20px",
-    fontFamily: "HelveticaNeue,Helvetica,Arial,sans-serif",
-    textAlign: "center" as const,
-    textTransform: "uppercase" as const,
+    maxWidth: "580px",
+    margin: "0 auto",
+};
+
+const content = {
+    padding: "5px 20px 10px 20px",
+};
+
+const logo = {
+    display: "flex",
+    justifyContent: "center",
+    alingItems: "center",
+    padding: 30,
+    boxShadow: "0 0 10px rgba(0,0,0,0.1)",
+    backgroundColor: "#ffffff",
+    borderBottom: "1px solid rgb(238,238,238)",
+};
+
+const sectionsBorders = {
+    width: "100%",
+    display: "flex",
+};
+
+const sectionBorder = {
+    borderBottom: "1px solid rgb(238,238,238)",
+    width: "249px",
+};
+
+const sectionCenter = {
+    borderBottom: "1px solid #0861c5",
+    width: "102px",
+};
+
+const link = {
+    textDecoration: "underline",
 };

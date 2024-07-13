@@ -49,12 +49,12 @@ interface DatabaseUserAttributes {
     createdAt: Date;
 }
 
-export async function createVerificationToken(email:string) {
+export async function createVerificationToken(email:string, expiresIn:string = "1h") {
     const code = Math.random().toString(36).substring(2, 8);
     const token = jwt.sign({
         email, code
     }, AUTH_SECRET, {
-        expiresIn: "5m"
+        expiresIn: expiresIn
     })
     return token
 }
