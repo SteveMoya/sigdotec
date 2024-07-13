@@ -6,7 +6,7 @@ interface Props {
   title: string;
   description: string;
 }
-// import {Avatar,  AvatarFallback, AvatarImage} from "@/components/ui/avatar.tsx";
+
 const { title, description } = Astro.props;
 const user = Astro.locals.user;
 ---
@@ -61,11 +61,11 @@ const user = Astro.locals.user;
         x-transition:leave-end="opacity-0 scale-95"
         @click.away="dropdownOpen = false"
       >
-        <!-- <a
+        <a
           href="/app/perfil"
           class="block px-4 py-2 text-sm hover:bg-primary-700 hover:text-white"
           >Perfil</a
-        > -->
+        >
         <a
           class="block px-4 py-2 text-sm hover:bg-primary-700 hover:text-white"
           href="/api/auth/singout"
