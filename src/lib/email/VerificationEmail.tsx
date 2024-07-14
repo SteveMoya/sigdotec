@@ -55,7 +55,7 @@ export const VerficationEmail = ({
                         <Text style={paragraph}>
                             Si no fuiste tu, por favor, ignora este correo,{" "}
                             si realmente fuiste tu, por favor{" "}
-                            <Link href={`${APP_URL}auth/password-reset/${validationCode}`} style={link}>
+                            <Link href={`${APP_URL}auth/email-verification/${validationCode}`} style={link}>
                                 Confirma tu cuenta
                             </Link>.
                         </Text>

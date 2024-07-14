@@ -24,12 +24,7 @@ export async function GET(context: APIContext): Promise<Response> {
           status: 400
         })
       }
-      return new Response(null, {
-        status: 302,
-        headers: {
-          location: "/app/",
-        },
-      });
+      return context.redirect("/auth/datos-demograficos");
     }catch(error){
       console.log(error);
       return new Response("Token inválido o ya expirado", { status: 404 })

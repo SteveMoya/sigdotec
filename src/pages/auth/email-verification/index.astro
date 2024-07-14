@@ -5,6 +5,7 @@ import { createVerificationToken } from "@/lib/auth/lucia";
 import Layout from "@layouts/Layout.astro";
 import VerifyEmail from "@/components/VerifyEmail";
 import { Toaster } from "sonner";
+import type { only } from "node:test";
 
 const user = Astro.locals.user;
 
@@ -43,7 +44,7 @@ try {
 
 <Layout>
   <div class="flex justify-center content-center my-[6dvh]">
-    <VerifyEmail email={user.email} client:load transition:persist />
+    <VerifyEmail email={user.email} client:only transition:persist />
   </div>
   <Toaster
     richColors

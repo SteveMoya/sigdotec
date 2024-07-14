@@ -1235,7 +1235,7 @@ export const PlanService = {
     },
     async getAllTopcis() {
         try {
-            const allTopics = await fetch(`${AI_URL}/all_topic_id`);
+            const allTopics = await fetch(`${import.meta.env.AI_URL}/all_topic_id`);
             const data = allTopics.json();
             console.log(data)
             return data;
@@ -1259,6 +1259,24 @@ export const PlanService = {
         } catch (error) {
             console.log(error);
         }
+    },
+    async getClassPlanEmbedding(){
+        try {
+            const embeddingPlan = await fetch(`${AI_URL}/class_plan_embedding`);
+            const data = await embeddingPlan.json();
+            return data;
+        } catch (error) {
+            console.log(error);
+        }
     }
-
+    ,
+    async getPlanDOX(userID: string) {
+        try {
+            const doxPlan = await fetch(`${AI_URL}/download/${userID}`);
+            const data = await doxPlan.json();
+            return data;
+        } catch (error) {
+            console.log(error);
+        }
+    }
 }

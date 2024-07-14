@@ -61,7 +61,7 @@ export const ClassPlan = () => {
             </div>
             {data &&
                 <>
-                    <article className='mx-0 text-center p-7 grid sm:grid-cols-3 grid-cols-1 gap-4'>
+                    <article className='mx-0 text-center p-7 grid sm:grid-cols-2 grid-cols-1 gap-4'>
                         <DataDisplay data={data} />
                     </article>
                     <div className="flex justify-center items-center">

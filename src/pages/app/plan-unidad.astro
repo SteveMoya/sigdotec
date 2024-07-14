@@ -1,5 +1,6 @@
 ---
 import AppLayout from "@src/layouts/App/AppLayout.astro";
+import { UnitPlan } from "@components/App/UnitPlan";
 ---
 
 <AppLayout
@@ -7,4 +8,5 @@ import AppLayout from "@src/layouts/App/AppLayout.astro";
     description="Estamos felices de tenerte SIGDCOPATA"
 >
     <h2>Plan de Unidad</h2>
+    <UnitPlan client:load />
 </AppLayout>

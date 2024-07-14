@@ -1,34 +1,52 @@
- 
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card";
 import { Label } from "@/components/ui/label";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface Props {
     email: any;
 }
 
 export default function VerifyEmail({ email }: Props) {
-    // Cambia el estado inicial de 'send' a false
     const [send, setSend] = useState(false);
     const [loading, setLoading] = useState(false);
+    const initialTimer = JSON.parse(localStorage.getItem('timer')) || 86400; // 86400 segundos son 24 horas
+    const [timer, setTimer] = useState(initialTimer);
+
+    useEffect(() => {
+        localStorage.setItem('timer', JSON.stringify(timer));
+    }, [timer]);
+
+    useEffect(() => {
+        let intervalId;
+        if (send) {
+            intervalId = setInterval(() => {
+                setTimer((prevTimer) => {
+                    const newTimer = prevTimer - 1;
+                    localStorage.setItem('timer', JSON.stringify(newTimer)); // Guardar el nuevo tiempo restante en localStorage
+                    return newTimer;
+                });
+            }, 1000);
+        }
+        return () => clearInterval(intervalId); // Limpiar el intervalo cuando el componente se desmonte
+    }, [send]);
 
     const handleSubmit = async () => {
-        if (!send) { // Verifica si el formulario aún no ha sido enviado
-            setSend(false); // Asegúrate de que 'setSend' esté configurado correctamente aquí
+        if (!send) {
+            setSend(false);
             setLoading(true);
             try {
                 const res = await fetch("", {
                     method: "POST",
                 });
-                setSend(true); // Establece 'send' como verdadero después del éxito
-                if (res.ok){
-                    toast.success(res.statusText);
+                console.log(res);
+                if (res.ok) {
+                    toast.success("Correo de verificación enviado exitosamente. Verifica tu bandeja de entrada.");
+                } else {
+                    toast.error("Error al enviar el enlace de verificación. Por favor, inténtalo de nuevo más tarde.");
                 }
-                if (!res.ok){
-                    toast.error(res.statusText);
-                }
+                setSend(true);
             } catch (error) {
                 console.error("Error sending verification link. Please try again.", error);
                 toast("Error sending verification link. Please try again.");
@@ -36,7 +54,7 @@ export default function VerifyEmail({ email }: Props) {
                 setLoading(false);
             }
         } else {
-            toast("El enlace de verificación ya ha sido enviado."); // Muestra un mensaje si el formulario ya ha sido enviado
+            toast("El enlace de verificación ya ha sido enviado.");
         }
     };
 
@@ -44,7 +62,7 @@ export default function VerifyEmail({ email }: Props) {
         <Card className="w-[350px]">
             <CardHeader>
                 <CardTitle>Verifica tu Email</CardTitle>
-                <CardDescription>Haz click en tu email para recibir un magic link para verificar tu correo electronico.</CardDescription>
+                <CardDescription>Haz click en tu email para recibir un magic link para verificar tu correo electrónico.</CardDescription>
             </CardHeader>
             <CardContent>
                 <form onSubmit={handleSubmit}>
@@ -61,12 +79,17 @@ export default function VerifyEmail({ email }: Props) {
                     </div>
                     {
                         send && (
-                            <p className="text-sm text-gray-600 mt-2">
-                                Si no ves el email, verifica otros lugares donde podría estar, como tu carpeta de spam, redes sociales u otras carpetas similares.
-                            </p>
+                            <div className="mt-2">
+                                <p className="">Tiempo restante antes de que el correo expire:</p>
+                                <p className="text-primary-700">{`${Math.floor(timer / 3600)}h ${Math.floor((timer % 3600) / 60)}m ${(timer % 60)}s`}</p>
+                                <p className="text-sm text-gray-600 mt-2">
+                                    Si no ves el email, verifica otros lugares donde podría estar, como tu carpeta de spam, redes sociales u otras carpetas similares.
+                                </p>
+                                
+                            </div>
                         )
                     }
-                    <Button type="submit" className="mt-4" disabled={loading || send}> {/* Deshabilita el botón si 'loading' es true o si 'send' es true */}
+                    <Button type="submit" className="mt-4" disabled={loading || send || timer <= 0}>
                         {loading ? "Enviando..." : "Enviar enlace de verificación" || "Enviado"}
                     </Button>
                 </form>

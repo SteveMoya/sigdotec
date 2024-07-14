@@ -11,7 +11,7 @@ import { Icon } from "astro-icon/components";
 import { Toaster } from "sonner";
 
 const user = Astro.locals.user;
-console.log(user);
+import { isDev } from "@/utils/constans";
 ---
 
 <Layout
@@ -35,7 +35,7 @@ console.log(user);
       <div class="space-y-4">
         <SignInForm client:load />
 
-        <div class="grid grid-cols-3 gap-4">
+        <div class="grid grid-cols-2 gap-4">
           <a href="/api/auth/facebook">
             <Button
               client:load
@@ -47,16 +47,21 @@ console.log(user);
               Facebook
             </Button>
           </a>
-          <a href="/api/auth/github">
-            <Button
-              client:load
-              variant="outline"
-              className="w-full hover:text-white dark:hover:bg-[#333] hover:bg-[#333]"
-            >
-              <Icon name="mdi:github" class="mr-2 h-6 w-6 text-xl" />
-              GitHub
-            </Button>
-          </a>
+          {
+            isDev && (
+
+            <a href="/api/auth/github">
+              <Button
+                client:load
+                variant="outline"
+                className="w-full hover:text-white dark:hover:bg-[#333] hover:bg-[#333]"
+              >
+                <Icon name="mdi:github" class="mr-2 h-6 w-6 text-xl" />
+                GitHub
+              </Button>
+            </a>
+            )
+          }
           <a href="/api/auth/google">
             <Button
               client:load

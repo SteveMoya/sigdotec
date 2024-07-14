@@ -1,13 +1,13 @@
 import type { APIContext } from "astro";
 import { generateId } from "lucia";
-import { db, User } from "astro:db";
+import { db, eq, User } from "astro:db";
 import { lucia } from "@/lib/auth/lucia";
 import argon2id from 'argon2'
 // import { SignUpSchema } from "@/schemas/authentification";
 export async function POST(context: APIContext): Promise<Response> {
   const body = await context.request.json();
   if (body === null) {
-    return new Response("Invalid request body", {
+    return new Response("Invalid request", {
       status: 400,
     });
   }
@@ -17,22 +17,29 @@ export async function POST(context: APIContext): Promise<Response> {
     return new Response("Invalid request", { status: 400 });
   }
   if (typeof username !== "string" || username.length < 4) {
-    return new Response("Username must be at least 4 characters long", {
+    return new Response("El nombre de usuario tiene que tener por lo menos 4 caracteres", {
       status: 400,
     });
   }
   if(typeof email !== "string" || email.length < 6){
-    return new Response("Email must be at least 6 characters long", { status : 400})
+    return new Response("El correo electronico tiene que tener un minimo de 6 caracteres", { status : 400})
   }
   if (typeof password !== "string" || password.length < 4) {
-    return new Response("Password must be at least 4 characters long", {
+    return new Response("La contraseña tiene que tener por lo menos 4 caracteres", {
+      status: 400,
+    });
+  }
+  const foundUser = (
+    await db.select().from(User).where(eq(User.email, email))
+  ).at(0);
+  if (foundUser) {
+    return new Response("El correo electronico ya esta en uso", {
       status: 400,
     });
   }
   // Insert user into db
   const userId = generateId(15);
   const hashedPassword = await argon2id.hash(password);
-
   await db.insert(User).values([
     {
       id: userId,

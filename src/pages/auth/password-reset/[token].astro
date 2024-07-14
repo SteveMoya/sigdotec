@@ -3,12 +3,7 @@ import { ForgotPasswordForm } from "@/components/ForgotPassword";
 
 import Layout from "@layouts/Layout.astro";
 import { verifyToken } from "@/lib/auth/lucia";
-import { db } from "astro:db";
-import { User } from "astro:db";
-import { eq } from "astro:db";
-import { hasherPassword } from "@/utils";
-import { Session } from "astro:db";
-import { lucia } from "@/lib/auth/lucia";
+
 import { Toaster } from "sonner";
 
 const user = Astro.locals.user;
@@ -89,7 +84,7 @@ if (!tokenValid) {
 
 <Layout>
   <div class="flex justify-center content-center my-[6dvh]">
-    <ForgotPasswordForm token={token as string} client:only />
+    <ForgotPasswordForm token={token as string} client:load />
   </div>
   <form id="changePasswordForm">
     

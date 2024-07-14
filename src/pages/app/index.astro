@@ -1,9 +1,31 @@
 ---
 import AppLayout from "@src/layouts/App/AppLayout.astro";
-import { UnitPlan } from "@components/App/UnitPlan";
 import { ClassPlan } from "@components/App/ClassPlan";
 import MultiSteps from "@components/App/MultiSteps";
-
+import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+const PlansItems = [
+        {
+                title: "Plan de Unidad",
+                description: "Crear un plan de unidad de estudio de manera sencilla solo seleccionando tu tema y subtema de estudio, y listo, ya tienes tu plan de unidad de estudio listo para ser compartido con tus estudiantes.",
+                link: "/app/plan-unidad"
+        },
+        {
+                title: "Plan de Clase",
+                description: "Crear un plan de clase de manera sencilla solo seleccionando tu tema y subtema de estudio, y listo, ya tienes tu plan de clase listo para ser compartido con tus estudiantes.",
+                link: "/app/plan-clase"
+        },
+        {
+                title: "Habla con tu Plan de Clase",
+                description: "Crear un plan de clase de manera mas especifica solo escribiendole a nuestra IA con tu tema y subtema de estudio, y listo, ya tienes tu plan de clase listo para ser compartido con tus estudiantes.",
+                link: "/app/plan-chat"
+        },
+        {
+                title: "Plan Anual",
+                description: "Crear un plan anual de manera sencilla solo seleccionando tu tema y subtema de estudio, y listo, ya tienes tu plan anual listo para ser compartido con tus estudiantes.",
+                link: "/app/plan-anual"
+        }
+]
 
 ---
 
@@ -11,26 +33,34 @@ import MultiSteps from "@components/App/MultiSteps";
         title="Dashboard"
         description="Estamos felices de tenerte SIGDCOPATA"
 >
-<!--Aqui colocar un grip de cuatro tarjetas  difividos entre 2 que vallan a las direcciones de cada uno de los planes -->
-<section class="grid grid-cols-1 lg:grid-cols-2">
-        <div>
-             Plan 1   
-        </div>
-                <div>
-             Plan 2   
-        </div>
-                <div>
-             Plan 3   
-        </div>
-                <div>
-             Plan 4   
-        </div>
+<section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        {
+                PlansItems.map((item) => (
+                        <Card className="">
+                                <CardHeader >
+                                        <CardTitle className="">{item.title}</CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                        <CardDescription>
+                                        {item.description}
+                                        </CardDescription>
+                                </CardContent>
+                                <CardFooter>
+                                        <a href={item.link}>
+                                                <Button className="dark:bg-primary-700 bg-primary-700 dark:hover:bg-primary-800 hover:bg-primary-800 text-white dark:text-white">
+                                                Planificar
+                                                </Button>
+                                                </a>
+                                </CardFooter>
+                        </Card>
+                ))
+        }
 </section>
-        <h2>La unidad de estudio que se presenta a continuación</h2>
+        <!-- <h2>La unidad de estudio que se presenta a continuación</h2>
         <UnitPlan client:load />
         <h2>La clase que se presenta a continuación</h2>
         <ClassPlan client:load />
         <h2>La clase que se presenta a continuación</h2>
         <h3>Aqui esta el multipasos</h3>
-        <MultiSteps client:only />
+        <MultiSteps client:only /> -->
 </AppLayout>

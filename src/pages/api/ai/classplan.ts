@@ -9,10 +9,10 @@ export async function POST(context: APIContext): Promise<Response> {
     const data = classplanmock;
     const user = context.locals.user;
     if (!user) {
-        return new Response("Unauthorized", { status: 401 });
+        return new Response("Usuario no authenticado", { status: 401 });
     }
 
-    const body = await context.request.json(); 
+    const body = await context.request.json();
     const amount = user.balance;
     if (!amount) {
         return new Response(JSON.stringify({ error: "Balance requerido" }), {
@@ -28,10 +28,10 @@ export async function POST(context: APIContext): Promise<Response> {
     }
     try {
         // const data = await PlanService.getPlanClass(body);
-        
+
         // Aqui actualizamos el balance del usuario
         await db.update(User).set({ balance: (Number(amount) - CLASS_PRICE) }).where(eq(User.id, user.id));
-        
+
         return new Response(JSON.stringify(data), {
             headers: { "content-type": "application/json" },
             status: 200,

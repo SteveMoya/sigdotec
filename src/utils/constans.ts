@@ -6,7 +6,7 @@ export const ARTICLES_PER_PAGE = 6;
 
 export const UNIT_PRICE = 1;
 export const CLASS_PRICE = 1;
-export const ANUAL_PRICE = 16;
+export const ANUAL_PRICE = 15;
 export const CURRENCY = 'USD';
 
 export const isProd = import.meta.env.PROD;
@@ -35,14 +35,6 @@ export const SANBOX_PAYPAL_API = import.meta.env.SANBOX_PAYPAL_API;
 
 export const BASE_URL = import.meta.env.BASE_URL
 
-
-
-
 export const APP_URL = isProd
   ? 'https://sigdotec.com/'
   : 'http://localhost:4321/';
-
-
-/* export const API_URL = isProd
-   ? 'https://sigdotech-blog.herokuapp.com/api'
-   : 'http://localhost:3000/api'; */
