@@ -4,6 +4,13 @@ export const SITE_DESCRIPTION =
 export const HOMEPAGE_ARTICLE_LIMIT = 6;
 export const ARTICLES_PER_PAGE = 6;
 
+export const UNIT_PRICE = 1;
+export const CLASS_PRICE = 1;
+export const ANUAL_PRICE = 16;
+export const CURRENCY = 'USD';
+
+export const isProd = import.meta.env.PROD;
+export const isDev = import.meta.env.DEV;
 export const GITHUB_CLIENT_ID = import.meta.env.GITHUB_CLIENT_ID;
 export const GITHUB_CLIENT_SECRET = import.meta.env.GITHUB_CLIENT_SECRET;
 
@@ -17,7 +24,9 @@ export const AUTH_SECRET = import.meta.env.AUTH_SECRET
 
 export const RESEND_API_KEY = import.meta.env.RESEND_API_KEY
 
-export const AI_URL = import.meta.env.AI_URL
+// export const AI_URL = import.meta.env.AI_URL
+
+export const AI_URL = isProd ? import.meta.env.AI_URL : `${import.meta.env.AI_URL}/test/`;
 
 export const PUBLIC_PAYPAL_CLIENT_ID = import.meta.env.PUBLIC_PAYPAL_CLIENT_ID;
 export const PAYPAL_CLIENT_ID = import.meta.env.PAYPAL_CLIENT_ID;
@@ -26,13 +35,9 @@ export const SANBOX_PAYPAL_API = import.meta.env.SANBOX_PAYPAL_API;
 
 export const BASE_URL = import.meta.env.BASE_URL
 
-export const isProd = import.meta.env.PROD;
-export const isDev = import.meta.env.DEV;
 
-export const UNIT_PRICE = 49.99;
-export const CLASS_PRICE = 49.99;
-export const ANUAL_PRICE = 800.00;
-export const CURRENCY = 'USD';
+
+
 export const APP_URL = isProd
   ? 'https://sigdotec.com/'
   : 'http://localhost:4321/';
