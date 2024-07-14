@@ -7,6 +7,7 @@ import { BotonStart, BotonDowm } from "@components/App/BotonStart";
 import { Picture } from "astro:assets";
 import logo from "@assets/images/SIGDO-Logo/SIGDO-32.svg";
 import LiteYoutube from "../LiteYoutube.astro";
+import background from "/public/SIGDOTEC-Presentation-Image.jpg";
 ---
 
 <section class="relative pt-32 lg:pt-10">
@@ -55,7 +56,7 @@ import LiteYoutube from "../LiteYoutube.astro";
     <div
       class="flex flex-1 lg:w-1/2 lg:h-auto relative lg:max-w-none lg:mx-0 mx-auto max-w-3xl justify-center items-center img"
     >
-      <LiteYoutube videoId="QXrFgSi4khs" />
+      <LiteYoutube videoId="QXrFgSi4khs" backgroundImage={background.src} />
     </div>
   </Container>
 </section>
