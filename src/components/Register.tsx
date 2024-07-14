@@ -41,7 +41,7 @@ export function SignUpForm() {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(values),
-                redirect: 'follow'
+                
             })
 
             console.log(res)
@@ -50,7 +50,9 @@ export function SignUpForm() {
             } else {
                 toast.error("Credenciales Invitalidas.")
             }
-            window.location.href = 'auth/datos-demograficos'
+            if(res.redirected){
+                window.location.href = res.url
+            }
 
         } catch (error) {
             console.log(error)
@@ -81,7 +83,7 @@ export function SignUpForm() {
                             <FormItem>
                                 <FormLabel className="font-semibold text-lg">Email</FormLabel>
                                 <FormControl>
-                                    <Input placeholder="sigdotec@gmail.com" type="text" {...field} />
+                                    <Input placeholder="ejemplo@gmail.com" type="text" {...field} />
                                 </FormControl>
                                 <FormMessage />
                             </FormItem>

@@ -25,7 +25,7 @@ export function SignInForm() {
     const form = useForm<z.infer<typeof SignInSchema>>({
         resolver: zodResolver(SignInSchema),
         defaultValues: {
-            username: "",
+            email: "",
             password: "",
         },
     })
@@ -39,7 +39,6 @@ export function SignInForm() {
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify(values),
-                redirect: 'follow'
             })
             
             console.log(res)
@@ -48,7 +47,9 @@ export function SignInForm() {
             } else {
                 toast.error("Invalid credentials.")
             }
-            window.location.reload()
+            if(res.redirected){
+                window.location.href = res.url
+            }
             
         } catch (error) {
             console.log(error)
@@ -61,12 +62,12 @@ export function SignInForm() {
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
                 <FormField
                     control={form.control}
-                    name="username"
+                    name="email"
                     render={({ field }) => (
                         <FormItem>
-                            <FormLabel className="font-semibold text-lg">Nombre de Usuario</FormLabel>
+                            <FormLabel className="font-semibold text-lg">Correo del Usuario</FormLabel>
                             <FormControl>
-                                <Input placeholder="Tu nombre aqui" {...field} />
+                                <Input placeholder="ejemplo@gmail.com" {...field} />
                             </FormControl>
                             <FormMessage />
                         </FormItem>

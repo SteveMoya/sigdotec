@@ -24,7 +24,9 @@ export const SignUpSchema = z
     )
 
 export const SignInSchema = z.object({
-    username: z.string({ message: "el nombre del usuario tiene que tener letras" }).min(2, {
+    email: z.string().email({
+        message: "El email tiene que ser valido",
+    }).min(2, {
         message: "El nombre del usuario tiene que tener un minimo de 2 caracteres",
     }).max(50, {
         message: "El nombre del usuario tiene que tener un maximo de 50 caracteres",
