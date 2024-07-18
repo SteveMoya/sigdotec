@@ -1,12 +1,14 @@
 ---
 import AppLayout from "@src/layouts/App/AppLayout.astro";
 import { ClassPlan } from "@components/App/ClassPlan";
+import ClassPlanMultiSteps from "@/components/PlanClassMultiSteps";
 ---
 
 <AppLayout
     title="Plan de Clase"
     description="Estamos felices de tenerte SIGDCOPATA"
 >
-    <h2>Plan de Clase</h2>
-    <ClassPlan client:load />
+    <!-- <h2>Plan de Clase</h2>
+    <ClassPlan client:load /> -->
+    <ClassPlanMultiSteps client:load />
 </AppLayout>

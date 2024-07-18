@@ -1,6 +1,6 @@
 import type { APIContext, APIRoute } from "astro";
 import allTopicMock from "@mocks/allDataMock.json"
-// import { PlanService } from "@services/plans.services";
+import { PlanService } from "@services/plans.services";
 
 export async function GET(context: APIContext): Promise<Response> {
     const data = allTopicMock
@@ -9,7 +9,8 @@ export async function GET(context: APIContext): Promise<Response> {
         return new Response("Unauthorized", { status: 401 });
     }
     try {
-        // const data = await PlanService.getAllTopics()
+        // const data = await PlanService.getAllTopcis()
+        
         return new Response(JSON.stringify(data), {
             headers: { "content-type": "application/json" },
             status: 200,

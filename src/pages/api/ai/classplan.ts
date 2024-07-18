@@ -1,18 +1,17 @@
 import type { APIContext, APIRoute } from "astro";
 
 import classplanmock from '@mocks/classplan.json';
-// import { PlanService } from "@services/plans.services";
+import { PlanService } from "@services/plans.services";
 import { CLASS_PRICE } from "@src/utils";
 import { db, eq, User } from "astro:db";
 
 export async function POST(context: APIContext): Promise<Response> {
-    const data = classplanmock;
+    // const data = classplanmock;
     const user = context.locals.user;
     if (!user) {
         return new Response("Usuario no authenticado", { status: 401 });
     }
 
-    const body = await context.request.json();
     const amount = user.balance;
     if (!amount) {
         return new Response(JSON.stringify({ error: "Balance requerido" }), {
@@ -26,9 +25,16 @@ export async function POST(context: APIContext): Promise<Response> {
             status: 400,
         });
     }
+    const body = await context.request.json();
+    // luego aqui convertimos el array de string en un array de numeros
+    console.log("Esta es la peticion del usuario",body);
+    // const temas = body.map((item: string) => Number
+    // (item));
+    // console.log("Estos son los temas que se van a guardar", temas);
+    
     try {
-        // const data = await PlanService.getPlanClass(body);
-
+        const data = await PlanService.getPlanClass(body, user.username, user.id);
+        console.log("Estos son los datos que se van a guardar", data);
         // Aqui actualizamos el balance del usuario
         await db.update(User).set({ balance: (Number(amount) - CLASS_PRICE) }).where(eq(User.id, user.id));
 

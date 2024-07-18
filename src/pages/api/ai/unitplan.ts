@@ -1,13 +1,13 @@
 import type { APIContext, APIRoute } from "astro";
 import type {  PlanBaseSchema } from "@schemas/plans";
 import dataMock  from "@mocks/unitPlanMock.json"
-// import { PlanService } from "@services/plans.services";
+import { PlanService } from "@services/plans.services";
 import { UNIT_PRICE } from "@src/utils";
 import { db, eq, User } from "astro:db";
 
 
 export async function GET(context: APIContext): Promise<Response> {
-    const data: PlanBaseSchema = dataMock
+    // const data: PlanBaseSchema = dataMock
     const user = context.locals.user;
     if (!user) {
         return new Response("Unauthorized", { status: 401 });
@@ -29,7 +29,8 @@ export async function GET(context: APIContext): Promise<Response> {
     }
     
         try{
-            // const data = await PlanService.getPlanUnit(topic_id)
+            const data = await PlanService.getPlanUnit(topic_id, user.username, user.id);
+            console.log(data)
             // Aqui actualizamos el balance del usuario
             await db.update(User).set({ balance: (Number(amount) - UNIT_PRICE) }).where(eq(User.id, user.id));
             console.log(data)

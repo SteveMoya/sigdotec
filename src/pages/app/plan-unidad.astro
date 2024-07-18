@@ -1,12 +1,19 @@
 ---
 import AppLayout from "@src/layouts/App/AppLayout.astro";
 import { UnitPlan } from "@components/App/UnitPlan";
+const user = Astro.locals.user;
+import MultiSteps from "@components/App/MultiSteps";
+import UnitPlanMultiSteps from "@components/UnitPlanMultiSteps";
+console.log(user?.id)
 ---
 
 <AppLayout
     title="Plan de Unidad"
     description="Estamos felices de tenerte SIGDCOPATA"
 >
-    <h2>Plan de Unidad</h2>
-    <UnitPlan client:load />
+    <!-- <UnitPlan client:load userid={user?.id} />
+    <h3>Aqui esta el unitplan multipasos</h3> -->
+    <UnitPlanMultiSteps client:load transition:persist />
+    <!-- <h3>Aqui esta el multipasos</h3>
+    <MultiSteps client:only /> -->
 </AppLayout>

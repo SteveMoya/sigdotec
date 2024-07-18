@@ -1,8 +1,29 @@
 
-export const DownloadDOC = ({ href }: { href: string }) => {
+export const DownloadDOC = () => {
+    const download = async () => {
+        try {
+            const res = await fetch("/api/ai/downloadDox",{
+                method: "POST",
+            });
+            if (!res.ok) {
+                throw new Error('Error downloading the document');
+            }
+            const blob = await res.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `plan.docx`;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+            window.URL.revokeObjectURL(url);
+            
+        } catch (error) {
+            console.error(error);
+        }
+    }
     return (
-        <a href={href} target="_blank" rel="noopener noreferrer">
-            <button
+            <button onClick={download}
                 type="button"
                 className="px-4 py-3 bg-[#2B599A] hover:bg-secondary-900 rounded-md text-white outline-none focus:ring-4 shadow-lg transform active:scale-x-75 transition-transform mx-5 flex items-center"
             >
@@ -10,7 +31,6 @@ export const DownloadDOC = ({ href }: { href: string }) => {
                 <span className="mx-2">Descargar en .doc</span>
                 <span className="icon-[mdi--microsoft-word]"></span>
             </button>
-        </a>
     );
 };
 
