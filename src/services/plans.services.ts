@@ -2,6 +2,8 @@ import type { PlanBaseSchema, PlanClassSchema, ErrorSchema } from "@src/schemas"
 import { AI_URL } from "@src/utils";
 import dataTableMock from "@mocks/dataTableMock.json";
 import type {Plan} from "@/components/DataTable/Plan"
+import { AI_API_SECRET } from "@src/utils";
+
 export const PlanService = {
     async getPlanUnit(topic_id: number, username: string, userid: string) {
         try {
@@ -10,6 +12,7 @@ export const PlanService = {
                 headers: {
                     'accept': 'application/json',
                     'Content-Type': 'application/json',
+                    'Authorization': `${AI_API_SECRET}`,
                 },
                 body: JSON.stringify({ topic_id, username, userid})
             });
@@ -25,7 +28,14 @@ export const PlanService = {
     },
     async getAllTopcis() {
         try {
-            const allTopics = await fetch(`${import.meta.env.AI_URL}/all_topic_id`);
+            const allTopics = await fetch(`${import.meta.env.AI_URL}/all_topic_id`,{
+                method: 'GET',
+                headers: {
+                    'accept': 'application/json',
+                    'Content-Type': 'application/json',
+                    'Authorization': `${AI_API_SECRET}`,
+                }
+            });
             const data = allTopics.json();
             console.log(data)
             return data;
@@ -41,6 +51,7 @@ export const PlanService = {
                 headers: {
                     'accept': 'application/json',
                     'Content-Type': 'application/json',
+                    'Authorization': `${AI_API_SECRET}`,
                 },
                 body: JSON.stringify({
                     username,
@@ -62,6 +73,7 @@ export const PlanService = {
                 headers: {
                     'accept': 'application/json',
                     'Content-Type': 'application/json',
+                    'Authorization': `${AI_API_SECRET}`,
                 },
                 body: JSON.stringify({
                     username,
@@ -80,7 +92,12 @@ export const PlanService = {
     ,
     async getPlanDOX(userID: string) {
         try {
-            const doxPlan = await fetch(`${import.meta.env.AI_URL}/download/${userID}`);
+            const doxPlan = await fetch(`${import.meta.env.AI_URL}/download/${userID}`,{
+                method: 'GET',
+                headers: {
+                    'Authorization': `${AI_API_SECRET}`
+                }
+            });
             if (!doxPlan.ok) {
                 throw new Error('Error fetching the document');
             }
@@ -95,7 +112,12 @@ export const PlanService = {
         console.log("Id de la materia",id_subject)
         console.log("Id del grado",id_grade)
         try {
-            const anualPlan = await fetch(`${import.meta.env.AI_URL}/download/annual_plan/${id_subject}${id_grade}`);
+            const anualPlan = await fetch(`${import.meta.env.AI_URL}/download/annual_plan/${id_subject}${id_grade}`,{
+                method: 'GET',
+                headers: {
+                    'Authorization': `${AI_API_SECRET}`,
+                }
+            });
             console.log("URL de la peticion",anualPlan.url)
             if (!anualPlan.ok) {
                 throw new Error('Error fetching the document');
