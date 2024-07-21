@@ -59,7 +59,11 @@ export const ClassPlanEmbeddingFormSchema = z
         texto: z.string().nonempty(),
 
     })
-
+export const AnualPlanFormSchema = z
+    .object({
+        materia: z.string().nonempty(),
+        grado: z.string().nonempty(),
+    })
 // tipado de todos los tamas
 export interface AlltopicSchema {
     "1": [string, N1]
