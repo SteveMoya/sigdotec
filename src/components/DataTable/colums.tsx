@@ -22,7 +22,6 @@ export const columns: ColumnDef<Plan>[] = [
     },
     {
         accessorKey: "date",
-        // header: "Fecha",
         header: ({ column }) => {
             return (
                 <Button
@@ -35,6 +34,7 @@ export const columns: ColumnDef<Plan>[] = [
             )
         },
         cell: ({ getValue }) => new Date(getValue() as string).toLocaleString(),
+        enableGlobalFilter: true,
     },
     {
         accessorKey: "type",
@@ -49,26 +49,27 @@ export const columns: ColumnDef<Plan>[] = [
                 </Button>
             )
         },
+        enableGlobalFilter: true,
     },
     {
         accessorKey: "subtopics",
         header: "Subtemas",
         cell: ({ getValue }) => (getValue() ? (getValue() as string[]).join(", ") : "N/A"),
+        enableGlobalFilter: true,
     },
     {
         accessorKey: "topic",
         header: "Temas",
         cell: ({ getValue }) => getValue() ?? "N/A",
+        enableGlobalFilter: true,
     },
     {
         accessorKey: "Action",
         header: "Recrear plan",
-        //Colocamos un boton para recrear el plan
         cell: ({ row }) => {
             return (
-                
                 <DropdownMenu>
-                    <DropdownMenuTrigger asChild >
+                    <DropdownMenuTrigger asChild>
                         <Button variant="ghost" className="h-8 w-8 p-0">
                             <span className="sr-only">Open menu</span>
                             <MoreHorizontal className="h-4 w-4" />

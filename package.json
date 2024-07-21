@@ -57,7 +57,7 @@
     "@vite-pwa/astro": "^0.1.6",
     "arctic": "^1.9.1",
     "argon2": "^0.40.3",
-    "astro": "^4.11.3",
+    "astro": "^4.12.2",
     "astro-devtoolbar-tailwind": "^0.0.8",
     "astro-icon": "^1.1.0",
     "astro-lighthouse": "^0.1.3",
