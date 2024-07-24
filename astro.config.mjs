@@ -29,6 +29,9 @@ export default defineConfig({
     plugins: [
           VitePWA({
               registerType: "autoUpdate",
+              devOptions: {
+                  enabled: true
+              },
               manifest,
               workbox: {
                   globDirectory: ".vercel/output/static",
@@ -66,7 +69,8 @@ export default defineConfig({
   mdx(), react(), tailwind({
     applyBaseStyles: false
   }), icon(),
-  metaTags(), devtoolbarTailwind(), lighthouse(), db(), sitemap()],
+  metaTags(), devtoolbarTailwind(), lighthouse(), db(), sitemap({
+  })],
   output: 'server',
   adapter: vercel()
 });

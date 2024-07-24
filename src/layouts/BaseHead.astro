@@ -12,6 +12,11 @@ export interface Props {
   url?: URL | string;
 }
 
+function disableIndexing(url: string) {
+  return settings.disableIndexingUrls.includes(url);
+}
+
+
 const title = Astro.props.title || settings.title;
 const description = Astro.props.description || settings.description;
 const canonicalURL =
@@ -37,10 +42,15 @@ const image = Astro.props.image || "/og-sigdo.jpg";
 <link rel="sitemap" href="/sitemap-index.xml" />
 
 <!-- Robots TXT -->
-<!-- <meta
+<meta
   name="robots"
-  content={settings.disableIndexing ? "noindex, nofollow" : "index, follow"}
-/> -->
+  content={disableIndexing(canonicalURL.toString()) ? "noindex" : "index"}
+/>
+
+<meta
+  name="robots"
+  content={disableIndexing(canonicalURL.toString()) ? "nofollow" : "follow"}
+/>
 
 <!-- RSS -->
 
