@@ -112,7 +112,7 @@ export const PlanService = {
         console.log("Id de la materia",id_subject)
         console.log("Id del grado",id_grade)
         try {
-            const anualPlan = await fetch(`${import.meta.env.AI_URL}/download/annual_plan/${id_subject}${id_grade}`,{
+            const anualPlan = await fetch(`${import.meta.env.AI_URL}/download/annual_plan/${id_subject}/${id_grade}`,{
                 method: 'GET',
                 headers: {
                     'Authorization': `${AI_API_SECRET}`,

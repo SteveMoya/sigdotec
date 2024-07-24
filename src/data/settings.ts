@@ -1,5 +1,5 @@
 export const settings = {
-  site: 'https://www.sigdotec.com',
+  site: 'https://sigdotec.com',
   name: 'Home Sigdotec',
   title: 'Home Sigdotec',
   description: 'Descripcion de Home de SIGDO',

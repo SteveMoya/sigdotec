@@ -94,7 +94,7 @@ export const subjects = [
 ] as const
 
 export const gender = [
-    'Masculino', 'Femenino', 'Otro'
+    'Masculino', 'Femenino', 'Otro' , 'Prefiero no decirlo'
 ] as const
 
 export const DemographicSchema = z.object({

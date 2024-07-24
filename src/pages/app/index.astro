@@ -1,66 +1,121 @@
 ---
 import AppLayout from "@src/layouts/App/AppLayout.astro";
-import { ClassPlan } from "@components/App/ClassPlan";
-import MultiSteps from "@components/App/MultiSteps";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
+import {
+        Card,
+        CardHeader,
+        CardTitle,
+        CardDescription,
+        CardContent,
+        CardFooter,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Icon } from "astro-icon/components";
 const PlansItems = [
         {
                 title: "Plan de Unidad",
-                description: "Crear un plan de unidad de estudio de manera sencilla solo seleccionando tu tema y subtema de estudio, y listo, ya tienes tu plan de unidad de estudio listo para ser compartido con tus estudiantes.",
-                link: "/app/plan-unidad"
+                description:
+                        "Crea un plan de unidad que incluye todos los contenidos necesarios para una unidad temática específica.",
+                includes: [
+                        "Temas",
+                        "Subtemas",
+                        "Contenidos conceptuales, procedimentales y actitudinales",
+                        "Indicadores de logro",
+                        "Preguntas esenciales de la unidad",
+                        "Actividad de motivación inicial para la introducción de la unidad",
+                ],
+                link: "/app/plan-unidad",
         },
         {
                 title: "Plan de Clase",
-                description: "Crear un plan de clase de manera sencilla solo seleccionando tu tema y subtema de estudio, y listo, ya tienes tu plan de clase listo para ser compartido con tus estudiantes.",
-                link: "/app/plan-clase"
+                description:
+                        "Elabora un plan de clase que ofrece una secuencia didáctica completa con todos los momentos clave para el desarrollo de un subtema de clase.",
+                includes: [
+                        "Subtemas",
+                        "Competencia específica a desarrollar con la secuencia didáctica",
+                        "Contenidos conceptuales, procedimentales y actitudinales",
+                        "Indicadores de logro",
+                        "Recursos para el desarrollo de la actividad de clase",
+                        "Estrategia de evaluación de los aprendizajes adquiridos por los alumnos",
+                        "Secuencia didáctica completa",
+                ],
+                link: "/app/plan-clase",
         },
         {
                 title: "Habla con tu Plan de Clase",
-                description: "Crear un plan de clase de manera mas especifica solo escribiendole a nuestra IA con tu tema y subtema de estudio, y listo, ya tienes tu plan de clase listo para ser compartido con tus estudiantes.",
-                link: "/app/plan-chat"
+                description:
+                        "Una forma más fácil y rápida de crear un plan de clase sin necesidad de especificar la asignatura, grado o tema en particular. Partiendo de un texto que describa la actividad de clase que deseas desarrollar, es posible obtener un plan de clase completo.",
+                includes: [
+                        "Subtemas",
+                        "Competencia específica a desarrollar con la secuencia didáctica",
+                        "Contenidos conceptuales, procedimentales y actitudinales",
+                        "Indicadores de logro",
+                        "Recursos para el desarrollo de la actividad de clase",
+                        "Estrategia de evaluación de los aprendizajes adquiridos por los alumnos",
+                        "Secuencia didáctica completa",
+                ],
+                link: "/app/plan-chat",
         },
         {
                 title: "Plan Anual",
-                description: "Crear un plan anual de manera sencilla solo seleccionando tu tema y subtema de estudio, y listo, ya tienes tu plan anual listo para ser compartido con tus estudiantes.",
-                link: "/app/plan-anual"
-        }
-]
-
+                description:
+                        "Una solución rápida y económica para planificar todo un año escolar.",
+                includes: [
+                        "Todos los planes de clase asociados a un año y grado escolar",
+                        "Subtemas",
+                        "Competencia específica a desarrollar con la secuencia didáctica",
+                        "Contenidos conceptuales, procedimentales y actitudinales",
+                        "Indicadores de logro",
+                        "Secuencia didáctica completa",
+                ],
+                link: "/app/plan-anual",
+        },
+];
 ---
 
 <AppLayout
         title="Dashboard"
         description="Estamos felices de tenerte SIGDCOPATA"
 >
-<section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        {
-                PlansItems.map((item) => (
-                        <Card className="">
-                                <CardHeader >
-                                        <CardTitle className="">{item.title}</CardTitle>
-                                </CardHeader>
-                                <CardContent>
-                                        <CardDescription>
-                                        {item.description}
-                                        </CardDescription>
-                                </CardContent>
-                                <CardFooter>
-                                        <a href={item.link}>
-                                                <Button className="dark:bg-primary-700 bg-primary-700 dark:hover:bg-primary-800 hover:bg-primary-800 text-white dark:text-white">
-                                                Planificar
-                                                </Button>
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {
+                        PlansItems.map((item) => (
+                                <Card className="flex flex-col">
+                                        <CardHeader>
+                                                <CardTitle className="">
+                                                        {item.title}
+                                                </CardTitle>
+                                        </CardHeader>
+                                        <CardContent className="flex-grow">
+                                                <CardDescription>
+                                                        <p class="text-sm">
+                                                                {
+                                                                        item.description
+                                                                }
+                                                        </p>
+                                                        <h4 class="text-base my-2 font-bold">
+                                                           Incluye:
+                                                        </h4>
+                                                        <ul class="text-base">
+                                                                {
+                                                                        item.includes.map((include) => (
+                                                                                <li class="flex items-center gap-2">
+                                                                                        <Icon name="mdi:check" class="w-4 h-4 text-primary-800" />
+                                                                                        {include}
+                                                                                </li>
+                                                                        ))
+                                                                }
+                                                        </ul>
+                                                </CardDescription>
+                                        </CardContent>
+                                        <CardFooter>
+                                                <a href={item.link}>
+                                                        <Button className="dark:bg-primary-700 bg-primary-700 dark:hover:bg-primary-800 hover:bg-primary-800 text-white dark:text-white ">
+                                                                Planificar
+                                                        </Button>
                                                 </a>
-                                </CardFooter>
-                        </Card>
-                ))
-        }
-</section>
-        <!-- <h2>La unidad de estudio que se presenta a continuación</h2>
-        <UnitPlan client:load />
-        <h2>La clase que se presenta a continuación</h2>
-        <ClassPlan client:load />
-        <h2>La clase que se presenta a continuación</h2>
-        <h3>Aqui esta el multipasos</h3>
-        <MultiSteps client:only /> -->
+                                        </CardFooter>
+                                </Card>
+                        ))
+                }
+        </section>
 </AppLayout>
