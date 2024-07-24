@@ -1,4 +1,4 @@
-import type { APIContext, APIRoute } from "astro";
+import type { APIContext } from "astro";
 import allTopicMock from "@mocks/allDataMock.json"
 import { PlanService } from "@services/plans.services";
 

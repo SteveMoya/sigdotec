@@ -1,66 +1,71 @@
 ---
-import Button from '@components/ui/Button.astro'
-import Container from '@components/ui/Container.astro'
-import Paragraph from '@components/ui/Paragraph.astro'
-import ByNumber from '@components/ByNumber.astro'
-import { Picture } from 'astro:assets'
+import Button from "@components/ui/Button.astro";
+import Container from "@components/ui/Container.astro";
+import Paragraph from "@components/ui/Paragraph.astro";
+import ByNumber from "@components/ByNumber.astro";
+import { Picture } from "astro:assets";
 ---
-<section class='relative pt-32 lg:pt-10 animate-fade-in'>
-  <Container className={'flex flex-col lg:flex-row gap-10 lg:gap-12'}>
-    <div class='absolute w-full lg:w-1/2 inset-y-0 lg:right-0'>
+
+<section class="relative pt-32 lg:pt-10 animate-fade-in">
+  <Container className={"flex flex-col lg:flex-row gap-10 lg:gap-12"}>
+    <div class="absolute w-full lg:w-1/2 inset-y-0 lg:right-0">
       <span
-        class='absolute -left-6 md:left-4 top-24 lg:top-28 w-24 h-24 rotate-90 skew-x-12 rounded-3xl dark:bg-primary-700 bg-secondary-950 blur-xl opacity-60 lg:opacity-95 lg:block'
+        class="absolute -left-6 md:left-4 top-24 lg:top-28 w-24 h-24 rotate-90 skew-x-12 rounded-3xl dark:bg-primary-700 bg-secondary-950 blur-xl opacity-60 lg:opacity-95 lg:block"
       ></span>
       <span
-        class='absolute right-4 bottom-12 w-24 h-24 rounded-3xl bg-primary-700 blur-xl opacity-80'
+        class="absolute right-4 bottom-12 w-24 h-24 rounded-3xl bg-primary-700 blur-xl opacity-80"
       ></span>
     </div>
     <span
-      class='w-4/12 lg:w-2/12 aspect-square bg-gradient-text absolute -top-5 lg:left-0 rounded-full skew-y-12 blur-2xl opacity-40 skew-x-12 rotate-90'
+      class="w-4/12 lg:w-2/12 aspect-square bg-gradient-text absolute -top-5 lg:left-0 rounded-full skew-y-12 blur-2xl opacity-40 skew-x-12 rotate-90"
     ></span>
     <div
-      class='relative flex flex-col items-center text-center lg:text-left lg:py-7 xl:py-8
-        lg:items-start lg:max-w-none max-w-3xl mx-auto lg:mx-0 lg:flex-1 lg:w-1/2'
+      class="relative flex flex-col items-center text-center lg:text-left lg:py-7 xl:py-8
+        lg:items-start lg:max-w-none max-w-3xl mx-auto lg:mx-0 lg:flex-1 lg:w-1/2"
     >
       <h1
-        class='text-3xl/tight sm:text-4xl/tight md:text-5xl/tight xl:text-6xl/tight
-             font-bold text-heading-1'
+        class="text-3xl/tight sm:text-4xl/tight md:text-5xl/tight xl:text-6xl/tight
+             font-bold text-heading-1"
       >
-        Planificar con <span class='bg-gradient-text bold'>SIGDOTEC</span> no volverá a ser lo mismo.
+        Planificar con <span class="bg-gradient-text bold">SIGDOTEC</span> no volverá
+        a ser lo mismo.
       </h1>
-      <Paragraph className='mt-8'>
-        Las planificaciones docentes son documentos esenciales para llevar a cabo cualquier actividad educativa. Con SIGDOTEC, puedes aprovechar al maximo la inteligencia artifical como una herramienta eficaz para la creacion de estos contenidos.
+      <Paragraph className="mt-8">
+        Las planificaciones docentes son documentos esenciales para llevar a
+        cabo cualquier actividad educativa. Con SIGDOTEC, puedes aprovechar al
+        maximo la inteligencia artifical como una herramienta eficaz para la
+        creacion de estos contenidos.
       </Paragraph>
-      <div class='mt-10 w-full flex max-w-md mx-auto lg:mx-0'>
+      <div class="mt-10 w-full flex max-w-md mx-auto lg:mx-0">
         <div
-          class='flex mx-0 sm:flex-row flex-col gap-2 w-full max-lg:justify-center lg:justufy-center'
+          class="flex mx-0 sm:flex-row flex-col gap-2 w-full max-lg:justify-center lg:justufy-center"
         >
-        <a href="/login">
-          <Button variant={'primary'} className={'min-w-max'}>
-            <span>Planificar</span>
-          </Button>
-        </a>
-        <a href="/nosotros">
-          <Button variant={'secondary'} className={'min-w-max'}>
-            <span> Conocer Mas</span>
-          </Button>
-        </a>
+          <a href="/iniciar-sesion">
+            <Button variant={"primary"} className={"min-w-max"}>
+              <span>Planificar</span>
+            </Button>
+          </a>
+          <a href="/nosotros">
+            <Button variant={"secondary"} className={"min-w-max"}>
+              <span> Conocer Mas</span>
+            </Button>
+          </a>
         </div>
       </div>
     </div>
 
     <div
-      class='flex flex-1 lg:w-1/2 lg:h-auto relative lg:max-w-none lg:mx-0 mx-auto max-w-3xl'
+      class="flex flex-1 lg:w-1/2 lg:h-auto relative lg:max-w-none lg:mx-0 mx-auto max-w-3xl"
     >
       <Picture
-        formats={['avif', 'webp', 'jpg']}
-        fallbackFormat='jpg'
+        formats={["avif", "webp", "jpg"]}
+        fallbackFormat="jpg"
         densities={[1.5, 2]}
-        src='/images/SIGDO - POST-1.png'
-        alt='Hero image'
-        width='2350'
-        height='2359'
-        class='lg:absolute lg:w-full lg:h-full rounded-3xl object-cover lg:max-h-none max-h-96'
+        src="/images/SIGDO - POST-1.png"
+        alt="Hero image"
+        width="2350"
+        height="2359"
+        class="lg:absolute lg:w-full lg:h-full rounded-3xl object-cover lg:max-h-none max-h-96"
       />
     </div>
   </Container>

@@ -1,9 +1,11 @@
+
 export const settings = {
   site: 'https://sigdotec.com',
   name: 'Home Sigdotec',
   title: 'Home Sigdotec',
   description: 'Descripcion de Home de SIGDO',
-  showLittleSticksPlug: true
+  showLittleSticksPlug: true,
+  disableIndexing: true
 }
 
 export const manifest = {

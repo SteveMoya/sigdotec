@@ -15,7 +15,7 @@ import { Toaster } from "sonner";
 
 const user = Astro.locals.user;
 if (!user) {
-  return Astro.redirect("/login", 302);
+  return Astro.redirect("/iniciar-sesion", 302);
 }
 if (Astro.locals.demography) {
   return Astro.redirect("/app/", 302);
@@ -33,7 +33,7 @@ try {
     if (existingDemography) {
       return Astro.redirect("/app/", 302);
     }
-    
+
     try {
       await db.insert(Demography).values([
         {

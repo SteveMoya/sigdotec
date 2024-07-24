@@ -62,11 +62,10 @@ export function ChangePassword() {
               className={`${errors.contraseña ? 'INP-error' : 'iNP'}`}
               type={showPassword ? 'text' : 'password'}
               autoComplete='off'
-              placeholder={` ${
-                errors.contraseña
-                  ? 'Contraseña requerida'
-                  : 'Mínimo 6 caracteres'
-              }`}
+              placeholder={` ${errors.contraseña
+                ? 'Contraseña requerida'
+                : 'Mínimo 6 caracteres'
+                }`}
               {...register('contraseña', {
                 required: {
                   value: true,
@@ -90,11 +89,10 @@ export function ChangePassword() {
               className={`${errors.confirmarContraseña ? 'INP-error' : 'iNP'}`}
               type={showPassword ? 'text' : 'password'}
               autoComplete='off'
-              placeholder={` ${
-                errors.confirmarContraseña
-                  ? `${errors.confirmarContraseña.message}`
-                  : 'Repita su contraseña'
-              }`}
+              placeholder={` ${errors.confirmarContraseña
+                ? `${errors.confirmarContraseña.message}`
+                : 'Repita su contraseña'
+                }`}
               {...register('confirmarContraseña', {
                 required: {
                   value: true,
@@ -116,7 +114,7 @@ export function ChangePassword() {
             )}
           </div>
           <button type='submit' className='btn'>
-            Login
+            iniciar-sesion
           </button>
         </div>
       </form>

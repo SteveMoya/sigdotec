@@ -1,22 +1,21 @@
 ---
-// import { SignInSchema } from "@/schemas/authentification";
-// import { LoginB } from "@components/App/LoginB";
-import { SignInForm } from "@/components/Login";
+import { SignUpForm } from "@/components/Register";
 
 import Logo from "@/components/ui/Logo.astro";
 import { Button } from "@/components/ui/button";
 import Layout from "@layouts/Layout.astro";
-
 import { Icon } from "astro-icon/components";
 import { Toaster } from "sonner";
+// import { RegisterB } from "@components/App/RegisterB";
+// import { SignUpForm } from "@components/Register.tsx";
 
 const user = Astro.locals.user;
-import { isDev } from "@/utils/constans";
+console.log(user);
 ---
 
 <Layout
-  title="Inicia Seccion"
-  description="Inicia Seccion para poder tener tu plan de clases"
+  title="Registrate"
+  description="Aqui te puedes registrar en para que puedas acceder tus planes de clase"
 >
   <section class="mt-6">
     <div
@@ -26,16 +25,16 @@ import { isDev } from "@/utils/constans";
         <div class="flex justify-center mb-4">
           <Logo variant="primary" size="w-32" />
         </div>
-        <h1 class="text-3xl font-bold bg-gradient-text">Iniciar sesión</h1>
+        <h1 class="text-3xl font-bold bg-gradient-text">Registrarte</h1>
         <p class="text-muted-foreground">
-          Ingresa tu correo electrónico para acceder a tu cuenta
+          Crear una cuenta para crear tus planes de clase
         </p>
       </div>
 
       <div class="space-y-4">
-        <SignInForm client:load />
+        <SignUpForm client:load />
 
-        <div class="grid grid-cols-2 gap-4">
+        <div class="grid grid-cols-3 gap-4">
           <a href="/api/auth/facebook">
             <Button
               client:load
@@ -47,21 +46,16 @@ import { isDev } from "@/utils/constans";
               Facebook
             </Button>
           </a>
-          {
-            isDev && (
-
-            <a href="/api/auth/github">
-              <Button
-                client:load
-                variant="outline"
-                className="w-full hover:text-white dark:hover:bg-[#333] hover:bg-[#333]"
-              >
-                <Icon name="mdi:github" class="mr-2 h-6 w-6 text-xl" />
-                GitHub
-              </Button>
-            </a>
-            )
-          }
+          <a href="/api/auth/github">
+            <Button
+              client:load
+              variant="outline"
+              className="w-full hover:text-white dark:hover:bg-[#333] hover:bg-[#333]"
+            >
+              <Icon name="mdi:github" class="mr-2 h-6 w-6 text-xl" />
+              GitHub
+            </Button>
+          </a>
           <a href="/api/auth/google">
             <Button
               client:load
@@ -74,23 +68,19 @@ import { isDev } from "@/utils/constans";
           </a>
         </div>
         <div class="flex justify-between">
-          <a
-            href="/auth/password-reset"
-            class="inline-block text-sm underline hover:text-primary-800"
-          >
-            ¿Olvidaste tu contraseña?
-          </a>
-          <a
-            href="/register"
-            class="inline-block text-sm underline hover:text-primary-800"
-          >
-            Registrarse
-          </a>
+          <p>
+            ¿Ya tienes una cuenta?
+            <a
+              href="/iniciar-sesion"
+              class="inline-block text-sm underline hover:text-primary-800"
+            >
+              Iniciar Sesión
+            </a>
+          </p>
         </div>
       </div>
     </div>
   </section>
-
   <Toaster
     richColors
     closeButton
@@ -103,4 +93,5 @@ import { isDev } from "@/utils/constans";
     }}
     client:only
   />
+  <!-- <RegisterB />  -->
 </Layout>

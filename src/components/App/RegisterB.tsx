@@ -6,7 +6,7 @@ import {
   NotShow,
   Show,
   Lock,
-  LoginIcon,
+  iniciar-sesionIcon,
   RegisterIcon,
   LinkIcon
 } from './Icons'
@@ -22,7 +22,7 @@ export function RegisterB() {
   const togglePasswordVisibility = () => {
     setShowPassword(!showPassword)
   }
-  
+
 
   const {
     register,
@@ -68,9 +68,8 @@ export function RegisterB() {
               type='text'
               id='Nombre'
               autoComplete='off'
-              placeholder={` ${
-                errors.Nombre ? 'Nombre requerido' : 'Nombre completo'
-              }`}
+              placeholder={` ${errors.Nombre ? 'Nombre requerido' : 'Nombre completo'
+                }`}
               {...register('Nombre', {
                 required: { value: true, message: 'Nombre requerido' },
                 pattern: {
@@ -86,9 +85,8 @@ export function RegisterB() {
               className={`${errors.email ? 'INP-error' : 'iNP'}`}
               type='email'
               id='email'
-              placeholder={` ${
-                errors.email ? 'Correo requerido' : 'example@gmail.com'
-              }`}
+              placeholder={` ${errors.email ? 'Correo requerido' : 'example@gmail.com'
+                }`}
               {...register('email', {
                 required: { value: true, message: 'Correo requerido' },
                 pattern: {
@@ -105,11 +103,10 @@ export function RegisterB() {
               className={`${errors.contraseña ? 'INP-error' : 'iNP'}`}
               type={showPassword ? 'text' : 'password'}
               autoComplete='off'
-              placeholder={` ${
-                errors.contraseña
-                  ? 'Contraseña requerida'
-                  : 'Mínimo 6 caracteres'
-              }`}
+              placeholder={` ${errors.contraseña
+                ? 'Contraseña requerida'
+                : 'Mínimo 6 caracteres'
+                }`}
               {...register('contraseña', {
                 required: {
                   value: true,
@@ -143,11 +140,10 @@ export function RegisterB() {
               className={`${errors.confirmarContraseña ? 'INP-error' : 'iNP'}`}
               type={showPassword ? 'text' : 'password'}
               autoComplete='off'
-              placeholder={` ${
-                errors.confirmarContraseña
-                  ? `${errors.confirmarContraseña.message}`
-                  : 'Repita su contraseña'
-              }`}
+              placeholder={` ${errors.confirmarContraseña
+                ? `${errors.confirmarContraseña.message}`
+                : 'Repita su contraseña'
+                }`}
               {...register('confirmarContraseña', {
                 required: {
                   value: true,
@@ -198,7 +194,7 @@ export function RegisterB() {
           <p className='textC'>
             Ya tengo una cuenta.{' '}
             <a
-              href='/login'
+              href='/iniciar-sesion'
               className='text-indigo-600 inline-flex space-x-1 items-center'
             >
               <span className='textC'> Iniciar Sección </span>

@@ -5,8 +5,6 @@ import { PaypalButtom, App } from "@components/Payment/PaypalButtom";
 
 import { Icon } from "astro-icon/components";
 
-
-
 import {
   Card,
   CardHeader,
@@ -19,23 +17,20 @@ import { Button } from "@components/ui/button";
 import { Input } from "@components/ui/input";
 import { Label } from "@components/ui/label";
 
-import {PaymentForm} from "@components/Payment/PaymetForm";
+import { PaymentForm } from "@components/Payment/PaymetForm";
 import { UNIT_PRICE } from "@/utils";
 
 const user = Astro.locals.user;
 if (!user) {
-  return Astro.redirect("/login", 302);
+  return Astro.redirect("/iniciar-sesion", 302);
 }
 const balance: number = Number(user?.balance.toFixed(2) ?? 0);
-
 
 // Junto con 2 decimales
 
 // Aqui hacemos que cada $49 sea 1 plan y se redondee
 
 const plans = Math.floor(balance / UNIT_PRICE);
-
-
 ---
 
 <AppLayout title="Cartera" description="Esta es tu Cartera">
@@ -47,7 +42,7 @@ const plans = Math.floor(balance / UNIT_PRICE);
       </CardDescription>
     </CardHeader>
     <CardContent className="grid gap-4">
-      <div class="flex  items-center content-between space-x-5 h-full font-bold">
+      <div class="flex items-center content-between space-x-5 h-full font-bold">
         <div>
           <p>Saldo actual</p>
           <h2 class="text-3xl">Planes: {plans}</h2>
@@ -55,10 +50,10 @@ const plans = Math.floor(balance / UNIT_PRICE);
         </div>
         <Icon name="mdi:wallet" class="text-9xl h-24 md:h-20 w-38" />
       </div>
-      
+
       <!-- Formulario -->
       <div class="grid gap-2">
-        <PaymentForm client:load/>
+        <PaymentForm client:load />
       </div>
     </CardContent>
     <CardFooter />

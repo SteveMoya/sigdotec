@@ -10,7 +10,7 @@ import type { only } from "node:test";
 const user = Astro.locals.user;
 
 if (!user) {
-  return Astro.redirect("/login", 302);
+  return Astro.redirect("/iniciar-sesion", 302);
 }
 if (user.emailVerificated) {
   return Astro.redirect("/app/", 302);
@@ -26,7 +26,10 @@ try {
         token.toString(),
         user.username,
       );
-      return new Response("Email de Verificación enviado, por favor revisa tu correo electronico", { status: 200 });
+      return new Response(
+        "Email de Verificación enviado, por favor revisa tu correo electronico",
+        { status: 200 },
+      );
     } catch (error) {
       console.log(error);
       return new Response("Error al enviar tu email de Verificación", {

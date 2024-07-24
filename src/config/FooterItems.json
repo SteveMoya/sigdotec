@@ -7,11 +7,15 @@
         },
         {
             "itemText": "Plan de Clases",
-            "itemLink": "#"
+            "itemLink": "planes"
         },
         {
             "itemText": "Plan de Unidad",
-            "itemLink": "#"
+            "itemLink": "planes"
+        },
+        {
+            "itemText": "Plan Anual",
+            "itemLink": "planes"
         }
     ],
     "FooterSupport": [
@@ -25,7 +29,7 @@
         },
         {
             "itemText": "Contacto",
-            "itemLink": "contacto"
+            "itemLink": "mailto:sigdo.edu@gmail.com"
         }
     ],
     "FooterCompany": [
@@ -41,11 +45,11 @@
     "FooterLegal": [
         {
             "itemText": "Terminos y Condiciones",
-            "itemLink": "terminos"
+            "itemLink": "terminos-y-condiciones"
         },
         {
-            "itemText": "Politica de Cookies",
-            "itemLink": "privacidad"
+            "itemText": "Politica de Privacidad",
+            "itemLink": "politica-de-privacidad"
         }
     ]
 }

@@ -1,5 +1,5 @@
 import { PayPalScriptProvider, PayPalButtons } from '@paypal/react-paypal-js';
-import React, { useState } from "react";
+import { useState } from "react";
 
 
 export const PaypalButtom = () => {

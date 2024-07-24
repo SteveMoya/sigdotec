@@ -8,7 +8,7 @@ import { ChangePasword } from "@components/ChangePasword";
 
 const user = Astro.locals.user;
 if (!user) {
-  return Astro.redirect("/login", 302);
+  return Astro.redirect("/iniciar-sesion", 302);
 }
 import argon2 from "argon2";
 import { lucia } from "@/lib/auth/lucia";

@@ -1,4 +1,4 @@
-import type { APIContext, APIRoute } from "astro";
+import type { APIContext } from "astro";
 import { PlanService } from "@services/plans.services";
 import { ANUAL_PRICE } from "@src/utils";
 import { db, eq, User } from "astro:db";
