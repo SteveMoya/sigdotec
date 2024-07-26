@@ -17,6 +17,8 @@ import { lucia } from "@/lib/auth/lucia";
 //!TODO: Hacer esto y setearlo en los Locals, desde la pagina donde se ingresan los datos, pero tambien volver esto a componente para hacerlo reutilizable en admin
 import { db, eq, Demography, User, Session } from "astro:db";
 const userdemography = (
+// Cachear esto por 5 minutos
+
   await db.select().from(Demography).where(eq(Demography.id, user.id))
 ).at(0);
 // const userdemography = Astro.locals.demography;
