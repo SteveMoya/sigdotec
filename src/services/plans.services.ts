@@ -1,8 +1,9 @@
 import type { PlanBaseSchema, PlanClassSchema, ErrorSchema } from "@src/schemas";
-import { AI_URL } from "@src/utils";
+import { AI_URL, AI_API_SECRET, isDev } from "@src/utils";
 import dataTableMock from "@mocks/dataTableMock.json";
+import allDataMock from "@mocks/allDataMock.json";
 import type {Plan} from "@/components/DataTable/Plan"
-import { AI_API_SECRET } from "@src/utils";
+
 
 export const PlanService = {
     async getPlanUnit(topic_id: number, username: string, userid: string) {
@@ -17,9 +18,9 @@ export const PlanService = {
                 body: JSON.stringify({ topic_id, username, userid})
             });
             
-            console.log(unitPlan)
-            const data: PlanBaseSchema = await unitPlan.json();
+            const data = await unitPlan.json();
             console.log(data)
+            
             return data;
         }
         catch (error) {
@@ -27,8 +28,12 @@ export const PlanService = {
         }
     },
     async getAllTopcis() {
+        // Cachear esto por 2 minutos
+        if (isDev) {
+            return allDataMock;
+        }
         try {
-            const allTopics = await fetch(`${import.meta.env.AI_URL}/all_topic_id`,{
+            const allTopics = await fetch(`${import.meta.env.AI_URL}all_topic_id`,{
                 method: 'GET',
                 headers: {
                     'accept': 'application/json',
@@ -36,6 +41,7 @@ export const PlanService = {
                     'Authorization': `${AI_API_SECRET}`,
                 }
             });
+            console.log(allTopics)
             const data = allTopics.json();
             console.log(data)
             return data;
@@ -92,18 +98,71 @@ export const PlanService = {
     ,
     async getPlanDOX(userID: string) {
         try {
-            const doxPlan = await fetch(`${import.meta.env.AI_URL}/download/${userID}`,{
+            const doxPlan = await fetch(`${import.meta.env.AI_URL}download/word/${userID}`,{
                 method: 'GET',
                 headers: {
                     'Authorization': `${AI_API_SECRET}`
                 }
             });
-            if (!doxPlan.ok) {
-                throw new Error('Error fetching the document');
-            }
-            console.log("Peticion de la api",doxPlan)
             // cogeremos el archivo que esta dentro de la url y lo devolveremos
-            return doxPlan
+            // const response = await fetch(doxPlan?.url ?? '');
+            const blob = await doxPlan.blob();
+            const arrayBuffer = await blob.arrayBuffer();
+            const buffer = Buffer.from(arrayBuffer);
+            return buffer
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    async getPlanPDF(userID: string) {
+        try {
+            console.log("ID del usuario",userID)
+            console.log("URL de la peticion",`${import.meta.env.AI_URL}/download/pdf/${userID}`)
+            const pdfPlan = await fetch(`${import.meta.env.AI_URL}download/pdf/${userID}`,{
+                method: 'GET',
+                headers: {
+                    'Authorization': `${AI_API_SECRET}`
+                }
+            });
+            // if (!pdfPlan.ok) {
+            //     throw new Error('Error fetching the document');
+            // }
+            // cogeremos el archivo que esta dentro de la url y lo devolveremos
+            return pdfPlan
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    async getRecoverWord(planID: string) {
+        try {
+            const recoverWord = await fetch(`${import.meta.env.AI_URL}recover/download/${planID}`,{
+                method: 'GET',
+                headers: {
+                    'Authorization': `${AI_API_SECRET}`
+                }
+            });
+            
+            
+            // cogeremos el archivo que esta dentro de la url y lo devolveremos
+            const blob = await recoverWord.blob();
+            const arrayBuffer = await blob.arrayBuffer();
+            const buffer = Buffer.from(arrayBuffer);
+            return buffer
+        } catch (error) {
+            console.log(error);
+        }
+    },
+    async getRecoverPDF(planID: string) {
+        try {
+            const recoverPDF = await fetch(`${import.meta.env.AI_URL}recover/download/pdf/${planID}`,{
+                method: 'GET',
+                headers: {
+                    'Authorization': `${AI_API_SECRET}`
+                }
+            });
+            console.log("Peticion de la api",recoverPDF)
+            // cogeremos el archivo que esta dentro de la url y lo devolveremos
+            return recoverPDF
         } catch (error) {
             console.log(error);
         }
@@ -129,7 +188,32 @@ export const PlanService = {
             console.log(error);
         }
     },
-    async getDataTable(): Promise<Plan[]>{
-        return dataTableMock as Plan[];
+    async getDataTable(userID: string): Promise<Plan[]>{
+        // return dataTableMock as Plan[];
+        if (isDev) {
+            const res = await fetch(`${import.meta.env.AI_URL}recover/test`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `${AI_API_SECRET}`
+                }
+            });
+            const data: Plan[] = await res.json();
+            console.log(data)
+            return data;
+        }
+        try {
+            const res = await fetch(`${import.meta.env.AI_URL}recover/${userID}`,{
+                method: 'GET',
+                headers: {
+                    'Authorization': `${AI_API_SECRET}`
+                }
+            });
+            const data:Plan[] = await res.json();
+            console.log(data)
+            return data;
+        } catch (error) {
+            console.log(error);
+            throw error;
+        }
     }
 }
