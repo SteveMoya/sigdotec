@@ -1,26 +1,56 @@
 ---
 import AppLayout from "@layouts/App/AppLayout.astro";
-
-import { PlanTable } from "@/components/App/PlanTable";
-import PayTable from "@components/Dashboard/PayTable.astro";
-// import Pay from '@components/Payment/Pay.astro'
+import { PlanService } from "@services/plans.services";
+import { DataTable } from "@/components/DataTable/DataTable";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import NodeCache from "node-cache";
 import "@styles/globals.css";
 
-import { PlanService } from "@services/plans.services";
+const user = Astro.locals.user;
+if (!user) {
+  Astro.redirect("/iniciar-sesion");
+}
 
-import { DataTable } from "@/components/DataTable/DataTabke";
-const data = await PlanService.getDataTable();
+// Configuración de la caché con un TTL de 2 minutos (120 segundos)
+const cache = new NodeCache({ stdTTL: 120 });
+
+// Intentar obtener los datos de la caché
+let data = cache.get("planData");
+
+if (!data) {
+  console.log("Datos no encontrados en caché, obteniendo de la API");
+  try {
+    // Obtener datos de la API si no están en la caché
+    data = await PlanService.getDataTable(user?.id ?? '');
+
+    // Almacenar los datos en la caché
+    cache.set("planData", data);
+  } catch (error) {
+    console.error("Error al obtener datos:", error);
+    // Manejar el error o mostrar un mensaje adecuado al usuario
+  }
+} else {
+  console.log("Usando datos de caché");
+}
 
 ---
 
-<AppLayout title="Planes" description="Tus Planes de Clase">
-  <!-- <PlanTable client:only /> -->
-  <h2>Aqui estas todos los planes realizados anteriormente</h2>
-  <div class="w-full">
-    <PayTable />
-  </div>
-  <div class="container mx-auto py-10">
-      <DataTable data={data} client:only/>
-    </div>
-
+<AppLayout title="Tus Planes" description="Tus Planes de Clase">
+  <Card className="w-full dark:bg-slate-800 border border-gray-200 dark:border-gray-700">
+    <CardHeader>
+      <CardTitle>Planes realizados anteriormente</CardTitle>
+      <CardDescription>
+        Aquí puedes ver los planes que has realizado anteriormente
+      </CardDescription>
+      <CardContent className="-p-6">
+        <DataTable data={data} client:only />
+      </CardContent>
+    </CardHeader>
+  </Card>
 </AppLayout>

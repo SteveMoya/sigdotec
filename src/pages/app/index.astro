@@ -79,7 +79,7 @@ const PlansItems = [
         <section class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {
                         PlansItems.map((item) => (
-                                <Card className="flex flex-col">
+                                <Card className="flex flex-col dark:bg-slate-800 border border-gray-200 dark:border-gray-700 shadow-2xl">
                                         <CardHeader>
                                                 <CardTitle className="">
                                                         {item.title}
@@ -93,17 +93,24 @@ const PlansItems = [
                                                                 }
                                                         </p>
                                                         <h4 class="text-base my-2 font-bold">
-                                                           Incluye:
+                                                                Incluye:
                                                         </h4>
                                                         <ul class="text-base">
-                                                                {
-                                                                        item.includes.map((include) => (
+                                                                {item.includes.map(
+                                                                        (
+                                                                                include,
+                                                                        ) => (
                                                                                 <li class="flex items-center gap-2">
-                                                                                        <Icon name="mdi:check" class="w-4 h-4 text-primary-800" />
-                                                                                        {include}
+                                                                                        <Icon
+                                                                                                name="mdi:check"
+                                                                                                class="w-4 h-4 text-primary-800"
+                                                                                        />
+                                                                                        {
+                                                                                                include
+                                                                                        }
                                                                                 </li>
-                                                                        ))
-                                                                }
+                                                                        ),
+                                                                )}
                                                         </ul>
                                                 </CardDescription>
                                         </CardContent>
