@@ -1,67 +1,54 @@
 ---
+import NodeCache from "node-cache";
 import AppLayout from "@layouts/App/AppLayout.astro";
 import Avatar from "@components/ui/Avatar.astro";
-
 import DemographyItem from "@components/ui/DemographyItem.astro";
 import { hasherPassword } from "@/utils";
 import { ChangePasword } from "@components/ChangePasword";
+import argon2 from "argon2";
+import { lucia } from "@/lib/auth/lucia";
+import { db, eq, Demography, User, Session } from "astro:db";
 
+// Configuración de la caché
+const cache = new NodeCache({ stdTTL: 5 * 60 }); // TTL en segundos (5 minutos)
+
+// Código de tu aplicación
 const user = Astro.locals.user;
 if (!user) {
   return Astro.redirect("/iniciar-sesion", 302);
 }
-import argon2 from "argon2";
-import { lucia } from "@/lib/auth/lucia";
 
-// Aqui buscamos los datos del usuario en la base de datos
-//!TODO: Hacer esto y setearlo en los Locals, desde la pagina donde se ingresan los datos, pero tambien volver esto a componente para hacerlo reutilizable en admin
-import { db, eq, Demography, User, Session } from "astro:db";
-const userdemography = (
-// Cachear esto por 5 minutos
+// Clave única para la caché basada en el ID del usuario
+const cacheKey = `demography_${user.id}`;
 
-  await db.select().from(Demography).where(eq(Demography.id, user.id))
-).at(0);
-// const userdemography = Astro.locals.demography;
-console.log(Astro.locals.demography);
-const Demographydata = [
-  {
-    title: "Nombre del usuario",
-    value: user?.username || "No username",
-  },
-  {
-    title: "Fecha de Creacion",
-    value: user?.createdAt || "No creation date",
-  },
-  {
-    title: "Correo Electronico",
-    value: user?.email || "No email",
-  },
-  {
-    title: "Fecha de Nacimiento",
-    value: userdemography?.birthdate || "No birthdate",
-  },
-  {
-    title: "Genero",
-    value: userdemography?.gender || "No gender",
-  },
-  {
-    title: "Provincia",
-    value: userdemography?.province || "No province",
-  },
-  {
-    title: "Lugar de Trabajo",
-    value: userdemography?.workingPlace || "No working place",
-  },
-  {
-    title: "Asignatura Impartida",
-    value: userdemography?.subject || "No subject",
-  },
-  {
-    title: "Rol",
-    value: user?.role || "No role",
-  },
-];
+// Intentar obtener los datos de la caché
+let Demographydata = cache.get(cacheKey);
+if (!Demographydata) {
+  console.log("Datos no encontrados en caché, obteniendo de la base de datos");
+  // Si no están en caché, obtener los datos de la base de datos
+  const userdemography = (
+    await db.select().from(Demography).where(eq(Demography.id, user.id))
+  ).at(0);
 
+  Demographydata = [
+    { title: "Nombre del usuario", value: user?.username || "No username" },
+    { title: "Fecha de Creacion", value: user?.createdAt || "No creation date" },
+    { title: "Correo Electronico", value: user?.email || "No email" },
+    { title: "Fecha de Nacimiento", value: userdemography?.birthdate || "No birthdate" },
+    { title: "Genero", value: userdemography?.gender || "No gender" },
+    { title: "Provincia", value: userdemography?.province || "No province" },
+    { title: "Lugar de Trabajo", value: userdemography?.workingPlace || "No working place" },
+    { title: "Asignatura Impartida", value: userdemography?.subject || "No subject" },
+    { title: "Rol", value: user?.role || "No role" },
+  ];
+
+  // Almacenar los datos en la caché
+  cache.set(cacheKey, Demographydata);
+} else {
+  console.log("Usando datos de caché para Demographydata");
+}
+
+// Código adicional para el manejo de contraseñas y otras funcionalidades
 try {
   if (Astro.request.method === "POST") {
     if (user.provider !== "email") {
@@ -114,9 +101,7 @@ try {
       const newHashPassword = await hasherPassword(newPassword);
       await db
         .update(User)
-        .set({
-          hashedPassword: newHashPassword,
-        })
+        .set({ hashedPassword: newHashPassword })
         .where(eq(User.id, user.id));
       await db.delete(Session).where(eq(Session.userId, user.id));
 
@@ -146,16 +131,8 @@ try {
   return new Response("Error interno del servidor", { status: 500 });
 }
 ---
-
-<AppLayout title="Perfil" description="Cambia tu configuracion de Perfil">
+<AppLayout title="Configuración del Usuario" description="Cambia tu configuración de usuario">
   <div class="grid grid-cols-1 px-4 xl:grid-cols-3 xl:gap-4">
-    <div class="mb-4 col-span-full xl:mb-2">
-      <h1
-        class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white"
-      >
-        Configuracion del Usuario
-      </h1>
-    </div>
     <!-- Right Content -->
     <div class="col-span-full xl:col-auto">
       <div
@@ -204,7 +181,7 @@ try {
         class="p-4 mb-4 bg-white border border-gray-200 rounded-lg shadow-sm 2xl:col-span-2 dark:border-gray-700 sm:p-6 dark:bg-gray-800"
       >
         <h3 class="mb-4 text-xl font-semibold dark:text-white">
-          Informacion General del Usuario
+          Información General del Usuario
         </h3>
         <div class="grid grid-cols-6 gap-6">
           {
