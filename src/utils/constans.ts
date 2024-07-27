@@ -26,7 +26,7 @@ export const RESEND_API_KEY = import.meta.env.RESEND_API_KEY
 
 // export const AI_URL = import.meta.env.AI_URL
 
-export const AI_URL = isProd ? import.meta.env.AI_URL :/*Colocar el /test/ al final de la url de desarrollo */ `${import.meta.env.AI_URL}/test/`;
+export const AI_URL = isProd ? import.meta.env.AI_URL :/*Colocar el /test/ al final de la url de desarrollo */ `${import.meta.env.AI_URL}test/`;
 
 export const AI_API_SECRET = import.meta.env.AI_API_SECRET
 
