@@ -14,11 +14,11 @@ import {
 import { ClassPlanEmbeddingFormSchema } from "@/schemas";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { useFetch } from "@/hooks/useFetch";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { Card, CardHeader, CardTitle, CardContent, CardDescription } from "@/components/ui/card";
 import { Loading } from "./App/Loading";
 import { toast } from "sonner";
 import DataDisplay from "./App/DataDisplay";
-import { DownloadDOC } from "./App/DownloadButtons";
+import { DownloadDOC, DownloadPDF } from "./App/DownloadButtons";
 import { Input } from "./ui/input";
 
 function ClassPlanEmbedding() {
@@ -44,9 +44,9 @@ function ClassPlanEmbedding() {
     };
 
     useEffect(() => {
-        if (error) toast.error('Error al generar el plan de unidad');
+        if (error) toast.error(`Error: ${error}`);
         if (data) toast.success('Plan de unidad generado correctamente');
-        if (isLoading) toast.loading('Cargando temas');
+        if (isLoading) toast.loading('Cargando Plan');
         return () => {
             toast.dismiss();
         };
@@ -71,9 +71,12 @@ function ClassPlanEmbedding() {
 
     return (
         <>
-            <Card className="min-w-[450px]">
+            <Card className="min-w-[450px] dark:bg-slate-800 border border-gray-200 dark:border-gray-700 shadow-2xl">
                 <CardHeader>
                     <CardTitle>Habla con tu Plan de Clase</CardTitle>
+                    <CardDescription>
+                        Escribe tu plan de clase y nosotros lo convertimos en un plan de clase estructurado.
+                    </CardDescription>
                 </CardHeader>
                 <CardContent>
                     <Form {...form}>
@@ -82,7 +85,7 @@ function ClassPlanEmbedding() {
                                 control={form.control}
                                 name="materia"
                                 render={({ field }) => (
-                                    <FormItem className="grid gap-2">
+                                    <FormItem>
                                         <FormLabel>Selecciona tu Asignatura</FormLabel>
                                         <FormControl>
                                             <Select onValueChange={field.onChange}>
@@ -106,7 +109,7 @@ function ClassPlanEmbedding() {
                                 control={form.control}
                                 name="grado"
                                 render={({ field }) => (
-                                    <FormItem className="grid gap-2">
+                                    <FormItem>
                                         <FormLabel>Selecciona tu Grado</FormLabel>
                                         <FormControl>
                                             <Select onValueChange={field.onChange} disabled={!selectedMateria}>
@@ -130,7 +133,7 @@ function ClassPlanEmbedding() {
                                 control={form.control}
                                 name="texto"
                                 render={({ field }) => (
-                                    <FormItem className="grid gap-2">
+                                    <FormItem>
                                         <FormLabel>Texto</FormLabel>
                                         <FormControl>
                                             <Input disabled={!selectedGrado} placeholder="Escribele a tu plan aqui" {...field} />
@@ -154,6 +157,7 @@ function ClassPlanEmbedding() {
                     </article>
                     <div className="flex justify-center items-center">
                         <DownloadDOC />
+                        <DownloadPDF />
                     </div>
                 </>
             }

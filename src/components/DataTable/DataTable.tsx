@@ -63,21 +63,22 @@ export function DataTable<TData, TValue>({
     })
 
     return (
-        <div>
-            <div className="flex items-center py-4">
+        <>
+            <div className="flex items-center py-4 ">
+                
                 <Input
                     placeholder="Filtrar..."
                     value={globalFilter}
                     onChange={(event) => setGlobalFilter(event.target.value)}
-                    className="max-w-sm"
+                    className="max-w-sm bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 />
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <Button variant="outline" className="ml-auto">
-                            Columnas
+                        <Button className="ml-auto mb-4 sm:mb-0 mr-4 inline-flex items-center bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-4 py-2.5 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-800">
+                            Seleccionar Columnas <span className="icon-[mdi--menu-down-outline] ml-2"></span>
                         </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent align="end" className="bg-slate-900">
+                    <DropdownMenuContent align="end" className="dark:bg-gray-700">
                         {table
                             .getAllColumns()
                             .filter(
@@ -87,27 +88,29 @@ export function DataTable<TData, TValue>({
                                 return (
                                     <DropdownMenuCheckboxItem
                                         key={column.id}
-                                        className="capitalize"
+                                        className="capitalize "
                                         checked={column.getIsVisible()}
                                         onCheckedChange={(value) =>
                                             column.toggleVisibility(!!value)
                                         }
                                     >
-                                        {column.id}
+                                       {
+                                        column.id === "Action" ? "Recrear Plan" : column.id
+                                       }
                                     </DropdownMenuCheckboxItem>
                                 )
                             })}
                     </DropdownMenuContent>
                 </DropdownMenu>
             </div>
-            <div className="rounded-md border">
-                <Table>
+            <div className="rounded-xl border shadow-2xl dark:border-gray-600 ">
+                <Table className=" shadow-2xl ">
                     <TableHeader>
                         {table.getHeaderGroups().map((headerGroup) => (
                             <TableRow key={headerGroup.id}>
                                 {headerGroup.headers.map((header) => {
                                     return (
-                                        <TableHead key={header.id}>
+                                        <TableHead className="p-4 text-xs font-medium tracking-wider text-left dark:border-gray-500 uppercase" key={header.id}>
                                             {header.isPlaceholder
                                                 ? null
                                                 : flexRender(
@@ -120,10 +123,11 @@ export function DataTable<TData, TValue>({
                             </TableRow>
                         ))}
                     </TableHeader>
-                    <TableBody>
+                    <TableBody className="">
                         {table.getRowModel().rows?.length ? (
                             table.getRowModel().rows.map((row) => (
-                                <TableRow
+                                <TableRow className="p-4 text-sm font-normal whitespace-nowrap bg-white dark:bg-gray-800 dark:text-white  even:bg-gray-50 dark:even:bg-gray-700 odd:bg-white dark:odd:bg-gray-800 border-none border-b border-gray-200 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors duration-200 ease-in-out
+"
                                     key={row.id}
                                     data-state={row.getIsSelected() && "selected"}
                                 >
@@ -136,15 +140,15 @@ export function DataTable<TData, TValue>({
                             ))
                         ) : (
                             <TableRow>
-                                <TableCell colSpan={columns.length} className="h-24 text-center">
-                                    Sin Resultados.
+                                <TableCell colSpan={columns.length} className="h-32 text-center content-center text-xl">
+                                    Sin Resultados o Todavia no tienes un plan realizado.
                                 </TableCell>
                             </TableRow>
                         )}
                     </TableBody>
                 </Table>
             </div>
-            <div className="flex items-center justify-end space-x-2 py-4">
+            <div className="flex items-center justify-between space-x-2 py-4">
                 <Button
                     variant="outline"
                     size="sm"
@@ -162,6 +166,6 @@ export function DataTable<TData, TValue>({
                     Siguiente
                 </Button>
             </div>
-        </div>
+        </>
     )
 }

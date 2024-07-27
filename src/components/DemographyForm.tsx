@@ -77,13 +77,13 @@ export default function demographyForm() {
         <>
             <CardContent className="space-y-6">
                 <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-2">
-                        <div className="grid grid-cols-2 gap-4">
+                    <form onSubmit={form.handleSubmit(onSubmit)} >
+                        <div className="grid grid-cols-2 gap-2">
                             <FormField
                                 control={form.control}
                                 name="birthdate"
                                 render={({ field }) => (
-                                    <FormItem className="grid gap-2">
+                                    <FormItem >
                                         <FormLabel className="font-semibold text-lg">Fecha de nacimiento</FormLabel>
                                         <Popover>
                                             <PopoverTrigger asChild>
@@ -125,7 +125,7 @@ export default function demographyForm() {
                                 control={form.control}
                                 name="province"
                                 render={({ field }) => (
-                                    <FormItem className="grid gap-2">
+                                    <FormItem >
                                         <FormLabel className="font-semibold text-lg">Provincia</FormLabel>
                                         <FormControl>
                                             <Select onValueChange={field.onChange}>
@@ -150,7 +150,7 @@ export default function demographyForm() {
                                 control={form.control}
                                 name="gender"
                                 render={({ field }) => (
-                                    <FormItem className="grid gap-2">
+                                    <FormItem>
                                         <FormLabel className="font-semibold text-lg">Género</FormLabel>
                                         <FormControl>
                                             <Select onValueChange={field.onChange}>
@@ -175,7 +175,7 @@ export default function demographyForm() {
                                 control={form.control}
                                 name="subject"
                                 render={({ field }) => (
-                                    <FormItem className="grid gap-2">
+                                    <FormItem >
                                         <FormLabel className="font-semibold text-lg">Asignatura que Impartes</FormLabel>
 
                                         <FormControl>
@@ -204,7 +204,7 @@ export default function demographyForm() {
                             control={form.control}
                             name="workingPlace"
                             render={({ field }) => (
-                                <FormItem className="grid gap-2">
+                                <FormItem >
                                     <FormLabel className="font-semibold text-lg">Lugar de Trabajo</FormLabel>
                                     <FormControl>
                                         <Input placeholder="Tu lugar de trabajo aqui" type="text" {...field} />
@@ -213,7 +213,7 @@ export default function demographyForm() {
                                 </FormItem>
                             )}
                         />
-                        <Button type="submit" className="w-full  hover:bg-primary-800 dark:hover:bg-primary-800 hover:text-white dark:hover:text-white">Guardar Datos</Button>
+                        <Button type="submit" className="w-full  hover:bg-primary-800 dark:hover:bg-primary-800 hover:text-white dark:hover:text-white mt-4">Guardar Datos</Button>
                     </form>
                 </Form>
 

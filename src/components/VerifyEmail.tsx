@@ -59,7 +59,7 @@ export default function VerifyEmail({ email }: Props) {
     };
 
     return (
-        <Card className="w-[350px]">
+        <Card className="w-[350px] dark:bg-slate-800 border border-gray-200 dark:border-gray-700 shadow-2xl">
             <CardHeader>
                 <CardTitle>Verifica tu Email</CardTitle>
                 <CardDescription>Haz click en tu email para recibir un magic link para verificar tu correo electrónico.</CardDescription>

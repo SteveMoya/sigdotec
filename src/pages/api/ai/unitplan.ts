@@ -31,7 +31,7 @@ export async function GET(context: APIContext): Promise<Response> {
         try{
             const data = await PlanService.getPlanUnit(topic_id, user.username, user.id);
             console.log(data)
-            // Aqui actualizamos el balance del usuario
+            
             await db.update(User).set({ balance: (Number(amount) - UNIT_PRICE) }).where(eq(User.id, user.id));
             console.log(data)
              return new Response(JSON.stringify(data), {
@@ -43,7 +43,5 @@ export async function GET(context: APIContext): Promise<Response> {
                 headers: { 'Content-Type': 'application/json' },
                 status: 500,
             });
-        } finally {
-            console.log("fetch finalizado")
         }
 };

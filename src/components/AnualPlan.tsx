@@ -63,7 +63,7 @@ function AnualPlan() {
     };
 
     useEffect(() => {
-        if (error) toast.error('Error al generar el plan de unidad');
+        if (error) toast.error(`Error: ${error}`);
         if (data) toast.success('Plan de unidad generado correctamente');
         if (isLoading) toast.loading('Cargando temas');
         return () => {
@@ -88,7 +88,7 @@ function AnualPlan() {
 
     return (
         <>
-            <Card className="min-w-[450px]">
+            <Card className="min-w-[450px] dark:bg-slate-800 border border-gray-200 dark:border-gray-700 shadow-2xl">
                 <CardHeader>
                     <CardTitle>Plan Anual</CardTitle>
                 </CardHeader>

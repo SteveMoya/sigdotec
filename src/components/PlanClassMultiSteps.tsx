@@ -19,7 +19,7 @@ import ReactSelect from "react-select";
 import { Loading } from "./App/Loading";
 import { toast } from "sonner";
 import DataDisplay from "./App/DataDisplay";
-import { DownloadDOC } from "./App/DownloadButtons";
+import { DownloadDOC, DownloadPDF } from "./App/DownloadButtons";
 
 function ClassPlanMultiSteps() {
     const { data, isLoading, error, fetchData } = useFetch();
@@ -45,7 +45,7 @@ function ClassPlanMultiSteps() {
     };
 
     useEffect(() => {
-        if (error) toast.error('Error al generar el plan de unidad');
+        if (error) toast.error(`Error: ${error}`);
         if (data) toast.success('Plan de unidad generado correctamente');
         if (isLoading) toast.loading('Cargando temas');
         return () => {
@@ -81,9 +81,10 @@ function ClassPlanMultiSteps() {
 
     return (
         <>
-            <Card className="min-w-[450px]">
+            <Card className="min-w-[450px] dark:bg-slate-800 border border-gray-200 dark:border-gray-700 shadow-2xl">
                 <CardHeader>
                     <CardTitle>Plan de Clase</CardTitle>
+                    {/* Colocar descripcion */}
                 </CardHeader>
                 <CardContent>
                     <Form {...form}>
@@ -92,7 +93,7 @@ function ClassPlanMultiSteps() {
                                 control={form.control}
                                 name="materia"
                                 render={({ field }) => (
-                                    <FormItem className="grid gap-2">
+                                    <FormItem>
                                         <FormLabel>Selecciona tu Asignatura</FormLabel>
                                         <FormControl>
                                             <Select onValueChange={field.onChange}>
@@ -116,7 +117,7 @@ function ClassPlanMultiSteps() {
                                 control={form.control}
                                 name="grado"
                                 render={({ field }) => (
-                                    <FormItem className="grid gap-2">
+                                    <FormItem>
                                         <FormLabel>Selecciona tu Grado</FormLabel>
                                         <FormControl>
                                             <Select onValueChange={field.onChange} disabled={!selectedMateria}>
@@ -140,7 +141,7 @@ function ClassPlanMultiSteps() {
                                 control={form.control}
                                 name="tema"
                                 render={({ field }) => (
-                                    <FormItem className="grid gap-2">
+                                    <FormItem>
                                         <FormLabel>Selecciona tu Tema</FormLabel>
                                         <FormControl>
                                             <Select onValueChange={field.onChange} disabled={!selectedGrado}>
@@ -164,7 +165,7 @@ function ClassPlanMultiSteps() {
                                 control={form.control}
                                 name="subtema"
                                 render={({ field }) => (
-                                    <FormItem className="grid gap-2">
+                                    <FormItem>
                                         <FormLabel>Selecciona tus Subtemas</FormLabel>
                                         <FormControl>
                                             <Controller
@@ -216,7 +217,8 @@ function ClassPlanMultiSteps() {
                         <DataDisplay data={memoizedData} />
                     </article>
                     <div className="flex justify-center items-center">
-                        <DownloadDOC />
+                    <DownloadDOC />
+                    <DownloadPDF />
                     </div>
                 </>
             }
