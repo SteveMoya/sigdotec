@@ -34,7 +34,9 @@ import { Icon } from "astro-icon/components";
           </div>
         </div>
         <div class="grid md:grid-cols-2 gap-8">
-          <Card>
+          <Card
+            className="dark:bg-slate-800 border border-primary-800 dark:border-primary-800 shadow-2xl"
+          >
             <CardHeader>
               <CardTitle>Planes de Clase y de Unidad</CardTitle>
               <div class="text-4xl font-bold">$1.00 (USD)</div>
@@ -60,13 +62,17 @@ import { Icon } from "astro-icon/components";
             </CardContent>
             <CardFooter>
               <a href="/app/" class="w-full">
-                <Button className="w-full bg-primary-800">
+                <Button
+                  className="w-full dark:bg-primary-800 bg-primary-800 hover:bg-primary-900 dark:hover:bg-primary-900 text-white dark:text-white"
+                >
                   Planificar
                 </Button>
               </a>
             </CardFooter>
           </Card>
-          <Card>
+          <Card
+            className="dark:bg-slate-800 border border-gray-200 dark:border-gray-700 shadow-2xl"
+          >
             <CardHeader>
               <CardTitle>Plan Anual</CardTitle>
               <div class="text-4xl font-bold">$15.00 (USD)</div>

@@ -1,16 +1,17 @@
 ---
-// import Button from '../Button.astro'
+
+
+import logo from "@assets/images/SIGDO-Logo/SIGDO-32.svg";
+import LiteYoutube from "../ui/LiteYoutube.astro";
+import background from "/public/SIGDOTEC-Presentation-Image.jpg";
+
+import Button from "@components/ui/Button.astro";
 import Container from "@components/ui/Container.astro";
 import Paragraph from "@components/ui/Paragraph.astro";
-// import ByNumber from '../ByNumber.astro'
-import { BotonStart, BotonDowm } from "@components/App/BotonStart";
-import { Picture } from "astro:assets";
-import logo from "@assets/images/SIGDO-Logo/SIGDO-32.svg";
-import LiteYoutube from "../LiteYoutube.astro";
-import background from "/public/SIGDOTEC-Presentation-Image.jpg";
+
 ---
 
-<section class="relative pt-32 lg:pt-10">
+<section class="relative pt-32 lg:pt-10 animate-fade-in">
   <Container className={"flex flex-col lg:flex-row gap-10 lg:gap-12"}>
     <div class="absolute w-full lg:w-1/2 inset-y-0 lg:right-0">
       <span
@@ -21,18 +22,20 @@ import background from "/public/SIGDOTEC-Presentation-Image.jpg";
       ></span>
     </div>
     <span
-      class="w-4/12 lg:w-2/12 aspect-square bg-gradient-to-tr from-primary-700 to-accent-400 absolute -top-5 lg:left-0 rounded-full skew-y-12 blur-2xl opacity-40 skew-x-12 rotate-90"
+      class="w-4/12 lg:w-2/12 aspect-square bg-gradient-text absolute -top-5 lg:left-0 rounded-full skew-y-12 blur-2xl opacity-40 skew-x-12 rotate-90"
     ></span>
     <div
-      class="relative flex flex-col items-center text-center lg:text-left lg:py-7 xl:py-8 lg:items-start lg:max-w-none max-w-3xl mx-auto lg:mx-0 lg:flex-1 lg:w-1/2"
+      class="relative flex flex-col items-center text-center lg:text-left lg:py-7 xl:py-8
+        lg:items-start lg:max-w-none max-w-3xl mx-auto lg:mx-0 lg:flex-1 lg:w-1/2"
     >
       <h1
-        class="text-3xl/tight mb-[-70px] sm:text-4xl/tight md:text-5xl/tight xl:text-6xl/tight font-bold text-heading-1"
+        class="text-3xl/tight -mb-8 lg:-mb-20 sm:text-4xl/tight md:text-5xl/tight xl:text-6xl/tight
+        font-bold"
       >
         ¿Quiénes somos?
       </h1>
       <h1
-        class="text-3xl/tight mt-[-40px] sm:text-4xl/tight md:text-5xl/tight xl:text-6xl/tight font-bold text-heading-1"
+        class="text-3xl/tight sm:text-4xl/tight md:text-5xl/tight xl:text-6xl/tight font-bold "
       >
         <span
           class="text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 from-20% via-primary-700 via-30% to-accent-400"
@@ -41,25 +44,35 @@ import background from "/public/SIGDOTEC-Presentation-Image.jpg";
           <span id="cursor">|</span>
         </span>
       </h1>
-
-      <Paragraph className="mt-5 text-xl lg:text-2xl">
-        ¡Planificar quedo en el pasado!
+      <Paragraph className="mt-8">
+        ¡Planificar desde 0 quedó en el pasado!.
       </Paragraph>
-
-      <div
-        class="flex mx-0 sm:flex-row flex-col gap-5 w-full max-lg:justify-center lg:justufy-center"
-      >
-        <span> <BotonStart client:only /></span>
-        <span> <BotonDowm client:only /></span>
+      <div class="mt-10 w-full flex max-w-md mx-auto lg:mx-0">
+        <div
+          class="flex mx-0 sm:flex-row flex-col gap-2 w-full max-lg:justify-center lg:justufy-center"
+        >
+          <a href="/iniciar-sesion">
+            <Button variant={"primary"} className={"min-w-max"}>
+              <span>Planificar</span>
+            </Button>
+          </a>
+          <a href="/nosotros">
+            <Button variant={"secondary"} className={"min-w-max"}>
+              <span> Conocer Mas</span>
+            </Button>
+          </a>
+        </div>
       </div>
     </div>
+
     <div
-      class="flex flex-1 lg:w-1/2 lg:h-auto relative lg:max-w-none lg:mx-0 mx-auto max-w-3xl justify-center items-center img"
+      class="flex flex-1 lg:w-1/2 lg:h-auto relative lg:max-w-none lg:mx-0 mx-auto max-w-3xl"
     >
       <LiteYoutube videoId="QXrFgSi4khs" backgroundImage={background.src} />
     </div>
   </Container>
 </section>
+
 
 <script is:inline>
   let texts = ["¡SIGDOTEC!", "INOVACION", "TECNOLOGIA", "FUTURO", "CAMBIO"];

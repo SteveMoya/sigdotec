@@ -1,12 +1,12 @@
 [
     {
-        "title": "Mission",
-        "description": "Aproximar la Inteligencia Artifical (IA) y las últimas tecnologias al quehacer docente para facilitar la labor pedagógica de los educadores.",
+        "title": "Misión",
+        "description": "Aproximar la Inteligencia Artifical (IA) y las más recientes técnicas para el procesamiento del lenguaje natural.",
         "icon": "mdi:lightning-bolt-outline"
     },
     {
-        "title": "Vision",
-        "description": "Construir entornos de aprendizaje enriquecedores impulsados por la tecnología para apoyar a los educadores y el desarrollo de los alumnos",
+        "title": "Visión",
+        "description": "Construir entornos de aprendizaje enriquecedores impulsados por la tecnología para apoyar a los educadores y el desarrollo de los alumnos.",
         "icon": "mdi:eye-outline"
     }
 ]

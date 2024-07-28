@@ -1,18 +1,14 @@
 ---
 import { SignUpForm } from "@/components/Register";
+import SocialSingUp from "@/components/SocialSingUp.astro";
 
 import Logo from "@/components/ui/Logo.astro";
-import { Button } from "@/components/ui/button";
 import Layout from "@layouts/Layout.astro";
-import { Icon } from "astro-icon/components";
 import { Toaster } from "sonner";
 // import { RegisterB } from "@components/App/RegisterB";
 // import { SignUpForm } from "@components/Register.tsx";
 
-const user = Astro.locals.user;
-console.log(user);
 ---
-
 <Layout
   title="Registrate"
   description="Aqui te puedes registrar en para que puedas acceder tus planes de clase"
@@ -34,39 +30,7 @@ console.log(user);
       <div class="space-y-4">
         <SignUpForm client:load />
 
-        <div class="grid grid-cols-3 gap-4">
-          <a href="/api/auth/facebook">
-            <Button
-              client:load
-              variant="outline"
-              className="w-full dark:hover:bg-[#3b5998] hover:bg-[#3b5998] hover:text-white"
-            >
-              <Icon name="mdi:facebook" class="mr-2 h-6 w-6" />
-
-              Facebook
-            </Button>
-          </a>
-          <a href="/api/auth/github">
-            <Button
-              client:load
-              variant="outline"
-              className="w-full hover:text-white dark:hover:bg-[#333] hover:bg-[#333]"
-            >
-              <Icon name="mdi:github" class="mr-2 h-6 w-6 text-xl" />
-              GitHub
-            </Button>
-          </a>
-          <a href="/api/auth/google">
-            <Button
-              client:load
-              variant="outline"
-              className="w-full hover:text-white dark:hover:bg-[#ea4335] hover:bg-[#ea4335]"
-            >
-              <Icon name="mdi:google" class="mr-2 h-6 w-6" />
-              Google
-            </Button>
-          </a>
-        </div>
+        <SocialSingUp />
         <div class="flex justify-between">
           <p>
             ¿Ya tienes una cuenta?
@@ -93,5 +57,4 @@ console.log(user);
     }}
     client:only
   />
-  <!-- <RegisterB />  -->
 </Layout>

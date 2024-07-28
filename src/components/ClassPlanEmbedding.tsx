@@ -75,7 +75,7 @@ function ClassPlanEmbedding() {
                 <CardHeader>
                     <CardTitle>Habla con tu Plan de Clase</CardTitle>
                     <CardDescription>
-                        Escribe tu plan de clase y nosotros lo convertimos en un plan de clase estructurado.
+                        Escribe lo que te gustaría enseñar y nosotros lo convertimos en un plan de clase estructurado.
                     </CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -136,7 +136,7 @@ function ClassPlanEmbedding() {
                                     <FormItem>
                                         <FormLabel>Texto</FormLabel>
                                         <FormControl>
-                                            <Input disabled={!selectedGrado} placeholder="Escribele a tu plan aqui" {...field} />
+                                            <Input disabled={!selectedGrado} placeholder="Detalla algunas ideas principales de tu plan ideal aquí" {...field} />
                                         </FormControl>
                                         <FormMessage />
                                     </FormItem>

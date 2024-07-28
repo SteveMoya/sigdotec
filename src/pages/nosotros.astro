@@ -1,23 +1,65 @@
 ---
+import About from "@components/About/About.astro";
+import Layout from "@layouts/Layout.astro";
+import SobreNosotros from "@components/App/sobreNosotros";
 
-import About from '@components/About/About.astro'
-import Layout from '@layouts/Layout.astro'
-import SobreNosotros from '@components/App/sobreNosotros'
+import CTA from "@components/sections/CTA.astro";
 
-import CTA from '@components/sections/CTA.astro'
-
-import AboutA from '@components/sections/AboutA.astro';
-
+import AboutA from "@components/sections/AboutA.astro";
+const DataCard = [
+  {
+    title: "Visión Compartida",
+    text: "El grupo de jóvenes se unió por una visión compartida de transformar la educación. Este valor resalta la importancia de tener una visión común y objetivos compartidos dentro de la empresa.",
+  },
+  {
+    title: "Innovación Tecnologica",
+    text: "SIGDOTEC se destaca por su enfoque en aprovechar la tecnología para transformar la educación, indicando un valor fundamental de innovación y búsqueda de soluciones tecnológicas",
+  },
+  {
+    title: "Determinación",
+    text: "A pesar de las limitaciones económicas, la empresa se fundamenta en una determinación inquebrantable. Este valor destaca la perseverancia y la capacidad de superar obstáculos para lograr los objetivos establecidos.",
+  },
+];
 ---
 
 <Layout
-  title='Sobre Sigdo'
-  description='Este es el Sobre el proyecto'
-  image='/og-sigdo.jpg'
+  title="Sobre Sigdo"
+  description="Este es el Sobre el proyecto"
+  image="/og-sigdo.jpg"
 >
+  <AboutA />
+  <section
+    class="Valores_title relative w-screen h-screen text-[32px] font-bold tracking-[6px] my-[-10%] flex flex-col justify-center items-center text-center before:z-[-1] font-roboto after:content-[''] after:absolute after:w-full after:h-full left-0 top-0 before:content-[''] before:absolute before:w-full before:h-full before:left-0 before:top-0 text-white"
+  >
+    <div class="font-ibm">
+      <h1>
+        En{" "}
+        <span class="bg-gradient-text uppercase font-bold"> SIDGOTEC</span>{" "}
+      </h1>
+      <h6>Los valores nos mueven</h6>
+    </div>
 
- <AboutA />
-  <SobreNosotros client:load />
+    <video
+      class="video max-md:h-72 object-cover blur-[2px] brightness-[55%] z-[-1] absolute"
+      src="/Aboutvideo.webm"
+      autoplay={true}></video>
+  </section>
+  <!-- <div class="grid grid-cols-1 lg:grid-cols-3 ">
+    {
+      DataCard.map((item) => (
+        <div class="carta group hover:text-white h-full text-[15px] w-full relative flex items-center justify-center max-h-[800px] w-4/5 shadow-lg overflow-hidden transition-transform duration-500 m-2 p-4 rounded-lg bg-gray-800 before:content-[''] before:absolute before:w-full before:h-[5px] before:z-[-1] before:transition-all before:duration-500 before:left-0 before:bottom-0 before:bg-gradient-to-r from-blue-300 to-blue-500">
+          <div class="carta_content flex flex-col gap-2 text-white transition-all duration-500">
+            <p class="heading font-bold text-2xl font-roboto text-blue-600 dark:text-white group-hover:text-white">
+              {item.title}
+            </p>
+            <p class="para leading-normal mt-2 font-roboto text-black dark:text-white group-hover:text-white">
+              {item.text}
+            </p>
+          </div>
+        </div>
+      ))
+    }
+  </div> -->
   <About />
 
   <CTA />
