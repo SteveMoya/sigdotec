@@ -86,7 +86,7 @@ export function SignInForm() {
                         </FormItem>
                     )}
                 />
-                    <Button type="submit" className="w-full hover:bg-primary-800 dark:hover:bg-primary-800 hover:text-white dark:hover:text-white">Iniciar Seccion</Button>
+                    <Button type="submit" className="w-full hover:bg-primary-800 dark:hover:bg-primary-800 hover:text-white dark:hover:text-white">Iniciar Sesión</Button>
             </form>
         </Form>
         </>
