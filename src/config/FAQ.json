@@ -1,0 +1,30 @@
+[
+    {
+    "question": "¿Los planes de clase creados son todos iguales o son únicos?",
+    "answer": "Los planes de clase creados por nuestro servicio son únicos para cada solicitud. Cada uno incluye una secuencia didáctica, recursos y una actividad de evaluación personalizados."
+    },
+    {
+    "question": "¿Puedo emplear el plan de clase creado por el servicio directamente en mis actividades docentes?",
+    "answer": "Los planes de clase cumplen con los requisitos establecidos por el Ministerio de Educación de la República Dominicana y están basados en los contenidos curriculares oficiales. Sin embargo, carecen del contexto específico de cada aula, por lo que recomendamos revisarlos y ajustarlos antes de utilizarlos directamente en sus actividades docentes."
+    },
+    {
+    "question": "¿Soy dueño de los planes de clase que creo con la herramienta?",
+    "answer": "Tiene total libertad para usar los documentos creados con nuestro servicio como desee. Sin embargo, nos reservamos el derecho de utilizar los datos generados para mejorar nuestros servicios."
+    },
+    {
+    "question": "¿Qué pasa si puse saldo extra en mi billetera?",
+    "answer": "Si ha realizado una recarga no deseada y fue aprobada por el sistema de pago de PayPal, tiene un plazo máximo de 24 horas para solicitar un reembolso a través de nuestro correo de contacto. En ese caso, nos pondremos en contacto con PayPal para revertir el depósito, siempre que el saldo recargado no haya sido consumido."
+    },
+    {
+    "question": "¿Es seguro poner mis datos de tarjeta de débito o crédito?",
+    "answer": "Es totalmente seguro realizar transferencias con tarjetas de débito, crédito o cuentas de PayPal. Nuestro servicio no almacena estos datos y utiliza servicios de pago de terceros para garantizar la seguridad de su información."
+    },
+    {
+    "question": "¿Por qué los planes anuales están incompletos?",
+    "answer": "Los planes anuales son versiones condensadas de los planes de clase que se pueden crear con nuestra herramienta. Por ello, tienen un costo mucho menor, en proporción, que realizar los planes por separado. Aunque estos no incluyen todas las características y añadidos de los planes de clase que se pueden crear individualmente con la web."
+    },
+    {
+    "question": "¿Puedo eliminar mi cuenta de la plataforma?",
+    "answer": " Si desea eliminar su cuenta de manera definitiva, puede ponerse en contacto con nosotros a través de nuestro correo de contacto. Después de un proceso de validación de su identidad, eliminaremos toda su información de nuestras bases de datos, incluida su cuenta."
+    }
+]
