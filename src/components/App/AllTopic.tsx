@@ -48,7 +48,7 @@ export const AllTopic = () => {
                         }
                     </article>
                     <div className="flex justify-center items-center">
-                    <DownloadDOC href='@mock/Plan de unidad.docx' />
+                    <DownloadDOC />
                     
                     </div>
                 </>

@@ -2,7 +2,7 @@ import type { PlanBaseSchema, PlanClassSchema, ErrorSchema } from "@src/schemas"
 import { AI_URL, AI_API_SECRET, isDev } from "@src/utils";
 import dataTableMock from "@mocks/dataTableMock.json";
 import allDataMock from "@mocks/allDataMock.json";
-import type {Plan} from "@/components/DataTable/Plan"
+import type {Plan} from "@/components/Tables/DataTable/Plan"
 
 
 export const PlanService = {
