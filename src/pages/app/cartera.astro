@@ -31,33 +31,183 @@ const balance: number = Number(user?.balance.toFixed(2) ?? 0);
 // Aqui hacemos que cada $49 sea 1 plan y se redondee
 
 const plans = Math.floor(balance / UNIT_PRICE);
+
+import { TransactionalTable } from "@components/Tables/TransactionalsTable/DataTable";
+import { Transaction } from "@components/Tables/TransactionalsTable/Transaction";
+
+const TransactionalData = [
+  {
+    id: "1",
+    date: "2021-10-01",
+    userid: "31354215",
+    type: "Paypal",
+    amount: 49,
+    transactionid: "123456gvfd",
+  },
+  {
+    id: "2",
+    date: "2021-10-02",
+    userid: "31354215",
+    type: "ACH",
+    amount: 49,
+    transactionid: "123456fhjd",
+  },
+  {
+    id: "3",
+    date: "2021-10-03",
+    userid: "31354215",
+    type: "ACH",
+    amount: 200,
+    transactionid: "123456fdkl",
+  },
+  {
+    id: "1",
+    date: "2021-10-01",
+    userid: "31354215",
+    type: "Paypal",
+    amount: 49,
+    transactionid: "123456gvfd",
+  },
+  {
+    id: "2",
+    date: "2021-10-02",
+    userid: "31354215",
+    type: "ACH",
+    amount: 49,
+    transactionid: "123456fhjd",
+  },
+  {
+    id: "3",
+    date: "2021-10-03",
+    userid: "31354215",
+    type: "ACH",
+    amount: 200,
+    transactionid: "123456fdkl",
+  },
+  {
+    id: "1",
+    date: "2021-10-01",
+    userid: "31354215",
+    type: "Paypal",
+    amount: 49,
+    transactionid: "123456gvfd",
+  },
+  {
+    id: "2",
+    date: "2021-10-02",
+    userid: "31354215",
+    type: "ACH",
+    amount: 49,
+    transactionid: "123456fhjd",
+  },
+  {
+    id: "3",
+    date: "2021-10-03",
+    userid: "31354215",
+    type: "ACH",
+    amount: 200,
+    transactionid: "123456fdkl",
+  },
+  {
+    id: "1",
+    date: "2021-10-01",
+    userid: "31354215",
+    type: "Paypal",
+    amount: 49,
+    transactionid: "123456gvfd",
+  },
+  {
+    id: "2",
+    date: "2021-10-02",
+    userid: "31354215",
+    type: "ACH",
+    amount: 49,
+    transactionid: "123456fhjd",
+  },
+  {
+    id: "3",
+    date: "2021-10-03",
+    userid: "31354215",
+    type: "ACH",
+    amount: 200,
+    transactionid: "123456fdkl",
+  },
+  {
+    id: "1",
+    date: "2021-10-01",
+    userid: "31354215",
+    type: "Paypal",
+    amount: 49,
+    transactionid: "123456gvfd",
+  },
+  {
+    id: "2",
+    date: "2021-10-02",
+    userid: "31354215",
+    type: "ACH",
+    amount: 49,
+    transactionid: "123456fhjd",
+  },
+  {
+    id: "3",
+    date: "2021-10-03",
+    userid: "31354215",
+    type: "ACH",
+    amount: 200,
+    transactionid: "123456fdkl",
+  },
+  {
+    id: "1",
+    date: "2021-10-01",
+    userid: "31354215",
+    type: "Paypal",
+    amount: 49,
+    transactionid: "123456gvfd",
+  },
+  {
+    id: "2",
+    date: "2021-10-02",
+    userid: "31354215",
+    type: "ACH",
+    amount: 49,
+    transactionid: "123456fhjd",
+  },
+  {
+    id: "3",
+    date: "2021-10-03",
+    userid: "31354215",
+    type: "ACH",
+    amount: 200,
+    transactionid: "123456fdkl",
+  },
+];
 ---
 
 <AppLayout title="Cartera" description="Esta es tu Cartera">
   <Card
-    className="w-full max-w-md mx-auto dark:bg-slate-800 border border-gray-200 dark:border-gray-700 shadow-2xl"
+    className="w-full dark:bg-slate-800 border border-gray-200 dark:border-gray-700"
   >
     <CardHeader>
-      <CardTitle>Recargar Cartera</CardTitle>
-      <CardDescription>
-        Carga fondos a tu cartera a través de PayPal.
-      </CardDescription>
-    </CardHeader>
-    <CardContent className="grid gap-4">
-      <div class="flex items-center content-between space-x-5 h-full font-bold">
-        <div>
-          <p>Saldo actual</p>
-          <h2 class="text-3xl">Planes: {plans}</h2>
-          <p>${balance} USD</p>
+      <div class="flex justify-between">
+        <div class="h-full gap-4">
+          <CardTitle className="mb-2">Recargas anteriores</CardTitle>
+          <CardDescription>
+            Aquí puedes ver las recargas que has realizado anteriormente
+          </CardDescription>
         </div>
-        <Icon name="mdi:wallet" class="text-9xl h-24 md:h-20 w-38" />
+        <div>
+          <div class="flex items-center content-between h-full font-bold -my-2">
+            <div>
+              <h2 class="text-xl">Planes: {plans}</h2>
+              <p>${balance} USD</p>
+            </div>
+            <Icon name="mdi:wallet" class="text-9xl h-24 md:h-20 w-38" />
+          </div>
+        </div>
       </div>
-
-      <!-- Formulario -->
-      <div class="grid gap-2">
-        <PaymentForm client:load />
-      </div>
-    </CardContent>
-    <CardFooter />
+      <CardContent className="-p-6">
+        <TransactionalTable data={TransactionalData} client:only />
+      </CardContent>
+    </CardHeader>
   </Card>
 </AppLayout>

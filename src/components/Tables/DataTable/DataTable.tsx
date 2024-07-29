@@ -31,7 +31,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 
 import { useState } from "react"
-import { columns } from "@/components/DataTable/colums";
+import { columns } from "@/components/Tables/DataTable/colums";
 
 interface DataTableProps<TData, TValue> {
     data: TData[]
@@ -67,7 +67,7 @@ export function DataTable<TData, TValue>({
             <div className="flex items-center py-4 ">
                 
                 <Input
-                    placeholder="Filtrar..."
+                    placeholder="Buscar..."
                     value={globalFilter}
                     onChange={(event) => setGlobalFilter(event.target.value)}
                     className="max-w-sm bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
