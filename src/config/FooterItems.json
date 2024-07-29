@@ -3,19 +3,19 @@
     "FooterNav": [
         {
             "itemText": "Planes",
-            "itemLink": "planes"
+            "itemLink": "/planes"
         },
         {
             "itemText": "Plan de Clases",
-            "itemLink": "planes"
+            "itemLink": "/planes"
         },
         {
             "itemText": "Plan de Unidad",
-            "itemLink": "planes"
+            "itemLink": "/planes"
         },
         {
             "itemText": "Plan Anual",
-            "itemLink": "planes"
+            "itemLink": "/planes"
         }
     ],
     "FooterSupport": [
@@ -25,7 +25,7 @@
         },
         {
             "itemText": "Preguntas Frecuentes",
-            "itemLink": "preguntas-frecuentes"
+            "itemLink": "/preguntas-frecuentes"
         },
         {
             "itemText": "Contacto",
@@ -35,21 +35,21 @@
     "FooterCompany": [
         {
             "itemText": "Acerca",
-            "itemLink": "nosotros"
+            "itemLink": "/nosotros"
         },
         {
             "itemText": "Equipo",
-            "itemLink": "team"
+            "itemLink": "/team"
         }
     ],
     "FooterLegal": [
         {
             "itemText": "Terminos y Condiciones",
-            "itemLink": "terminos-y-condiciones"
+            "itemLink": "/terminos-y-condiciones"
         },
         {
             "itemText": "Politica de Privacidad",
-            "itemLink": "politica-de-privacidad"
+            "itemLink": "/politica-de-privacidad"
         }
     ]
 }
