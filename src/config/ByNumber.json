@@ -8,11 +8,11 @@
     "number": "+8h"
     },
     {
-    "name": "Por cada plan",
-    "number": "$50"
+    "name": " USD por plan",
+    "number": "$1"
     },
     {
     "name": "Asignaturas",
-    "number": 6
+    "number": 4
     }
 ]
