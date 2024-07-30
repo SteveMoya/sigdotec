@@ -1,10 +1,11 @@
 ---
-import { isDev } from "@/utils";
+import { isProd } from "@/utils";
 
 import { VerficationEmail } from "@/lib/email/VerificationEmail";
 import ResetPasswordEmail from "@/lib/email/ResetPasswordEmail";
-
-isDev && Astro.redirect("/404");
+if (isProd) {
+    return Astro.redirect("/404");
+}
 ---
 
 <VerficationEmail validationCode="1234" client:load />

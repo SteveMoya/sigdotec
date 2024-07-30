@@ -24,7 +24,7 @@ export const columns: ColumnDef<Transaction>[] = [
     },
     {
         accessorKey: "date",
-         header: ({ column }) => {
+        header: ({ column }) => {
             return (
                 <button
                     className="flex items-center"

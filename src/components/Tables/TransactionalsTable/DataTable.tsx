@@ -76,8 +76,8 @@ export function TransactionalTable<TData, TValue>({
     return (
         <>
             <div className="flex items-center py-4 ">
-            
-                
+
+
                 <Input
                     placeholder="Buscar..."
                     value={globalFilter}
@@ -95,11 +95,11 @@ export function TransactionalTable<TData, TValue>({
                                 Carga fondos a tu cartera a través de PayPal.
                             </DialogDescription>
                         </DialogHeader>
-                        <PaymentForm  />
-                        
+                        <PaymentForm />
+
                     </DialogContent>
                 </Dialog>
-                
+
             </div>
             <div className="rounded-xl border shadow-2xl dark:border-gray-600 ">
                 <Table className=" shadow-2xl ">
