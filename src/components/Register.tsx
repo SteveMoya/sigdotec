@@ -126,12 +126,13 @@ export function SignUpForm() {
                                         onCheckedChange={(value: boolean) => form.setValue("acceptTerms", value)}
                                         id="accept-terms"
                                         checked={field.value}
+                                        className="dark:checked:bg-primary-800 dark:checked:border-primary-800 dark:checked:text-white"
                                     />
                                 </FormControl>
                                 <div className="space-y-1 leading-none">
                                     <FormLabel>
                                         Acepto los{" "}
-                                        <a href="/terminos-y-condiciones" className="text-primary-600 dark:text-primary-400">
+                                        <a href="/terminos-y-condiciones" className="text-primary-600 dark:text-primary-800 underline">
                                             términos y condiciones
                                         </a>
                                     </FormLabel>
