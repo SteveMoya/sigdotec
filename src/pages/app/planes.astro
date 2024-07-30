@@ -1,7 +1,7 @@
 ---
 import AppLayout from "@layouts/App/AppLayout.astro";
 import { PlanService } from "@services/plans.services";
-import { DataTable } from "@/components/DataTable/DataTable";
+import { DataTable } from "@/components/Tables/DataTable/DataTable";
 import {
   Card,
   CardContent,
@@ -27,7 +27,7 @@ if (!data) {
   console.log("Datos no encontrados en caché, obteniendo de la API");
   try {
     // Obtener datos de la API si no están en la caché
-    data = await PlanService.getDataTable(user?.id ?? '');
+    data = await PlanService.getDataTable(user?.id ?? "");
 
     // Almacenar los datos en la caché
     cache.set("planData", data);
@@ -38,11 +38,12 @@ if (!data) {
 } else {
   console.log("Usando datos de caché");
 }
-
 ---
 
 <AppLayout title="Tus Planes" description="Tus Planes de Clase">
-  <Card className="w-full dark:bg-slate-800 border border-gray-200 dark:border-gray-700">
+  <Card
+    className="w-full dark:bg-slate-800 border border-gray-200 dark:border-gray-700"
+  >
     <CardHeader>
       <CardTitle>Planes realizados anteriormente</CardTitle>
       <CardDescription>
