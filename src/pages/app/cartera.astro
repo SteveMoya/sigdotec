@@ -11,7 +11,9 @@ import {
   CardContent,
   CardFooter,
 } from "@components/ui/card";
-
+import { Button } from "@components/ui/button";
+import { Input } from "@components/ui/input";
+import { Label } from "@components/ui/label";
 import { PaymentForm } from "@components/Payment/PaymetForm";
 import { UNIT_PRICE } from "@/utils";
 const user = Astro.locals.user;
@@ -22,8 +24,8 @@ const balance: number = Number(user?.balance.toFixed(2) ?? 0);
 // Junto con 2 decimales
 // Aqui hacemos que cada $49 sea 1 plan y se redondee
 const plans = Math.floor(balance / UNIT_PRICE);
-import { TransactionalTable } from "@/components/Tables/TransactionalsTable/DataTable";
-
+import { TransactionalTable } from "@components/Tables/TransactionalsTable/DataTable";
+import { Transaction } from "@components/Tables/TransactionalsTable/Transaction";
 const TransactionalData = [
   {
     id: "1",
@@ -174,50 +176,29 @@ const TransactionalData = [
 
 <AppLayout title="Cartera" description="Esta es tu Cartera">
   <Card
-    className="w-full max-w-md mx-auto dark:bg-slate-800 border border-gray-200 dark:border-gray-700 shadow-2xl"
     className="w-full dark:bg-slate-800 border border-gray-200 dark:border-gray-700"
   >
     <CardHeader>
-      <CardTitle>Recargar Cartera</CardTitle>
-      <CardDescription>
-        Carga fondos a tu cartera a través de PayPal.
-      </CardDescription>
-    </CardHeader>
-    <CardContent className="grid gap-4">
-      <div class="flex items-center content-between space-x-5 h-full font-bold">
-        <div class="flex justify-between">
-          <div class="h-full gap-4">
-            <CardTitle className="mb-2">Recargas anteriores</CardTitle>
-            <CardDescription>
-              Aquí puedes ver las recargas que has realizado anteriormente
-            </CardDescription>
-          </div>
-          <div>
-            <p>Saldo actual</p>
-            <h2 class="text-3xl">Planes: {plans}</h2>
-            <p>${balance} USD</p>
-            <div
-              class="flex items-center content-between h-full font-bold -my-2"
-            >
-              <div>
-                <h2 class="text-xl">Planes: {plans}</h2>
-                <p>${balance} USD</p>
-              </div>
-              <Icon name="mdi:wallet" class="text-9xl h-24 md:h-20 w-38" />
-            </div>
-          </div>
-          <Icon name="mdi:wallet" class="text-9xl h-24 md:h-20 w-38" />
+      <div class="flex justify-between">
+        <div class="h-full gap-4">
+          <CardTitle className="mb-2">Recargas anteriores</CardTitle>
+          <CardDescription>
+            Aquí puedes ver las recargas que has realizado anteriormente
+          </CardDescription>
         </div>
-
-        <!-- Formulario -->
-        <div class="grid gap-2">
-          <PaymentForm client:load />
+        <div>
+          <div class="flex items-center content-between h-full font-bold -my-2">
+            <div>
+              <h2 class="text-xl">Planes: {plans}</h2>
+              <p>${balance} USD</p>
+            </div>
+            <Icon name="mdi:wallet" class="text-9xl h-24 md:h-20 w-38" />
+          </div>
         </div>
       </div>
-      <CardFooter />
       <CardContent className="-p-6">
         <TransactionalTable data={TransactionalData} client:only />
       </CardContent>
-    </CardContent>
+    </CardHeader>
   </Card>
 </AppLayout>
