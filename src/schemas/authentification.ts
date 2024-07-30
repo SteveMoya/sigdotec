@@ -14,7 +14,10 @@ export const SignUpSchema = z
             .min(8, { message: "La contraseña tiene que ser de un minimo de 8 caracteres" }),
         confirmPassword: z
             .string()
-            .min(8, { message: "La contraseña tiene que ser de un minimo de 8 caracteres" })
+            .min(8, { message: "La contraseña tiene que ser de un minimo de 8 caracteres" }),
+        acceptTerms: z.boolean().refine((val) => val === true, {
+            message: "Debes aceptar los términos y condiciones.",
+        }),
             
     }).refine(
         (data) => data.password === data.confirmPassword,
@@ -54,7 +57,9 @@ export const ForgotPasswordSchema = z.object({
         .string()
         .min(8, { message: "La contraseña tiene que ser de un minimo de 8 caracteres" }),
 
-    logoutFromOtherDevices: z.boolean(),
+    logoutFromOtherDevices: z.boolean({
+        message: "Tienes que aceptar que se cierre la sesion en otros dispositivos",
+    }),
 }).refine(
     (data) => data.newPassword === data.confirmPassword,
     {

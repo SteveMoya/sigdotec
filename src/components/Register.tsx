@@ -15,7 +15,7 @@ import {
     FormMessage,
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
-
+import { Checkbox } from "@/components/ui/checkbox"
 
 import { SignUpSchema } from "@/schemas/authentification"
 import { toast } from "sonner"
@@ -29,6 +29,7 @@ export function SignUpForm() {
             email: "",
             password: "",
             confirmPassword: "",
+            acceptTerms: false,
         },
     })
 
@@ -111,6 +112,30 @@ export function SignUpForm() {
                                 <FormControl>
                                     <Input placeholder="*******" type="password" {...field} />
                                 </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="acceptTerms"
+                        render={({ field }) => (
+                            <FormItem className="flex flex-row items-start space-x-3 space-y-0 p-4">
+                                <FormControl>
+                                    <Checkbox
+                                        onCheckedChange={(value: boolean) => form.setValue("acceptTerms", value)}
+                                        id="accept-terms"
+                                        checked={field.value}
+                                    />
+                                </FormControl>
+                                <div className="space-y-1 leading-none">
+                                    <FormLabel>
+                                        Acepto los{" "}
+                                        <a href="/terminos-y-condiciones" className="text-primary-600 dark:text-primary-400">
+                                            términos y condiciones
+                                        </a>
+                                    </FormLabel>
+                                </div>
                                 <FormMessage />
                             </FormItem>
                         )}
