@@ -7,7 +7,6 @@ import AppFooter from "./Footer/AppFooter.astro";
 import AppNavItems from "@config/AppNavItems.json";
 import AdminNavItems from "@config/AdminNavItems.json";
 import { Toaster } from "sonner";
-// import { Toaster } from "@/components/ui/sonner";
 interface Props {
   title: string;
   description: string;
@@ -68,6 +67,7 @@ const { title, description } = Astro.props;
             <Toaster
               richColors
               closeButton
+              client:load
               toastOptions={{
                 classNames: {
                   success: "bg-success-600",
@@ -75,7 +75,6 @@ const { title, description } = Astro.props;
                   loading: "bg-secondary-200",
                 },
               }}
-              client:only
             />
             <AppFooter />
           </div>

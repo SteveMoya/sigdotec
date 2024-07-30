@@ -7,7 +7,8 @@ import { lucia } from "@/lib/auth/lucia";
 export async function POST(context: APIContext): Promise<Response> {
     const body = await context.request.json();
     console.log("Este es el body", body);
-    const { newPassword, confirmPassword,token } = body;
+
+    const { newPassword, confirmPassword, token } = body;
     if (!token || !newPassword || !confirmPassword || newPassword !== confirmPassword) {
         return new Response(
             JSON.stringify({ error: "Faltan campos por completar" }),

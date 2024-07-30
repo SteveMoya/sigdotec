@@ -1,9 +1,7 @@
 import { createVerificationToken } from "@/lib/auth/lucia";
 import { sendResetPasswordEmail } from "@/lib/email/sendEmail";
 import type { APIContext } from "astro";
-import { eq } from "astro:db";
-import { User } from "astro:db";
-import { db } from "astro:db";
+import { eq, db, User } from "astro:db";
 
 
 export async function POST(context: APIContext): Promise<Response> {
@@ -26,7 +24,7 @@ export async function POST(context: APIContext): Promise<Response> {
         0,
     );
     if (!user) {
-        return new Response("Usuario no existe", { status: 404 });
+        return new Response(JSON.stringify({ error: "Usuario no existe" }), { status: 404 });
     }
     const username = user.username;
 
@@ -35,9 +33,7 @@ export async function POST(context: APIContext): Promise<Response> {
         return new Response("Email enviado", { status: 200 });
     } catch (error) {
         console.log(error);
-        return new Response("Error al enviar tu email de Verificación", {
-            status: 400,
-        });
+        return new Response(JSON.stringify({ error: "Error al enviar tu email de Verificación por favor intentalo mas tarde" }), { status: 500 });
     }
     
 }

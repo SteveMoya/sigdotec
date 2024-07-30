@@ -5,7 +5,13 @@ import Layout from "@layouts/Layout.astro";
 import { verifyToken } from "@/lib/auth/lucia";
 
 import { Toaster } from "sonner";
-
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 const user = Astro.locals.user;
 if (user) {
   return Astro.redirect("/app/", 302);
@@ -16,87 +22,25 @@ const tokenValid = await verifyToken(token ?? "");
 if (!tokenValid) {
   return new Response("Token invalido", { status: 400 });
 }
-// if (Astro.request.method === "POST") {
-//   const body = await Astro.request.json();
-//   console.log("Este es el body", body);
-//   const { newPassword, confirmPassword } = body;
-//   if (!newPassword || !confirmPassword || newPassword !== confirmPassword) {
-//     return new Response(
-//       JSON.stringify({ error: "Faltan campos por completar" }),
-//       {
-//         headers: { "content-type": "application/json" },
-//         status: 400,
-//       },
-//     );
-//   }
-//   if (
-//     newPassword instanceof File ||
-//     newPassword === null ||
-//     newPassword.length < 8
-//   ) {
-//     return new Response("Contraseña invalida", { status: 400 });
-//   }
-
-//   try {
-//     const token = (await verifyToken(Astro.params.token ?? "")) as {
-//       email: string;
-//       code: string;
-//     };
-//     const email = token.email;
-//     console.log("Este es el email", email);
-//     const emailregex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-//     const emailvalid = emailregex.test(email);
-//     if (!emailvalid) {
-//       return new Response("Invalid email", { status: 400 });
-//     }
-//     const existedUser = (
-//       await db.select().from(User).where(eq(User.email, email))
-//     ).at(0);
-//     if (!existedUser) {
-//       return new Response("Usuario no encontrado", { status: 404 });
-//     }
-//     const newHashPassword = await hasherPassword(newPassword);
-//     await db
-//       .update(User)
-//       .set({
-//         hashedPassword: newHashPassword,
-//       })
-//       .where(eq(User.id, existedUser.id));
-
-//     await db.delete(Session).where(eq(Session.userId, existedUser.id));
-
-//     const session = await lucia.createSession(existedUser.id, {
-//       expiresIn: 60 * 60 * 24 * 30,
-//     });
-//     const sessionCookie = lucia.createSessionCookie(session.id);
-//     Astro.cookies.set(
-//       sessionCookie.name,
-//       sessionCookie.value,
-//       sessionCookie.attributes,
-//     );
-//     return new Response("Contraseña Actualizada", { status: 200 });
-//   } catch (e) {
-//     console.log(e);
-//     return new Response("Error interno del servidor", { status: 500 });
-//   }
-// }
 ---
 
 <Layout>
   <div class="flex justify-center content-center my-[6dvh]">
-    <ForgotPasswordForm token={token as string} client:load />
+    <Card
+      className="w-full max-w-2xl dark:bg-slate-800 border border-gray-200 dark:border-gray-700 shadow-2xl"
+    >
+      <CardHeader>
+        <CardTitle>Cambiar Contraseña</CardTitle>
+        <CardDescription>
+          Por favor, ingrese su nueva contraseña.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        <ForgotPasswordForm token={token as string} client:load />
+      </CardContent>
+    </Card>
   </div>
-  <form id="changePasswordForm">
-    
-    <label for="newPassword">Nueva Contraseña:</label><br />
-    <input type="password" id="newPassword" name="newPassword" /><br />
-    <label for="confirmPassword">Confirmar Nueva Contraseña:</label><br />
-    <input type="password" id="confirmPassword" name="confirmPassword" /><br />
-    <input type="submit" value="Cambiar Contraseña" />
-  </form>
-  <!-- Aqui colocamos una p para colocar el token y coger los valores y enviarlo a la api -->
-  <p id="token">{token}</p>
-
+  
   <Toaster
     richColors
     closeButton
@@ -107,44 +51,6 @@ if (!tokenValid) {
         loading: "bg-secondary-200",
       },
     }}
-    client:only
+    client:load
   />
 </Layout>
-<script>
-  document
-    .getElementById("changePasswordForm")
-    .addEventListener("submit", function (event) {
-      event.preventDefault(); // Evita que el formulario se envíe de forma predeterminada
-      const newPassword = document.getElementById("newPassword").value;
-      const confirmPassword = document.getElementById("confirmPassword").value;
-      const token = document.getElementById("token").innerText;
-
-      if (newPassword !== confirmPassword) {
-        alert("Las contraseñas no coinciden.");
-        return; // Detiene la ejecución si las contraseñas no coinciden
-      }
-
-      // Realiza la solicitud fetch POST
-      fetch("/api/auth/reset-password", {
-        // Reemplaza '/ruta-de-tu-api' con la URL de tu API
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          newPassword: newPassword,
-          confirmPassword: confirmPassword,
-          token: token,
-        }),
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log("Solicitud exitosa:", data);
-          alert("Contraseña cambiada exitosamente.");
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-          alert("Hubo un error al cambiar la contraseña.");
-        });
-    });
-</script>

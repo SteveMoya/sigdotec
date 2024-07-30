@@ -40,6 +40,16 @@ export default async function seed() {
 		},
 		{
 			id: generateId(15),
+			username: 'Verification',
+			email: 'stevemc201666@gmail.com',
+			hashedPassword: await hasherPassword('verification12345678'),
+			emailVerificated: true,
+			role: 'user',
+			userimage: 'https://avatars.githubusercontent.com/u/114698709?v=4',
+			provider: "email",
+		},
+		{
+			id: generateId(15),
 			username: 'saiyan',
 			email: 'saiyan@gmail.com',
 			hashedPassword: await hasherPassword('saiyan12345678'),
