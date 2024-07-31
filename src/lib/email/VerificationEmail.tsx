@@ -12,6 +12,7 @@ import {
     Section,
     Text,
 } from "@react-email/components";
+import { object } from "zod";
 
 
 interface VerficationEmailProps {
@@ -34,7 +35,7 @@ export const VerficationEmail = ({
             <Body style={main}>
                 <Container style={container}>
                     <Section style={logo}>
-                        <Img width={114} src={`${APP_URL}SIGDO-32.svg`}
+                        <Img  src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwrRQrpJFFpPyZ9kIOqOsDP-YwoC5XvoAlnA&s`}
                             height="88"
                             alt="SIGDOTEC-logo"
                             style={logo} />
@@ -79,7 +80,7 @@ export const VerficationEmail = ({
                 <Section style={footer}>
                     <Row>
                         <Column align="center" style={{ paddingRight: "8px", }}>
-                            <Img width="100px" src={`${APP_URL}SIGDO-32.svg`} />
+                            <Img width="100px" src={`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQwrRQrpJFFpPyZ9kIOqOsDP-YwoC5XvoAlnA&s`} />
                         </Column>
                     </Row>
                     <Row>
@@ -132,7 +133,7 @@ const content = {
 const logo = {
     display: "flex",
     justifyContent: "center",
-    alingItems: "center",
+    alignItems: "center",
     padding: 30,
     boxShadow: "0 0 10px rgba(0,0,0,0.1)",
     backgroundColor: "#ffffff",

@@ -69,9 +69,11 @@ export function ChangePasword() {
             if (!res.ok) {
                 toast.error(data.error)
             }
+            // recargamos la pagina aqui
+            window.location.reload()
         } catch (error) {
             console.log(error)
-            toast.error("An error occurred.")
+            toast.error("Ha ocurrido un error.")
         }
     }
     return (
