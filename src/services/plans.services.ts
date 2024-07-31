@@ -167,11 +167,12 @@ export const PlanService = {
             console.log(error);
         }
     },
-    async getAnualPlan(id_subject:number, id_grade: number){
+    async getAnualPlan(id_subject:number, id_grade: number, userid: string){
         console.log("Id de la materia",id_subject)
         console.log("Id del grado",id_grade)
+        console.log("Id del usuario",userid)
         try {
-            const anualPlan = await fetch(`${import.meta.env.AI_URL}/download/annual_plan/${id_subject}/${id_grade}`,{
+            const anualPlan = await fetch(`${import.meta.env.AI_URL}/download/annual_plan/${id_subject}/${id_grade}/${userid}`,{
                 method: 'GET',
                 headers: {
                     'Authorization': `${AI_API_SECRET}`,

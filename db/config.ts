@@ -44,6 +44,17 @@ const Session = defineTable({
   },
 });
 
+const WalletTransaction = defineTable({
+  columns: {
+    id: column.text({ optional: false, unique: true }),
+    idTransaction: column.text({ optional: false}),
+    userId: column.text({ optional: false, references: () => User.columns.id }),
+    amount: column.number({ optional: false }),
+    createdAt: column.date({ optional: false, default: new Date()}),
+    type: column.text({ optional: false }),
+  },
+})
+
 export default defineDb({
   tables: {
     User,

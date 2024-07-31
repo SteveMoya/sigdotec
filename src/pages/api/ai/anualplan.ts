@@ -39,7 +39,7 @@ export async function POST(context: APIContext): Promise<Response> {
         });
     }
     try {
-        const data = await PlanService.getAnualPlan(Number(materia), Number(grado));
+        const data = await PlanService.getAnualPlan(Number(materia), Number(grado), user.id);
         console.log("Estos son los datos que se van a guardar", data);
         const response = await fetch(data?.url ?? '');
         const blob = await response.blob();
