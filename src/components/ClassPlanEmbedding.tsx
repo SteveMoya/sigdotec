@@ -50,9 +50,9 @@ function ClassPlanEmbedding() {
     useEffect(() => {
         if (error) toast.error(`Error: ${error}`);
         if (data) {
-            toast.success('Plan de unidad generado correctamente');
             setShowDownloadButtons(true);
             setTimer(180);  // 180 seconds for 3 minutes
+            toast.success('Plan de unidad generado correctamente');
         }
         if (isLoading) toast.loading('Cargando Plan');
         return () => {
@@ -175,7 +175,6 @@ function ClassPlanEmbedding() {
                     {showDownloadButtons && (
                         <div className="flex justify-center items-center">
                             <DownloadDOC />
-                            <DownloadPDF />
                         </div>
                     )}
                     {timer > 0 ? (

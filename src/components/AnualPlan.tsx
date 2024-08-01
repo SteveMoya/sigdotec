@@ -1,7 +1,7 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
 import {
     Form,
@@ -14,18 +14,14 @@ import {
 import { AnualPlanFormSchema } from "@/schemas";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { useFetch } from "@/hooks/useFetch";
-import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import ReactSelect from "react-select";
-import { Loading } from "./App/Loading";
 import { toast } from "sonner";
-import DataDisplay from "./App/DataDisplay";
-import { DownloadDOC } from "./App/DownloadButtons";
 
 function AnualPlan() {
     const { data, isLoading, error, fetchData } = useFetch();
     const { data: data2, error: error2, fetchData: fetchData2 } = useFetch();
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
-    useEffect(() => {
+    useEffect(() => { 
         fetchData2(`/api/ai/alltopic`, 'GET');
     }, []);
 
@@ -56,10 +52,11 @@ function AnualPlan() {
             a.click();
             a.remove();
             window.URL.revokeObjectURL(url)
+            setIsSubmitted(true);
         } catch (error) {
-            
+            console.error(error);
+            toast.error('Error al descargar el documento');
         }
-        
     };
 
     useEffect(() => {
@@ -72,7 +69,6 @@ function AnualPlan() {
     }, [data, error, isLoading]);
 
     const selectedMateria = form.watch("materia");
-    const selectedGrado = form.watch("grado")
 
     const materiaOptions = useMemo(() => {
         if (!data2) return [];
@@ -84,22 +80,15 @@ function AnualPlan() {
         return Object.entries(data2[selectedMateria]?.[1] ?? {}).map(([key, value]) => ({ key, label: value[0] }));
     }, [data2, selectedMateria]);
 
-    const memoizedData = useMemo(() => data, [data]);
-
     return (
         <>
-            <Card className="min-w-[450px] dark:bg-slate-800 border border-gray-200 dark:border-gray-700 shadow-2xl">
-                <CardHeader>
-                    <CardTitle>Plan Anual</CardTitle>
-                </CardHeader>
-                <CardContent>
                     <Form {...form}>
                         <form onSubmit={form.handleSubmit(onSubmit)}>
                             <FormField
                                 control={form.control}
                                 name="materia"
                                 render={({ field }) => (
-                                    <FormItem className="grid gap-2">
+                                    <FormItem>
                                         <FormLabel>Selecciona tu Asignatura</FormLabel>
                                         <FormControl>
                                             <Select onValueChange={field.onChange}>
@@ -123,7 +112,7 @@ function AnualPlan() {
                                 control={form.control}
                                 name="grado"
                                 render={({ field }) => (
-                                    <FormItem className="grid gap-2">
+                                    <FormItem >
                                         <FormLabel>Selecciona tu Grado</FormLabel>
                                         <FormControl>
                                             <Select onValueChange={field.onChange} disabled={!selectedMateria}>
@@ -144,23 +133,13 @@ function AnualPlan() {
                                 )}
                             />
                             
-                            <Button type="submit" className="w-full dark:bg-primary-800 dark:text-white mt-4 dark:hover:bg-primary-900">Planificar</Button>
+                    <Button type="submit" disabled={isLoading} className="w-full dark:bg-primary-800 dark:text-white mt-4 dark:hover:bg-primary-900">
+                                {
+                                    isLoading ? 'Cargando...' : isSubmitted ? 'Volver a Planificar' : 'Planificar'
+                                }
+                            </Button>
                         </form>
                     </Form>
-                </CardContent>
-            </Card>
-            {isLoading && (<Loading />
-            )}
-            {data &&
-                <>
-                    <article className='mx-0 text-center p-7 grid sm:grid-cols-2 grid-cols-1 gap-4'>
-                        <DataDisplay data={memoizedData} />
-                    </article>
-                    <div className="flex justify-center items-center">
-                        <DownloadDOC />
-                    </div>
-                </>
-            }
         </>
     );
 }

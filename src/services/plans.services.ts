@@ -172,16 +172,15 @@ export const PlanService = {
         console.log("Id del grado",id_grade)
         console.log("Id del usuario",userid)
         try {
-            const anualPlan = await fetch(`${import.meta.env.AI_URL}/download/annual_plan/${id_subject}/${id_grade}/${userid}`,{
+            const anualPlan = await fetch(`${import.meta.env.AI_URL}/download/annual_plan/${id_subject}/${id_grade}/${
+                isDev ? 'test' : userid
+             }`,{
                 method: 'GET',
                 headers: {
                     'Authorization': `${AI_API_SECRET}`,
                 }
             });
-            console.log("URL de la peticion",anualPlan.url)
-            if (!anualPlan.ok) {
-                throw new Error('Error fetching the document');
-            }
+           
             console.log("Peticion de la api",anualPlan)
             // cogeremos el archivo que esta dentro de la url y lo devolveremos
             return anualPlan

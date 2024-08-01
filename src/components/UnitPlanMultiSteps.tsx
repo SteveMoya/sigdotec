@@ -1,4 +1,4 @@
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, Controller } from "react-hook-form";
@@ -23,6 +23,10 @@ import { DownloadDOC, DownloadPDF } from "./App/DownloadButtons";
 function UnitPlanMultiSteps() {
     const { data, isLoading, error, fetchData } = useFetch();
     const { data: data2, error: error2, fetchData: fetchData2 } = useFetch();
+    const [isSubmitted, setIsSubmitted] = useState(false);
+    const [showDownloadButtons, setShowDownloadButtons] = useState(false);
+    const [timer, setTimer] = useState(0);
+    const [showPostTimerMessage, setShowPostTimerMessage] = useState(false);
 
     useEffect(() => {
         fetchData2(`/api/ai/alltopic`, 'GET');
@@ -38,18 +42,35 @@ function UnitPlanMultiSteps() {
     });
 
     const onSubmit = (values: z.infer<typeof UnitPlanFormSchema>) => {
-        console.log("Valores del formulario", values);
+        setIsSubmitted(true);
         fetchData(`/api/ai/unitplan?topic_id=${values.tema}`, 'GET');
     };
 
     useEffect(() => {
         if (error) toast.error(`Error: ${error}`);
-        if (data) toast.success('Plan de unidad generado correctamente');
+        if (data) {
+            setShowDownloadButtons(true);
+            setTimer(180);
+            toast.success('Plan de unidad generado correctamente');
+        } 
         if (isLoading) toast.loading('Cargando temas');
         return () => {
             toast.dismiss();
         };
     }, [data, error, isLoading]);
+
+    useEffect(() => {
+        let interval: NodeJS.Timeout;
+        if (timer > 0) {
+            interval = setInterval(() => {
+                setTimer(prev => prev - 1);
+            }, 1000);
+        } else if (timer === 0 && showDownloadButtons) {
+            setShowDownloadButtons(false);
+            setShowPostTimerMessage(true);
+        }
+        return () => clearInterval(interval);
+    }, [timer, showDownloadButtons]);
 
     const selectedMateria = form.watch("materia");
     const selectedGrado = form.watch("grado");
@@ -157,7 +178,7 @@ function UnitPlanMultiSteps() {
                                 )}
                             />
                             
-                            <Button type="submit" className="w-full dark:bg-primary-800 dark:text-white mt-4 dark:hover:bg-primary-900">Planificar</Button>
+                            <Button type="submit" className="w-full dark:bg-primary-800 dark:text-white mt-4 dark:hover:bg-primary-900" disabled={isLoading || isSubmitted} >{isLoading ? 'Cargando...' : 'Planificar'}</Button>
                         </form>
                     </Form>
                 </CardContent>
@@ -169,10 +190,22 @@ function UnitPlanMultiSteps() {
                     <article className='mx-0 text-center p-7 grid sm:grid-cols-2 grid-cols-1 gap-4'>
                         <DataDisplay data={memoizedData} />
                     </article>
-                    <div className="flex justify-center items-center">
-                    <DownloadDOC />
-                    <DownloadPDF />
-                    </div>
+                    {showDownloadButtons && (
+                        <div className="flex justify-center items-center">
+                            <DownloadDOC />
+                        </div>
+                    )}
+                    {timer > 0 ? (
+                        <p className="text-center mt-4">
+                            Descarga tu archivo en menos de {Math.floor(timer / 60)}:{String(timer % 60).padStart(2, '0')} minutos o ve a tus planes.
+                        </p>
+                    ) : (
+                        showPostTimerMessage && (
+                            <p className="text-center mt-4">
+                                El tiempo de descarga ha expirado. Por favor, ve a tus planes para descargar tu archivo.
+                            </p>
+                        )
+                    )}
                 </>
             }
         </>
