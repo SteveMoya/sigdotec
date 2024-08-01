@@ -11,7 +11,10 @@ import { Icon } from "astro-icon/components";
 import { Toaster } from "sonner";
 
 const user = Astro.locals.user;
-import { isDev } from "@/utils/constans";
+import { isProd } from "@/utils/constans";
+if (isProd) {
+  return Astro.redirect("/404");
+}
 import SocialSingUp from "@/components/SocialSingUp.astro";
 ---
 

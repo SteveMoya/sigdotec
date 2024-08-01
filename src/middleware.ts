@@ -3,10 +3,12 @@ import { defineMiddleware } from "astro:middleware"
 
 import { verifyRequestOrigin } from "lucia"
 import { lucia } from "./lib/auth/lucia";
+import { isProd } from "@/utils/constans";
 const protectedRoutesPrefix = "/app/";
 const redirectRoutes = ["/iniciar-sesion", "/registrarse"];
 const adminRoutes = "/admin/";
 const verificationRoute = "/auth/email-verification/"
+const testingRoutes = ["/auth/", "/api/", "/admin/", "/app/", "/iniciar-sesion", "/registrarse" ];
 
 export const onRequest = defineMiddleware(async (context, next) => {
   if (context.request.method !== "GET") {
@@ -22,6 +24,11 @@ export const onRequest = defineMiddleware(async (context, next) => {
       });
     }
   }
+  if (isProd) {
+    if (!testingRoutes.some(route => context.url.pathname.startsWith(route))) {
+      return context.redirect("/");
+      }
+    }
 
   const sessionId = context.cookies.get(lucia.sessionCookieName)?.value ?? null;
   if (context.url.pathname.startsWith(adminRoutes) || context.url.pathname.startsWith(protectedRoutesPrefix)) {
