@@ -7,10 +7,7 @@ import Layout from "@layouts/Layout.astro";
 import { Toaster } from "sonner";
 // import { RegisterB } from "@components/App/RegisterB";
 // import { SignUpForm } from "@components/Register.tsx";
-import { isProd } from "@/utils/constans";
-if (isProd) {
-  return Astro.redirect("/404");
-}
+
 ---
 
 <Layout
