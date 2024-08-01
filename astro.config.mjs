@@ -28,7 +28,7 @@ export default defineConfig({
   vite: {
     plugins: [
           VitePWA({
-              injectRegister: 'script-defer',
+              injectRegister: 'auto',
               registerType: "autoUpdate",
               devOptions: {
                   enabled: true

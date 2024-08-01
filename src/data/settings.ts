@@ -21,12 +21,16 @@ export const settings = {
 }
 
 export const manifest: Partial<ManifestOptions> = {
-  name: 'SIGDOTEC WEB',
+  name: 'SIGDOTEC',
   short_name: 'SIGDOTEC',
-  description: 'SIGDOTEC Web pon la tecnologia a tu servicio.',
+  description: 'SIGDOTEC pon la tecnologia a tu servicio.',
   theme_color: '#007FFF',
   background_color: '#F5FAFA',
   display: 'minimal-ui',
+  start_url: '/app/',
+  scope: '/app/',
+  lang: 'es',
+  orientation: 'portrait',
   icons: [
     {
       src: '/favicons/SIGDO-ÍCONO-192.png',
@@ -44,11 +48,5 @@ export const manifest: Partial<ManifestOptions> = {
       type: 'image/png',
       purpose: 'any maskable'
     },
-    {
-      src: '/favicons/SIGDO-ÍCONO-1080.png',
-      sizes: '1080x1080',
-      type: 'image/png',
-      purpose: 'any maskable'
-    }
   ]
 }
