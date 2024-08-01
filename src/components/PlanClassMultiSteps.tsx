@@ -15,7 +15,7 @@ import { ClassPlanFormSchema } from "@/schemas";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { useFetch } from "@/hooks/useFetch";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
-import ReactSelect from "react-select";
+import ReactSelect, { type StylesConfig } from "react-select";
 import { Loading } from "./App/Loading";
 import { toast } from "sonner";
 import DataDisplay from "./App/DataDisplay";
@@ -43,7 +43,53 @@ function ClassPlanMultiSteps() {
             subtema: [],
         },
     });
-
+    const customsMultiSelectStyles: StylesConfig = {
+        control: (styles: any) => ({
+            ...styles,
+            backgroundColor: 'transparent',
+            borderColor: 'transparent',
+            boxShadow: 'none',
+            ':hover': {
+                borderColor: 'transparent',
+            },
+        }),
+        multiValue: (styles: any) => ({
+            ...styles,
+            backgroundColor: '#2563EB',
+        }),
+        multiValueLabel: (styles: any) => ({
+            ...styles,
+            color: 'white',
+            backgroundColor: '#2563EB',
+        }),
+        multiValueRemove: (styles: any) => ({
+            ...styles,
+            color: 'white',
+            backgroundColor: '#2563EB',
+            ':hover': {
+                backgroundColor: '#2563EB',
+                color: 'white',
+            },
+        }),
+        placeholder(base, props) {
+            return {
+                ...base,
+                color: '#9CA3AF',
+            };
+        },
+        option(base, props) {
+            return {
+                ...base,
+                backgroundColor: props.isSelected ? '#2563EB' : 'transparent',
+                color: props.isSelected ? 'white' : 'black',
+                ':hover': {
+                    backgroundColor: '#2563EB',
+                    color: 'white',
+                },
+            };
+        },
+        
+    }
     const onSubmit = (values: z.infer<typeof ClassPlanFormSchema>) => {
         setIsSubmitted(true);
         fetchData(`/api/ai/classplan`, 'POST', values.subtema)
@@ -195,6 +241,7 @@ function ClassPlanMultiSteps() {
                                                 control={form.control}
                                                 render={({ field }) => (
                                                     <ReactSelect
+                                                        styles={customsMultiSelectStyles}
                                                         {...field}
                                                         isMulti
                                                         options={subtemaOptions}
