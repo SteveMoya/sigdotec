@@ -6,24 +6,13 @@ import { ArrowUpDown } from "lucide-react"
 
 export const columns: ColumnDef<Transaction>[] = [
     {
-        accessorKey: "id",
-        header: "ID",
-        cell: ({ getValue }) => getValue(),
-    },
-    {
         accessorKey: "transactionid",
         header: "ID-Transacción",
         cell: ({ getValue }) => getValue(),
         enableGlobalFilter: true,
     },
     {
-        accessorKey: "userid",
-        header: "Usuario",
-        cell: ({ getValue }) => getValue(),
-        enableGlobalFilter: true,
-    },
-    {
-        accessorKey: "date",
+        accessorKey: "createdAt",
         header: ({ column }) => {
             return (
                 <button

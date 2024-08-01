@@ -1,7 +1,6 @@
 ---
 import AppLayout from "@layouts/App/AppLayout.astro";
-// import Pay from '@components/Payment/Pay.astro'
-import { PaypalButtom, App } from "@components/Payment/PaypalButtom";
+
 import { Icon } from "astro-icon/components";
 import {
   Card,
@@ -16,162 +15,29 @@ import { Input } from "@components/ui/input";
 import { Label } from "@components/ui/label";
 import { PaymentForm } from "@components/Payment/PaymetForm";
 import { UNIT_PRICE } from "@/utils";
+import { TransactionalTable } from "@components/Tables/TransactionalsTable/DataTable";
+import { Pay } from "@/services/pay.services";
+import NodeCache from "node-cache";
 const user = Astro.locals.user;
 if (!user) {
   return Astro.redirect("/iniciar-sesion", 302);
 }
 const balance: number = Number(user?.balance.toFixed(2) ?? 0);
-// Junto con 2 decimales
-// Aqui hacemos que cada $49 sea 1 plan y se redondee
 const plans = Math.floor(balance / UNIT_PRICE);
-import { TransactionalTable } from "@components/Tables/TransactionalsTable/DataTable";
-import { Transaction } from "@components/Tables/TransactionalsTable/Transaction";
-const TransactionalData = [
-  {
-    id: "1",
-    date: "2021-10-01",
-    userid: "31354215",
-    type: "Paypal",
-    amount: 49,
-    transactionid: "123456gvfd",
-  },
-  {
-    id: "2",
-    date: "2021-10-02",
-    userid: "31354215",
-    type: "ACH",
-    amount: 49,
-    transactionid: "123456fhjd",
-  },
-  {
-    id: "3",
-    date: "2021-10-03",
-    userid: "31354215",
-    type: "ACH",
-    amount: 200,
-    transactionid: "123456fdkl",
-  },
-  {
-    id: "1",
-    date: "2021-10-01",
-    userid: "31354215",
-    type: "Paypal",
-    amount: 49,
-    transactionid: "123456gvfd",
-  },
-  {
-    id: "2",
-    date: "2021-10-02",
-    userid: "31354215",
-    type: "ACH",
-    amount: 49,
-    transactionid: "123456fhjd",
-  },
-  {
-    id: "3",
-    date: "2021-10-03",
-    userid: "31354215",
-    type: "ACH",
-    amount: 200,
-    transactionid: "123456fdkl",
-  },
-  {
-    id: "1",
-    date: "2021-10-01",
-    userid: "31354215",
-    type: "Paypal",
-    amount: 49,
-    transactionid: "123456gvfd",
-  },
-  {
-    id: "2",
-    date: "2021-10-02",
-    userid: "31354215",
-    type: "ACH",
-    amount: 49,
-    transactionid: "123456fhjd",
-  },
-  {
-    id: "3",
-    date: "2021-10-03",
-    userid: "31354215",
-    type: "ACH",
-    amount: 200,
-    transactionid: "123456fdkl",
-  },
-  {
-    id: "1",
-    date: "2021-10-01",
-    userid: "31354215",
-    type: "Paypal",
-    amount: 49,
-    transactionid: "123456gvfd",
-  },
-  {
-    id: "2",
-    date: "2021-10-02",
-    userid: "31354215",
-    type: "ACH",
-    amount: 49,
-    transactionid: "123456fhjd",
-  },
-  {
-    id: "3",
-    date: "2021-10-03",
-    userid: "31354215",
-    type: "ACH",
-    amount: 200,
-    transactionid: "123456fdkl",
-  },
-  {
-    id: "1",
-    date: "2021-10-01",
-    userid: "31354215",
-    type: "Paypal",
-    amount: 49,
-    transactionid: "123456gvfd",
-  },
-  {
-    id: "2",
-    date: "2021-10-02",
-    userid: "31354215",
-    type: "ACH",
-    amount: 49,
-    transactionid: "123456fhjd",
-  },
-  {
-    id: "3",
-    date: "2021-10-03",
-    userid: "31354215",
-    type: "ACH",
-    amount: 200,
-    transactionid: "123456fdkl",
-  },
-  {
-    id: "1",
-    date: "2021-10-01",
-    userid: "31354215",
-    type: "Paypal",
-    amount: 49,
-    transactionid: "123456gvfd",
-  },
-  {
-    id: "2",
-    date: "2021-10-02",
-    userid: "31354215",
-    type: "ACH",
-    amount: 49,
-    transactionid: "123456fhjd",
-  },
-  {
-    id: "3",
-    date: "2021-10-03",
-    userid: "31354215",
-    type: "ACH",
-    amount: 200,
-    transactionid: "123456fdkl",
-  },
-];
+
+// const transactions = await Pay.getTransactions(user?.id);
+
+const cache = new NodeCache({ stdTTL: 300 });
+
+let data = cache.get("transactions");
+
+if (!data) {
+  data = await Pay.getTransactions(user?.id);
+  cache.set("transactions", data);
+
+}
+// const update = await Pay.createTransaction(user?.id, 49, "Paypal", "123456789");
+
 ---
 
 <AppLayout title="Cartera" description="Esta es tu Cartera">
@@ -197,7 +63,7 @@ const TransactionalData = [
         </div>
       </div>
       <CardContent className="-p-6">
-        <TransactionalTable data={TransactionalData} client:only />
+        <TransactionalTable data={data} client:only />
       </CardContent>
     </CardHeader>
   </Card>

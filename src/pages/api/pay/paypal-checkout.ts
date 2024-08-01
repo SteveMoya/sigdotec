@@ -2,6 +2,7 @@ import type { APIContext } from "astro";
 import paypal from "@paypal/checkout-server-sdk";
 import { PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET } from "@src/utils";
 import { db, eq, User } from "astro:db";
+import { Pay } from "@/services/pay.services";
 
 export async function POST(context: APIContext): Promise<Response> {
     const user = context.locals.user
@@ -45,8 +46,7 @@ export async function POST(context: APIContext): Promise<Response> {
             return new Response("Monto inválido.", { status: 400 });
         }
         const paypalresponse = await client.execute(request);
-        
-        const dbQuery = await db.update(User).set({ balance: (Number(balance) + Number(amount)) }).where(eq(User.id, user.id));
+        const dbQuery = await Pay.createTransaction(user.id, amount, "Paypal", paypalresponse.result.id, paypalresponse.result.create_time);
         if (!dbQuery) {
             console.log("Error al actualizar el saldo.");
             return new Response("Error al actualizar el saldo.", { status: 500 });
