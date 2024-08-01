@@ -65,6 +65,8 @@ Disallow: /
 User-agent: TurnitinBot
 Disallow: /
 
+Host: ${new URL(import.meta.env.SITE).host}
+
 Sitemap: ${new URL('sitemap-index.xml', import.meta.env.SITE).href}
 `.trim();
 

@@ -28,6 +28,7 @@ export default defineConfig({
   vite: {
     plugins: [
           VitePWA({
+              injectRegister: 'script-defer',
               registerType: "autoUpdate",
               devOptions: {
                   enabled: true
@@ -35,7 +36,7 @@ export default defineConfig({
               manifest,
               workbox: {
                   globDirectory: ".vercel/output/static",
-                  globPatterns: ["**/*.{html,js,css,woff,woff2,ttf,eot,ico}"],
+                  globPatterns: ["**/*.{html,js,css,woff,woff2,ttf,ico}"],
                   runtimeCaching: [
                       {
                           urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp|avif)$/,

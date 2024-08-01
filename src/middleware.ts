@@ -8,12 +8,12 @@ const protectedRoutesPrefix = "/app/";
 const redirectRoutes = ["/iniciar-sesion", "/registrarse"];
 const adminRoutes = "/admin/";
 const verificationRoute = "/auth/email-verification/"
-const testingRoutes = ["/auth/", "/api/", "/admin/", "/app/", "/iniciar-sesion", "/registrarse" ];
+// const testingRoutes = ["/auth/", "/api/", "/admin/", "/app/", "/iniciar-sesion", "/registrarse" ];
 
 export const onRequest = defineMiddleware(async (context, next) => {
-  if (isProd && testingRoutes.some(route => context.url.pathname.startsWith(route))) {
-    return context.redirect("/");
-  }
+  // if (isProd && testingRoutes.some(route => context.url.pathname.startsWith(route))) {
+  //   return context.redirect("/");
+  // }
 
   if (context.request.method !== "GET") {
     const originHeader = context.request.headers.get("Origin");

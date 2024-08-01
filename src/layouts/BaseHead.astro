@@ -16,7 +16,6 @@ function disableIndexing(url: string) {
   return settings.disableIndexingUrls.includes(url);
 }
 
-
 const title = Astro.props.title || settings.title;
 const description = Astro.props.description || settings.description;
 const canonicalURL =
@@ -30,7 +29,7 @@ const image = Astro.props.image || "/og-sigdo.jpg";
   content="width=device-width, initial-scale=1, viewport-fit=cover"
 />
 <!-- Favicon -->
-<link rel="icon" type="image/jpg" href="/SIGDO-32.svg" />
+<link rel="icon" href="/favicon.ico" />
 <link rel="favicon" type="image/jpg" href="/SIGDO-32.svg" />
 <link rel="shortcut icon" type="image/x-icon" href="/SIGDO-32.svg" />
 <!-- Primary Meta Tags -->
@@ -79,8 +78,16 @@ const image = Astro.props.image || "/og-sigdo.jpg";
 <meta property="twitter:image" content={image} />
 
 <!--Manifest  -->
-<!-- <link rel="manifest" href="/manifest.webmanifest" />  -->
+<link rel="manifest" href="/manifest.webmanifest" />
+<meta
+  name="theme-color"
+  media="(prefers-color-scheme: light)"
+  content="white"
+/>
+<meta name="theme-color" media="(prefers-color-scheme: dark)" content="black" />
 
+<!-- Service Worker -->
+<script src="/registerSW.js"></script>
 <!--Theme LocalStorage -->
 
 <ThemeProvider />
