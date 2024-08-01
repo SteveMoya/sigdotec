@@ -21,11 +21,6 @@
             "type": "image/png"
         },
         {
-            "src": "/favicons/SIGDO-ÍCONO-512.png",
-            "sizes": "512x512",
-            "type": "image/png"
-        },
-        {
             "src": "/favicons/SIGDO-ÍCONO-1080.png",
             "sizes": "1080x1080",
             "type": "image/png",
