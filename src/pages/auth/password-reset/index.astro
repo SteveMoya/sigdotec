@@ -9,6 +9,10 @@ import {
 } from "@/components/ui/card";
 import Layout from "@layouts/Layout.astro";
 import { Toaster } from "sonner";
+const user = Astro.locals.user
+if (user) {
+  return Astro.redirect("/app/");
+}
 ---
 
 <Layout>
