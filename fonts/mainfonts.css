@@ -1,0 +1,194 @@
+/*Roboto Family Font*/
+@font-face {
+    font-family: 'robotoblack';
+    src: url('Roboto-Web/roboto-black-webfont.woff2') format('woff2'),
+         url('Roboto-Web/roboto-black-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'robotoblack_italic';
+    src: url('Roboto-Web/roboto-blackitalic-webfont.woff2') format('woff2'),
+         url('Roboto-Web/roboto-blackitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'robotobold';
+    src: url('Roboto-Web/roboto-bold-webfont.woff2') format('woff2'),
+         url('Roboto-Web/roboto-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'robotobold_italic';
+    src: url('Roboto-Web/roboto-bolditalic-webfont.woff2') format('woff2'),
+         url('Roboto-Web/roboto-bolditalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'robotoitalic';
+    src: url('Roboto-Web/roboto-italic-webfont.woff2') format('woff2'),
+         url('Roboto-Web/roboto-italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'robotolight';
+    src: url('Roboto-Web/roboto-light-webfont.woff2') format('woff2'),
+         url('Roboto-Web/roboto-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'robotolight_italic';
+    src: url('Roboto-Web/roboto-lightitalic-webfont.woff2') format('woff2'),
+         url('Roboto-Web/roboto-lightitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'robotomedium';
+    src: url('Roboto-Web/roboto-medium-webfont.woff2') format('woff2'),
+         url('Roboto-Web/roboto-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'robotomedium_italic';
+    src: url('Roboto-Web/roboto-mediumitalic-webfont.woff2') format('woff2'),
+         url('Roboto-Web/roboto-mediumitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'robotoregular';
+    src: url('Roboto-Web/roboto-regular-webfont.woff2') format('woff2'),
+         url('Roboto-Web/roboto-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'robotoregular';
+    src: url('Roboto-Web/roboto-regular-webfont.woff2') format('woff2'),
+         url('Roboto-Web/roboto-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'robotothin';
+    src: url('Roboto-Web/roboto-thin-webfont.woff2') format('woff2'),
+         url('Roboto-Web/roboto-thin-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/*Montserratblack Family Font*/
+
+
+@font-face {
+    font-family: 'montserratblack';
+    src: url('Montserrat-Web/montserrat-black-webfont.woff2') format('woff2'),
+         url('Montserrat-Web/montserrat-black-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserratblack_italic';
+    src: url('Montserrat-Web/montserrat-blackitalic-webfont.woff2') format('woff2'),
+         url('Montserrat-Web/montserrat-blackitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserratbold';
+    src: url('Montserrat-Web/montserrat-bold-webfont.woff2') format('woff2'),
+         url('Montserrat-Web/montserrat-bold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserratbold_italic';
+    src: url('Montserrat-Web/montserrat-bolditalic-webfont.woff2') format('woff2'),
+         url('Montserrat-Web/montserrat-bolditalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserratextrabold';
+    src: url('Montserrat-Web/montserrat-extrabold-webfont.woff2') format('woff2'),
+         url('Montserrat-Web/montserrat-extrabold-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserratextrabold_italic';
+    src: url('Montserrat-Web/montserrat-extrabolditalic-webfont.woff2') format('woff2'),
+         url('Montserrat-Web/montserrat-extrabolditalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserratextralight_italic';
+    src: url('Montserrat-Web/montserrat-extralightitalic-webfont.woff2') format('woff2'),
+         url('Montserrat-Web/montserrat-extralightitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserratitalic';
+    src: url('Montserrat-Web/montserrat-italic-webfont.woff2') format('woff2'),
+         url('Montserrat-Web/montserrat-italic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserratlight';
+    src: url('Montserrat-Web/montserrat-light-webfont.woff2') format('woff2'),
+         url('Montserrat-Web/montserrat-light-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserratlight_italic';
+    src: url('Montserrat-Web/montserrat-lightitalic-webfont.woff2') format('woff2'),
+         url('Montserrat-Web/montserrat-lightitalic-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserratmedium';
+    src: url('Montserrat-Web/montserrat-medium-webfont.woff2') format('woff2'),
+         url('Montserrat-Web/montserrat-medium-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'IBMPlex';
+    src: url('IBM_Plex_Sans_KR/IBMPlexSansKR-Bold.ttf') format('ttf');
+    font-weight: normal;
+    font-style: normal;
+}
