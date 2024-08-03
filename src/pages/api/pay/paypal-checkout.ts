@@ -46,7 +46,7 @@ export async function POST(context: APIContext): Promise<Response> {
             return new Response("Monto inválido.", { status: 400 });
         }
         const paypalresponse = await client.execute(request);
-        const dbQuery = await Pay.createTransaction(user.id, amount, "Paypal", paypalresponse.result.id, paypalresponse.result.create_time);
+        const dbQuery = await Pay.createTransaction(user.id, Number(amount), "Paypal", paypalresponse.result.id, paypalresponse.result.create_time);
         if (!dbQuery) {
             console.log("Error al actualizar el saldo.");
             return new Response("Error al actualizar el saldo.", { status: 500 });
