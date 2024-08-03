@@ -61,7 +61,7 @@ export const VerficationEmail = ({
                             </Link>.
                         </Text>
                         <Text style={paragraph}>
-                            Este enlace expirará en 4 hora.
+                            Este enlace expirará en 4 horas.
                         </Text>
                         <Text style={paragraph}>
                             ¿Tienes alguna pregunta? Por favor contacta{" "}
