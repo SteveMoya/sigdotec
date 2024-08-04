@@ -124,7 +124,7 @@ export function TransactionalTable<TData, TValue>({
                     <TableBody className="">
                         {table.getRowModel().rows?.length ? (
                             table.getRowModel().rows.map((row) => (
-                                <TableRow className="p-4 text-sm font-normal whitespace-nowrap bg-white dark:bg-gray-800 dark:text-white  even:bg-gray-50 dark:even:bg-gray-700 odd:bg-white dark:odd:bg-gray-800 border-none border-b border-gray-200 dark:border-gray-600 hover:bg-gray-100 dark:hover:bg-gray-900 transition-colors duration-200 ease-in-out
+                                <TableRow className="p-4 text-sm font-normal whitespace-nowrap bg-gray-800 even:bg-gray-700  odd:bg-gray-800 border-none border-b border-gray-200 dark:border-gray-600  hover:bg-gray-900 transition-colors duration-200 ease-in-out
 "
                                     key={row.id}
                                     data-state={row.getIsSelected() && "selected"}

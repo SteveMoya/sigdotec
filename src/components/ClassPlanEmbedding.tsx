@@ -90,7 +90,7 @@ function ClassPlanEmbedding() {
 
     return (
         <>
-            <Card className="min-w-[450px] dark:bg-slate-800 border border-gray-200 dark:border-gray-700 shadow-2xl">
+            <Card className="min-w-[450px] bg-slate-800 border border-gray-700 shadow-2xl">
                 <CardHeader>
                     <CardTitle>Habla con tu Plan de Clase</CardTitle>
                 </CardHeader>

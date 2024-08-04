@@ -5,7 +5,6 @@ import scrollDrivenAnimations from "@adam.plesnik/tailwindcss-scroll-driven-anim
 import animate from 'tailwindcss-animate'
 /** @type {import('tailwindcss').Config} */
 export default {
-  darkMode: ["class"],
   content: [
     "./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}",
   ],

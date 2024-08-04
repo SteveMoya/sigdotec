@@ -149,7 +149,7 @@ function ClassPlanMultiSteps() {
 
     return (
         <>
-            <Card className="min-w-[450px] dark:bg-slate-800 border border-gray-200 dark:border-gray-700 shadow-2xl">
+            <Card className="min-w-[450px] bg-slate-800 border  border-gray-700 shadow-2xl">
                 <CardHeader>
                     <CardTitle>Plan de Clase</CardTitle>
                     {/* Colocar descripcion */}
@@ -251,20 +251,7 @@ function ClassPlanMultiSteps() {
                                                         onChange={(selectedOptions) => field.onChange(selectedOptions.map(option => option.key))}
                                                         value={subtemaOptions.filter(option => field.value.includes(option.key))}
                                                         placeholder="Selecciona tus subtemas aquí"
-                                                        className="w-full
-                                                        border-gray-300
-                                                        focus:border-blue-500
-                                                        focus:ring focus:ring-blue-200
-                                                        rounded-md
-                                                        shadow-sm
-                                                        dark:text-white
-                                                        dark:bg-gray-800
-                                                        dark:border-gray-700
-                                                        dark:focus:border-blue-500
-                                                        dark:focus:ring
-                                                        dark:placeholder-gray-400
-                                                        dark:hover:border-gray-500
-                                                        dark:hover:bg-gray-700"
+                                                        
                                                     />
                                                 )}
                                             />

@@ -253,11 +253,11 @@ const { error } = Astro.props
         500
       </p>
       <p
-        class='text-2xl md:text-3xl lg:text-4xl font-bold text-gray-600 mt-2 dark:text-white'
+        class='text-2xl md:text-3xl lg:text-4xl font-bold '
       >
         Error del servidor
       </p>
-      <p class='md:text-lg xl:text-xl text-gray-500 mt-4 dark:text-white'>
+      <p class='md:text-lg xl:text-xl '>
         {error instanceof Error ? error.message : 'Unknown error'}
       </p>
     </div>

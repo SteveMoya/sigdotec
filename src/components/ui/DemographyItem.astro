@@ -9,15 +9,14 @@ const { title, value } = Astro.props;
 
 <div class="col-span-6 sm:col-span-3">
     <h3
-        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white capitalize"
+        class="block mb-2 text-sm font-medium  capitalize"
     >
         {title}
     </h3>
     <p
-        class="shadow-sm bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white"
+        class="shadow-sm  sm:text-sm rounded-lg block w-full p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 text-white"
     >
         {
-            // Aqui hacemos que si el value es un tipo date lo formateamos y si el value es tipo date lo formateamos
             value instanceof Date ||
             (typeof value === "string" && new Date(value).toString() !== "Invalid Date")
                 ? new Date(value).toLocaleDateString(

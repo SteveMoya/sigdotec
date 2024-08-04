@@ -34,7 +34,7 @@ import { Icon } from "astro-icon/components";
         </div>
         <div class="grid md:grid-cols-2 gap-8">
           <Card
-            className="dark:bg-slate-800 border border-primary-800 dark:border-primary-800 shadow-2xl"
+            className="bg-slate-800 border border-primary-800 shadow-2xl"
           >
             <CardHeader>
               <CardTitle>Planes de Clase y de Unidad</CardTitle>
@@ -62,7 +62,8 @@ import { Icon } from "astro-icon/components";
             <CardFooter>
               <a href="/app/" class="w-full">
                 <Button
-                  className="w-full dark:bg-primary-800 bg-primary-800 hover:bg-primary-900 dark:hover:bg-primary-900 text-white dark:text-white"
+                  className="w-full dark:bg-primary-800 bg-primary-800 hover:bg-primary-900 dark:hover:bg-primary-900 "
+                  variant={"outline"}
                 >
                   Planificar
                 </Button>
@@ -70,7 +71,7 @@ import { Icon } from "astro-icon/components";
             </CardFooter>
           </Card>
           <Card
-            className="dark:bg-slate-800 border border-gray-200 dark:border-gray-700 shadow-2xl"
+            className="bg-slate-800 border border-gray-700 shadow-2xl"
           >
             <CardHeader>
               <CardTitle>Plan Anual</CardTitle>

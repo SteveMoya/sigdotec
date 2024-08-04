@@ -34,7 +34,6 @@ let data = cache.get("transactions");
 if (!data) {
   data = await Pay.getTransactions(user?.id);
   cache.set("transactions", data);
-
 }
 // const update = await Pay.createTransaction(user?.id, 49, "Paypal", "123456789");
 
@@ -42,7 +41,7 @@ if (!data) {
 
 <AppLayout title="Cartera" description="Esta es tu Cartera">
   <Card
-    className="w-full dark:bg-slate-800 border border-gray-200 dark:border-gray-700"
+    className="w-full bg-slate-800 border  border-gray-700"
   >
     <CardHeader>
       <div class="flex justify-between">

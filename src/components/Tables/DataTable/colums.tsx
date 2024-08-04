@@ -119,7 +119,7 @@ export const columns: ColumnDef<Plan>[] = [
                             <MoreHorizontal className="h-4 w-4" />
                         </Button>
                     </DropdownMenuTrigger>
-                    <DropdownMenuContent className="dark:bg-slate-800" align="end">
+                    <DropdownMenuContent className="bg-slate-800" align="end">
                         <DropdownMenuLabel>Descargar</DropdownMenuLabel>
                         <DropdownMenuItem
                         >
