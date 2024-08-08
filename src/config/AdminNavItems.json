@@ -15,6 +15,11 @@
     "icon": "mdi:wallet"
     },
     {
+    "name": "Demograficos",
+    "href": "/admin/datos-demograficos",
+    "icon": "mdi:chart-areaspline"
+    },
+    {
     "name": "Perfil",
     "href": "/admin/perfil",
     "icon": "mdi:account"
