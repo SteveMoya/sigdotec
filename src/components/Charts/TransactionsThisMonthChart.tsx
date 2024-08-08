@@ -35,6 +35,7 @@ export const TransactionsThisMonthChart = ({
                     content={<ChartTooltipContent indicator="dot" />}
                     
                 />
+                
                 <Area
                     dataKey="amount"
                     type="natural"

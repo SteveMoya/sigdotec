@@ -76,30 +76,12 @@ export function TransactionalTable<TData, TValue>({
     return (
         <>
             <div className="flex items-center py-4 ">
-
-
                 <Input
                     placeholder="Buscar..."
                     value={globalFilter}
                     onChange={(event) => setGlobalFilter(event.target.value)}
                     className="max-w-sm bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                 />
-                <Dialog>
-                    <DialogTrigger asChild>
-                        <Button variant="outline" className="ml-auto mb-4 sm:mb-0 mr-4 inline-flex items-center bg-white border border-primary-300 focus:outline-none hover:bg-primary-100 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-4 py-2.5 dark:bg-primary-700 dark:text-white dark:hover:bg-primary-800"><span className="icon-[mdi--wallet-plus] mr-2"></span> Recargar </Button>
-                    </DialogTrigger>
-                    <DialogContent className="sm:max-w-md">
-                        <DialogHeader>
-                            <DialogTitle>Recargar Cartera</DialogTitle>
-                            <DialogDescription>
-                                Carga fondos a tu cartera a través de PayPal.
-                            </DialogDescription>
-                        </DialogHeader>
-                        <PaymentForm />
-
-                    </DialogContent>
-                </Dialog>
-
             </div>
             <div className="rounded-xl border shadow-2xl dark:border-gray-600 ">
                 <Table className=" shadow-2xl ">

@@ -75,6 +75,15 @@ export function UsersTable<TData, TValue>({
 
     return (
         <>
+            {/** Hacemos un search */}
+            <div className="flex justify-start mb-3">
+                <Input
+                    className="max-w-sm bg-gray-50 border  border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
+                    placeholder="Buscar"
+                    value={globalFilter}
+                    onChange={(e) => setGlobalFilter(e.target.value)}
+                />
+            </div>
             <div className="rounded-xl border shadow-2xl border-gray-400 ">
                 <Table className=" shadow-2xl ">
                     <TableHeader>

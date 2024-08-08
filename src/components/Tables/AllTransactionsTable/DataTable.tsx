@@ -75,6 +75,14 @@ export function TransactionalTable<TData, TValue>({
 
     return (
         <>
+            <div className="flex justify-start mb-3">
+                <Input
+                    className="w-1/3"
+                    placeholder="Buscar"
+                    value={globalFilter}
+                    onChange={(e) => setGlobalFilter(e.target.value)}
+                />
+            </div>
             <div className="rounded-xl border shadow-2xl border-gray-400 ">
                 <Table className=" shadow-2xl ">
                     <TableHeader>
