@@ -1,4 +1,4 @@
-import { db, WalletTransaction, eq, User, Session, gte, lt, and } from "astro:db";
+import { db, WalletTransaction, eq, User, Session, gte, lt, and, Demography } from "astro:db";
 
 export const DB = {
     async getAllTransactions(){
@@ -88,4 +88,12 @@ export const DB = {
             console.log(error)
         }
     },
+    async getDemography(){
+        try {
+            const demography = await db.select().from(Demography).all();
+            return demography;
+        } catch (error) {
+            console.log(error)
+        }
+    }
 }

@@ -1,7 +1,45 @@
 import type { ColumnDef } from "@tanstack/react-table"
 import type { User } from "./User"
+import { Button } from "@/components/ui/button"
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { ArrowUpDown, MoreHorizontal } from "lucide-react"
+import { DialogDescription, DialogHeader, DialogTitle, Dialog, DialogContent, DialogTrigger } from "@/components/ui/dialog"
+import { toast } from "sonner"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import {
+    AlertDialog,
+    AlertDialogAction,
+    AlertDialogCancel,
+    AlertDialogContent,
+    AlertDialogDescription,
+    AlertDialogFooter,
+    AlertDialogHeader,
+    AlertDialogTitle,
+    AlertDialogTrigger,
+} from "@/components/ui/alert-dialog"
+import { Checkbox } from "@/components/ui/checkbox"
+import {
+    Form,
+    FormControl,
+    FormDescription,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { NewUserSchema, roles } from "@/schemas";
+import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select"
 
-import { ArrowUpDown } from "lucide-react"
+import { EditUser } from "./EditUser"
 
 
 export const columns: ColumnDef<User>[] = [
@@ -85,5 +123,17 @@ export const columns: ColumnDef<User>[] = [
         },
         cell: ({ getValue }) => `$${getValue()}`,
         enableGlobalFilter: true,
+    },
+    {
+        accessorKey: "id",
+        header: "Acciones",
+        cell: ({ getValue }) => {
+            return (
+                <>
+                {/** Aqui colocamos el id del usuario obtenido del objecto column */}
+                    <EditUser id={getValue() as string} />
+                </>
+            )
+        },
     },
 ]

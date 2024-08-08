@@ -13,6 +13,16 @@ export const NewUserSchema = z.object({
     onConfirm: z.boolean(),
 })
 
+export const EditUserSchema = z.object({
+    role: z.enum(roles, { message: "El rol tiene que ser uno de los roles de la lista" }),
+    balance: z.string().refine((data) => /^\d+(\.\d{1,2})?$/.test(data), {
+        message: "El balance tiene que ser un numero valido",
+    }),
+    onConfirm: z.boolean(),
+})
+
+
+
 export const SignUpSchema = z
     .object({
         username: z.string({ message: "el nombre del usuario tiene que tener letras" }).min(2, {
