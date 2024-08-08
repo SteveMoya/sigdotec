@@ -3,21 +3,21 @@ import { Icon } from "astro-icon/components";
 
 interface Props {
   icon: string;
-  value: string;
+  value: string | number | undefined;
   title: string;
 }
 
 const { icon, value, title } = Astro.props;
 ---
 <div
-        class='bg-blue-500 dark:bg-gray-800 shadow-lg rounded-md flex items-center justify-between p-3 border-b-4 border-blue-600 dark:border-gray-600 text-white font-medium group'
+        class=' bg-gray-700 shadow-xl rounded-md flex items-center justify-between p-3 border-b-4 border-blue-600 font-medium group '
       >
         <div
           class='flex justify-center items-center w-14 h-14 bg-white rounded-full transition-all duration-300 transform group-hover:rotate-12'
         >
           <Icon
             name={icon}
-            class='text-blue-800 dark:text-gray-800 transform transition-transform duration-500 ease-in-out w-10 h-10'
+            class='text-gray-800 transform transition-transform duration-500 ease-in-out w-10 h-10'
           />
         </div>
         <div class='text-right'>

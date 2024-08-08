@@ -1,5 +1,18 @@
 import { z } from "astro/zod"
 
+export const roles = ["admin", "user", "school"] as const
+
+export const NewUserSchema = z.object({
+    name: z.string().min(2, { message: "El nombre tiene que tener un minimo de 2 caracteres" }).max(50, { message: "El nombre tiene que tener un maximo de 50 caracteres" }),
+    email: z.string().email({ message: "El email tiene que ser valido" }),
+    role: z.enum(roles, { message: "El rol tiene que ser uno de los roles de la lista" }),
+    password: z.string().min(8, { message: "La contraseña tiene que ser de un minimo de 8 caracteres" }),
+    balance: z.string().refine((data) => /^\d+(\.\d{1,2})?$/.test(data), {
+        message: "El balance tiene que ser un numero valido",
+    }),
+    onConfirm: z.boolean(),
+})
+
 export const SignUpSchema = z
     .object({
         username: z.string({ message: "el nombre del usuario tiene que tener letras" }).min(2, {

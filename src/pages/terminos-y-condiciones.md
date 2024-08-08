@@ -1,170 +1,98 @@
 ---
 title: 'Terminos y condiciones'
 layout: '@layouts/MarkdownLayout.astro'
-
+publishedAt: "2024-08-09"
 ---
+Términos y Condiciones de Uso
+1. Introducción
 
-_Last updated_: January 06, 2023 
+Bienvenido a SIGDOTEC. Estos Términos y Condiciones de Uso (Términos, de ahora en adelante) rigen el acceso y uso de nuestro sitio web y servicios, los cuales incluyen la creación y distribución de planes de clase para docentes en República Dominicana.
 
-Please read these terms and conditions carefully before using Our Service. 
+2. Aceptación de los Términos
 
-## Interpretation and Definitions 
+Al acceder o utilizar nuestros servicios, el usuario acepta cumplir y estar sujeto a estos Términos. El no estar de acuerdo con estos Términos supone una renuncia a utilizar nuestros servicios.
 
-### Interpretation The words of which the initial letter is capitalized have meanings defined under the following conditions. 
+3. Modificación de los Términos
 
-The following definitions shall
-have the same meaning regardless of whether they appear in singular or in
-plural. 
+SIGDOTEC se reserva el derecho de modificar estos Términos en cualquier momento. Las modificaciones serán efectivas una vez publicadas en nuestro sitio web. Informaremos adecuadamente a los usuarios de los cambios realizados, enviando una notificación al correo electrónico que nos hayan suministrado. Como usuario, es su responsabilidad revisar periódicamente estos Términos (o una vez reciba el correo) para estar informado de cualquier cambio.
 
-### Definitions For the purposes of these Terms and Conditions: -
-**Affiliate** means an entity that controls, is controlled by or is under common
-control with a party, where "control" means ownership of 50% or more of the
-shares, equity interest or other securities entitled to vote for election of
-directors or other managing authority. - **Country** refers to: California,
-United States - **Company** (referred to as either "the Company", "We", "Us" or
-"Our" in this Agreement) refers to AstroWind LLC, 1 Cupertino, CA 95014. -
-**Device** means any device that can access the Service such as a computer, a
-cellphone or a digital tablet. - **Service** refers to the Website. - **Terms
-and Conditions** (also referred as "Terms") mean these Terms and Conditions that
-form the entire agreement between You and the Company regarding the use of the
-Service. This Terms and Conditions agreement is a Demo. - **Third-party Social
-Media Service** means any services or content (including data, information,
-products or services) provided by a third-party that may be displayed, included
-or made available by the Service. - **Website** refers to AstroWind, accessible
-from - **You** means the individual accessing or using the Service, or the company, or other
-legal entity on behalf of which such individual is accessing or using the
-Service, as applicable. 
+4. Uso de los Servicios
 
-## Acknowledgment These are the Terms and Conditions
+Nuestros servicios están diseñados para apoyar a los docentes en la planificación y ejecución de sus clases. Como usuario, acepta usar los servicios únicamente para fines lícitos y de acuerdo con estos Términos. Además, se compromete a no utilizar la herramienta como sustituto de su trabajo, sino únicamente como sustento principal. Esta herramienta no pretende ser sustituto de la labor de planificación docente, sino una oportunidad de potenciar su docencia mediante el uso de modelos NLP.
 
-governing the use of this Service and the agreement that operates between You
-and the Company. These Terms and Conditions set out the rights and obligations
-of all users regarding the use of the Service. Your access to and use of the
-Service is conditioned on Your acceptance of and compliance with these Terms and
-Conditions. These Terms and Conditions apply to all visitors, users and others
-who access or use the Service. By accessing or using the Service You agree to be
-bound by these Terms and Conditions. If You disagree with any part of these
-Terms and Conditions then You may not access the Service. You represent that you
-are over the age of 18\. The Company does not permit those under 18 to use the
-Service. Your access to and use of the Service is also conditioned on Your
-acceptance of and compliance with the Privacy Policy of the Company. Our Privacy
-Policy describes Our policies and procedures on the collection, use and
-disclosure of Your personal information when You use the Application or the
-Website and tells You about Your privacy rights and how the law protects You.
-Please read Our Privacy Policy carefully before using Our Service. 
-## Links to
+5. Protección de la Información
 
-Other Websites Our Service may contain links to third-party web sites or
-services that are not owned or controlled by the Company. The Company has no
-control over, and assumes no responsibility for, the content, privacy policies,
-or practices of any third party web sites or services. You further acknowledge
-and agree that the Company shall not be responsible or liable, directly or
-indirectly, for any damage or loss caused or alleged to be caused by or in
-connection with the use of or reliance on any such content, goods or services
-available on or through any such web sites or services. We strongly advise You
-to read the terms and conditions and privacy policies of any third-party web
-sites or services that You visit.
+5.1. Recopilación y Uso de Información
 
- ## Termination We may terminate or suspend
+Recopilamos información personal y de uso para brindar y mejorar nuestros servicios. Al utilizar nuestros servicios, usted acepta la recopilación y uso de esta información conforme a nuestra Política de Privacidad.
 
-Your access immediately, without prior notice or liability, for any reason
-whatsoever, including without limitation if You breach these Terms and
-Conditions. Upon termination, Your right to use the Service will cease
-immediately. 
+5.2. Almacenamiento y Seguridad
 
-## Limitation of Liability Notwithstanding any damages that You
+Nos comprometemos a proteger la información de nuestros usuarios mediante el uso de medidas de seguridad razonables y adecuadas, de acuerdo con las leyes de protección de datos vigentes en República Dominicana. Los datos del usuario serán guardados en un archivo de datos de titularidad privada. SIGDOTEC reconoce que no tiene acceso a ningún dato catalogado como especialmente protegido (datos de carácter personal que revelan origen racial y étnico, opiniones políticas, convicciones religiosas, filosóficas o morales, afiliación sindical e información referente a la salud o a la vida sexual).
 
-might incur, the entire liability of the Company and any of its suppliers under
-any provision of this Terms and Your exclusive remedy for all of the foregoing
-shall be limited to the amount actually paid by You through the Service or 100
-USD if You haven't purchased anything through the Service. To the maximum extent
-permitted by applicable law, in no event shall the Company or its suppliers be
-liable for any special, incidental, indirect, or consequential damages
-whatsoever (including, but not limited to, damages for loss of profits, loss of
-data or other information, for business interruption, for personal injury, loss
-of privacy arising out of or in any way related to the use of or inability to
-use the Service, third-party software and/or third-party hardware used with the
-Service, or otherwise in connection with any provision of this Terms), even if
-the Company or any supplier has been advised of the possibility of such damages
-and even if the remedy fails of its essential purpose. Some states do not allow
-the exclusion of implied warranties or limitation of liability for incidental or
-consequential damages, which means that some of the above limitations may not
-apply. In these states, each party's liability will be limited to the greatest
-extent permitted by law.
- ## "AS IS" and "AS AVAILABLE" Disclaimer The Service is
+5.3. Compartir Información a Terceros
 
-provided to You "AS IS" and "AS AVAILABLE" and with all faults and defects
-without warranty of any kind. To the maximum extent permitted under applicable
-law, the Company, on its own behalf and on behalf of its Affiliates and its and
-their respective licensors and service providers, expressly disclaims all
-warranties, whether express, implied, statutory or otherwise, with respect to
-the Service, including all implied warranties of merchantability, fitness for a
-particular purpose, title and non-infringement, and warranties that may arise
-out of course of dealing, course of performance, usage or trade practice.
-Without limitation to the foregoing, the Company provides no warranty or
-undertaking, and makes no representation of any kind that the Service will meet
-Your requirements, achieve any intended results, be compatible or work with any
-other software, applications, systems or services, operate without interruption,
-meet any performance or reliability standards or be error free or that any
-errors or defects can or will be corrected. Without limiting the foregoing,
-neither the Company nor any of the company's provider makes any representation
-or warranty of any kind, express or implied: (i) as to the operation or
-availability of the Service, or the information, content, and materials or
-products included thereon; (ii) that the Service will be uninterrupted or
-error-free; (iii) as to the accuracy, reliability, or currency of any
-information or content provided through the Service; or (iv) that the Service,
-its servers, the content, or e-mails sent from or on behalf of the Company are
-free of viruses, scripts, trojan horses, worms, malware, timebombs or other
-harmful components. Some jurisdictions do not allow the exclusion of certain
-types of warranties or limitations on applicable statutory rights of a consumer,
-so some or all of the above exclusions and limitations may not apply to You. But
-in such a case the exclusions and limitations set forth in this section shall be
-applied to the greatest extent enforceable under applicable law. 
-## Governing
-Law The laws of the Country, excluding its conflicts of law rules, shall govern
-this Terms and Your use of the Service. Your use of the Application may also be
-subject to other local, state, national, or international laws. 
-## Disputes
-Resolution If You have any concern or dispute about the Service, You agree to
-first try to resolve the dispute informally by contacting the Company.
-## For
-European Union (EU) Users If You are a European Union consumer, you will benefit
-from any mandatory provisions of the law of the country in which you are
-resident in. 
-## United States Legal Compliance You represent and warrant that
-(i) You are not located in a country that is subject to the United States
-government embargo, or that has been designated by the United States government
-as a "terrorist supporting" country, and (ii) You are not listed on any United
-States government list of prohibited or restricted parties. 
-## Severability and Waiver 
+SIGDOTEC puede compartir su información con terceros confiables y con una trayectoria sólida de protección de datos, únicamente con el propósito de mejorar nuestros servicios y siempre en cumplimiento con las leyes de protección de datos de República Dominicana. Estos terceros están obligados a proteger su información con el mismo nivel de cuidado y confidencialidad.
 
-### Severability If any provision of these Terms is held to be
+6. Derechos de Propiedad Intelectual
 
-unenforceable or invalid, such provision will be changed and interpreted to
-accomplish the objectives of such provision to the greatest extent possible
-under applicable law and the remaining provisions will continue in full force
-and effect. 
+6.1. Propiedad de los Documentos
+Todos los contenidos, incluyendo, pero no limitado a, textos, gráficos, logotipos, imágenes, software y los documentos entregados a través de nuestros servicios, son propiedad de la Empresa y están protegidos por las leyes de propiedad intelectual de República Dominicana y otras leyes aplicables.
 
-### Waiver Except as provided herein, the failure to exercise a
+6.2. Restricciones de Uso
 
-right or to require performance of an obligation under these Terms shall not
-effect a party's ability to exercise such right or require such performance at
-any time thereafter nor shall the waiver of a breach constitute a waiver of any
-subsequent breach.
+El usuario no puede crear obras derivadas, republicar o transmitir cualquiera de los materiales de nuestra empresa, excepto en los casos expresamente permitidos por la Empresa. Está estrictamente prohibida la reventa o distribución, con fines lucrativos, de los documentos entregados por la Empresa.
 
- ## Translation Interpretation These Terms and Conditions may
-have been translated if We have made them available to You on our Service. You
-agree that the original English text shall prevail in the case of a dispute. 
+6.3. Acciones Legales
 
-## Changes to These Terms and Conditions We reserve the right, at Our sole
+Nos reservamos el derecho de tomar acciones legales en caso de violación de estas condiciones de uso. La violación de los derechos de propiedad intelectual de la Empresa puede resultar en sanciones civiles y penales.
 
-discretion, to modify or replace these Terms at any time. If a revision is
-material We will make reasonable efforts to provide at least 30 days' notice
-prior to any new terms taking effect. What constitutes a material change will be
-determined at Our sole discretion. By continuing to access or use Our Service
-after those revisions become effective, You agree to be bound by the revised
-terms. If You do not agree to the new terms, in whole or in part, please stop
-using the website and the Service. 
+7. Limitación de Responsabilidad
 
-## Contact Us If you have any questions about these Terms and Conditions, You can contact us: - By email:
-somecoolemail@domain.com
+En la medida permitida por la ley, la Empresa no será responsable de ningún daño directo, indirecto, incidental, especial o consecuente que resulte del uso o la imposibilidad de usar nuestros servicios. SIGDOTEC es responsable únicamente de la creación de planes de clase y no es partidaria de que los docentes los usen para sustituir su labor de planificación. Ante todo, promovemos la responsabilidad personal y laboral en todas las instancias en las que nos desenvolvemos.
+
+Adicionalmente, no somos responsables de la disponibilidad de los servicios de terceros utilizados para realizar nuestros planes de clase. En caso de la inaccesibilidad o fallo de estos servicios, se creará un documento de respaldo con contenido previamente almacenados, por lo que el cliente siempre tendrá acceso a un plan de clase, aunque el plan no haya sido creado en tiempo real al realizar la solicitud. 
+
+Estas limitaciones de responsabilidad también aplican al servicio de pagos y almacenamiento de datos que no sean brindados originalmente por nuestra empresa.
+
+8. Política de Reembolso
+
+El reembolso solo será posible en caso de que se deposite un monto incorrecto o se acredite a una cuenta distinta a la propia. En caso de que el usuario transfiera fondos a una cuenta distinta a la propia, y el hecho sea informado de inmediato, la transacción puede ser acreditada a la cuenta deseada siempre que los fondos atribuidos incorrectamente no hayan sido usados. Si la cuenta que recibió fondos de manera errada ya ha utilizado una parte de estos, solamente se podrán traspasar los fondos no utilizados.
+
+En caso de optar por un reembolso por monto errado, el usuario dispone de 24 horas para informar del hecho por el canal de contacto establecido, y proceder a la devolución de su transacción, siempre dejando claro que se sustraerá cualquier impuesto o comisión vinculado a la transacción. Para fines de devolución, el canal de contacto establecido es el correo presente al final de este documento.
+
+Esta devolución está sujeta a las siguientes condiciones: 
+
+Que el saldo de la billetera sea igual o mayor al solicitado como devolución.
+
+Que el cliente que recibió la transacción de manera errónea tampoco haya hecho uso de la cantidad. Es decir, que el saldo de la cuenta errónea también sea igual o mayor al solicitado como devolución.
+
+Que el instrumento financiero al que se acreditará la devolución esté vinculado a la persona que solicita el reembolso.
+
+El correo enviado al canal habilitado para tales fines debe contener la siguiente información:
+
+-Comprobante de pago o transacción
+
+-Cuenta de origen de la transacción
+
+-Cuenta a la que recibirá el reembolso
+
+En caso de haber hecho la transacción vía PayPal, el reembolso será realizado vía PayPal. Es decir, no hay forma de realizar una transacción vía PayPal y obtener el reembolso en una cuenta de banco acreditada en ningún país. 
+
+En caso de que no contemos al instante con liquidez suficiente para realizar la transacción de reembolso, contamos con un periodo de 4 días hábiles luego de la confirmación de reembolso para realizar la transacción.
+
+9. Terminación
+
+Nos reservamos el derecho de suspender o terminar su acceso a nuestros servicios en cualquier momento y por cualquier motivo, sin previo aviso, siempre que se determine que el usuario ha violado estos Términos. En ningún momento ni situación podremos mantener fondos económicos de nuestros clientes, aunque se hayan tomado acciones para terminar su acceso.
+
+10. Ley Aplicable
+
+Estos Términos se regirán e interpretarán de acuerdo con las leyes de la República Dominicana, en particular la Ley No. 172-13 sobre la Protección de Datos Personales, sin dar efecto a ninguna disposición sobre conflicto de leyes.
+
+11. Derechos del Usuario y Consentimiento
+
+Al aceptar estos Términos y Condiciones, el usuario reconoce que fue informado de lo siguiente: la finalidad para la que serán destinados sus datos y quiénes pueden ser sus destinatarios o clase de destinatarios; la existencia del banco de datos en el que guardaremos su información, propiedad de la Junta de SIGDOTEC, con domicilio en MongoDB Atlas y AstroDB; que, como usuario, tendrá acceso a los datos de los que tengamos registro siempre que lo solicite.
+
+12. Contacto
+Si tiene alguna pregunta sobre estos Términos, por favor contáctenos a través de
+Correo: c.quast@sigdotec.com

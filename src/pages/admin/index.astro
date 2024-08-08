@@ -1,20 +1,138 @@
 ---
 import AppLayout from "@layouts/App/AppLayout.astro";
-import AdminView from "@components/Admin/AdminView.astro";
+import StatisticCard from "@components/ui/StatisticCard.astro";
+import { DB } from "@/services/db.services";
+import { TransactionalTable } from "@/components/Tables/RecentsTransactions/DataTable";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { TransactionsThisMonthChart } from "@/components/Charts/TransactionsThisMonthChart";
+import { type ChartConfig } from "@/components/ui/chart";
+import { NewTransaccion } from "@/components/Tables/RecentsTransactions/NewTransaccion";
 
-// import { Dashboard } from "@/components/App/AdminView";
+import { Charts } from "@/services/charts.services";
 
+const [
+  chartThisMonthTransactions,
+  userCount,
+  activeSessions,
+  unverifiedUsersCount,
+  totalBalance,
+  recentData,
+  differenceThisMonth,
+] = await Promise.all([
+  Charts.getThisMonthChartTransactions(),
+  DB.getUserCount(),
+  DB.getActiveSessions(),
+  DB.getUnverifiedUsersCount(),
+  DB.getTotalBalance(),
+  DB.getRecentTransactions(),
+  Charts.getDifferenceThisMonth(),
+]);
 
+const chartConfig = {
+  data: {
+    label: chartThisMonthTransactions?.map((item) => item.label) || [],
+    datasets: [
+      {
+        label: "Monto",
+        data: chartThisMonthTransactions?.map((item) => item.amount) ?? [],
+        fill: false,
+        borderColor: "hsl(var(--chart-1))",
+        tension: 0.1,
+      },
+    ],
+  },
+} satisfies ChartConfig;
+const data = [
+  {
+    icon: "mdi:account-group-outline",
+    title: "Usuarios",
+    value: userCount,
+  },
+  {
+    icon: "mdi:file-check-outline",
+    title: "Sesiones",
+    value: activeSessions,
+  },
+  {
+    icon: "mdi:briefcase-check-outline",
+    title: "No Verificados",
+    value: unverifiedUsersCount,
+  },
+  {
+    icon: "mdi:cash-usd-outline",
+    title: "Ingresos",
+    value: `$${totalBalance}`,
+  },
+];
 ---
 
-
-
-<AppLayout title='Admin View' description='Esta es la vista del administrador'>
-
-  <AdminView />
-  
-  <div class="w-[900px]  grid grid-cols-1 md:grid-cols-2 bg-slate-200 mx-0">
-
-
-  </div>
+<AppLayout
+  title="Vista Administrador"
+  description="Esta es la vista del administrador"
+>
+  <Card className="w-full bg-slate-800 border border-gray-700">
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 p-4 gap-4">
+      {data.map((data) => <StatisticCard {...data} />)}
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 p-4 gap-4">
+      <Card className="w-full bg-slate-700 border border-gray-700">
+        <CardHeader>
+          <CardTitle>Transacciones de este mes</CardTitle>
+          <CardDescription>
+            Esta gráfica muestra las transacciones de este mes
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <TransactionsThisMonthChart
+            chartConfig={chartConfig}
+            chartData={chartThisMonthTransactions || []}
+            client:load
+          />
+        </CardContent>
+        <CardFooter>
+          <div class="flex w-full items-start gap-2 text-sm">
+            <div class="grid gap-2">
+              <div class="flex items-center gap-2 font-medium leading-none">
+                En comparacion con el mes anterior:
+                {`${differenceThisMonth}%`}
+              </div>
+              <div
+                class="flex items-center gap-2 leading-none text-muted-foreground uppercase"
+              >
+                Mes actual:
+                {
+                  // colocamos una fecha actual estilo January - June 2024
+                  new Date().toLocaleDateString("es-ES", {
+                    month: "long",
+                    year: "numeric",
+                  })
+                }
+              </div>
+            </div>
+          </div>
+        </CardFooter>
+      </Card>
+      <Card className="w-full bg-slate-700 border border-gray-800">
+        <div class="flex items-center justify-between">
+          <CardHeader>
+            <CardTitle>Transacciones Recientes</CardTitle>
+            <CardDescription>
+              Esta tabla muestra las transacciones más recientes
+            </CardDescription>
+          </CardHeader>
+          <NewTransaccion client:load />
+        </div>
+        <CardContent>
+          <TransactionalTable data={recentData || []} client:load />
+        </CardContent>
+      </Card>
+    </div>
+  </Card>
 </AppLayout>

@@ -1,15 +1,44 @@
 ---
-import AppLayout from '@layouts/App/AppLayout.astro'
-import UsersTable from '@components/Admin/UsersTable.astro'
-// import CustomersDemo from '@components/Admin/CustomersTable'
+import { AllUsersChart } from "@/components/Charts/AllUsersChart";
+import AppLayout from "@layouts/App/AppLayout.astro";
+import { DB } from "@/services/db.services";
+
+import { UsersTable } from "@/components/Tables/AllUsersTable/DataTable";
+
+import {NewUser} from "@/components/Tables/AllUsersTable/NewUser";
+
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+
+const allUsers = await DB.getAllUser() || [];
+
 ---
 
 <AppLayout
-  title='Usuarios'
-  description='Esta es la vista de administración de usuarios. Aquí puedes ver, editar y eliminar usuarios.'
+  title="Usuarios"
+  description="Esta es la vista de administración de usuarios. Aquí puedes ver, editar y eliminar usuarios."
 >
-  <div class='w-full'>
-    <UsersTable />
-  </div>
-  <!-- <CustomersDemo client:load /> -->
+  <Card className="w-full bg-slate-700 border border-gray-700 p-4">
+    <AllUsersChart client:load />
+    <Card className="w-full bg-slate-800 border border-gray-700 mt-4 shadow-xl">
+      <div class="flex items-center justify-between">
+        <CardHeader>
+          <CardTitle>Tabla de Usuarios</CardTitle>
+          <CardDescription>
+            Esta tabla muestra todos los usuarios
+          </CardDescription>
+        </CardHeader>
+        <NewUser client:load />
+      </div>
+      <CardContent>
+        <UsersTable data={allUsers} client:only/>
+      </CardContent>
+    </Card>
+  </Card>
 </AppLayout>
