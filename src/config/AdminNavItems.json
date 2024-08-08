@@ -10,12 +10,7 @@
     "icon": "mdi:account-group"
     },
     {
-    "name": "Planes",
-    "href": "/admin/planes",
-    "icon": "mdi:archive"
-    },
-    {
-    "name": "Cartera",
+    "name": "Transacciones",
     "href": "/admin/cartera",
     "icon": "mdi:wallet"
     },
