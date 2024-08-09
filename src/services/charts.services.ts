@@ -4,17 +4,27 @@ export const Charts = {
     async getChartTransactions() {
         try {
             const transactions = await db.select().from(WalletTransaction).all();
-            let chartData: { labels: string[], data: number[] } = {
-                labels: [],
-                data: []
-            }
-            transactions.forEach((transaction: { createdAt: Date, amount: number }) => {
-                chartData.labels.push(new Date(transaction.createdAt).toLocaleDateString());
-                chartData.data.push(transaction.amount);
+
+            // Obtener la fecha más antigua
+            const earliestDate = new Date(Math.min(...transactions.map(t => new Date(t.createdAt).getTime())));
+
+            // Obtener el total de transacciones
+            const totalTransactions = transactions.length;
+
+            return transactions.map((transaction) => {
+                const date = transaction.createdAt.toISOString().split("T")[0];
+                const total = transactions.filter(t => t.createdAt.toISOString().split("T")[0] === date).length;
+                const newTransactionsPercentage = (total / totalTransactions) * 100;
+
+                return {
+                    date,
+                    total,
+                    newTransactionsPercentage
+                };
             });
-            return chartData;
         } catch (error) {
-            console.log(error)
+            console.error("Error fetching transactions:", error);
+            return [];
         }
     },
     async getThisMonthChartTransactions() {
@@ -93,6 +103,32 @@ export const Charts = {
         } catch (error) {
             console.log(error);
             return 'Error';
+        }
+    },
+    async getChartUsers() {
+        try {
+            const users = await db.select().from(User).all();
+
+            // Obtener la fecha más antigua
+            const earliestDate = new Date(Math.min(...users.map(u => new Date(u.createdAt).getTime())));
+
+            // Obtener el total de usuarios
+            const totalUsers = users.length;
+
+            return users.map((user) => {
+                const date = user.createdAt.toISOString().split("T")[0];
+                const total = users.filter(u => u.createdAt.toISOString().split("T")[0] === date).length;
+                const newUsersPercentage = (total / totalUsers) * 100;
+
+                return {
+                    date,
+                    total,
+                    newUsersPercentage
+                };
+            });
+        } catch (error) {
+            console.error("Error fetching users:", error);
+            return [];
         }
     }
 }

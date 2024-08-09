@@ -118,16 +118,16 @@ export const columns: ColumnDef<Demography>[] = [
         cell: ({ getValue }) => getValue(),
         enableGlobalFilter: true,
     },
-    {
-        accessorKey: "id",
-        header: "Acciones",
-        cell: ({ getValue }) => {
-            return (
-                <>
-                {/** Aqui colocamos el id del usuario obtenido del objecto column */}
-                    <EditDemography id={getValue() as string} />
-                </>
-            )
-        },
-    },
+    // {
+    //     accessorKey: "id",
+    //     header: "Acciones",
+    //     cell: ({ getValue }) => {
+    //         return (
+    //             <>
+    //             {/** Aqui colocamos el id del usuario obtenido del objecto column */}
+    //                 <EditDemography id={getValue() as string} />
+    //             </>
+    //         )
+    //     },
+    // },
 ]

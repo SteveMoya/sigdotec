@@ -2,10 +2,11 @@
 import { AllUsersChart } from "@/components/Charts/AllUsersChart";
 import AppLayout from "@layouts/App/AppLayout.astro";
 import { DB } from "@/services/db.services";
-
+import { type ChartConfig } from "@/components/ui/chart";
+import { Charts } from "@/services/charts.services";
 import { UsersTable } from "@/components/Tables/AllUsersTable/DataTable";
 
-import {NewUser} from "@/components/Tables/AllUsersTable/NewUser";
+import { NewUser } from "@/components/Tables/AllUsersTable/NewUser";
 
 import {
   Card,
@@ -16,8 +17,16 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-const allUsers = await DB.getAllUser() || [];
-
+const allUsers = (await DB.getAllUser()) || [];
+const chartData = await Charts.getChartUsers();
+const chartConfig = {
+  visitors: { label: "Visitors" },
+  total: { label: "Total Usuarios", color: "hsl(var(--chart-1))" },
+  newUsersPercentage: {
+    label: "Porcentaje de Nuevos Usuarios",
+    color: "hsl(var(--chart-2))",
+  },
+} satisfies ChartConfig;
 ---
 
 <AppLayout
@@ -25,7 +34,11 @@ const allUsers = await DB.getAllUser() || [];
   description="Esta es la vista de administración de usuarios. Aquí puedes ver, editar y eliminar usuarios."
 >
   <Card className="w-full bg-slate-700 border border-gray-700 p-4">
-    <AllUsersChart client:load />
+    <AllUsersChart
+      chartConfig={chartConfig}
+      chartData={chartData}
+      client:load
+    />
     <Card className="w-full bg-slate-800 border border-gray-700 mt-4 shadow-xl">
       <div class="flex items-center justify-between">
         <CardHeader>
@@ -37,7 +50,7 @@ const allUsers = await DB.getAllUser() || [];
         <NewUser client:load />
       </div>
       <CardContent>
-        <UsersTable data={allUsers} client:only/>
+        <UsersTable data={allUsers} client:only />
       </CardContent>
     </Card>
   </Card>

@@ -12,8 +12,21 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-
+import { Charts } from "@/services/charts.services";
+import { type ChartConfig } from "@/components/ui/chart";
 const allTransactions = await DB.getAllTransactions();
+
+const chartData = await Charts.getChartTransactions();
+console.log(chartData);
+
+const chartConfig = {
+  visitors: { label: "Visitors" },
+  total: { label: "Total Transacciones", color: "hsl(var(--chart-2))" },
+  newTransactionsPercentage: {
+    label: "Porcentaje de Transacciones Nuevas",
+    color: "hsl(var(--chart-1))",
+  },
+} satisfies ChartConfig;
 ---
 
 <AppLayout
@@ -21,7 +34,11 @@ const allTransactions = await DB.getAllTransactions();
   description="Esta es la vista de administración de la cartera de los ingresos de la aplicacion."
 >
   <Card className="w-full bg-slate-700 border border-gray-700  p-4">
-    <AllTransactonsChart client:load />
+    <AllTransactonsChart
+      chartConfig={chartConfig}
+      chartData={chartData}
+      client:load
+    />
     <Card className="w-full bg-slate-800 border border-gray-700 mt-4 shadow-xl">
       <div class="flex items-center justify-between">
         <CardHeader>
