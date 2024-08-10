@@ -1,0 +1,43 @@
+---
+import { AllUsersChart } from "@/components/Charts/AllUsersChart";
+import AppLayout from "@layouts/App/AppLayout.astro";
+import { DB } from "@/services/db.services";
+
+import { UsersTable } from "@/components/Tables/AllUsersTable/DataTable";
+
+import { DemographyTable } from "@/components/Tables/DemographyTable/DataTable";
+
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+} from "@/components/ui/card";
+
+const allUsers = (await DB.getAllUser()) || [];
+
+const allDemographics = (await DB.getDemography()) || [];
+console.log("allDemographics", allDemographics);
+---
+
+<AppLayout
+    title="Datos Demograficos"
+    description="Esta es la vista de administración de Datos Demograficos. Aqui puedes ver los datos demograficos de los usuarios."
+>
+    <Card className="w-full bg-slate-800 border border-gray-700 shadow-xl m-0 max-w-[990px]">
+        <div class="flex items-center justify-between">
+            <CardHeader>
+                <CardTitle>Datos Demograficos</CardTitle>
+                <CardDescription>
+                    Esta tabla muestra todos los datos demograficos de los
+                    usuarios
+                </CardDescription>
+            </CardHeader>
+        </div>
+        <CardContent>
+            <DemographyTable data={allDemographics} client:only />
+        </CardContent>
+    </Card>
+</AppLayout>

@@ -1,0 +1,57 @@
+---
+import AppLayout from "@layouts/App/AppLayout.astro";
+import { PlanService } from "@services/plans.services";
+import { DataTable } from "@/components/Tables/DataTable/DataTable";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import NodeCache from "node-cache";
+import "@styles/globals.css";
+
+const user = Astro.locals.user;
+if (!user) {
+  Astro.redirect("/iniciar-sesion");
+}
+
+// Configuración de la caché con un TTL de 2 minutos (120 segundos)
+const cache = new NodeCache({ stdTTL: 120 });
+
+// Intentar obtener los datos de la caché
+let data = cache.get("planData");
+
+if (!data) {
+  console.log("Datos no encontrados en caché, obteniendo de la API");
+  try {
+    // Obtener datos de la API si no están en la caché
+    data = await PlanService.getDataTable(user?.id ?? "");
+
+    // Almacenar los datos en la caché
+    cache.set("planData", data);
+  } catch (error) {
+    console.error("Error al obtener datos:", error);
+    // Manejar el error o mostrar un mensaje adecuado al usuario
+  }
+} else {
+  console.log("Usando datos de caché");
+}
+---
+
+<AppLayout title="Tus Planes" description="Tus Planes de Clase">
+  <Card
+    className="w-full bg-slate-800 border  border-gray-700"
+  >
+    <CardHeader>
+      <CardTitle>Planes realizados anteriormente</CardTitle>
+      <CardDescription>
+        Aquí puedes ver los planes que has realizado anteriormente
+      </CardDescription>
+      <CardContent className="-p-6">
+        <DataTable data={data} client:only />
+      </CardContent>
+    </CardHeader>
+  </Card>
+</AppLayout>

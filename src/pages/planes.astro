@@ -1,0 +1,163 @@
+---
+import Layout from "@layouts/Layout.astro";
+
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Icon } from "astro-icon/components";
+---
+
+<Layout
+  title="Servicios de SIGDOTEC."
+  description="Estos son los Servicios que ofrece SIGDOTEC"
+  image="/og-sigdo.jpg"
+>
+  <div>
+    <section class="w-full py-12">
+      <div class="container grid gap-6 md:gap-8 px-4 md:px-6 max-w-6xl mx-auto">
+        <div
+          class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8"
+        >
+          <div class="grid gap-1">
+            <h1 class="text-2xl font-bold tracking-tight">
+              Precios de los Planes
+            </h1>
+            <p class="text-muted-foreground">
+              ¡Así de fácil puedes planificar!
+            </p>
+          </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+          <Card
+            className="bg-slate-800 border border-primary-800 shadow-2xl"
+          >
+            <CardHeader>
+              <CardTitle>Planes de Clase y de Unidad</CardTitle>
+              <div class="text-4xl font-bold">$1.00 (USD)</div>
+            </CardHeader>
+            <CardContent className="grid gap-4">
+              <div>
+                <h3 class="font-semibold mb-2">¿Qué incluye?</h3>
+                <ul class="space-y-2 text-sm">
+                  <li class="flex items-center gap-2">
+                    <Icon name="mdi:check" class="w-4 h-4 text-primary-800" />
+                    Secuencia didáctica única y completa
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <Icon name="mdi:check" class="w-4 h-4 text-primary-800" />
+                    Contenidos de la malla curricular dominicana
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <Icon name="mdi:check" class="w-4 h-4 text-primary-800" />
+                    Lista de recursos y actividades para la evaluación
+                  </li>
+                </ul>
+              </div>
+            </CardContent>
+            <CardFooter>
+              <a href="/app/" class="w-full">
+                <Button
+                  className="w-full dark:bg-primary-800 bg-primary-800 hover:bg-primary-900 dark:hover:bg-primary-900 "
+                  variant={"outline"}
+                >
+                  Planificar
+                </Button>
+              </a>
+            </CardFooter>
+          </Card>
+          <Card
+            className="bg-slate-800 border border-gray-700 shadow-2xl"
+          >
+            <CardHeader>
+              <CardTitle>Plan Anual</CardTitle>
+              <div class="text-4xl font-bold">$15.00 (USD)</div>
+            </CardHeader>
+            <CardContent className="grid gap-4">
+              <div>
+                <h3 class="font-semibold mb-2">¿Qué incluye?</h3>
+                <ul class="space-y-2 text-sm">
+                  <li class="flex items-center gap-2">
+                    <Icon name="mdi:check" class="w-4 h-4 text-primary-800" />
+
+                    +100 planes de clase por grado y asignatura
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <Icon name="mdi:check" class="w-4 h-4 text-primary-800" />
+
+                    Secuencias didácticas
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <Icon name="mdi:check" class="w-4 h-4 text-primary-800" />
+
+                    Contenidos curriculares
+                  </li>
+                </ul>
+              </div>
+            </CardContent>
+            <CardFooter>
+              <a href="/app/plan-anual" class="w-full">
+                <Button className="w-full ">Planificar</Button>
+              </a>
+            </CardFooter>
+          </Card>
+        </div>
+      </div>
+    </section>
+    <section class="w-full py-12">
+      <div class="container grid gap-6 md:gap-8 px-4 md:px-6 max-w-6xl mx-auto">
+        <div
+          class="flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-8"
+        >
+          <div class="grid gap-1">
+            <h1 class="text-3xl font-bold tracking-tight">Comparativa</h1>
+            <p class="text-muted-foregroundfont-semibold">
+              Conoce la diferencia entre todos estos planes
+            </p>
+          </div>
+        </div>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left">
+            <thead>
+              <tr class="border-b">
+                <th class="py-4 pr-4 font-medium">Contenidos</th>
+                <th class="py-4 pr-4 font-medium"
+                  >Planes de Clase y de Unidad</th
+                >
+                <th class="py-4 pr-4 font-medium">Plan Anual</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="border-b">
+                <td class="py-4 pr-4">Secuencia didáctica</td>
+                <td class="py-4 pr-4">Única para cada plan de clase</td>
+                <td class="py-4 pr-4">Estandar para los contenidos</td>
+              </tr>
+              <tr class="border-b">
+                <td class="py-4 pr-4">Contenidos</td>
+                <td class="py-4 pr-4">Currículo enriquecido</td>
+                <td class="py-4 pr-4">Currículo dominicano</td>
+              </tr>
+              <tr class="border-b">
+                <td class="py-4 pr-4">Componentes adicionales</td>
+                <td class="py-4 pr-4"
+                  >Recursos, actividades de evaluacion y preguntas esenciales</td
+                >
+                <td class="py-4 pr-4">No incluidos</td>
+              </tr>
+              <tr>
+                <td class="py-4 pr-4">Precio</td>
+                <td class="py-4 pr-4">$1.00USD /por plan</td>
+                <td class="py-4 pr-4">$15.00USD /por grado</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+</Layout>

@@ -1,0 +1,21 @@
+---
+import AnualPlan from "@/components/AnualPlan";
+import AppLayout from "@src/layouts/App/AppLayout.astro";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+
+---
+
+<AppLayout
+        title="Plan Anual"
+        description="Estamos felices de tenerte SIGDCOPATA"
+>       
+        <Card className="min-w-[450px] bg-slate-800 border border-gray-700 shadow-2xl">
+                <CardHeader>
+                    <CardTitle>Plan Anual</CardTitle>
+                </CardHeader>
+                <CardContent>
+                        <AnualPlan client:load transition:persist/>
+                </CardContent>
+        </Card>
+        
+</AppLayout>

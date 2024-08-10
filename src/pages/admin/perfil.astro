@@ -1,0 +1,203 @@
+---
+import NodeCache from "node-cache";
+import AppLayout from "@layouts/App/AppLayout.astro";
+import Avatar from "@components/ui/Avatar.astro";
+import DemographyItem from "@components/ui/DemographyItem.astro";
+import { hasherPassword } from "@/utils";
+import { ChangePasword } from "@components/ChangePasword";
+import argon2 from "argon2";
+import { lucia } from "@/lib/auth/lucia";
+import { db, eq, Demography, User, Session } from "astro:db";
+
+// Configuración de la caché
+const cache = new NodeCache({ stdTTL: 5 * 60 }); // TTL en segundos (5 minutos)
+
+// Código de tu aplicación
+const user = Astro.locals.user;
+if (!user) {
+  return Astro.redirect("/iniciar-sesion", 302);
+}
+
+// Clave única para la caché basada en el ID del usuario
+const cacheKey = `demography_${user.id}`;
+
+// Intentar obtener los datos de la caché
+let Demographydata = cache.get(cacheKey);
+if (!Demographydata) {
+  console.log("Datos no encontrados en caché, obteniendo de la base de datos");
+  // Si no están en caché, obtener los datos de la base de datos
+  const userdemography = (
+    await db.select().from(Demography).where(eq(Demography.id, user.id))
+  ).at(0);
+
+  Demographydata = [
+    { title: "Nombre del usuario", value: user?.username || "No username" },
+    {
+      title: "Fecha de Creacion",
+      value: user?.createdAt || "No creation date",
+    },
+    { title: "Correo Electronico", value: user?.email || "No email" },
+    {
+      title: "Fecha de Nacimiento",
+      value: userdemography?.birthdate || "No birthdate",
+    },
+    { title: "Genero", value: userdemography?.gender || "No gender" },
+    { title: "Provincia", value: userdemography?.province || "No province" },
+    {
+      title: "Lugar de Trabajo",
+      value: userdemography?.workingPlace || "No working place",
+    },
+    {
+      title: "Asignatura Impartida",
+      value: userdemography?.subject || "No subject",
+    },
+    { title: "Rol", value: user?.role || "No role" },
+  ];
+
+  // Almacenar los datos en la caché
+  cache.set(cacheKey, Demographydata);
+} else {
+  console.log("Usando datos de caché para Demographydata");
+}
+
+// Código adicional para el manejo de contraseñas y otras funcionalidades
+try {
+  if (Astro.request.method === "POST") {
+    if (user.provider !== "email") {
+      return new Response(
+        JSON.stringify({ error: "No puedes cambiar la contraseña" }),
+        {
+          headers: { "content-type": "application/json" },
+          status: 400,
+        },
+      );
+    }
+
+    const body = await Astro.request.json();
+    const { lastPassword, newPassword, confirmPassword } = body;
+    if (
+      !lastPassword ||
+      !newPassword ||
+      !confirmPassword ||
+      newPassword !== confirmPassword
+    ) {
+      return new Response(
+        JSON.stringify({ error: "Faltan campos por completar" }),
+        {
+          headers: { "content-type": "application/json" },
+          status: 400,
+        },
+      );
+    }
+    const existedUser = (
+      await db.select().from(User).where(eq(User.id, user.id))
+    ).at(0);
+    if (!existedUser) {
+      return new Response(JSON.stringify({ error: "Usuario no encontrado" }), {
+        headers: { "content-type": "application/json" },
+        status: 400,
+      });
+    }
+    const isPasswordValid = await argon2.verify(
+      existedUser?.hashedPassword!,
+      lastPassword,
+    );
+    if (!isPasswordValid) {
+      return new Response(JSON.stringify({ error: "Contraseña Incorrecta" }), {
+        headers: { "content-type": "application/json" },
+        status: 400,
+      });
+    }
+
+    try {
+      const newHashPassword = await hasherPassword(newPassword);
+      await db
+        .update(User)
+        .set({ hashedPassword: newHashPassword })
+        .where(eq(User.id, user.id));
+      await db.delete(Session).where(eq(Session.userId, user.id));
+
+      const session = await lucia.createSession(user.id, {
+        expiresIn: 60 * 60 * 24 * 30,
+      });
+      const sessionCookie = lucia.createSessionCookie(session.id);
+      Astro.cookies.set(
+        sessionCookie.name,
+        sessionCookie.value,
+        sessionCookie.attributes,
+      );
+      return new Response("Contraseña Actualizada", { status: 200 });
+    } catch (error) {
+      console.log(error);
+      return new Response(
+        JSON.stringify({ error: "Error al Actualizar la Contraseña" }),
+        {
+          headers: { "content-type": "application/json" },
+          status: 400,
+        },
+      );
+    }
+  }
+} catch (error) {
+  console.error(error);
+  return new Response("Error interno del servidor", { status: 500 });
+}
+---
+
+<AppLayout
+  title="Configuración del Usuario"
+  description="Cambia tu configuración de usuario"
+>
+  <div class="grid grid-cols-1 px-4 xl:grid-cols-3 xl:gap-4">
+    <!-- Right Content -->
+    <div class="col-span-full xl:col-auto">
+      <div
+        class="mb-4 rounded-lg shadow-sm 2xl:col-span-2 border-gray-700 bg-gray-800"
+      >
+        <div
+          class="items-center flex flex-col sm:space-x-4 xl:space-x-0 2xl:space-x-4"
+        >
+          <div>
+            <h3 class="mb-1 text-xl font-bold text-center">Foto de Perfil</h3>
+          </div>
+          {
+            user?.userimage ? (
+              <Avatar
+                src={user?.userimage}
+                alt={user?.username ?? ""}
+                className="mb-4 rounded-lg w-28 h-28 sm:mb-0 xl:mb-4 2xl:mb-0 "
+              />
+            ) : (
+              <Avatar
+                alt={user?.username ?? ""}
+                className="mb-4 rounded-lg w-28 h-28 sm:mb-0 xl:mb-4 2xl:mb-0 min-w-32 text-4xl"
+              />
+            )
+          }
+        </div>
+      </div>
+          <div class="p-4 mb-4  border rounded-lg shadow-xl 2xl:col-span-2 border-gray-700 sm:p-6 bg-gray-800">
+            <h3 class="mb-4 text-xl font-semibold ">Cambiar Contraseña</h3>
+            <ChangePasword client:only transition:persist />
+          </div>
+    </div>
+    <!-- Left Content -->
+    <div class="col-span-2">
+      <div
+        class="p-4 mb-4 rounded-lg shadow-xl 2xl:col-span-2 border border-gray-700 sm:p-6 bg-gray-800"
+      >
+        <h3 class="mb-4 text-xl font-semibold">
+          Información General del Usuario
+        </h3>
+        <div class="grid grid-cols-6 gap-6">
+          {
+            Demographydata.map((item) => (
+              <DemographyItem title={item.title} value={item.value} />
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of grid -->
+</AppLayout>

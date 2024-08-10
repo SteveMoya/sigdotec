@@ -1,0 +1,56 @@
+
+{
+    "FooterNav": [
+        {
+            "itemText": "Planes",
+            "itemLink": "/planes"
+        },
+        {
+            "itemText": "Plan de Clases",
+            "itemLink": "/planes"
+        },
+        {
+            "itemText": "Plan de Unidad",
+            "itemLink": "/planes"
+        },
+        {
+            "itemText": "Plan Anual",
+            "itemLink": "/planes"
+        }
+    ],
+    "FooterSupport": [
+        {
+            "itemText": "Guia",
+            "itemLink": "#"
+        },
+        {
+            "itemText": "Preguntas Frecuentes",
+            "itemLink": "/preguntas-frecuentes"
+        },
+        {
+            "itemText": "Contacto",
+            "itemLink": "mailto:c.quast@sigdotec.com"
+        }
+    ],
+    "FooterCompany": [
+        {
+            "itemText": "Acerca",
+            "itemLink": "/nosotros"
+        },
+        {
+            "itemText": "Equipo",
+            "itemLink": "/team"
+        }
+    ],
+    "FooterLegal": [
+        {
+            "itemText": "Terminos y Condiciones",
+            "itemLink": "/terminos-y-condiciones"
+        },
+        {
+            "itemText": "Politica de Privacidad",
+            "itemLink": "/politica-de-privacidad"
+        }
+    ]
+}
+

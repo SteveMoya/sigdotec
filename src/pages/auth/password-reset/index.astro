@@ -1,0 +1,47 @@
+---
+import { ResetPasswordForm } from "@/components/ResetPasword";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import Layout from "@layouts/Layout.astro";
+import { Toaster } from "sonner";
+const user = Astro.locals.user
+if (user) {
+  return Astro.redirect("/app/");
+}
+---
+
+<Layout>
+  <div class="flex justify-center content-center my-[6dvh]">
+    <Card
+      className="w-full max-w-2xl bg-slate-800 border border-gray-700 shadow-2xl"
+    >
+      <CardHeader>
+        <CardTitle>Recuperar Contraseña</CardTitle>
+        <CardDescription>
+          Escrite tu correo electronico y te enviaremos un enlace para
+          restablecer tu contraseña.
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+      <ResetPasswordForm client:load />
+      </CardContent>
+    </Card>
+  </div>
+  <Toaster
+    richColors
+    closeButton
+    toastOptions={{
+      classNames: {
+        success: "bg-success-600",
+        error: "bg-danger-600",
+        loading: "bg-secondary-200",
+      },
+    }}
+    client:load
+  />
+</Layout>

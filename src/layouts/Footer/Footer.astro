@@ -1,0 +1,96 @@
+---
+import GroupFooterNav from './GroupFooterNav.astro'
+import FooterNav from './FooterNav.astro'
+import Container from '@components/ui/Container.astro'
+import Paragraph from '@components/ui/Paragraph.astro'
+import SocialList from '@components/ui/SocialList.astro'
+import Logo from '@components/ui/Logo.astro'
+import { socials } from '@data/socials'
+import FooterItems from '@config/FooterItems.json'
+
+const FooterNavItems = FooterItems.FooterNav
+const FooterSupportItems = FooterItems.FooterSupport
+const FooterCompanyItems = FooterItems.FooterCompany
+const FooterLegalItems = FooterItems.FooterLegal
+
+
+---
+
+<div class='mt-16'></div>
+<footer
+  class='relative bg-gradient-to-tr  from-gray-900 to-gray-800 pt-28 rounded-t-3xl'
+>
+  <!--Comienzo del Background -->
+  <div class='absolute right-0 top-0 h-full w-full flex justify-end'>
+    <div class='w-28 h-28 overflow-hidden flex rounded-xl relative blur-2xl'>
+      <span
+        class='absolute w-16 h-16 -top-1 -right-1 bg-secondary-950 rounded-md rotate-45'
+      ></span>
+      <span
+        class='absolute w-16 h-16 -bottom-1 -right-1 bg-accent-400 rounded-md rotate-45'
+      ></span>
+      <span
+        class='absolute w-16 h-16 -bottom-1 -left-1 bg-secondary-600 rounded-md rotate-45'
+      ></span>
+    </div>
+  </div>
+
+  <div class='absolute left-0 bottom-0 h-full w-full flex items-end'>
+    <div class='w-28 h-28 overflow-hidden flex rounded-xl relative blur-2xl'>
+      <span
+        class='absolute w-16 h-16 -top-1 -right-1 bg-secondary-950 rounded-md rotate-45'
+      ></span>
+      <span
+        class='absolute w-16 h-16 -bottom-1 -right-1 bg-accent-400 rounded-md rotate-45'
+      ></span>
+      <span
+        class='absolute w-16 h-16 -bottom-1 -left-1 bg-secondary-600 rounded-md rotate-45'
+      ></span>
+    </div>
+  </div>
+  <!-- Terminado del background -->
+  <Container className='pb-8 relative overflow-hidden'>
+    <span
+      class='absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 blur-2xl opacity-20 w-24 h-16 sm:w-48 sm:h-36 rounded-full rotate-12 skew-x-6 bg-secondary-600'
+    ></span>
+    <div
+      class='grid grid-cols-2 lg:grid-cols-3 lg:items-stretch gap-8 relative'
+    >
+      <div class='col-span-2 lg:col-span-1 h-auto flex flex-col'>
+        <div>
+          <a href='/'>
+            <Logo size={'w-44'} variant={'secondary'} />
+          </a>
+          <Paragraph className={'mt-8 font-semibold'}>
+            Pon la tecnología a tus servicios. <br /> ¡Porque <b class="bg-gradient-text">Planificar </b> nunca volverá a ser lo
+            mismo!
+          </Paragraph>
+        </div>
+
+        <!-- social links -->
+        <div class='min-h-max flex items-center gap-4 mt-8'>
+          <SocialList socials={socials} width='w-[30px]' height='h-[30px]' />
+        </div>
+      </div>
+
+      <GroupFooterNav>
+        <FooterNav title={'Empresa'} navItems={FooterCompanyItems} />
+        <FooterNav title={'Soluciones'} navItems={FooterNavItems} />
+      </GroupFooterNav>
+
+      <GroupFooterNav>
+        <FooterNav title={'Soporte'} navItems={FooterSupportItems} />
+        <FooterNav title={'Recursos'} navItems={FooterLegalItems} />
+      </GroupFooterNav>
+    </div>
+  </Container>
+  <div class='bg-gradient-to-tl from-black py-2 relative'>
+    <Container>
+      <div class='flex justify-between items-center gap-6 md:text-lg'>
+        <div>
+          &copy; <span id='year'></span> SIGDOTEC. Todos los derechos reservados
+        </div>
+      </div>
+    </Container>
+  </div>
+</footer>
