@@ -9,7 +9,7 @@ export async function POST(context: APIContext): Promise<Response> {
     // const data = classplanmock;
     const user = context.locals.user;
     if (!user) {
-        return new Response("Usuario no authenticado", { status: 401 });
+        return new Response("El usuario no esta authenticado", { status: 401 });
     }
 
     const amount = user.balance;
