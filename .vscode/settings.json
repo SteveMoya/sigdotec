@@ -1,5 +1,0 @@
-{
-    "exportall.config.relExclusion": [
-        "/src/schemas/index.ts"
-    ]
-}
