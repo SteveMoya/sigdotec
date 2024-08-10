@@ -5,9 +5,10 @@ import { createVerificationToken } from "@/lib/auth/lucia";
 import Layout from "@layouts/Layout.astro";
 import VerifyEmail from "@/components/VerifyEmail";
 import { Toaster } from "sonner";
-import type { only } from "node:test";
 
 const user = Astro.locals.user;
+const url = await Astro.url.toString();
+const baseurl = url.split("auth")[0];
 
 if (!user) {
   return Astro.redirect("/iniciar-sesion", 302);
@@ -25,6 +26,7 @@ try {
         user.email,
         token.toString(),
         user.username,
+        baseurl,
       );
       return new Response(
         "Email de Verificación enviado, por favor revisa tu correo electronico",
@@ -43,6 +45,7 @@ try {
   console.error(error);
   return new Response("Error interno del servidor", { status: 500 });
 }
+console.log(url);
 ---
 
 <Layout>

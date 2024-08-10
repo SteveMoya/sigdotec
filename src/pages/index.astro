@@ -1,23 +1,22 @@
 ---
+import Layout from "@layouts/Layout.astro";
+import Hero from "@components/sections/Hero.astro";
+import AboutUs from "@components/sections/AboutUs.astro";
 
-import Layout from '@layouts/Layout.astro'
-import Hero from '@components/sections/Hero.astro'
-import AboutUs from '@components/sections/AboutUs.astro'
+import Features from "@components/sections/Features.astro";
+import CTA from "@components/sections/CTA.astro";
 
-import Features from '@components/sections/Features.astro'
-import CTA from '@components/sections/CTA.astro'
-
+console.log("URL", Astro.url.toString());
 ---
 
 <Layout
-  title='Bienvenido a SIGDO'
-  description='Esta es el home page del proyecto'
-  image='/og-sigdo.jpg'
-  canonicalURL='https://sigdo.online'
+  title="Bienvenido a SIGDO"
+  description="Esta es el home page del proyecto"
+  image="/og-sigdo.jpg"
+  canonicalURL="https://sigdo.online"
 >
-
-    <Hero />
-    <AboutUs />
-    <Features />
-    <CTA />
+  <Hero />
+  <AboutUs />
+  <Features />
+  <CTA />
 </Layout>

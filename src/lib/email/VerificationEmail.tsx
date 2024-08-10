@@ -1,4 +1,3 @@
-import { APP_URL, BASE_URL } from "@/utils";
 import {
     Body,
     Container,
@@ -12,21 +11,18 @@ import {
     Section,
     Text,
 } from "@react-email/components";
-import { object } from "zod";
 
 
 interface VerficationEmailProps {
     username?: string;
     validationCode: string;
+    baseUrl: string;
 }
-
-const baseUrl = BASE_URL
-    ? `https://${BASE_URL}`
-    : "";
 
 export const VerficationEmail = ({
     username,
-    validationCode
+    validationCode,
+    baseUrl,
 }: VerficationEmailProps) => {
     return (
         <Html>
@@ -56,7 +52,7 @@ export const VerficationEmail = ({
                         <Text style={paragraph}>
                             Si no fuiste tu, por favor, ignora este correo,{" "}
                             si realmente fuiste tu, por favor{" "}
-                            <Link href={`${APP_URL}auth/email-verification/${validationCode}`} style={link}>
+                            <Link href={`${baseUrl}auth/email-verification/${validationCode}`} style={link}>
                                 Confirma tu cuenta
                             </Link>.
                         </Text>

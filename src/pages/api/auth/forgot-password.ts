@@ -6,6 +6,9 @@ import { eq, db, User } from "astro:db";
 
 export async function POST(context: APIContext): Promise<Response> {
     const body = await context.request.json();
+    const url = await context.url.toString();
+    const baseurl = url.split("auth")[0];
+    console.log("Este es el baseurl", baseurl)
     if (body === null) {
         return new Response("Invalid request body", {
             status: 400,
@@ -29,7 +32,7 @@ export async function POST(context: APIContext): Promise<Response> {
     const username = user.username;
 
     try {
-        await sendResetPasswordEmail(username, token.toString(), email);
+        await sendResetPasswordEmail(username, token.toString(), email, baseurl);
         return new Response("Email enviado", { status: 200 });
     } catch (error) {
         console.log(error);

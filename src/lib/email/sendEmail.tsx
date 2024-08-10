@@ -1,4 +1,4 @@
-import { BASE_URL, RESEND_API_KEY, isDev } from '@/utils';
+import {  RESEND_API_KEY, isDev } from '@/utils';
 import { Resend } from 'resend';
 import { VerficationEmail } from './VerificationEmail';
 import ResetPasswordEmail from './ResetPasswordEmail';
@@ -21,13 +21,13 @@ function getTEXT(react:any) {
     })
 }
 
-export const sendEmailVerificationEmail = async (email:string, token:string, username:string) => {
+export const sendEmailVerificationEmail = async (email:string, token:string, username:string, url:string) => {
     if (isDev) {
          await resend.emails.send({
             from: 'onboarding@resend.dev',
             to: ['stevemc201666@gmail.com'],
             subject: 'Email de Verificacion',
-             html: getHTML(<VerficationEmail validationCode={token} username={username} />),
+             html: getHTML(<VerficationEmail validationCode={token} username={username} baseUrl={url} />),
              tags: [
                  {
                      name: 'category',
@@ -40,7 +40,7 @@ export const sendEmailVerificationEmail = async (email:string, token:string, use
         from: 'soporteg@sigdotec.com',
         to: [email],
         subject: 'Email de Verificacion',
-        html: getHTML(<VerficationEmail validationCode={token} username={username} />),
+        html: getHTML(<VerficationEmail validationCode={token} username={username} baseUrl={url} />),
         tags: [
             {
                 name: 'category',
@@ -51,14 +51,14 @@ export const sendEmailVerificationEmail = async (email:string, token:string, use
     return
 }
 
-export const sendResetPasswordEmail = async (username: string, token: string, email:string) => {
+export const sendResetPasswordEmail = async (username: string, token: string, email:string, url:string) => {
     if (isDev) {
         await resend.emails.send({
             from: 'onboarding@resend.dev',
             to: ['stevemc201666@gmail.com'],
             subject: 'Reset Password',
             html: getHTML(<ResetPasswordEmail username={username} updatedDate={
-                new Date()} validationCode={token} />),
+                new Date()} validationCode={token} baseUrl={url} />),
             tags: [
                 {
                     name: 'category',
@@ -72,7 +72,7 @@ export const sendResetPasswordEmail = async (username: string, token: string, em
         to: [email],
         subject: 'Reset Password',
         html: getHTML(<ResetPasswordEmail username={username} updatedDate={
-            new Date()} validationCode={token} />),
+            new Date()} validationCode={token} baseUrl={url} />),
         tags: [
             {
                 name: 'category',

@@ -1,4 +1,3 @@
-import { APP_URL, BASE_URL } from "@/utils";
 import {
     Body,
     Container,
@@ -18,16 +17,15 @@ interface ResetPasswordEmailProps {
     username?: string;
     updatedDate?: Date;
     validationCode: string;
+    baseUrl: string;
 }
 
-const baseUrl = BASE_URL
-    ? `https://${BASE_URL}`
-    : "";
 
 export const ResetPasswordEmail = ({
     username,
     updatedDate,
-    validationCode
+    validationCode,
+    baseUrl
 }: ResetPasswordEmailProps) => {
     const formattedDate = new Intl.DateTimeFormat("es-ES", {
         dateStyle: "long",
@@ -65,7 +63,7 @@ export const ResetPasswordEmail = ({
                         <Text style={paragraph}>
                             Si no solicitaste este cambio, por favor, ignora este mensaje,{" "} 
                             si solicitaste este cambio, por favor{" "}
-                            <Link href={`${APP_URL}auth/password-reset/${validationCode}`} style={link}>
+                            <Link href={`${baseUrl}auth/password-reset/${validationCode}`} style={link}>
                             Recuperar contraseña
                             </Link>. Este enlace expirará en 1 hora.
                         </Text>
