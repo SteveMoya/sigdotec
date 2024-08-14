@@ -19,11 +19,14 @@ const {
 	style={`background-image: url('${backgroundImage}')`}
 	tabindex="0"
 	role="button"
+	aria-roledescription="video"
+	aria-label={title}
 >
 	<a
 		href={`https://youtube.com/watch?v=${videoId}`}
 		class="lty-playbtn"
 		title={title}
+		aria-label={title}
 	>
 		<span class="lyt-visually-hidden">{title}</span>
 	</a>

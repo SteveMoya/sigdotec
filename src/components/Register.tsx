@@ -132,7 +132,10 @@ export function SignUpForm() {
                                 <div className="space-y-1 leading-none">
                                     <FormLabel>
                                         Acepto los{" "}
-                                        <a href="/terminos-y-condiciones" className="text-primary-800 underline">
+                                        <a href="/terminos-y-condiciones"
+                                        aria-label="Términos y Condiciones"
+                                        title="Términos y Condiciones" 
+                                        className="text-primary-800 underline">
                                             términos y condiciones
                                         </a>
                                     </FormLabel>

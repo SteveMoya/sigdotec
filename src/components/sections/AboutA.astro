@@ -1,6 +1,4 @@
 ---
-
-
 import logo from "@assets/images/SIGDO-Logo/SIGDO-32.svg";
 import LiteYoutube from "../ui/LiteYoutube.astro";
 import background from "/public/SIGDOTEC-Presentation-Image.jpg";
@@ -8,14 +6,13 @@ import background from "/public/SIGDOTEC-Presentation-Image.jpg";
 import Button from "@components/ui/Button.astro";
 import Container from "@components/ui/Container.astro";
 import Paragraph from "@components/ui/Paragraph.astro";
-
 ---
 
 <section class="relative pt-32 lg:pt-10 animate-fade-in">
   <Container className={"flex flex-col lg:flex-row gap-10 lg:gap-12"}>
     <div class="absolute w-full lg:w-1/2 inset-y-0 lg:right-0">
       <span
-        class="absolute -left-6 md:left-4 top-24 lg:top-28 w-24 h-24 rotate-90 skew-x-12 rounded-3xl bg-primary-700  blur-xl opacity-60 lg:opacity-95 lg:block"
+        class="absolute -left-6 md:left-4 top-24 lg:top-28 w-24 h-24 rotate-90 skew-x-12 rounded-3xl bg-primary-700 blur-xl opacity-60 lg:opacity-95 lg:block"
       ></span>
       <span
         class="absolute right-4 bottom-12 w-24 h-24 rounded-3xl bg-primary-700 blur-xl opacity-80"
@@ -35,7 +32,7 @@ import Paragraph from "@components/ui/Paragraph.astro";
         ¿Quiénes somos?
       </h1>
       <h1
-        class="text-3xl/tight sm:text-4xl/tight md:text-5xl/tight xl:text-6xl/tight font-bold "
+        class="text-3xl/tight sm:text-4xl/tight md:text-5xl/tight xl:text-6xl/tight font-bold"
       >
         <span
           class="text-transparent bg-clip-text bg-gradient-to-br from-indigo-600 from-20% via-primary-700 via-30% to-accent-400"
@@ -51,16 +48,16 @@ import Paragraph from "@components/ui/Paragraph.astro";
         <div
           class="flex mx-0 sm:flex-row flex-col gap-2 w-full max-lg:justify-center lg:justufy-center"
         >
-          <a href="/iniciar-sesion">
-            <Button variant={"primary"} className={"min-w-max"}>
+            <Button variant={"primary"} className={"min-w-max"} href="/app/">
               <span>Planificar</span>
             </Button>
-          </a>
-          <a href="/nosotros">
-            <Button variant={"secondary"} className={"min-w-max"}>
+            <Button
+              variant={"secondary"}
+              className={"min-w-max"}
+              href="/#nosotros"
+            >
               <span> Conocer Mas</span>
             </Button>
-          </a>
         </div>
       </div>
     </div>
@@ -72,7 +69,6 @@ import Paragraph from "@components/ui/Paragraph.astro";
     </div>
   </Container>
 </section>
-
 
 <script is:inline>
   let texts = ["¡SIGDOTEC!", "INOVACION", "TECNOLOGIA", "FUTURO", "CAMBIO"];

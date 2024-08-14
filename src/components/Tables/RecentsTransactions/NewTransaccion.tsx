@@ -131,7 +131,7 @@ export const NewTransaccion = () => {
 
       <Dialog>
           <DialogTrigger asChild >
-              <Button variant="outline" className="ml-auto mb-4 sm:mb-0 mr-4 inline-flex items-center bg-white border border-primary-300 focus:outline-none hover:bg-primary-100 focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-4 py-2.5 dark:bg-primary-700 text-white dark:hover:bg-primary-800"><span className="icon-[mdi--wallet-plus] mr-2"></span> Agregar </Button>
+              <Button variant="outline" className="ml-auto mb-4 sm:mb-0 mr-4 inline-flex items-center  border border-primary-300 focus:outline-none  focus:ring-4 focus:ring-primary-200 font-medium rounded-lg text-sm px-4 py-2.5 bg-primary-700 text-white hover:bg-primary-800"><span className="icon-[mdi--wallet-plus] mr-2"></span> Agregar </Button>
           </DialogTrigger>
           <DialogContent className="sm:max-w-md">
               <DialogHeader>
@@ -253,7 +253,7 @@ export const NewTransaccion = () => {
                               </FormItem>
                           )}
                       />{" "}
-                      <Button type="submit" className="w-full  hover:bg-primary-800 dark:hover:bg-primary-800 hover:text-white dark:hover:text-white mt-4">Confirmar</Button>
+                      <Button type="submit" className="w-full  hover:bg-primary-800 mt-4">Confirmar</Button>
               </form>
               </Form>
 

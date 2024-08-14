@@ -120,7 +120,7 @@ export const EditUser = ({id}: {id: string}) => {
             </AlertDialog>
             <Dialog>
                 <DialogTrigger asChild >
-                    <Button variant="outline" className=" inline-flex items-center bg-white border border-primary-300 focus:outline-none hover:bg-primary-100 focus:ring-4 focus:ring-primary-200 font-medium text-sm dark:bg-primary-700 text-white dark:hover:bg-primary-800 rounded-full p-3 "><span className="icon-[mdi--account-edit]"></span></Button>
+                    <Button variant="outline" className=" inline-flex items-center  border border-primary-300 focus:outline-none focus:ring-4 focus:ring-primary-200 font-medium text-sm bg-primary-700  hover:bg-primary-800 rounded-full p-3 "><span className="icon-[mdi--account-edit]"></span></Button>
                 </DialogTrigger>
                 <DialogContent className="sm:max-w-md">
                     <DialogHeader>
@@ -172,7 +172,7 @@ export const EditUser = ({id}: {id: string}) => {
                                     </FormItem>
                                 )}
                             />
-                            <Button type="submit" className="w-full  hover:bg-primary-800 dark:hover:bg-primary-800 hover:text-white dark:hover:text-white mt-4">Confirmar</Button>
+                            <Button type="submit" className="w-full  hover:bg-primary-800 hover:text-white mt-4">Confirmar</Button>
                         </form>
                     </Form>
                 </DialogContent>

@@ -10,8 +10,7 @@ import AboutA from "@components/sections/AboutA.astro";
 
 <Layout
   title="Sobre Nosotros - SIGDOTEC"
-  description="SIGDOTEC es una empresa de tecnología educativa que busca transformar la educación en la República Dominicana. Conoce más sobre nosotros."
-  image="/og-sigdo.jpg"
+  description="SIGDOTEC es una empresa de tecnología educativa que busca transformar la educación en la República Dominicana. Conoce más sobre nosotros"
 >
   <AboutA />
   <section
@@ -19,8 +18,8 @@ import AboutA from "@components/sections/AboutA.astro";
   >
     <div class="font-ibm">
       <h1>
-        En{" "}
-        <span class="bg-gradient-text uppercase font-bold"> SIDGOTEC</span>{" "}
+        En
+        <span class="bg-gradient-text uppercase font-bold"> SIDGOTEC</span>
       </h1>
       <h6>Los valores nos mueven</h6>
     </div>
@@ -28,6 +27,8 @@ import AboutA from "@components/sections/AboutA.astro";
     <video
       class="video max-md:h-72 object-cover blur-[2px] brightness-[55%] z-[-1] absolute"
       src="/Aboutvideo.webm"
+      muted={true}
+      
       autoplay={true}></video>
   </section>
     

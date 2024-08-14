@@ -3,16 +3,13 @@ import { Icon } from "astro-icon/components";
 
 import { isDev } from "@/utils";
 import { Button } from "./ui/button";
-
-
 ---
 
 <div class="grid grid-cols-2 gap-4">
-    
-    <a href="/api/auth/facebook">
+    <a href="/api/auth/facebook" title="Iniciar sesión con Facebook">
         <Button
             variant={"outline"}
-            className="w-full dark:hover:bg-[#3b5998] hover:bg-[#3b5998] hover:text-white"
+            className="w-full dark:hover:bg-[#3b5998] hover:bg-[#3b5998] hover:text-white dark:hover:text-white bg-slate-900"
         >
             <Icon name="mdi:facebook" class="mr-2 h-6 w-6" />
 
@@ -21,10 +18,10 @@ import { Button } from "./ui/button";
     </a>
     {
         isDev && (
-            <a href="/api/auth/github">
+            <a href="/api/auth/github" title="Iniciar sesión con Github">
                 <Button
                     variant={"outline"}
-                    className="w-full hover:text-white dark:hover:bg-[#333] hover:bg-[#333]"
+                    className="w-full hover:text-white dark:hover:bg-[#333] hover:bg-[#333] bg-slate-900"
                 >
                     <Icon name="mdi:github" class="mr-2 h-6 w-6 text-xl" />
                     GitHub
@@ -32,10 +29,10 @@ import { Button } from "./ui/button";
             </a>
         )
     }
-    <a href="/api/auth/google">
+    <a href="/api/auth/google" title="Iniciar sesión con Google">
         <Button
             variant={"outline"}
-            className="w-full hover:text-white dark:hover:bg-[#ea4335] hover:bg-[#ea4335]"
+            className="w-full hover:text-white dark:text-white  dark:hover:bg-[#ea4335] hover:bg-[#ea4335] bg-slate-900"
         >
             <Icon name="mdi:google" class="mr-2 h-6 w-6" />
             Google

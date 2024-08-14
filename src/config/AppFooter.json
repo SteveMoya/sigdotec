@@ -1,32 +1,22 @@
 [
     {
     "name": "Terminos y condiciones",
-    "href": "#",
+    "href": "/terminos-y-condiciones",
     "icon": "mdi:file-document-outline"
     },
     {
     "name": "Politica de privacidad",
-    "href": "#",
+    "href": "/politica-de-privacidad",
     "icon": "mdi:shield-account-outline"
     },
     {
-    "name": "Licencia",
-    "href": "#",
-    "icon": "mdi:license"
-    },
-    {
-    "name": "Politica de cookies",
-    "href": "#",
-    "icon": "mdi:cookie"
-    },
-    {
     "name": "Contacto",
-    "href": "#",
+    "href": "mailto:c.quast@sigdotec.com",
     "icon": "mdi:email"
     },
     {
     "name": "Soporte",
-    "href": "#",
+    "href": "mailto:c.quast@sigdotec.com",
     "icon": "mdi:head-question-outline"
     }
 ]

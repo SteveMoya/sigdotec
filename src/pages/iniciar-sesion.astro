@@ -1,16 +1,10 @@
 ---
-// import { SignInSchema } from "@/schemas/authentification";
-// import { LoginB } from "@components/App/LoginB";
 import { SignInForm } from "@/components/Login";
 
 import Logo from "@/components/ui/Logo.astro";
-import { Button } from "@/components/ui/button";
 import Layout from "@layouts/Layout.astro";
 
-import { Icon } from "astro-icon/components";
 import { Toaster } from "sonner";
-
-const user = Astro.locals.user;
 
 import SocialSingUp from "@/components/SocialSingUp.astro";
 ---
@@ -25,7 +19,7 @@ import SocialSingUp from "@/components/SocialSingUp.astro";
     >
       <div class="space-y-2 text-center">
         <div class="flex justify-center mb-4">
-          <Logo variant="primary" size="w-32" />
+          <Logo variant="primary" size="w-32" loading={"eager"} />
         </div>
         <h1 class="text-3xl font-bold bg-gradient-text">Iniciar sesión</h1>
         <p class="text-muted-foreground">
@@ -41,12 +35,14 @@ import SocialSingUp from "@/components/SocialSingUp.astro";
           <a
             href="/auth/password-reset"
             class="inline-block text-sm underline hover:text-primary-800"
+            title="Recuperar contraseña"
           >
             ¿Olvidaste tu contraseña?
           </a>
           <a
             href="/registrarse"
             class="inline-block text-sm underline hover:text-primary-800"
+            title="Registrarse"
           >
             Registrarse
           </a>
@@ -54,7 +50,6 @@ import SocialSingUp from "@/components/SocialSingUp.astro";
       </div>
     </div>
   </section>
-
   <Toaster
     richColors
     closeButton

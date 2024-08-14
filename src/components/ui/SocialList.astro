@@ -26,6 +26,7 @@ const socials = Astro.props.socials
           href={social.url}
           target='black'
           title={`Abrir perfil de ${social.name}`}
+          aria-label={`Abrir perfil de ${social.name}`}
         >
           <Icon name={social.icon} class={`${width} ${height}`} />
         </a>

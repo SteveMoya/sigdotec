@@ -1,8 +1,7 @@
 import { defineConfig, passthroughImageService } from 'astro/config';
 import { settings, manifest } from './src/data/settings';
-import { VitePWA } from "vite-plugin-pwa"
+import { VitePWA } from "vite-plugin-pwa";
 import mdx from '@astrojs/mdx';
-
 import icon from 'astro-icon';
 import tailwind from '@astrojs/tailwind';
 import react from '@astrojs/react';
@@ -11,8 +10,9 @@ import metaTags from "astro-meta-tags";
 import devtoolbarTailwind from "astro-devtoolbar-tailwind";
 import lighthouse from "astro-lighthouse";
 import db from "@astrojs/db";
-
 import sitemap from "@astrojs/sitemap";
+
+import pageInsight from "astro-page-insight";
 
 // https://astro.build/config
 export default defineConfig({
@@ -22,56 +22,48 @@ export default defineConfig({
   security: {
     checkOrigin: true
   },
- compressHTML: true,
+  compressHTML: true,
   prefetch: true,
   site: settings.site,
   vite: {
-    plugins: [
-          VitePWA({
-              injectRegister: 'auto',
-              registerType: "autoUpdate",
-              devOptions: {
-                  enabled: true
-              },
-              manifest,
-              workbox: {
-                  globDirectory: ".vercel/output/static",
-                  globPatterns: ["**/*.{html,js,css,woff,woff2,ttf,ico}"],
-                  runtimeCaching: [
-                      {
-                          urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp|avif)$/,
-                          handler: "CacheFirst",
-                          options: {
-                              cacheName: "images",
-                              expiration: {
-                                  maxEntries: 100,
-                                  maxAgeSeconds: 30 * 24 * 60 * 60,
-                              },
-                          },
-                      },
-                      {
-                          urlPattern: /\.(?:woff|woff2|ttf|eot|ico)$/,
-                          handler: "CacheFirst",
-                          options: {
-                              cacheName: "fonts",
-                              expiration: {
-                                  maxEntries: 10,
-                                  maxAgeSeconds: 30 * 24 * 60 * 60,
-                              },
-                          },
-                      },
-                  ],
-                  navigateFallback: null,
-              },
-          })
-    ],
+    plugins: [VitePWA({
+      injectRegister: 'auto',
+      registerType: "autoUpdate",
+      devOptions: {
+        enabled: true
+      },
+      manifest,
+      workbox: {
+        globDirectory: ".vercel/output/static",
+        globPatterns: ["**/*.{html,js,css,woff,woff2,ttf,ico}"],
+        runtimeCaching: [{
+          urlPattern: /\.(?:png|jpg|jpeg|svg|gif|webp|avif)$/,
+          handler: "CacheFirst",
+          options: {
+            cacheName: "images",
+            expiration: {
+              maxEntries: 100,
+              maxAgeSeconds: 30 * 24 * 60 * 60
+            }
+          }
+        }, {
+          urlPattern: /\.(?:woff|woff2|ttf|eot|ico)$/,
+          handler: "CacheFirst",
+          options: {
+            cacheName: "fonts",
+            expiration: {
+              maxEntries: 10,
+              maxAgeSeconds: 30 * 24 * 60 * 60
+            }
+          }
+        }],
+        navigateFallback: null
+      }
+    })]
   },
-  integrations: [
-  mdx(), react(), tailwind({
+  integrations: [mdx(), react(), tailwind({
     applyBaseStyles: false
-  }), icon(),
-  metaTags(), devtoolbarTailwind(), lighthouse(), db(), sitemap({
-  })],
+  }), icon(), metaTags(), devtoolbarTailwind(), lighthouse(), db(), sitemap({}), pageInsight()],
   output: 'server',
   adapter: vercel()
 });

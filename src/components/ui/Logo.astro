@@ -1,31 +1,28 @@
 ---
-/*
-import { Picture } from 'astro:assets';
-import myImage from './my-image.jpg';
-*/
-/*
-import horizontal from "../assets/SIGDO-32.svg";
-import basico from "../assets/SIGDO-32.svg";
-*/
-export interface Props {
-  size: string
-  variant: 'primary' | 'secondary'
-}
-const { size, variant } = Astro.props
+import { Picture } from "astro:assets";
 
-const getLogoStyle = (variant: 'primary' | 'secondary'): string => {
-  if (variant === 'primary') {
-    return '/SIGDO-32.svg'
-  }
-  return '/SIGDOTEC-FINAL-23.svg'
+import horizontal from "/public/SIGDOTEC-FINAL-23.svg";
+import basico from "/public/SIGDO-32.svg";
+
+export interface Props {
+  size: string;
+  variant: "primary" | "secondary";
+  loading?: "lazy" | "eager";
 }
+const { size, variant, loading = "lazy" } = Astro.props;
+
+const getLogoStyle = (variant: "primary" | "secondary"): ImageMetadata => {
+  if (variant === "primary") {
+    return basico;
+  }
+  return horizontal;
+};
 ---
 
-<img
+<Picture
+  loading={loading}
+  src={getLogoStyle(variant)}
+  formats={["avif", "webp", "jpeg"]}
+  alt="SIGDOTEC Logo"
   class={`self-center ml-2 rtl:ml-0 rtl:mr-2 whitespace-nowrap ${size}`}
-  src={`${getLogoStyle(variant)}`}
-  alt='SIGDO Logo'
 />
-<!--
-  <Picture src={myImage} formats={['avif', 'webp']} alt="My super image in multiple formats!" />
--->

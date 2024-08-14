@@ -70,11 +70,11 @@ export function DataTable<TData, TValue>({
                     placeholder="Buscar..."
                     value={globalFilter}
                     onChange={(event) => setGlobalFilter(event.target.value)}
-                    className="max-w-sm  border  text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400  "
+                    className="max-w-sm  border  text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2.5 bg-gray-700 border-gray-600 placeholder-gray-400 "
                 />
                 <DropdownMenu>
                     <DropdownMenuTrigger asChild>
-                        <Button className="ml-auto mb-4 sm:mb-0 mr-4 inline-flex items-center  border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-4 py-2.5 dark:bg-gray-700  dark:hover:bg-gray-800" variant={"outline"}>
+                        <Button className="ml-auto mb-4 sm:mb-0 mr-4 inline-flex items-center  border border-gray-300 focus:outline-none focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-4 py-2.5 bg-gray-700  hover:bg-gray-800" variant={"outline"}>
                             Seleccionar Columnas <span className="icon-[mdi--menu-down-outline] ml-2"></span>
                         </Button>
                     </DropdownMenuTrigger>
