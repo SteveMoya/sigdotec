@@ -1,7 +1,6 @@
 
 import { hasherPassword } from '@/utils';
 import { User, db, Demography, WalletTransaction } from 'astro:db';
-import { create } from 'domain';
 import { generateId } from 'lucia';
 
 // https://astro.build/db/seed
